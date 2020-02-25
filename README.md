@@ -1,7 +1,10 @@
-# Plantilla para juegos en Phaser
+### Team Rocket
+Proyecto para la asignatura Desarrollo de Videojuegos en la Universidad Complutense de Madrid 2020.
 
-Plantilla básica para juegos en Phaser. Hace falta un servidor web para que se ejecute. Por ejemplo:
+# Descripción general del juego
+Juego basado en Pokemon Mundo Misterioso, con la diferencia de que no tendremos distintos niveles, sino un mapa amplio con distintos tipos de terreno. En cada uno de ellos habrá múltiples enemigos y objetos de curación, así como un jefe que nos dará una llave al derrotarlo.
+Esas llaves nos permitirán llegar al jefe final del juego.
 
-```bash
-npx http-server
-```
+# Enlace al proyecto de Pivotal
+
+# Enlace web con el juego
