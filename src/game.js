@@ -14,24 +14,7 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-     menu(this)
-
-        function menu(game) {
-
-            
-            let key = "Menu";
-            let autoStart = true;
-            let sceneConfig = {
-                key: 'Menu',
-                
-            };
-            let newScene = game.scene.add(key, sceneConfig, autoStart);
-
-            //Fondo
-            newScene.fondo = newScene.add.image(newScene.game.config.width, newScene.game.config.height, "fondo");
-            newScene.fondo.displayHeight = 956;
-            newScene.fondo.displayWidth = 1433;
-       }
+    this.add.image(400, 300, "fondo");
   }
   update(time, delta) {    
   }
