@@ -4,7 +4,7 @@ export default class Game extends Phaser.Scene {
   }
   preload() {  
    //   this.load.image("logo", "assets/favicon.png")
-        this.load.image("fondo", "./assets/web/portada.png")
+        this.load.image("fondo", "https://github.com/carsanchezalv/teamrocket/blob/master/assets/web/portada.png")
    //     this.load.image("button_play", "assets/textures/gui/menu_button_play.png")
    //     this.load.image("button_exit", "assets/textures/gui/menu_button_exit.png")
    //     this.load.audio("musica_inicio", [
