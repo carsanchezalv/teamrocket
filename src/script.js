@@ -28,7 +28,7 @@ $(document).ready(function (){
         if(key == 39){
            var num = 1;
             interval = setInterval(function(){
-                $("#personaje").attr("src"+"/Users/Joel/Documents/GitHub/Videogame/assets/icons/personajes/Separados/1/MovimientoDerecha" + num + ".png");
+                $("#personaje").attr(src="assets/icons/personajes/Separados/1/MovimientoDerecha" + num + ".png");
                 num += 1;
                 if(num == 3) num = 1;
              },150)
