@@ -24,25 +24,31 @@
         </ul>
    </div>
 	<script type="module">
-        import Game from 'src/game.js';
-
-        var config = {
-            type: Phaser.AUTO,
-            width: 1400,
-            height: 800,
-            pixelArt: true,
-            input: {
-                gamepad: true
-            },
-            scale: {
-                mode: Phaser.Scale.FIT,
-                autoCenter: Phaser.Scale.CENTER_BOTH
-            },
-            scene: [ Game ],
-            physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
-        };
-        new Phaser.Game(config);
-    </script>
+            import Game from 'src/game.js';
+            var config = {
+                title: "Team Rocket",
+                version: "0.0.1",
+                type: Phaser.AUTO,
+                transparent: true,
+                width: 480,
+                height: 240,
+                pixelArt: true,
+                input: { gamepad: true },
+                scale: {
+                    mode: Phaser.Scale.FIT,
+                    autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+                },
+                scene: [Game],
+                physics: {
+                    default: 'arcade',
+                    arcade: {
+                        gravity: { y: 400 },
+                        debug: false
+                    }
+                }
+            };
+            new Phaser.Game(config);
+        </script>
 	<canvas width="1400" height="800" style="image-rendering: pixelated; width: 948.8px; height: 542.171px; margin-left: 0px; margin-top: 106px;"></canvas>
 	
     <div class="prueba">
