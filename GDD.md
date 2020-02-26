@@ -13,7 +13,7 @@ Consiste en superar mazmorras
 controlando tu personaje y
 derrotando enemigos.
 
-![](https://github.com/carsanchezalv/Videogame/blob/master/gdd/images/Cueva_occidental.png)
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/Cueva_occidental.png)
 
 # Caracteristicas
 
@@ -23,7 +23,7 @@ Necesitamos todas las llaves para acceder al jefe final.
 
 Hay objetos de curación y otros Pokemon enemigos, que se podrán unir a ti al derrotarlos.
 
-![](https://github.com/carsanchezalv/Videogame/blob/master/gdd/images/Zapdos_first_appearance.png)
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/Zapdos_first_appearance.png)
 
 # Assets
 
@@ -37,6 +37,6 @@ Mapa amplio con difrentes tipos de terreno diferenciados por su color
 
 Hay música de fondo en 8-bit
 
-![](https://github.com/carsanchezalv/Videogame/blob/master/gdd/images/1.png)
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/1.png)
 
-![](https://github.com/carsanchezalv/Videogame/blob/master/gdd/images/assets.png)
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/assets.png)
