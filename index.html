@@ -23,8 +23,28 @@
         <li><a href="#Desarrolladores">Desarrolladores</a></li>
          <li><a href="#Repositorio">Repositorio</a></li>
         </ul>
-
    </div>
+	<script type="module">
+        import Game from './src/game.js';
+
+        var config = {
+            type: Phaser.AUTO,
+            width: 1400,
+            height: 800,
+            pixelArt: true,
+            input: {
+                gamepad: true
+            },
+            scale: {
+                mode: Phaser.Scale.FIT,
+                autoCenter: Phaser.Scale.CENTER_BOTH
+            },
+            scene: [ Game ],
+            physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
+        };
+        new Phaser.Game(config);
+    </script>
+	
 	
     <div class="prueba">
         <img id="personaje" class="personaje" src="assets/icons/personajes/Separados/1/ParadoAbajo.png">
