@@ -29,13 +29,13 @@ Hay objetos de curación y otros Pokemon enemigos, que se podrán unir a ti al d
 
 El jugador controlará un Pokemon a elegir
 
-Nuestros Pokemon son como los originales pero con distinto color
+Nuestros Pokemon son como los originales pero en versión shiny, ya que se trata de un mundo paralelo al que llega el protagonista (el único Pokemon no shiny)
 
 Cada uno de ellos podrá tener evolución al subir niveles.
 
 Mapa amplio con difrentes tipos de terreno diferenciados por su color
 
-Hay música de fondo en 8-bit
+Hay música de fondo en 8-bit y del juego original
 
 ![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/1.png)
 
