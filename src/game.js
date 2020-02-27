@@ -11,12 +11,13 @@ export default class Game extends Phaser.Scene {
             "assets/music/portada.ogg",
             "assets/music/portada.mp3"
         ]);
-        this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 124, frameHeight: 44 });
   }
 
   create() {
     //Portada
-    this.add.image(400, 300, "fondo");
+   
+    this.add.image(700, 400, "fondo");
 
     //Musica
     let a_config = {
@@ -32,7 +33,7 @@ export default class Game extends Phaser.Scene {
     music.play();
 
     //Protagonista
-    this.add.sprite(300, 200, 'protagonista');
+    this.add.sprite(500, 200, 'protagonista');
     this.scene.anims.create({
       key: 'move',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 0, end: 4 }),
