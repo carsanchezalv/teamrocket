@@ -11,6 +11,7 @@ export default class Game extends Phaser.Scene {
             "assets/music/portada.ogg",
             "assets/music/portada.mp3"
         ]);
+        this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 64, frameHeight: 64 });
   }
 
   create() {
@@ -26,9 +27,18 @@ export default class Game extends Phaser.Scene {
       seek: 0,
       loop: true,
       delay: 0
-  };
-  let music = this.sound.add('musica_portada', a_config);
-  music.play();
+    };
+    let music = this.sound.add('musica_portada', a_config);
+    music.play();
+
+    //Protagonista
+    this.add.sprite(300, 200, 'protagonista');
+    this.scene.anims.create({
+      key: 'move',
+      frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 0, end: 4 }),
+      frameRate: 2,
+      repeat: -1
+    })
   }
   update(time, delta) {    
   }
