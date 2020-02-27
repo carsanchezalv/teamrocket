@@ -27,7 +27,7 @@ export default class Game extends Phaser.Scene {
       loop: true,
       delay: 0
   };
-  let music = this.sound.add('medieval_m', a_config);
+  let music = this.sound.add('musica_portada', a_config);
   music.play();
   }
   update(time, delta) {    
