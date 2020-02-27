@@ -1,4 +1,4 @@
-La carpeta assets guarda los elementos que se unirán a la lógica de nuestro juego.
+Nuestro proyecto se divide por ahora en las siguientes carpetas
 
 # Assets:
   En esta carpeta están los assets necesarios para el juego. Dentro de ella tenemos también subcarpetas de icons (con los personajes y mapa), otra carpeta de música y otra con las texturas que utilizaremos.
