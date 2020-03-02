@@ -11,7 +11,11 @@ export default class Game extends Phaser.Scene {
             "assets/music/portada.ogg",
             "assets/music/portada.mp3"
         ]);
+<<<<<<< HEAD
+        this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 50, frameHeight: 40 });
+=======
         this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 10, frameHeight: 8 });
+>>>>>>> 6f3cd8977a20d952dcf6f2afd3907592dd4dc44b
   }
 
   create() {
@@ -33,13 +37,14 @@ export default class Game extends Phaser.Scene {
     music.play();
 
     //Protagonista
-    this.add.sprite(500, 200, 'protagonista');
-    this.scene.anims.create({
+    this.pikachu = this.add.sprite(500, 200, 'protagonista');
+    this.anims.create({
       key: 'move',
-      frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 0, end: 4 }),
+      frames: this.anims.generateFrameNumbers('protagonista', { start: 0, end: 4 }),
       frameRate: 2,
       repeat: -1
-    })
+    });
+    this.pikachu.anims.play("move");
   }
   update(time, delta) {    
   }
