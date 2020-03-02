@@ -20,7 +20,7 @@ export default class Game extends Phaser.Scene {
     this.add.image(700, 400, "fondo");
 
     //Musica
-    let a_config = {
+    let config = {
       mute: false,
       volume: 0.3,
       rate: 1,
@@ -29,10 +29,12 @@ export default class Game extends Phaser.Scene {
       loop: true,
       delay: 0
     };
-    let music = this.sound.add('musica_portada', a_config);
+    let music = this.sound.add('musica_portada', config);
     music.play();
 
     //Protagonista
+    let teclaDerecha;
+
     this.pikachu = this.add.sprite(500, 200, 'protagonista');
     this.anims.create({
       key: 'move',
@@ -41,8 +43,42 @@ export default class Game extends Phaser.Scene {
       repeat: -1
     });
     this.pikachu.anims.play("move");
+
+    this.cursor = this.input.keyboard.createCursorKeys();
+    console.log(this.cursor);
+/*
+    this.input.keyboard.on("keydown_RIGHT", () =>{
+      this.pikachu.setAcceleration(100,0);
+    //  this.pikachu.x++;
+    });
+    this.input.keyboard.on("keydown_LEFT", () =>{
+    //  this.pikachu.x--;
+    });
+    this.input.keyboard.on("keydown_UP", () =>{
+    //  this.pikachu.y++;
+    });
+    this.input.keyboard.on("keydown_DOWN", () =>{
+    //  this.pikachu.y--;
+    });
+    */
   }
-  update(time, delta) {    
+  update(time, delta) {  
+      if(this.cursor.right.isDown)
+      {
+        this.pikachu.x++;
+      }
+      else if(this.cursor.left.isDown)
+      {
+        this.pikachu.x--;
+      }
+      else if(this.cursor.up.isDown)
+      {
+        this.pikachu.y--;
+      }
+      else if(this.cursor.down.isDown)
+      {
+        this.pikachu.y++;
+      }
   }
 }
 
