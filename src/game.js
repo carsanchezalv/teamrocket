@@ -36,7 +36,7 @@ export default class Game extends Phaser.Scene {
     this.pikachu = this.add.sprite(500, 200, 'protagonista');
     this.anims.create({
       key: 'move',
-      frames: this.anims.generateFrameNumbers('protagonista', { start: 0, end: 4 }),
+      frames: this.anims.generateFrameNumbers('protagonista', { start: 0, end: 2 }),
       frameRate: 2,
       repeat: -1
     });
