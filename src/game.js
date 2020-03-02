@@ -33,7 +33,7 @@ export default class Game extends Phaser.Scene {
     music.play();
 
     //Protagonista
-    this.add.sprite(500, 200, 'protagonista');
+   // this.add.sprite(500, 200, 'protagonista');
     this.scene.anims.create({
       key: 'move',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 0, end: 4 }),
