@@ -10,3 +10,4 @@ Nuestro proyecto se divide por ahora en las siguientes carpetas
 En esta carpeta está todo lo relativo al código en Java Script
 
 
+Los Pokemon están en versión shiny porque el juego está ambientado en un mundo paralelo al que llega el protagonista, Pikachu, el cual es el único que mantiene su color original. El terreno del mapa es similar al del juego original (Pokemon Mundo Misterioso) en cuanto a estilo, al igual que la música de fondo utilizada.

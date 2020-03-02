@@ -11,7 +11,15 @@ export default class Game extends Phaser.Scene {
             "assets/music/portada.ogg",
             "assets/music/portada.mp3"
         ]);
+<<<<<<< HEAD
         this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 50, frameHeight: 40 });
+=======
+<<<<<<< HEAD
+        this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 50, frameHeight: 40 });
+=======
+        this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 10, frameHeight: 8 });
+>>>>>>> 6f3cd8977a20d952dcf6f2afd3907592dd4dc44b
+>>>>>>> 96048c8bb6bbf094628bee39bdb45cc24b91b637
   }
 
   create() {
