@@ -34,12 +34,10 @@ export default class Game extends Phaser.Scene {
     music.play();
 
     //Protagonista
-    let teclaDerecha;
-
     this.pikachu = this.add.sprite(500, 200, 'protagonista');
     this.anims.create({
       key: 'move',
-      frames: this.anims.generateFrameNumbers('protagonista', { start: 0, end: 2 }),
+      frames: this.anims.generateFrameNumbers('protagonista', { start: 0, end: 3 }),
       frameRate: 2,
       repeat: -1
     });
@@ -74,6 +72,15 @@ export default class Game extends Phaser.Scene {
     }
     else if(this.cursor.right.isDown)
     {
+      /*
+      this.pikachu.anims.create({
+        key: 'move',
+        frames: this.anims.generateFrameNumbers('protagonista', { start: 7, end: 8 }),
+        frameRate: 2,
+        repeat: -1
+      });
+      this.pikachu.anims.play("move");
+*/
       this.pikachu.x++;
     }
     else if(this.cursor.left.isDown)
