@@ -2,6 +2,7 @@ export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'main' });
   }
+
   preload() {  
    //   this.load.image("logo", "assets/favicon.png")
         this.load.image("fondo", "assets/textures/mapaportada.png")
@@ -46,39 +47,47 @@ export default class Game extends Phaser.Scene {
 
     this.cursor = this.input.keyboard.createCursorKeys();
     console.log(this.cursor);
-/*
-    this.input.keyboard.on("keydown_RIGHT", () =>{
-      this.pikachu.setAcceleration(100,0);
-    //  this.pikachu.x++;
-    });
-    this.input.keyboard.on("keydown_LEFT", () =>{
-    //  this.pikachu.x--;
-    });
-    this.input.keyboard.on("keydown_UP", () =>{
-    //  this.pikachu.y++;
-    });
-    this.input.keyboard.on("keydown_DOWN", () =>{
-    //  this.pikachu.y--;
-    });
-    */
+
+    // Fisicas
+    
   }
-  update(time, delta) {  
-      if(this.cursor.right.isDown)
-      {
-        this.pikachu.x++;
-      }
-      else if(this.cursor.left.isDown)
-      {
-        this.pikachu.x--;
-      }
-      else if(this.cursor.up.isDown)
-      {
-        this.pikachu.y--;
-      }
-      else if(this.cursor.down.isDown)
-      {
-        this.pikachu.y++;
-      }
+  update(time, delta) {
+    if(this.cursor.up.isDown && this.cursor.right.isDown)
+    {
+      this.pikachu.x++;
+      this.pikachu.y--;
+    }
+    else if(this.cursor.up.isDown && this.cursor.left.isDown)
+    {
+      this.pikachu.x--;
+      this.pikachu.y--;
+    }
+    else if(this.cursor.down.isDown && this.cursor.right.isDown)
+    {
+      this.pikachu.x++;
+      this.pikachu.y++;
+    }
+    else if(this.cursor.down.isDown && this.cursor.left.isDown)
+    {
+      this.pikachu.x--;
+      this.pikachu.y++;
+    }
+    else if(this.cursor.right.isDown)
+    {
+      this.pikachu.x++;
+    }
+    else if(this.cursor.left.isDown)
+    {
+      this.pikachu.x--;
+    }
+    else if(this.cursor.up.isDown)
+    {
+      this.pikachu.y--;
+    }
+    else if(this.cursor.down.isDown)
+    {
+      this.pikachu.y++;
+    }
   }
 }
 
