@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <link rel="stylesheet" href="index.css">
-	<!--<script src="src/game.js"></script>-->
-    <script src="src/phaser.min.js"></script>
+    <link rel="stylesheet" href="src/index.css">
+	
+    <script src="phaser.min.js"></script>
+
 
     <title>Team Rocket</title>
 </head>
@@ -20,14 +21,36 @@
         <li><a href="#Descripción">Descripción</a></li>
         <li><a href="#Controles">Controles</a></li>
         <li><a href="#Desarrolladores">Desarrolladores</a></li>
-        <li><a href="#Repositorio">Repositorio</a></li>
+         <li><a href="#Repositorio">Repositorio</a></li>
         </ul>
    </div>
-    <canvas id="juego" width="800" height="600">
-        
-    </canvas>
-	
-	<!--<canvas width="1400" height="800" style="image-rendering: pixelated; width: 948.8px; height: 542.171px; margin-left: 0px; margin-top: 106px;"></canvas>-->
+	<script type="module">
+            import Game from './src/game.js';
+            var config = {
+                title: "Team Rocket",
+                version: "0.0.1",
+                type: Phaser.AUTO,
+                transparent: true,
+                width: 480,
+                height: 240,
+                pixelArt: true,
+                input: { gamepad: true },
+                scale: {
+                    mode: Phaser.Scale.FIT,
+                    autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+                },
+                scene: [Game],
+                physics: {
+                    default: 'arcade',
+                    arcade: {
+                        gravity: { y: 400 },
+                        debug: false
+                    }
+                }
+            };
+            new Phaser.Game(config);
+        </script>
+	<canvas width="1400" height="800" style="image-rendering: pixelated; width: 948.8px; height: 542.171px; margin-left: 0px; margin-top: 106px;"></canvas>
 	
     <div class="prueba">
         <img id="personaje" class="personaje" src="assets/icons/personajes/Separados/1/ParadoAbajo.png">
@@ -59,11 +82,10 @@
      </div>
 	
     <script type="module">
-        import Game from './src/game.js';
+        import Game from './game.js';
 
         var config = {
-            type: Phaser.CANVAS,
-            canvas: document.getElementById('juego'),
+            type: Phaser.AUTO,
             width: 1400,
             height: 800,
             pixelArt: true,
