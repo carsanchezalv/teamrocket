@@ -36,6 +36,8 @@ export default class Game extends Phaser.Scene {
     //Protagonista
     this.pikachu = this.add.sprite(500, 200, 'protagonista');
 
+    this.pikachu.orientation = "down";
+  
     // Animacion movimientos
     this.anims.create({
       key: 'move_down',
