@@ -33,7 +33,7 @@ export default class Game extends Phaser.Scene {
     let music = this.sound.add('musica_portada', config);
     music.play();
 
-    //Protagonista
+    //Protagonista 
     this.pikachu = this.add.sprite(500, 200, 'protagonista');
 
     this.pikachu.orientation = "down";
