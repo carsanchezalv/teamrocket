@@ -1,9 +1,82 @@
 <!DOCTYPE  html>
 <html>
 	<head>
-  	...
-	</head>
+        <title>MENU</title>
+    </head>
+
+    <style>
+        .hidden{
+            visibility: hidden;
+        }
+        .visible{
+            visibility: visible;
+        }
+        .frame{
+            position: absolute;
+        }
+    </style>
+
+    <script> 
+        function Game(gameDiv){
+            var frames = [];  //para las etiquetas
+            var framesNames = []; //nombre de los id
+
+            for(var i =0; i < gameDiv.chilNodes.length; i++){ //para almacenar los frames
+                var id = gameDiv.chilNodes[i].id;
+                if(id != undefined){
+                    var child = game.chilNodes[i];
+                    if(child.classList.contains("frame")){
+                        frames[id] = child;
+                        framesNames.push(id);
+                    }
+                }
+            }
+            function setFrameVisible(name){ //hacer visible uno y otros invisibles 
+                frames[name].classList.remove("hidden");
+                frames[name].classList.add("visible");
+            }
+
+            function setFrameHidden(name){
+                frames[name].classList.remove("visible");
+                frames[name].classList.add("hidden");
+            }
+
+            return { //devolver JSON
+                "setFrameVisible": setFrameVisible,
+                "setFrameHidden": setFrameHidden 
+            };
+        }
+
+        window.addEventListener("load", function(){
+            game = new Game(document.getElementById("game"));
+            //game.setFrameHidden("main");
+            //game.setFrameVisible("highscores");
+        });
+
+        var game;
+
+    </script> 
+
 	<body>
-		...
+		 <div id = "game">
+            <div id = "main" class = "frame"> <!-- dentro los botones -->
+                <h1>NOMBRE DEL JUEGO</h1>
+                <button onclick="game.setFrameVisible('canvas');game.setFrameHidden('main');">Jugar</button>
+                <button>Puntuaciones</button>
+                <button>Creditos</button>
+            </div>
+            <div id = "canvas" class = "frame hidden">
+                <canvas></canvas>
+                <buttonon click="game.setFrameVisible('main');game.setFrameHidden('canvas');">Volver</button>
+            </div>
+            <div id = "heighscores" class = "frame hidden">
+                <h1>Puntuaciones maximas</h1>
+                <button>Volver</button>
+            </div>
+            <div id = "about" class = "frame hidden">
+                <h1>Carlos Sanchez & Joel Garcia </h1>
+                <button>Volver</button> 
+            </div>
+         </div>
 	</body>
 </html>
