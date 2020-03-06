@@ -4,17 +4,39 @@
     <title>Nombre del juego</title>
   </head>
   <style>
+
+    /* @font-face {
+        font-family: "nombre";
+        src: url("ruta");
+    } */
+
     .hidden {
-       visibility: hidden;
+       -webkit-transition: opacity 3s;
+       z-index: 0;
+       opacity: 0;
     }
 
     .visible {
-      visibility: visible;
+      -webkit-transition: opacity 3s;
+      z-index: 1;
+      opacity: 1;
     }
 
     .frame {
       position: absolute;
+      width: 500px;
+      height: 500px;
+      background-color: aqua;
     }
+
+    body{
+        margin: 0 auto;
+        width: 500px;
+        height: 500px;
+        margin-top: 100px;
+        text-align: center;
+    }
+
   </style>
   <script>
   
