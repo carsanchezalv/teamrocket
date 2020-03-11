@@ -1,6 +1,75 @@
+/*
 body {
   background-color: peachpuff;
 }
 h1 {
 font-size:50px;
+} */
+
+.hidden {
+  -webkit-transition: opacity 1s;
+  z-index: 0;
+  opacity: 0;
+}
+
+.visible {
+ -webkit-transition: opacity 1s;
+ z-index: 1;
+ opacity: 1;
+}
+
+.frame {
+ position: absolute;
+ width: 550px;
+ height: 550px;
+ font-family: 'Press Start 2P', cursive;
+
+ color:red;
+ text-shadow: 0px 0px 0px #00FF00;
+ -wenkit-user-select: none;
+ font-size: 25px;
+
+}
+
+.frame button {
+   -webkit-transition: border-radius 1s, text -shadow 1s, color 1s;
+
+   font-family: 'Press Start 2P', cursive;
+   font-size: 30px;
+   color:red;
+
+   margin: 10px;
+   padding: 10px;
+   width: 500px;
+
+   background: none;
+   text-shadow: 0px 0px 0px black;
+
+   border: 1px solid #dedede;
+   border-radius: 3px;
+   display: inline-block;
+   text-decoration: none;
+
+   border-color: greenyellow palevioletred blue;
+   box-shadow: 0px 3px 5px rgba(255, 255, 255, 0.5);
+}
+
+.frame button:hover {
+
+   border-radius: 20px;
+   text-shadow: 0px 0px 50px white;
+   color: white;
+}
+
+.frame button:active{
+   text-shadow: 0px 0px 20px #00FF00;
+}
+
+body{
+   margin: 0 auto;
+   width: 500px;
+   height: 500px;
+   margin-top: 100px;
+   text-align: center;
+   background-image: url(assets/fondo2.png);
 }
