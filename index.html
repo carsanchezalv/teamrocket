@@ -70,7 +70,7 @@ function Game(gameDiv)
     <div id="game">
         <div id="main" class="frame visible">
           <h1>
-            Nombre del juego
+            Team Rocket
           </h1>
           <button onclick="game.setFrameVisible('canvas');game.setFrameHidden('main');"> Jugar </button>
           <button onclick="game.setFrameVisible('highscores');game.setFrameHidden('main');"> Puntuaciones </button>
@@ -79,23 +79,25 @@ function Game(gameDiv)
           </button>
         </div>
         <div id="canvas" class="frame hidden">
-          <canvas id="juego" width="900" height="700">
+          <canvas id="juego" width="1600" height="700">
             <script type="module">
                 import Game from './src/game.js';
         
                 var config = {
                     type: Phaser.CANVAS,
                     canvas: document.getElementById('juego'),
-                    width: 1400,
-                    height: 800,
+                    width: 1600,
+                    height: 850,
                     pixelArt: true,
+                    
                     input: {
                         gamepad: true
                     },
-                    scale: {
-                        mode: Phaser.Scale.FIT,
-                        autoCenter: Phaser.Scale.CENTER_BOTH
+                    scale: {               
+                      mode: Phaser.Scale.FIT,
+                      autoCenter: Phaser.Scale.CENTER_BOTH,
                     },
+                    
                     scene: [ Game ],
                     physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
                 };

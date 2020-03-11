@@ -1,11 +1,3 @@
-/*
-body {
-  background-color: peachpuff;
-}
-h1 {
-font-size:50px;
-} */
-
 .hidden {
   -webkit-transition: opacity 1s;
   z-index: 0;
@@ -25,10 +17,21 @@ font-size:50px;
  font-family: 'Press Start 2P', cursive;
 
  color:red;
- text-shadow: 0px 0px 0px #00FF00;
- -wenkit-user-select: none;
+ text-shadow: 8px 3px 1px rgb(0, 0, 0);
+ -webkit-user-select: none;
  font-size: 25px;
+ font-variant-position: normal;
+ text-align: center;
+}
 
+.frame title {
+   font-family: 'Press Start 2P', cursive;
+
+   color:red;
+   text-shadow: 8px 3px 1px rgb(0, 0, 0);
+   -webkit-user-select: none;
+   font-size: 25px;
+   text-align: center;
 }
 
 .frame button {
@@ -36,28 +39,28 @@ font-size:50px;
 
    font-family: 'Press Start 2P', cursive;
    font-size: 30px;
-   color:red;
+   color:rgb(0, 225, 255);
 
    margin: 10px;
    padding: 10px;
    width: 500px;
 
-   background: none;
-   text-shadow: 0px 0px 0px black;
+   background: rgba(0, 0, 0, 0.349);
+   text-shadow: 0px 0px 0px ;
 
-   border: 1px solid #dedede;
-   border-radius: 3px;
+   border: 4px solid ;
+   border-radius: 10px;
    display: inline-block;
    text-decoration: none;
-
-   border-color: greenyellow palevioletred blue;
-   box-shadow: 0px 3px 5px rgba(255, 255, 255, 0.5);
+   transform:translateX(90%);
+   border-color:  red  yellow blue rgb(0, 255, 0);
+   box-shadow: 0px 3px 5px rgba(255, 0, 0, 0.5);
 }
 
 .frame button:hover {
 
    border-radius: 20px;
-   text-shadow: 0px 0px 50px white;
+   text-shadow: 1px 1px 5px white;
    color: white;
 }
 
@@ -67,9 +70,11 @@ font-size:50px;
 
 body{
    margin: 0 auto;
-   width: 500px;
-   height: 500px;
+   width: 1600px;
+   height: 850px;
    margin-top: 100px;
-   text-align: center;
+  
    background-image: url(assets/fondo2.png);
+   background-size: 1520px 800px;
+   background-repeat: no-repeat;
 }
