@@ -1,3 +1,4 @@
+
 .hidden {
   -webkit-transition: opacity 1s;
   z-index: 0;
@@ -12,8 +13,8 @@
 
 .frame {
  position: absolute;
- width: 550px;
- height: 550px;
+ width: 700px;
+ height: 70px;
  font-family: 'Press Start 2P', cursive;
 
  color:red;
@@ -52,7 +53,7 @@
    border-radius: 10px;
    display: inline-block;
    text-decoration: none;
-   transform:translateX(100%);
+  /* transform:translateX(100%);*/
    border-color:  red  yellow blue rgb(0, 255, 0);
    box-shadow: 0px 3px 5px rgba(255, 0, 0, 0.5);
 }
@@ -70,11 +71,11 @@
 
 body{
    margin: 0 auto;
-   width: 1600px;
-   height: 850px;
+   width: 700px;
+   height: 700px;
    margin-top: 100px;
-  
+   text-align: center;
    background-image: url(assets/fondo2.png);
-   background-size: 1520px 800px;
+   background-size: 1520px 830px;
    background-repeat: no-repeat;
 }

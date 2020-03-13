@@ -6,67 +6,58 @@
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <link rel="stylesheet" href="index.css">
-	<!--<script src="src/game.js"></script>-->
     <script src="src/phaser.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <title>Team Rocket</title>
 </head>
 
+<body>
 <script>
-
 function Game(gameDiv)
-    {
-      let frames = [];
-      let framesNames = [];
+  {
+    let frames = [];
+    let framesNames = [];
 
-      for (var i=0; i<gameDiv.childNodes.length; i++)
+    for (var i=0; i<gameDiv.childNodes.length; i++)
+    {
+      let id = gameDiv.childNodes[i].id;
+      if (id != undefined)
       {
-        let id = gameDiv.childNodes[i].id;
-        if (id != undefined)
+        var child = gameDiv.childNodes[i];
+        if (child.classList.contains("frame"))
         {
-          var child = gameDiv.childNodes[i];
-          if (child.classList.contains("frame"))
-          {
-            frames[id] = child;
-            framesNames.push(id);
-          }
+          frames[id] = child;
+          framesNames.push(id);
         }
       }
-
-      function setFrameVisible(name)
-      {
-        frames[name].classList.remove("hidden");
-        frames[name].classList.add("visible");
-      }
-
-      function setFrameHidden(name)
-      {
-        frames[name].classList.remove("visible");
-        frames[name].classList.add("hidden");
-      }
-
-      return {
-        "setFrameVisible": setFrameVisible,
-        "setFrameHidden": setFrameHidden
-      };
     }
 
-    window.addEventListener("load", function ()
+    function setFrameVisible(name)
     {
-      game = new Game(document.getElementById("game"));
-    });
+      frames[name].classList.remove("hidden");
+      frames[name].classList.add("visible");
+    }
+
+    function setFrameHidden(name)
+    {
+      frames[name].classList.remove("visible");
+      frames[name].classList.add("hidden");
+    }
+
+    return {
+      "setFrameVisible": setFrameVisible,
+      "setFrameHidden": setFrameHidden
+    };
+  }
+
+  window.addEventListener("load", function ()
+  {
+    game = new Game(document.getElementById("game"));
+  });
 
     let game;
-</script>
-
-<body>
-    <!--<h1 align="center">Team Rocket</i></h1>
-	<canvas id="juego" width="800" height="600"> </canvas> -->
-	
-	
-	<!-- prueba -->
-    
+</script>    
     <div id="game">
         <div id="main" class="frame visible">
           <h1>
@@ -79,17 +70,17 @@ function Game(gameDiv)
           </button>
         </div>
         <div id="canvas" class="frame hidden">
-          <canvas id="juego" width="1600" height="700">
+          <canvas id="juego" width="700" height="700">
             <script type="module">
                 import Game from './src/game.js';
         
                 var config = {
                     type: Phaser.CANVAS,
                     canvas: document.getElementById('juego'),
-                    width: 1600,
-                    height: 850,
+                    width: 500,
+                    height: 500,
                     pixelArt: true,
-                    
+                    transparent: true,
                     input: {
                         gamepad: true
                     },
@@ -99,7 +90,7 @@ function Game(gameDiv)
                     },
                     
                     scene: [ Game ],
-                    physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
+                    physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
                 };
                 new Phaser.Game(config);
             </script>
@@ -115,37 +106,7 @@ function Game(gameDiv)
           <button onclick="game.setFrameVisible('main');game.setFrameHidden('about');"> Volver al men&uacute; </button>
         </div>
       </div>
-    <!-- prueba -->
-    
-    
-	<!--
-    <div class="div">
-     <h2 id="Repositorio">Repositorio</h2>
-	<a href="https://github.com/carsanchezalv/teamrocket">Enlace al repositorio de github</a> 	 
-     </div>
-    
-     
-     <script type="module">
-        import Game from './src/game.js';
 
-        var config = {
-            type: Phaser.CANVAS,
-            canvas: document.getElementById('juego'),
-            width: 1400,
-            height: 800,
-            pixelArt: true,
-            input: {
-                gamepad: true
-            },
-            scale: {
-                mode: Phaser.Scale.FIT,
-                autoCenter: Phaser.Scale.CENTER_BOTH
-            },
-            scene: [ Game ],
-            physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
-        };
-        new Phaser.Game(config);
-    </script> -->
 </body>
 
 </html>
