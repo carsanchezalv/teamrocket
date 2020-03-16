@@ -24,7 +24,7 @@ export default class Game extends Phaser.Scene {
     let x = 500;
     let y = 200;
     this.pikachuSprite = new Pikachu(this, x, y);
-    this.add.existing(this.pikachuSprite);
+ //   this.add.existing(this.pikachuSprite);
 
     // Música
     let config = {

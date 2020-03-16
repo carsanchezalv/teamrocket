@@ -2,16 +2,13 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
 
   constructor(scene, x, y) {
     super(scene, x, y, 'phaser');
-      //Protagonista 
+
+    //Protagonista 
     this.scene = scene;
     let orientation = "down";
     this.animation = "move_down";
     this.anims = scene.anims;
-  //  let x = x;
-  //  let y = y;
-    
-   
-    
+
     // Animacion movimientos
     this.anims.create({
       key: 'move_down',
@@ -127,16 +124,15 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       repeat: 0
     });
     scene.add.existing(this);
-    scene.play(this.animation, true);
+    this.play(this.animation, true);
     this.cursor = this.scene.input.keyboard.createCursorKeys();
   }
 
   preUpdate(t, dt) {
-//    super this.preUpdate(t, dt);
+//    super 
     const cursor = this.cursor;
 
     const velocidad = 1;
-  //  let this = this.this;
     
     let scene = this.scene;
 
