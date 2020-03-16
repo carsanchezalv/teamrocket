@@ -127,7 +127,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
   }
 
   preUpdate(t, dt) {
-//    super 
+    super.preUpdate(t, dt); 
     const cursor = this.cursor;
 
     const velocidad = 1;
