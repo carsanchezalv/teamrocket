@@ -20,7 +20,35 @@ export default class Game extends Phaser.Scene {
   create() {
    
     // Portada
-    this.add.image(700, 400, "fondo");
+    this.add.image(700, 400, "fondo"); //////
+
+/*  
+    this.load.tilemapTiledJSON('tilemap', 'tilemap.json');
+    this.load.image('patronesTilemap', 'images/patrones.png');
+
+    this.map = this.make.tilemap({ 
+      key: 'tilemap', 
+      tileWidth: 64, 
+      tileHeight: 64 
+    });
+
+    this.map.addTilesetImage('patrones', 'patronesTilemap');
+
+    // Capas
+    this.backgroundLayer = this.map.createStaticLayer('BackgroundLayer', [tileset1, tileset2]);
+    this.groundLayer = this.map.createStaticLayer('GroundLayer', [tileset1, tileset2]);
+    this.foreground = this.map.createStaticLayer('Foreground', [tileset1, tileset2]);
+
+    // Físicas según capa
+    suelo.setCollisionByProperty({ colisiona: true });
+
+    // Para que colisionen los personajes que tengan un rango de ID concreto
+    suelo.foreground.setCollisionBetween(0, 999);
+
+    // colision por exclusion (?)
+    layer.setCollisionByExclusion([93, 94, 95, 96], true);
+*/
+
     let x = 500;
     let y = 200;
     this.pikachuSprite = new Pikachu(this, x, y);
