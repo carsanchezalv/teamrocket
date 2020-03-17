@@ -34,7 +34,7 @@ export default class Game extends Phaser.Scene {
 
     this.map.addTilesetImage('patrones', 'patronesTilemap');
 
-    // Capas
+    // Capas, los nombres han de coincidir con los de las capas reales
     this.backgroundLayer = this.map.createStaticLayer('BackgroundLayer', [tileset1, tileset2]);
     this.groundLayer = this.map.createStaticLayer('GroundLayer', [tileset1, tileset2]);
     this.foreground = this.map.createStaticLayer('Foreground', [tileset1, tileset2]);
@@ -47,6 +47,9 @@ export default class Game extends Phaser.Scene {
 
     // colision por exclusion (?)
     layer.setCollisionByExclusion([93, 94, 95, 96], true);
+
+    // añadir una fisica ya creada en los pasos anteriores a un jugador, siempre necesario
+    this.physics.add.collider(player, layer);
 */
 
     let x = 500;
