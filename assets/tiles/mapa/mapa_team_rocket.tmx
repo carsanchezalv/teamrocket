@@ -5406,7 +5406,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="27" name="borde" width="50" height="50">
+ <layer id="27" name="borde" width="50" height="50" locked="1">
   <data encoding="csv">
    <chunk x="-48" y="-64" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
