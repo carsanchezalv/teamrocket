@@ -24,12 +24,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('dungeon33', 'assets/tiles/dungeon-33.png');
     this.load.image('dungeon42', 'assets/tiles/dungeon-42.png');
     this.load.image('dungeon54', 'assets/tiles/dungeon-54.png');
-
-    this.map = this.make.tilemap({ 
-      key: 'tilemap', 
-      tileWidth: 64, 
-      tileHeight: 64 
-    });
+  
 
  //   this.load.image("fondo", "assets/textures/mapaportada.png")
 
@@ -41,13 +36,16 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-   
-    // Portada
 //    this.add.image(700, 400, "fondo"); //////
 
 
 ////////////
-    
+    this.map = this.make.tilemap({ 
+      key: 'tilemap', 
+      tileWidth: 64, 
+      tileHeight: 64 
+    });
+
     this.map.addTilesetImage('dungeon-0', 'dungeon0');
     this.map.addTilesetImage('dungeon-1', 'dungeon1');
     this.map.addTilesetImage('dungeon-4', 'dungeon4');
@@ -79,14 +77,13 @@ export default class Game extends Phaser.Scene {
     this.borde.foreground.setCollisionBetween(0, 999);
     this.mar.foreground.setCollisionBetween(0, 999);
     this.rio.foreground.setCollisionBetween(0, 999);
+
     // colision por exclusion (?)
 //    layer.setCollisionByExclusion([93, 94, 95, 96], true);
 
     // añadir una fisica ya creada en los pasos anteriores a un jugador, siempre necesario
 //    this.physics.add.collider(player, layer);
 //////
-    
-
     
 
     let x = 500;
