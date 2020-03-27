@@ -74,10 +74,14 @@ export default class Game extends Phaser.Scene {
     this.rio.setCollisionByProperty({ colisiona: true });
 
     // Para que colisionen los personajes que tengan un rango de ID concreto
-    this.borde.foreground.setCollisionBetween(0, 999);
-    this.mar.foreground.setCollisionBetween(0, 999);
-    this.rio.foreground.setCollisionBetween(0, 999);
+ //   this.borde.setCollisionBetween(0, 999);
+ //   this.mar.setCollisionBetween(0, 999);
+ //   this.rio.setCollisionBetween(0, 999);
 
+
+    this.physics.add.collider(Pikachu, this.borde);
+    this.physics.add.collider(Pikachu, this.mar);
+    this.physics.add.collider(Pikachu, this.rio);
     // colision por exclusion (?)
 //    layer.setCollisionByExclusion([93, 94, 95, 96], true);
 
@@ -85,9 +89,8 @@ export default class Game extends Phaser.Scene {
 //    this.physics.add.collider(player, layer);
 //////
     
-
-    let x = 500;
-    let y = 200;
+    let x = 260;
+    let y = 420;
     this.pikachuSprite = new Pikachu(this, x, y);
  //   this.add.existing(this.pikachuSprite);
 
