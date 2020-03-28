@@ -36,10 +36,6 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-//    this.add.image(700, 400, "fondo"); //////
-
-
-////////////
     this.map = this.make.tilemap({ 
       key: 'tilemap', 
       tileWidth: 64, 
@@ -69,31 +65,25 @@ export default class Game extends Phaser.Scene {
 
     
     // Físicas según capa
-    this.borde.setCollisionByProperty({ colisiona: true });
-    this.mar.setCollisionByProperty({ colisiona: true });
-    this.rio.setCollisionByProperty({ colisiona: true });
-
-    // Para que colisionen los personajes que tengan un rango de ID concreto
- //   this.borde.setCollisionBetween(0, 999);
- //   this.mar.setCollisionBetween(0, 999);
- //   this.rio.setCollisionBetween(0, 999);
-
-
-    this.physics.add.collider(Pikachu, this.borde);
-    this.physics.add.collider(Pikachu, this.mar);
-    this.physics.add.collider(Pikachu, this.rio);
-    // colision por exclusion (?)
-//    layer.setCollisionByExclusion([93, 94, 95, 96], true);
-
-    // añadir una fisica ya creada en los pasos anteriores a un jugador, siempre necesario
-//    this.physics.add.collider(player, layer);
-//////
+    this.borde.setCollisionByProperty( true );
+    this.mar.setCollisionByProperty( true );
+    this.rio.setCollisionByProperty( true );
     
-    let x = 260;
-    let y = 420;
+    let x = 270;
+    let y = 430;
     this.pikachuSprite = new Pikachu(this, x, y);
- //   this.add.existing(this.pikachuSprite);
 
+    this.physics.add.collider(this.pikachuSprite, this.borde);
+    this.physics.add.collider(this.pikachuSprite, this.mar);
+    this.physics.add.collider(this.pikachuSprite, this.rio);
+
+  // Para que colisionen los personajes que tengan un rango de ID concreto
+  /*
+    this.borde.setCollisionBetween(0, 999);
+    this.mar.setCollisionBetween(0, 999);
+    this.rio.setCollisionBetween(0, 999);
+  */
+ 
     // Música
     let config = {
       mute: false,
