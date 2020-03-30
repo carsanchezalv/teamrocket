@@ -45,10 +45,10 @@ export default class Game extends Phaser.Scene {
     this.map.addTilesetImage('dungeon-0', 'dungeon0');
     this.map.addTilesetImage('dungeon-1', 'dungeon1');
     this.map.addTilesetImage('dungeon-4', 'dungeon4');
-    this.map.addTilesetImage('dungeon-6', 'dungeon6');
+  //  this.map.addTilesetImage('dungeon-6', 'dungeon6');
     this.map.addTilesetImage('dungeon-8', 'dungeon8');
     this.map.addTilesetImage('dungeon-9', 'dungeon9');
-    this.map.addTilesetImage('dungeon-10', 'dungeon10');
+  //  this.map.addTilesetImage('dungeon-10', 'dungeon10');
     this.map.addTilesetImage('dungeon-11', 'dungeon11');
     this.map.addTilesetImage('dungeon-12', 'dungeon12');
     this.map.addTilesetImage('dungeon-13', 'dungeon13');
@@ -72,6 +72,8 @@ export default class Game extends Phaser.Scene {
     let x = 270;
     let y = 430;
     this.pikachuSprite = new Pikachu(this, x, y);
+
+//    this.physics.add.existing(this.pikachuSprite);
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);

@@ -121,7 +121,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       frameRate: 2,
       repeat: 0
     });
-    scene.add.existing(this);
+    this.scene.add.existing(this);
+    this.scene.physics.add.existing(this);
     this.play(this.animation, true);
     this.cursor = this.scene.input.keyboard.createCursorKeys();
   }
@@ -140,8 +141,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       {  
         this.animation = "attack_down";
         this.anims.play(this.animation, true);
-    //    sprite.anims.play(this.animation, true);
-  //     this.anims.play("attack_down", true);
       }
       else if(this.orientation === "right")
       {
@@ -149,48 +148,41 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         
         this.flipX = false;
         this.anims.play(this.animation, true);
-  //     this.anims.play("attack_right", true);
       }
       else if(this.orientation === "up")
       {
         this.animation = "attack_up";
         this.anims.play(this.animation, true);
-  //     this.anims.play("attack_up", true);
       }
       else if(this.orientation === "left")
       {
         this.animation = "attack_right";
         this.flipX = true;
         this.anims.play(this.animation, true);
-  //     this.anims.play("attack_right", true);
       }
       else if(this.orientation === "upright")
       {
         this.animation = "attack_upright";
         this.flipX = false;
         this.anims.play(this.animation, true);
-    //    this.anims.play("attack_upright", true);
       }
       else if(this.orientation === "upleft")
       {
         this.animation = "attack_upright";
         this.flipX = true;
         this.anims.play(this.animation, true);
-    //    this.anims.play("attack_upright", true);
       }
       else if(this.orientation === "downright")
       {
         this.animation = "attack_downright";
         this.flipX = false;
         this.anims.play(this.animation, true);
-    //    this.anims.play("attack_downright", true);
       }
       else if(this.orientation === "downleft")
       {
         this.animation = "attack_downright";
         this.flipX = true;
         this.anims.play(this.animation, true);
-    //    this.anims.play("attack_downright", true);
       }
     }
     else if(cursor.up.isDown && cursor.right.isDown)
@@ -201,7 +193,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.flipX = false;
       this.animation = "move_upright";
       this.anims.play(this.animation, true);
-    //  this.anims.play("move_upright", true);
     }
     else if(cursor.up.isDown && cursor.left.isDown)
     {
@@ -211,7 +202,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.flipX = true;
       this.animation = "move_upright";
       this.anims.play(this.animation, true);
-    //  this.anims.play("move_upright", true);
     }
     else if(cursor.down.isDown && cursor.right.isDown)
     {
@@ -221,7 +211,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.flipX = false;
       this.animation = "move_downright";
       this.anims.play(this.animation, true);
-    //  this.anims.play("move_downright", true);
     }
     else if(cursor.down.isDown && cursor.left.isDown)
     {
@@ -231,7 +220,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.flipX = true;
       this.animation = "move_downright";
       this.anims.play(this.animation, true);
-  //   this.anims.play("move_downright", true);
     }
     else if(cursor.right.isDown)
     {
@@ -240,7 +228,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.flipX = false;
       this.animation = "move_right";
       this.anims.play(this.animation, true);
-  //   this.anims.play("move_right", true);
     }
     else if(cursor.left.isDown)
     {
@@ -249,7 +236,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.flipX = true;
       this.animation = "move_right";
       this.anims.play(this.animation, true);
-    //  this.anims.play("move_right", true);
     }
     else if(cursor.up.isDown)
     {
@@ -257,14 +243,12 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.orientation = "up";
       this.animation = "move_up";
       this.anims.play(this.animation, true);
-  //   this.anims.play("move_up", true)
     }
     else if(cursor.down.isDown)
     {
       this.y++;
       this.orientation = "down";
       this.animation = "move_down";
-  //   this.anims.play("move_down", true);
       this.anims.play(this.animation, true);
     }
   }
