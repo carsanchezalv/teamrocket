@@ -24,9 +24,6 @@ export default class Game extends Phaser.Scene {
     this.load.image('dungeon33', 'assets/tiles/dungeon-33.png');
     this.load.image('dungeon42', 'assets/tiles/dungeon-42.png');
     this.load.image('dungeon54', 'assets/tiles/dungeon-54.png');
-  
-
- //   this.load.image("fondo", "assets/textures/mapaportada.png")
 
     this.load.audio("musica_portada", [
       "assets/music/portada.ogg",
@@ -64,13 +61,13 @@ export default class Game extends Phaser.Scene {
     this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33']);
 
     
-    // Físicas según capa
-    this.borde.setCollisionByProperty( true );
-    this.mar.setCollisionByProperty( true );
-    this.rio.setCollisionByProperty( true );
-    
-    let x = 270;
-    let y = 430;
+   // Para que colisionen los personajes que tengan un rango de ID concreto
+    this.borde.setCollisionBetween(0, 999);
+    this.mar.setCollisionBetween(0, 999);
+    this.rio.setCollisionBetween(0, 999);
+  
+    let x = 280;
+    let y = 440;
     this.pikachuSprite = new Pikachu(this, x, y);
 
 //    this.physics.add.existing(this.pikachuSprite);
@@ -79,13 +76,6 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
 
-  // Para que colisionen los personajes que tengan un rango de ID concreto
-  /*
-    this.borde.setCollisionBetween(0, 999);
-    this.mar.setCollisionBetween(0, 999);
-    this.rio.setCollisionBetween(0, 999);
-  */
- 
     // Música
     let config = {
       mute: false,
