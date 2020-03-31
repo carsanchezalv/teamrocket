@@ -77,8 +77,8 @@ function Game(gameDiv)
                 var config = {
                     type: Phaser.CANVAS,
                     canvas: document.getElementById('juego'),
-                    width: 500,
-                    height: 500,
+                    width: 700,
+                    height: 700,
                     pixelArt: true,
                     transparent: true,
                     input: {
@@ -90,7 +90,7 @@ function Game(gameDiv)
                     },
                     
                     scene: [ Game ],
-                    physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
+                    physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } }
                 };
                 new Phaser.Game(config);
             </script>
