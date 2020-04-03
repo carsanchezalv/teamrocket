@@ -35,17 +35,15 @@ export default class Game extends Phaser.Scene {
   create() {
     this.map = this.make.tilemap({ 
       key: 'tilemap', 
-      tileWidth: 64, 
-      tileHeight: 64 
+      tileWidth: 6912, 
+      tileHeight: 3840 
     });
 
     this.map.addTilesetImage('dungeon-0', 'dungeon0');
     this.map.addTilesetImage('dungeon-1', 'dungeon1');
     this.map.addTilesetImage('dungeon-4', 'dungeon4');
-  //  this.map.addTilesetImage('dungeon-6', 'dungeon6');
     this.map.addTilesetImage('dungeon-8', 'dungeon8');
     this.map.addTilesetImage('dungeon-9', 'dungeon9');
-  //  this.map.addTilesetImage('dungeon-10', 'dungeon10');
     this.map.addTilesetImage('dungeon-11', 'dungeon11');
     this.map.addTilesetImage('dungeon-12', 'dungeon12');
     this.map.addTilesetImage('dungeon-13', 'dungeon13');
@@ -58,7 +56,7 @@ export default class Game extends Phaser.Scene {
     this.borde = this.map.createStaticLayer('borde', ['dungeon-0', 'dungeon-8', 'dungeon-9', 'dungeon-14','dungeon-54']);
     this.mar = this.map.createStaticLayer('mar', ['dungeon-0','dungeon-8', 'dungeon-9','dungeon-12','dungeon-14', 'dungeon-54']);
     this.rio = this.map.createStaticLayer('rio', ['dungeon-1', 'dungeon-4','dungeon-11','dungeon-13', 'dungeon-33']);
-    this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33']);
+    this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33','dungeon-54']);
 
     
    // Para que colisionen los personajes que tengan un rango de ID concreto
@@ -66,8 +64,8 @@ export default class Game extends Phaser.Scene {
     this.mar.setCollisionBetween(0, 999);
     this.rio.setCollisionBetween(0, 999);
   
-    let x = 280;
-    let y = 440;
+    let x = 3778;
+    let y = 2067;
     this.pikachuSprite = new Pikachu(this, x, y);
 
 //    this.physics.add.existing(this.pikachuSprite);
@@ -76,7 +74,13 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
 
-    // Música
+// Camera zoom
+    const camera = this.cameras.main;
+    camera.setZoom(1);
+    camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+    camera.startFollow(this.pikachuSprite);
+
+// Música
     let config = {
       mute: false,
       volume: 0.3,
