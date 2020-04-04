@@ -60,9 +60,9 @@ export default class Game extends Phaser.Scene {
 
     
    // Para que colisionen los personajes que tengan un rango de ID concreto
-    this.borde.setCollisionBetween(0, 999);
-    this.mar.setCollisionBetween(0, 999);
-    this.rio.setCollisionBetween(0, 999);
+    this.borde.setCollisionBetween(0, 9999);
+    this.mar.setCollisionBetween(0, 9999);
+    this.rio.setCollisionBetween(0, 9999);
   
     let x = 3778;
     let y = 2067;
@@ -76,7 +76,7 @@ export default class Game extends Phaser.Scene {
 
 // Camera zoom
     const camera = this.cameras.main;
-    camera.setZoom(1);
+    camera.setZoom(2);
     camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     camera.startFollow(this.pikachuSprite);
 
