@@ -24,6 +24,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('dungeon33', 'assets/tiles/dungeon-33.png');
     this.load.image('dungeon42', 'assets/tiles/dungeon-42.png');
     this.load.image('dungeon54', 'assets/tiles/dungeon-54.png');
+    this.load.image('dungeon91', 'assets/tiles/dungeon-91.png');
 
     this.load.audio("musica_portada", [
       "assets/music/portada.ogg",
@@ -51,12 +52,13 @@ export default class Game extends Phaser.Scene {
     this.map.addTilesetImage('dungeon-33', 'dungeon33');
     this.map.addTilesetImage('dungeon-42', 'dungeon42');
     this.map.addTilesetImage('dungeon-54', 'dungeon54');
+    this.map.addTilesetImage('dungeon-91', 'dungeon91');
 
     // Capas, los nombres han de coincidir con los de las capas reales
     this.borde = this.map.createStaticLayer('borde', ['dungeon-0', 'dungeon-8', 'dungeon-9', 'dungeon-14','dungeon-54']);
     this.mar = this.map.createStaticLayer('mar', ['dungeon-0','dungeon-8', 'dungeon-9','dungeon-12','dungeon-14', 'dungeon-54']);
     this.rio = this.map.createStaticLayer('rio', ['dungeon-1', 'dungeon-4','dungeon-11','dungeon-13', 'dungeon-33']);
-    this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33','dungeon-54']);
+    this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33','dungeon-54','dungeon-91']);
 
     
    // Para que colisionen los personajes que tengan un rango de ID concreto
