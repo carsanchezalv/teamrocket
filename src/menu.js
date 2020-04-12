@@ -8,7 +8,7 @@ export default class Menu extends Phaser.Scene {
         const escena = this.scene;
         
         let jugar = this.add.text( this.scale.width / 2, this.scale.height / 2, '[ JUGAR ]', {
-            
+
             fontSize: '60px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
@@ -23,7 +23,7 @@ export default class Menu extends Phaser.Scene {
         jugar.setInteractive();
 
         jugar.on('pointerover', function (pointer) {
-            jugar.setScale(1.5);
+            jugar.setScale(2);
         })
 
         jugar.on('pointerout', function (pointer) {
