@@ -1,11 +1,11 @@
-
+import {data} from "./data.js";
 export default class Nombre extends Phaser.Scene {
     constructor() {
         super({ key: 'nombre' });
     }
 
     preload() {
-        let nombre = prompt("Introduce tu nombre");
+        data.nombre = prompt("Introduce tu nombre");
     }
 
     create () {

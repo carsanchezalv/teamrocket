@@ -12,8 +12,8 @@
 
 .frame {
  position: absolute;
- width: 70%;
- height: 70%;
+ width: 85%;
+ height: 75%;
  font-family: 'Press Start 2P', cursive;
 
  color:red;
@@ -69,8 +69,8 @@
 
 body{
    margin: 0 auto;
-   width: 68%;
-   height: 27%;
+   width: 85%;
+   height: 75%;
    margin-top: 2%;
    text-align: center;
    background-image: url(../assets/fondo2.png);
