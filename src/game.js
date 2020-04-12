@@ -1,11 +1,12 @@
 import Pikachu from "./pikachu.js";
 export default class Game extends Phaser.Scene {
   constructor() {
-    super({ key: 'main' });
+    super({ key: 'game' });
   }
 
   preload() {  
-   //   this.load.image("logo", "assets/favicon.png")
+//    this.load.image("logo", "assets/favicon.png")
+
 
     this.load.tilemapTiledJSON('tilemap', 'assets/tiles/mapa/mapa_team_rocket.json');
       
