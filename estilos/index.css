@@ -10,18 +10,15 @@
  z-index: 1;
  opacity: 1;
 }
-
 .frame {
- position: absolute;
- width: 1000px;
- height: 1000px;
+ position: relative;
+ width: 100%;
+ height: 100%;
  font-family: 'Press Start 2P', cursive;
-
  color:red;
  text-shadow: 8px 3px 1px rgb(0, 0, 0);
  -webkit-user-select: none;
  font-size: 25px;
-
  text-align: center;
 }
 
@@ -106,11 +103,11 @@
 
 body{
    margin: 0 auto;
-   width: 1000px;
-   height: 1000px;
-   margin-top: 100px;
+   width: 100%;
+   height: 100%;
+   padding-top: 10%;
    text-align: center;
    background-image: url(../assets/fondo2.png);
-   background-size: 1520px 830px;
+   background-size: 100% 216%;
    background-repeat: no-repeat;
 }

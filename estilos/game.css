@@ -13,7 +13,7 @@
 .frame {
  position: absolute;
  width: 85%;
- height: 75%;
+ height: 79%;
  font-family: 'Press Start 2P', cursive;
 
  color:red;
@@ -41,10 +41,9 @@
    font-size: 100%;
    color:rgb(0, 225, 255);
 
-   margin: 1%;
    padding: 1%;
    width: 100%;
-
+   margin-bottom: 2%;
    background: rgba(0, 0, 0, 0.349);
    text-shadow: 0px 0px 0px ;
 
@@ -70,10 +69,10 @@
 body{
    margin: 0 auto;
    width: 85%;
-   height: 75%;
-   margin-top: 2%;
+   height: 80%;
+
    text-align: center;
-   background-image: url(../assets/fondo2.png);
-   background-size: 100%, 100%;
+   background-image: url(../assets/fondoJuego.png);
+   background-size: 100% 100%;
    background-repeat: no-repeat;
 }

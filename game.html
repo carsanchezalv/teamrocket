@@ -3,17 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-<!--    <link rel="shortcut icon" href="favicon.png" type="image/png" /> -->
+    <link rel="shortcut icon" href="./assets/icon.png" type="image/png" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <link rel="stylesheet" href="./estilos/game.css">
     <script src="src/phaser.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    <script src = "src/data.js"></script>
     <title>Team Rocket</title>
 </head>
 
 <body>
-    <script type="module">
+    <script type="module" class="module">
         import Game from './src/game.js';
         import Nombre from './src/nombre.js';
         import Puntuaciones from './src/puntuaciones.js';
@@ -21,7 +21,7 @@
 
         var config = { 
             type: Phaser.CANVAS,
-            canvas: document.getElementById('juego'),
+            canvas: document.getElementById('game'),
             width: "70%",
             height: "60%",
             pixelArt: true,
@@ -41,7 +41,7 @@
     </script>
 
     <div id="main" class="frame visible">
-        <a href="./index.html">Volver</a>
+        <a href="./index.html">Volver a inicio</a>
     </div>
 
 </body>
