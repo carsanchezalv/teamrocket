@@ -1,4 +1,5 @@
 import Pikachu from "./pikachu.js";
+import Player from "./player.js";
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'main' });
