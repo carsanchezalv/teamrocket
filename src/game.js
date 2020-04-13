@@ -1,12 +1,13 @@
 import Pikachu from "./pikachu.js";
-import Player from "./player.js";
+import {data} from "./data.js";
 export default class Game extends Phaser.Scene {
   constructor() {
-    super({ key: 'main' });
+    super({ key: 'game' });
   }
 
   preload() {  
-   //   this.load.image("logo", "assets/favicon.png")
+//    this.load.image("logo", "assets/favicon.png")
+
 
     this.load.tilemapTiledJSON('tilemap', 'assets/tiles/mapa/mapa_team_rocket.json');
       
@@ -35,6 +36,9 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
+
+//    this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+  
     this.map = this.make.tilemap({ 
       key: 'tilemap', 
       tileWidth: 6912, 
@@ -71,8 +75,6 @@ export default class Game extends Phaser.Scene {
     let y = 2067;
     this.pikachuSprite = new Pikachu(this, x, y);
 
-//    this.physics.add.existing(this.pikachuSprite);
-
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
@@ -83,29 +85,27 @@ export default class Game extends Phaser.Scene {
     camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     camera.startFollow(this.pikachuSprite);
 
-// Música
-    let config = {
-      mute: false,
-      volume: 0.3,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: true,
-      delay: 0
-    };
-    let music = this.sound.add('musica_portada', config);
-    music.play();
-    
-    /*
-    this.add
-    .text(16, 16, `Derrota a los guardianes de cada territorio.\nTerritorio actual: ${this.territorio}.\nGuardianes restantes: ${this.guardianes}`, {
-        font: "18px Press Start 2P",
+  // Música
+    if(data.musica) {
+      let config = {
+        mute: false,
+        volume: 0.2,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: true,
+        delay: 0
+      };
+      let music = this.sound.add('musica_portada', config);
+      music.play();
+    }
+ 
+    this.add.text(230, 117, `Player: ${data.nombre} \nScore: ${data.puntos} `, {
+        font: "20px Press Start 2P",
         fill: "#E60026",
-        padding: { x: 20, y: 20 },
+        padding: { x: 5, y: 3 },
         backgroundColor: "#fff88f"
-    })     
-    .setScrollFactor(0);
-    */
+    }).setScrollFactor(0);
   }
 
   update(time, delta) {

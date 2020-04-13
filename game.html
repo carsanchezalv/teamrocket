@@ -15,6 +15,9 @@
 <body>
     <script type="module">
         import Game from './src/game.js';
+        import Nombre from './src/nombre.js';
+        import Puntuaciones from './src/puntuaciones.js';
+        import Menu from './src/menu.js';
 
         var config = { 
             type: Phaser.CANVAS,
@@ -31,7 +34,7 @@
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             
-            scene: [ Game ],
+            scene: [Nombre, Menu, Puntuaciones, Game ],
             physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } }
         };
         new Phaser.Game(config);
