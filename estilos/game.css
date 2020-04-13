@@ -1,78 +1,82 @@
 .hidden {
+   -webkit-transition: opacity 1s;
+   z-index: 0;
+   opacity: 0;
+ }
+ 
+ .visible {
   -webkit-transition: opacity 1s;
-  z-index: 0;
-  opacity: 0;
-}
+  z-index: 1;
+  opacity: 1;
+ }
+ 
+ .frame {
+  position: relative;
+  top: 58.5%;
+  left: 10%;
 
-.visible {
- -webkit-transition: opacity 1s;
- z-index: 1;
- opacity: 1;
-}
-
-.frame {
- position: absolute;
- width: 85%;
- height: 79%;
- font-family: 'Press Start 2P', cursive;
-
- color:red;
- text-shadow: 8px 3px 1px rgb(0, 0, 0);
- -webkit-user-select: none;
- font-size: 25px;
-
- text-align: center;
-}
-
-.frame title {
-   font-family: 'Press Start 2P', cursive;
-
-   color:red;
-   text-shadow: 8px 3px 1px rgb(0, 0, 0);
-   -webkit-user-select: none;
-   font-size: 25px;
-   text-align: center;
-}
-
-.frame a {
-   -webkit-transition: border-radius 1s, text -shadow 1s, color 1s;
-
-   font-family: 'Press Start 2P', cursive;
-   font-size: 100%;
-   color:rgb(0, 225, 255);
-
-   padding: 1%;
-   width: 100%;
-   margin-bottom: 2%;
-   background: rgba(0, 0, 0, 0.349);
-   text-shadow: 0px 0px 0px ;
-
-   border: 4px solid ;
-   border-radius: 10px;
-   display: outside;
-   text-decoration: none;
-   border-color:  red  yellow blue rgb(0, 255, 0);
-   box-shadow: 0px 3px 5px rgba(255, 0, 0, 0.5);
-}
-
-.frame a:hover {
-
-   border-radius: 20px;
-   text-shadow: 1px 1px 5px white;
-   color: white;
-}
-
-.frame a:active{
-   text-shadow: 0px 0px 20px #00FF00;
-}
-
-body{
+  width: 80%;
+  height: 60%;
+  font-family: 'Press Start 2P', cursive;
+ 
+  color:red;
+  text-shadow: 8px 3px 1px rgb(0, 0, 0);
+  -webkit-user-select: none;
+  font-size: 25px;
+ 
+  text-align: center;
+ }
+ 
+ .frame title {
+    font-family: 'Press Start 2P', cursive;
+ 
+    color:red;
+    text-shadow: 8px 3px 1px rgb(0, 0, 0);
+    -webkit-user-select: none;
+    font-size: 25px;
+    text-align: center;
+ }
+ 
+ .frame a {
+    -webkit-transition: border-radius 1s, text -shadow 1s, color 1s;
+ 
+    font-family: 'Press Start 2P', cursive;
+    font-size: 100%;
+    color:rgb(0, 225, 255);
+ 
+    padding: 1%;
+    width: 100%;
+    margin-bottom: 2%;
+    background: rgba(0, 0, 0, 0.349);
+    text-shadow: 0px 0px 0px ;
+ 
+    border: 4px solid ;
+    border-radius: 10px;
+    display: outside;
+    text-decoration: none;
+    border-color:  red  yellow blue rgb(0, 255, 0);
+    box-shadow: 0px 3px 5px rgba(255, 0, 0, 0.5);
+ }
+ 
+ .frame a:hover {
+ 
+    border-radius: 20px;
+    text-shadow: 1px 1px 5px white;
+    color: white;
+ }
+ 
+ .frame a:active{
+    text-shadow: 0px 0px 20px #00FF00;
+ }
+ 
+ body{
    margin: 0 auto;
-   width: 85%;
-   height: 80%;
-
+   position: relative;
+   width: 80%;
+   height: 60%;
+   top: -56%;
    text-align: center;
    background-image: url(../assets/fondoJuego.png);
    background-size: 100% 100%;
    background-repeat: no-repeat;
-}
+ }

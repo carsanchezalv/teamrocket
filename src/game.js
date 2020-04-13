@@ -100,7 +100,7 @@ export default class Game extends Phaser.Scene {
       music.play();
     }
  
-    this.add.text(230, 117, `Player: ${data.nombre} \nScore: ${data.puntos} `, {
+    this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} `, {
         font: "20px Press Start 2P",
         fill: "#E60026",
         padding: { x: 5, y: 3 },
