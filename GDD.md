@@ -27,13 +27,13 @@ Hay objetos de curación y otros Pokemon enemigos, que se podrán unir a ti al d
 
 # Assets
 
-El jugador controlará un Pokemon a elegir
+El jugador controlará a Pikachu
 
-Nuestros Pokemon son como los originales pero en versión shiny, ya que se trata de un mundo paralelo al que llega el protagonista (el único Pokemon no shiny)
+Nuestros Pokemon son como los originales pero en versión shiny, ya que se trata de un mundo infectado por los poderes de Mewtwo, el jefe final, quien controla la luz a su antojo y por tanto los colores de sus habitantes.
 
-Cada uno de ellos podrá tener evolución al subir niveles.
+Cada uno de los Pokemon podrá tener evolución al subir niveles.
 
-Mapa amplio con difrentes tipos de terreno diferenciados por su color
+Mapa amplio con difrentes tipos de terreno diferenciados por los tilesets empleados y los tipos de Pokemon que nos encontraremos en ellos
 
 Hay música de fondo en 8-bit y del juego original
 
