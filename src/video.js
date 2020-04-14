@@ -4,7 +4,7 @@ export default class Video extends Phaser.Scene {
         super({ key: 'video' });
     }
     preload() {
-        this.load.video('intro', '../assets/video/intro.mp4', 'canplaythrough', true, false);     
+        this.load.video('intro', './assets/video/intro.mp4', 'canplaythrough', true, false);     
     }
 
     create() {
