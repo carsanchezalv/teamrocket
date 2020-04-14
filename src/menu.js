@@ -22,7 +22,7 @@ export default class Menu extends Phaser.Scene {
         }).setDepth(1).setOrigin(0.5);
         jugar.setInteractive();
         jugar.on('pointerover', function (pointer) {
-            jugar.setScale(1.3);
+            jugar.setScale(1.2);
         })
         jugar.on('pointerout', function (pointer) {
             jugar.setScale(1);

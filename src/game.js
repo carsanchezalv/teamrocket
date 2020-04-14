@@ -10,7 +10,9 @@ export default class Game extends Phaser.Scene {
 
 
     this.load.tilemapTiledJSON('tilemap', 'assets/tiles/mapa/mapa_team_rocket.json');
-      
+    
+    this.load.video('intro', 'assets/video/intro.mp4');
+
     // Tilesets
     this.load.image('dungeon0', 'assets/tiles/dungeon-0.png');
     this.load.image('dungeon1', 'assets/tiles/dungeon-1.png');
