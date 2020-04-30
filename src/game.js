@@ -34,7 +34,7 @@ export default class Game extends Phaser.Scene {
     ]);
 
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
-    this.load.spritesheet('enemigo', 'assets/icons/personajes/Fuego/2/4s.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('enemigo', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
   }
 
   create() {
@@ -118,4 +118,3 @@ export default class Game extends Phaser.Scene {
     
   }
 }
-
