@@ -1,6 +1,6 @@
 import Pikachu from "./pikachu.js";
 import Enemy from "./enemy.js";
-import {data} from "./data.js";
+import { data } from "./data.js";
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'game' });
@@ -115,7 +115,6 @@ export default class Game extends Phaser.Scene {
   }
 
   update(time, delta) {
-    this.pikachuSprite.preUpdate(time, delta);
-    this.enemigoSprite.preUpdate(time, delta);
+    
   }
 }
