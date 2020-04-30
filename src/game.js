@@ -1,14 +1,12 @@
 import Pikachu from "./pikachu.js";
-import {data} from "./data.js";
+import Enemy from "./enemy.js";
+import { data } from "./data.js";
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'game' });
   }
 
   preload() {  
-//    this.load.image("logo", "assets/favicon.png")
-
-
     this.load.tilemapTiledJSON('tilemap', 'assets/tiles/mapa/mapa_team_rocket.json');
     
     this.load.video('intro', 'assets/video/intro.mp4');
@@ -34,13 +32,13 @@ export default class Game extends Phaser.Scene {
       "assets/music/portada.ogg",
       "assets/music/portada.mp3"
     ]);
+
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('enemigo', 'assets/icons/personajes/Fuego/2/4s.png',{ frameWidth: 48, frameHeight: 64 });
   }
 
   create() {
 
-//    this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-  
     this.map = this.make.tilemap({ 
       key: 'tilemap', 
       tileWidth: 6912, 
@@ -75,11 +73,17 @@ export default class Game extends Phaser.Scene {
   
     let x = 3778;
     let y = 2067;
+    
     this.pikachuSprite = new Pikachu(this, x, y);
+    this.enemigoSprite = new Enemy(this, x + 20, y + 20);
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
+
+    this.physics.add.collider(this.enemigoSprite, this.borde);
+    this.physics.add.collider(this.enemigoSprite, this.mar);
+    this.physics.add.collider(this.enemigoSprite, this.rio);
 
 // Camera zoom
     const camera = this.cameras.main;
@@ -111,7 +115,7 @@ export default class Game extends Phaser.Scene {
   }
 
   update(time, delta) {
-    this.pikachuSprite.preUpdate(time, delta);
+    
   }
 }
 
