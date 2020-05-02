@@ -91,6 +91,8 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
 
+    // TODO -- CREAR GRUPO DE COLISIONES PARA LOS ENEMIGOS
+    
     this.physics.add.collider(this.enemigoSprite, this.borde);
     this.physics.add.collider(this.enemigoSprite, this.mar);
     this.physics.add.collider(this.enemigoSprite, this.rio);

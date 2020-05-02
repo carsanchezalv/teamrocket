@@ -5,13 +5,14 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         let orientation = "down";
         this.animation = "move_down_enemy"+nombre;
-
+        this.nombre = nombre;
         // Atributos
         this.vida = 2;
         this.fuerza = 1;
         this.atacar = false;
         this.esHerido = false;
         this.numEnemy = this.scene.numEnemy;
+        this.velocidad = 40;
 
         // Animacion movimientos
         this.scene.anims.create({
@@ -147,14 +148,60 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         
         if(this.vida > 0)
         {
-        //    this.scene.physics.accelerateToObject(this, player, 50, 50, 50);
-            this.scene.physics.moveTo(this, player.x, player.y, 40);
-        //    if(this.x > posX)
+            this.scene.physics.moveTo(this, player.x, player.y, this.velocidad);
+
+            // Animaciones           
+            if((this.body.velocity.x === this.velocidad) && (this.body.velocity.y === this.velocidad))
             {
-           //     if()
-         //       this.orientation = "down";
-          //      this.animation = "move_down_enemy"
+                this.flipX = false;
+                this.animation = 'move_downright_enemy'+this.nombre;
+                this.orientation = "downright";
             }
+            else if((this.body.velocity.x === this.velocidad) && (this.body.velocity.y === -this.velocidad))
+            {
+                this.flipX = false;
+                this.animation = 'move_upright_enemy'+this.nombre;
+                this.orientation = "upright";
+            }
+            else if((this.body.velocity.x === -this.velocidad) && (this.body.velocity.y === this.velocidad))
+            {
+                this.flipX = true;
+                this.animation = 'move_downright_enemy'+this.nombre;
+                this.orientation = "downleft";
+            }
+            else if((this.body.velocity.x === -this.velocidad) && (this.body.velocity.y === -this.velocidad))
+            {
+                this.flipX = true;
+                this.animation = 'move_upright_enemy'+this.nombre;
+                this.orientation = "upleft";
+            }
+            
+            else if(this.body.velocity.y === this.velocidad)
+            {
+                this.flipX = false;
+                this.animation = 'move_down_enemy'+this.nombre;
+                this.orientation = "down";
+            }
+            else if(this.body.velocity.y === -this.velocidad)
+            {
+                this.flipX = false;
+                this.animation = 'move_up_enemy'+this.nombre;
+                this.orientation = "up";
+            }
+            else if(this.body.velocity.x === this.velocidad)
+            {
+                this.flipX = false;
+                this.animation = 'move_right_enemy'+this.nombre;
+                this.orientation = "right";
+            }
+            else if(this.body.velocity.x === -this.velocidad)
+            {
+                this.flipX = true;
+                this.animation = 'move_right_enemy'+this.nombre;
+                this.orientation = "left";
+            }
+
+            this.anims.play(this.animation, true);
         }
     }
 }
