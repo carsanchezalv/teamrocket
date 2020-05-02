@@ -34,7 +34,10 @@ export default class Game extends Phaser.Scene {
     ]);
 
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
-    this.load.spritesheet('enemigo', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('enemigo0', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('enemigo1', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('enemigo2', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('enemigo3', 'assets/icons/personajes/Fuego/4.png',{ frameWidth: 48, frameHeight: 48 });
   }
 
   create() {
@@ -73,9 +76,16 @@ export default class Game extends Phaser.Scene {
   
     let x = 3778;
     let y = 2067;
-    
+    let z = 20;
+    this.numEnemy = 0;
+
     this.pikachuSprite = new Pikachu(this, x, y);
-    this.enemigoSprite = new Enemy(this, x + 20, y + 20);
+    //this.enemigoSprite = new Enemy(this, x + 20, y + 20);
+    for(let i = 0; i < 4; i++){
+      this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
+      this.numEnemy += 1;
+      z += 20; 
+    }
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);
