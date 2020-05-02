@@ -3,7 +3,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, "enemigo");
 
-        let orientation = "down";
+        this.orientation = "down";
         this.animation = "move_down_enemy";
 
         // Atributos
@@ -141,7 +141,19 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-       
         // Ataques y movimientos
+        let player = this.scene.pikachuSprite;
+        
+        if(this.vida > 0)
+        {
+        //    this.scene.physics.accelerateToObject(this, player, 50, 50, 50);
+            this.scene.physics.moveTo(this, player.x, player.y, 40);
+        //    if(this.x > posX)
+            {
+           //     if()
+         //       this.orientation = "down";
+          //      this.animation = "move_down_enemy"
+            }
+        }
     }
 }
