@@ -1,11 +1,17 @@
 export default class Pikachu extends Phaser.GameObjects.Sprite {
 
   constructor(scene, x, y) {
-    super(scene, x, y, 'pikachu');
+    super(scene, x, y, 'protagonista');
 
     //Protagonista 
     let orientation = "down";
     this.animation = "move_down";
+
+    // Atributos
+    this.vida = 10;
+    this.fuerza = 2;
+    this.atacar = false;
+    this.esHerido = false;
 
     // Animacion movimientos
     this.scene.anims.create({
