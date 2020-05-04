@@ -1,5 +1,6 @@
 import Pikachu from "./pikachu.js";
 import Enemy from "./enemy.js";
+import Gema from "./gema.js";
 import { data } from "./data.js";
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -38,6 +39,9 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('enemigo1', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('enemigo2', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('enemigo3', 'assets/icons/personajes/Fuego/4.png',{ frameWidth: 48, frameHeight: 48 });
+
+    //gema
+    this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
   }
 
   create() {
@@ -104,12 +108,38 @@ export default class Game extends Phaser.Scene {
 
       //this.enem = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
       //enemys.add(this.enem);
-      this.enemigoSprite = new Enemy(this, x + 20, y + 20, "enemigo"+this.numEnemy);
+      this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
       this.enemys.add(this.enemigoSprite);
       this.numEnemy += 1;
       z += 20; 
     }
-    //
+    
+    //Gema
+    this.gemas = this.physics.add.group({
+      classType: Gema,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+    
+    for(let i = 0; i < 4; i++){
+
+      //this.enem = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
+      //enemys.add(this.enem);
+      this.gemaSprite = new Gema(this, x - z, y - z);
+      this.gemas.add(this.gemaSprite);
+      z += 20; 
+    }
+
+    this.physics.add.collider(this.gemas, this.borde);
+    this.physics.add.collider(this.gemas, this.mar);
+    this.physics.add.collider(this.gemas, this.rio);
+
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);
@@ -121,6 +151,7 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.enemys, this.mar);
     this.physics.add.collider(this.enemys, this.rio);
     
+
 
 // Camera zoom
     const camera = this.cameras.main;
