@@ -81,11 +81,35 @@ export default class Game extends Phaser.Scene {
 
     this.pikachuSprite = new Pikachu(this, x, y);
     //this.enemigoSprite = new Enemy(this, x + 20, y + 20);
+    /*
     for(let i = 0; i < 4; i++){
       this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
       this.numEnemy += 1;
       z += 20; 
+    } */
+    //prueba 
+    this.enemys = this.physics.add.group({
+      classType: Enemy,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+    
+    for(let i = 0; i < 4; i++){
+
+      //this.enem = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
+      //enemys.add(this.enem);
+      this.enemigoSprite = new Enemy(this, x + 20, y + 20, "enemigo"+this.numEnemy);
+      this.enemys.add(this.enemigoSprite);
+      this.numEnemy += 1;
+      z += 20; 
     }
+    //
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);
@@ -93,9 +117,10 @@ export default class Game extends Phaser.Scene {
 
     // TODO -- CREAR GRUPO DE COLISIONES PARA LOS ENEMIGOS
     
-    this.physics.add.collider(this.enemigoSprite, this.borde);
-    this.physics.add.collider(this.enemigoSprite, this.mar);
-    this.physics.add.collider(this.enemigoSprite, this.rio);
+    this.physics.add.collider(this.enemys, this.borde);
+    this.physics.add.collider(this.enemys, this.mar);
+    this.physics.add.collider(this.enemys, this.rio);
+    
 
 // Camera zoom
     const camera = this.cameras.main;
