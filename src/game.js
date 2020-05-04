@@ -34,14 +34,14 @@ export default class Game extends Phaser.Scene {
       "assets/music/portada.mp3"
     ]);
 
+     //gema
+    this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
+
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('enemigo0', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('enemigo1', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('enemigo2', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('enemigo3', 'assets/icons/personajes/Fuego/4.png',{ frameWidth: 48, frameHeight: 48 });
-
-    //gema
-    this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
   }
 
   create() {
@@ -83,39 +83,8 @@ export default class Game extends Phaser.Scene {
     let z = 20;
     this.numEnemy = 0;
 
-    this.pikachuSprite = new Pikachu(this, x, y);
-    //this.enemigoSprite = new Enemy(this, x + 20, y + 20);
-    /*
-    for(let i = 0; i < 4; i++){
-      this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
-      this.numEnemy += 1;
-      z += 20; 
-    } */
-    //prueba 
-    this.enemys = this.physics.add.group({
-      classType: Enemy,
-      defaultKey: null,
-      defaultFrame: null,
-      active: true,
-      maxSize: -1,
-      runChildUpdate: false,
-      createCallback: null,
-      removeCallback: null,
-      createMultipleCallback: null
-    });
-    
-    for(let i = 0; i < 4; i++){
-
-      //this.enem = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
-      //enemys.add(this.enem);
-      this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
-      this.enemys.add(this.enemigoSprite);
-      this.numEnemy += 1;
-      z += 20; 
-    }
-    
-    //Gema
-    this.gemas = this.physics.add.group({
+    //Gemas
+    this.groupGemas = this.physics.add.group({
       classType: Gema,
       defaultKey: null,
       defaultFrame: null,
@@ -127,33 +96,57 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
     
-    for(let i = 0; i < 4; i++){
-
-      //this.enem = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
-      //enemys.add(this.enem);
+    for(let i = 0; i < 4; i++) {
       this.gemaSprite = new Gema(this, x - z, y - z);
-      this.gemas.add(this.gemaSprite);
+      this.groupGemas.add(this.gemaSprite);
       z += 20; 
     }
 
-    this.physics.add.collider(this.gemas, this.borde);
-    this.physics.add.collider(this.gemas, this.mar);
-    this.physics.add.collider(this.gemas, this.rio);
+    // Enemigos
+    this.groupEnemies = this.physics.add.group({
+      classType: Enemy,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+    
+    for(let i = 0; i < 4; i++) {
+      this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
+      this.groupEnemies.add(this.enemigoSprite);
+      this.numEnemy += 1;
+      z += 20; 
+    }
 
+    this.pikachuSprite = new Pikachu(this, x, y);
+
+    // Colisiones
+    this.physics.add.collider(this.groupGemas, this.borde);
+    this.physics.add.collider(this.groupGemas, this.mar);
+    this.physics.add.collider(this.groupGemas, this.rio);
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
     this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
-
-    // TODO -- CREAR GRUPO DE COLISIONES PARA LOS ENEMIGOS
     
-    this.physics.add.collider(this.enemys, this.borde);
-    this.physics.add.collider(this.enemys, this.mar);
-    this.physics.add.collider(this.enemys, this.rio);
+    this.physics.add.collider(this.groupEnemies, this.borde);
+    this.physics.add.collider(this.groupEnemies, this.mar);
+    this.physics.add.collider(this.groupEnemies, this.rio);
     
+    // Colisiones entre enemigos
+    this.physics.add.collider(this.groupEnemies, this.groupEnemies);
+
+//    this.physics.add.collider(this.pikachuSprite, this.groupGemas);
+
+  // Colisiones entre enemigos y pikachu
+  //  this.physics.add.collider(this.pikachuSprite, this.groupEnemies);
 
 
-// Camera zoom
+    // Camera zoom
     const camera = this.cameras.main;
     camera.setZoom(2);
     camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);

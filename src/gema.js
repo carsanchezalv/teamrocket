@@ -13,7 +13,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
         this.scene.anims.create({
             key: 'brillo',
             frames: this.scene.anims.generateFrameNumbers('gema', { start: 1, end: 7 }),
-            frameRate: 2,
+            frameRate: 7,
             repeat: 0
         });
 

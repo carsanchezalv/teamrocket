@@ -17,35 +17,35 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'move_down',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 1, end: 2 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'move_right',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 7, end: 8 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'move_up',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 13, end: 14 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'move_upright',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 10, end: 11 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'move_downright',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 4, end: 5 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
@@ -53,35 +53,35 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'attack_down',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 32, end: 34 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'attack_right',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 40, end: 42 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'attack_up',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 48, end: 50 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'attack_upright',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 44, end: 46 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'attack_downright',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 36, end: 38 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
@@ -89,7 +89,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'evolve',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 52, end: 54 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
@@ -97,35 +97,35 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'damage_down',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 17, end: 17 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'damage_downright',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 18, end: 18 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'damage_right',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 19, end: 19 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'damage_upright',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 20, end: 20 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
     this.scene.anims.create({
       key: 'damage_up',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 21, end: 21 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: 0
     });
 
