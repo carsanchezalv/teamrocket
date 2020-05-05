@@ -9,7 +9,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         // Atributos
         this.vida = 2;
         this.fuerza = 1;
-        this.atacar = false;
+        this.ataque = false;
         this.esHerido = false;
         this.numEnemy = this.scene.numEnemy;
         this.velocidad = 40;
@@ -148,55 +148,61 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     atacar() {
-        this.atacar = true;
+        this.ataque = true;
+        let player = this.scene.pikachuSprite;
+        switch(this.orientation)
+        {
+            case "up": 
+                this.flipX = false;
+                this.animation = 'attack_up_enemy'+this.nombre;
+                break;
+            case "upright":
+                this.flipX = false;
+                this.animation = 'attack_upright_enemy'+this.nombre;
+                break;
+            case "upleft":
+                this.flipX = true;
+                this.animation = 'attack_upright_enemy'+this.nombre;
+                break;
+            case "down":
+                this.flipX = false;
+                this.animation = 'attack_down_enemy'+this.nombre;
+                break;
+            case "downright":
+                this.flipX = false;
+                this.animation = 'attack_downright_enemy'+this.nombre;
+                break;
+            case "downleft":
+                this.flipX = true;
+                this.animation = 'attack_downright_enemy'+this.nombre;
+                break;
+            case "right":
+                this.flipX = false;
+                this.animation = 'attack_right_enemy'+this.nombre;
+                break;
+            case "left":
+                this.flipX = true;
+                this.animation = 'attack_right_enemy'+this.nombre;
+                break;
+        }
+        player.vida -= this.fuerza;
+        player.esHerido = true;
+        if(player.vida < 0)
+        {
+            player.vida = 0;
+        }
     }
-
+    
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         // Ataques y movimientos
         let player = this.scene.pikachuSprite;
         
-        if(this.vida > 0)
+        if(player.vida > 0 && this.vida > 0)
         {
-            if(this.atacar)
-            {
-                switch(this.orientation)
-                {
-                    case "up": 
-                        this.flipX = false;
-                        this.animation = 'attack_up_enemy'+this.nombre;
-                        break;
-                    case "upright":
-                        this.flipX = false;
-                        this.animation = 'attack_upright_enemy'+this.nombre;
-                        break;
-                    case "upleft":
-                        this.flipX = true;
-                        this.animation = 'attack_upright_enemy'+this.nombre;
-                        break;
-                    case "down":
-                        this.flipX = false;
-                        this.animation = 'attack_down_enemy'+this.nombre;
-                        break;
-                    case "downright":
-                        this.flipX = false;
-                        this.animation = 'attack_downright_enemy'+this.nombre;
-                        break;
-                    case "downleft":
-                        this.flipX = true;
-                        this.animation = 'attack_downright_enemy'+this.nombre;
-                        break;
-                    case "right":
-                        this.flipX = false;
-                        this.animation = 'attack_right_enemy'+this.nombre;
-                        break;
-                    case "left":
-                        this.flipX = true;
-                        this.animation = 'attack_right_enemy'+this.nombre;
-                        break;
-                }
-            }
-            else
+            this.scene.physics.add.collider(this, player, () => this.atacar());
+            
+            if(!this.ataque)
             {
                 this.scene.physics.moveTo(this, player.x, player.y, this.velocidad);
 
@@ -251,6 +257,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                 }
             }
             this.anims.play(this.animation, true);
+            this.ataque = false;
         }
     }
 }

@@ -4,11 +4,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     super(scene, x, y, 'protagonista');
 
     //Protagonista 
-    let orientation = "down";
+    this.orientation = "down";
     this.animation = "move_down";
 
     // Atributos
-    this.vida = 10;
+    this.vida = 10000000000;
     this.fuerza = 2;
     this.atacar = false;
     this.esHerido = false;
@@ -140,13 +140,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.cursor = this.scene.input.keyboard.createCursorKeys();
   }
 
-  preUpdate(t, dt) {
-    super.preUpdate(t, dt);
-    const cursor = this.cursor;
-
-    this.body.setVelocityX(0);
-    this.body.setVelocityY(0);
-
+  actuar() {
     if (this.cursor.space.isDown) {
       if (this.orientation === "down") {
         this.animation = "attack_down";
@@ -188,79 +182,122 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.anims.play(this.animation, true);
       }
     }
-    else if (cursor.up.isDown && cursor.right.isDown) {
+    else if (this.cursor.up.isDown && this.cursor.right.isDown) {
       this.body.setVelocityX(50);
-      this.body.setVelocityY(-50)
-      //    this.x++;
-      //    this.y--;
+      this.body.setVelocityY(-50);
       this.orientation = "upright";
       this.flipX = false;
       this.animation = "move_upright";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.up.isDown && cursor.left.isDown) {
+    else if (this.cursor.up.isDown && this.cursor.left.isDown) {
       this.body.setVelocityX(-50);
       this.body.setVelocityY(-50);
-      //    this.x--;
-      //    this.y--;
       this.orientation = "upleft";
       this.flipX = true;
       this.animation = "move_upright";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.down.isDown && cursor.right.isDown) {
+    else if (this.cursor.down.isDown && this.cursor.right.isDown) {
       this.body.setVelocityX(50);
       this.body.setVelocityY(50);
-      //    this.x++;
-      //    this.y++;
       this.orientation = "downright";
       this.flipX = false;
       this.animation = "move_downright";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.down.isDown && cursor.left.isDown) {
+    else if (this.cursor.down.isDown && this.cursor.left.isDown) {
       this.body.setVelocityX(-50);
       this.body.setVelocityY(50);
-      //  this.x--;
-      //  this.y++;
       this.orientation = "downleft";
       this.flipX = true;
       this.animation = "move_downright";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.right.isDown) {
+    else if (this.cursor.right.isDown) {
       this.body.setVelocityX(50);
       this.body.setVelocityY(0);
-      //  this.x++;
       this.orientation = "right";
       this.flipX = false;
       this.animation = "move_right";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.left.isDown) {
+    else if (this.cursor.left.isDown) {
       this.body.setVelocityX(-50);
       this.body.setVelocityY(0);
-      //   this.x--;
       this.orientation = "left";
       this.flipX = true;
       this.animation = "move_right";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.up.isDown) {
+    else if (this.cursor.up.isDown) {
       this.body.setVelocityX(0);
       this.body.setVelocityY(-50);
-      //     this.y--;
       this.orientation = "up";
       this.animation = "move_up";
       this.anims.play(this.animation, true);
     }
-    else if (cursor.down.isDown) {
+    else if (this.cursor.down.isDown) {
       this.body.setVelocityX(0);
       this.body.setVelocityY(50);
-      //  this.y++;
       this.orientation = "down";
       this.animation = "move_down";
-      this.anims.play(this.animation, true);
+    }
+  }
+
+  preUpdate(t, dt) {
+    super.preUpdate(t, dt);
+
+    if(this.vida > 0)
+    {
+      const cursor = this.cursor;
+
+      this.body.setVelocityX(0);
+      this.body.setVelocityY(0);
+      
+      this.actuar();
+      
+      if(this.esHerido)
+      {
+        switch(this.orientation)
+        {
+          case "up": 
+              this.flipX = false;
+              this.animation = 'damage_up';
+              break;
+          case "upright":
+              this.flipX = false;
+              this.animation = 'damage_upright';
+              break;
+          case "upleft":
+              this.flipX = true;
+              this.animation = 'damage_upright';
+              break;
+          case "down":
+              this.flipX = false;
+              this.animation = 'damage_down';
+              break;
+          case "downright":
+              this.flipX = false;
+              this.animation = 'damage_downright';
+              break;
+          case "downleft":
+              this.flipX = true;
+              this.animation = 'damage_downright';
+              break;
+          case "right":
+              this.flipX = false;
+              this.animation = 'damage_right';
+              break;
+          case "left":
+              this.flipX = true;
+              this.animation = 'damage_right';
+              break;
+        }
+        this.anims.play(this.animation, true);
+      }
+     
+      this.esHerido = false;
     }
   }
 }
