@@ -242,6 +242,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.body.setVelocityY(50);
       this.orientation = "down";
       this.animation = "move_down";
+      this.anims.play(this.animation, true);
     }
   }
 
