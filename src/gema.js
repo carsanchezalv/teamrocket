@@ -1,3 +1,5 @@
+import { data } from "./data.js";
+
 export default class Gema extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y) {
@@ -8,6 +10,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
         this.valor = 1;
         this.velocidad = 40;
         this.visible = true;
+        this.numGema = 0;
 
         // Animacion movimientos
         this.scene.anims.create({
@@ -33,6 +36,15 @@ export default class Gema extends Phaser.GameObjects.Sprite {
 
        this.play(this.animation, true);
        this.scene.physics.world.enableBody(this);
+       this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.collectGema());
+    }
+
+    collectGema(){
+        //Gema.kill(); 
+        this.destroy();
+        //Gema.disableBody(player, gema);
+        this.numGema++;
+        data.puntos += this.valor;
     }
 
     preUpdate(t, dt) {
