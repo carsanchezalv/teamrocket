@@ -101,9 +101,9 @@ export default class Game extends Phaser.Scene {
     for(let i = 0; i < 4; i++) {
       this.gemaSprite = new Gema(this, x - z, y - z);
       this.groupGemas.add(this.gemaSprite);
-      z += 20; 
+      z += 30; 
     }
-
+    z = 50;
     // Enemigos
     this.groupEnemies = this.physics.add.group({
       classType: Enemy,
@@ -121,7 +121,7 @@ export default class Game extends Phaser.Scene {
       this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
       this.groupEnemies.add(this.enemigoSprite);
       this.numEnemy += 1;
-      z += 40; 
+      z += 30; 
     }
 
 
