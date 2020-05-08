@@ -7,7 +7,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.animation = "move_down_enemy"+nombre;
         this.nombre = nombre;
         // Atributos
-        this.vida = 2;
+        this.vida = 20;
         this.fuerza = 1;
         this.ataque = false;
         this.esHerido = false;
@@ -148,51 +148,151 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     atacar() {
-        this.ataque = true;
-        let player = this.scene.pikachuSprite;
-        switch(this.orientation)
+        if(!this.esHerido)
         {
-            case "up": 
-                this.flipX = false;
-                this.animation = 'attack_up_enemy'+this.nombre;
-                break;
-            case "upright":
-                this.flipX = false;
-                this.animation = 'attack_upright_enemy'+this.nombre;
-                break;
-            case "upleft":
-                this.flipX = true;
-                this.animation = 'attack_upright_enemy'+this.nombre;
-                break;
-            case "down":
-                this.flipX = false;
-                this.animation = 'attack_down_enemy'+this.nombre;
-                break;
-            case "downright":
-                this.flipX = false;
-                this.animation = 'attack_downright_enemy'+this.nombre;
-                break;
-            case "downleft":
-                this.flipX = true;
-                this.animation = 'attack_downright_enemy'+this.nombre;
-                break;
-            case "right":
-                this.flipX = false;
-                this.animation = 'attack_right_enemy'+this.nombre;
-                break;
-            case "left":
-                this.flipX = true;
-                this.animation = 'attack_right_enemy'+this.nombre;
-                break;
-        }
-        player.vida -= this.fuerza;
-        player.esHerido = true;
-        if(player.vida < 0)
-        {
-            player.vida = 0;
+            this.ataque = true;
+            let player = this.scene.pikachuSprite;
+            switch(this.orientation)
+            {
+                case "up":
+                    this.flipX = false;
+                    this.animation = 'attack_up_enemy'+this.nombre;
+                    break;
+                case "upright":
+                    this.flipX = false;
+                    this.animation = 'attack_upright_enemy'+this.nombre;
+                    break;
+                case "upleft":
+                    this.flipX = true;
+                    this.animation = 'attack_upright_enemy'+this.nombre;
+                    break;
+                case "down":
+                    this.flipX = false;
+                    this.animation = 'attack_down_enemy'+this.nombre;
+                    break;
+                case "downright":
+                    this.flipX = false;
+                    this.animation = 'attack_downright_enemy'+this.nombre;
+                    break;
+                case "downleft":
+                    this.flipX = true;
+                    this.animation = 'attack_downright_enemy'+this.nombre;
+                    break;
+                case "right":
+                    this.flipX = false;
+                    this.animation = 'attack_right_enemy'+this.nombre;
+                    break;
+                case "left":
+                    this.flipX = true;
+                    this.animation = 'attack_right_enemy'+this.nombre;
+                    break;
+            }
+            player.vida -= this.fuerza;
+            player.esHerido = true;
+            if(player.vida < 0)
+            {
+                player.vida = 0;
+            }
         }
     }
     
+    ataques() {
+
+        let player = this.scene.pikachuSprite;
+        
+        if(player.atacar)
+        {
+            this.esHerido = true;
+            player.atacar = false;
+            switch(this.orientation)
+            {
+                case "up":
+                    this.flipX = false;
+                    this.animation = 'damage_up_enemy'+this.nombre;
+                    break;
+                case "upright":
+                    this.flipX = false;
+                    this.animation = 'damage_upright_enemy'+this.nombre;
+                    break;
+                case "upleft":
+                    this.flipX = true;
+                    this.animation = 'damage_upright_enemy'+this.nombre;
+                    break;
+                case "down":
+                    this.flipX = false;
+                    this.animation = 'damage_down_enemy'+this.nombre;
+                    break;
+                case "downright":
+                    this.flipX = false;
+                    this.animation = 'damage_downright_enemy'+this.nombre;
+                    break;
+                case "downleft":
+                    this.flipX = true;
+                    this.animation = 'damage_downright_enemy'+this.nombre;
+                    break;
+                case "right":
+                    this.flipX = false;
+                    this.animation = 'damage_right_enemy'+this.nombre;
+                    break;
+                case "left":
+                    this.flipX = true;
+                    this.animation = 'damage_right_enemy'+this.nombre;
+                    break;
+            }
+            this.vida -= player.fuerza;
+            
+            if(this.vida <= 0)
+            {
+                this.destroy();
+            }
+        }
+        else
+        {
+            this.ataque = true;
+            switch(this.orientation)
+            {
+                case "up":
+                    this.flipX = false;
+                    this.animation = 'attack_up_enemy'+this.nombre;
+                    break;
+                case "upright":
+                    this.flipX = false;
+                    this.animation = 'attack_upright_enemy'+this.nombre;
+                    break;
+                case "upleft":
+                    this.flipX = true;
+                    this.animation = 'attack_upright_enemy'+this.nombre;
+                    break;
+                case "down":
+                    this.flipX = false;
+                    this.animation = 'attack_down_enemy'+this.nombre;
+                    break;
+                case "downright":
+                    this.flipX = false;
+                    this.animation = 'attack_downright_enemy'+this.nombre;
+                    break;
+                case "downleft":
+                    this.flipX = true;
+                    this.animation = 'attack_downright_enemy'+this.nombre;
+                    break;
+                case "right":
+                    this.flipX = false;
+                    this.animation = 'attack_right_enemy'+this.nombre;
+                    break;
+                case "left":
+                    this.flipX = true;
+                    this.animation = 'attack_right_enemy'+this.nombre;
+                    break;
+            }
+            player.vida -= this.fuerza;
+            player.esHerido = true;
+            if(player.vida < 0)
+            {
+                player.vida = 0;
+            }
+        }
+    }
+
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         // Ataques y movimientos
@@ -200,9 +300,14 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         
         if(player.vida > 0 && this.vida > 0)
         {
-            this.scene.physics.add.collider(this, player, () => this.atacar());
             
-            if(!this.ataque)
+            this.scene.physics.add.collider(player, this, () => this.ataques());
+            
+  //          if(this.scene.physics.collider(player, this) && (!player.atacar))
+    //            this.atacar();
+            
+
+            if(!this.ataque && !this.esHerido)
             {
                 this.scene.physics.moveTo(this, player.x, player.y, this.velocidad);
 
@@ -258,6 +363,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             }
             this.anims.play(this.animation, true);
             this.ataque = false;
+            this.esHerido = false;
         }
     }
 }

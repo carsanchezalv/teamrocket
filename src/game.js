@@ -83,8 +83,8 @@ export default class Game extends Phaser.Scene {
     let z = 20;
     this.numEnemy = 0;
 
-    this.pikachuSprite = new Pikachu(this, x, y);
 
+    this.pikachuSprite = new Pikachu(this, x, y);
     //Gemas
     this.groupGemas = this.physics.add.group({
       classType: Gema,
@@ -121,10 +121,9 @@ export default class Game extends Phaser.Scene {
       this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
       this.groupEnemies.add(this.enemigoSprite);
       this.numEnemy += 1;
-      z += 20; 
+      z += 40; 
     }
 
-    
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
@@ -140,15 +139,13 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.groupEnemies, this.rio);
     
     // Colisiones entre enemigos
-    this.physics.add.collider(this.groupEnemies, this.groupEnemies);
+ //   this.physics.add.collider(this.groupEnemies, this.groupEnemies);
 
-    //this.physics.add.collider(this.pikachuSprite, this.groupGemas);
+//    this.physics.add.collider(this.pikachuSprite, this.groupGemas);
 
-    // Colisiones entre enemigos y pikachu
-    //  this.physics.add.collider(this.pikachuSprite, this.groupEnemies);
+  // Colisiones entre enemigos y pikachu
+  //  this.physics.add.collider(this.pikachuSprite, this.groupEnemies);
 
-    //funcoin overlap 
-    //this.physics.add.overlap(this.pikachuSprite, this.groupGemas, () => collectGema(), null, this);
 
     // Camera zoom
     const camera = this.cameras.main;
@@ -171,15 +168,15 @@ export default class Game extends Phaser.Scene {
       music.play();
     }
  
-    
   }
 
   update(time, delta) {
+    
     this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} `, {
       font: "20px Press Start 2P",
       fill: "#E60026",
       padding: { x: 5, y: 3 },
       backgroundColor: "#fff88f"
-  }).setScrollFactor(0);
+    }).setScrollFactor(0);
   }
 }
