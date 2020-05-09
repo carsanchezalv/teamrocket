@@ -1,147 +1,21 @@
+import { data } from "./data.js";
 export default class Enemy extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, nombre) {
         super(scene, x, y, nombre);
 
-        let orientation = "down";
-        this.animation = "move_down_enemy"+nombre;
+        this.orientation = "down";
         this.nombre = nombre;
         // Atributos
-        this.vida = 20;
+        this.vida = 100;
         this.fuerza = 1;
         this.ataque = false;
         this.esHerido = false;
         this.numEnemy = this.scene.numEnemy;
         this.velocidad = 40;
 
- //       let ancho = this.frameWidth;
- //       let alto = this.frameHeight;
-
-        // Animacion movimientos
-        this.scene.anims.create({
-            key: 'move_down_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 1, end: 2 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'move_right_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 7, end: 8 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'move_up_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 13, end: 14 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'move_upright_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 10, end: 11 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'move_downright_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 4, end: 5 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        // Animacion ataque
-        this.scene.anims.create({
-            key: 'attack_down_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 32, end: 34 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'attack_right_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 40, end: 42 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'attack_up_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 48, end: 50 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'attack_upright_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 44, end: 46 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'attack_downright_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 36, end: 38 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        // Animacion evolucion 
-        this.scene.anims.create({
-            key: 'evolve_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 52, end: 54 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        // Animaciones daño
-        this.scene.anims.create({
-            key: 'damage_down_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 17, end: 17 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'damage_downright_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 18, end: 18 }),
-            frameRate: 2,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'damage_right_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 19, end: 19 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'damage_upright_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 20, end: 20 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'damage_up_enemy'+nombre,
-            frames: this.scene.anims.generateFrameNumbers('enemigo'+this.numEnemy, { start: 21, end: 21 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-
-   //     this.body.setSize(this.body.offset.x/3.40, this.body.offset.y/6.40);
-   //     this.body.offset.x = this.body.offset.x/3.00;
-   //     this.body.offset.y = this.body.offset.y/2.30;
-        this.body.setSize(14, 10);
-        this.body.offset.x = 16;
-        this.body.offset.y = 27;
 
         this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
@@ -244,6 +118,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             if(this.vida <= 0)
             {
                 this.destroy();
+                data.puntos += 10;
             }
         }
         else
@@ -302,10 +177,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         {
             
             this.scene.physics.add.collider(player, this, () => this.ataques());
-            
-  //          if(this.scene.physics.collider(player, this) && (!player.atacar))
-    //            this.atacar();
-            
 
             if(!this.ataque && !this.esHerido)
             {
@@ -364,6 +235,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.anims.play(this.animation, true);
             this.ataque = false;
             this.esHerido = false;
+        }
+        else
+        {
+            // escena GAME OVER
         }
     }
 }

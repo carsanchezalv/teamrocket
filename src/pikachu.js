@@ -8,7 +8,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.animation = "move_down";
 
     // Atributos
-    this.vida = 10000000000;
+    this.vida = 200;
     this.fuerza = 1;
     this.atacar = false;
     this.esHerido = false;
@@ -301,6 +301,10 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
      
       this.esHerido = false;
    //   this.atacar = false;
+    }
+    else
+    {
+      this.destroy();
     }
   }
 }

@@ -1,6 +1,9 @@
 import Pikachu from "./pikachu.js";
 import Enemy from "./enemy.js";
 import Gema from "./gema.js";
+import Fuego1 from "./fuego/fuego1.js";
+import Fuego2 from "./fuego/fuego2.js";
+import Fuego3 from "./fuego/fuego3.js";
 import { data } from "./data.js";
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -38,10 +41,10 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
 
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
-    this.load.spritesheet('enemigo0', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
-    this.load.spritesheet('enemigo1', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
-    this.load.spritesheet('enemigo2', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
-    this.load.spritesheet('enemigo3', 'assets/icons/personajes/Fuego/4.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('fuego1', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('fuego2', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('fuego3', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('fuego4', 'assets/icons/personajes/Fuego/4.png',{ frameWidth: 48, frameHeight: 48 });
   }
 
   create() {
@@ -77,7 +80,7 @@ export default class Game extends Phaser.Scene {
     this.borde.setCollisionBetween(0, 9999);
     this.mar.setCollisionBetween(0, 9999);
     this.rio.setCollisionBetween(0, 9999);
-  
+
     let x = 3778;
     let y = 2067;
     let z = 20;
@@ -85,6 +88,7 @@ export default class Game extends Phaser.Scene {
 
 
     this.pikachuSprite = new Pikachu(this, x, y);
+    
     //Gemas
     this.groupGemas = this.physics.add.group({
       classType: Gema,
@@ -104,6 +108,7 @@ export default class Game extends Phaser.Scene {
       z += 30; 
     }
     z = 50;
+    
     // Enemigos
     this.groupEnemies = this.physics.add.group({
       classType: Enemy,
@@ -116,15 +121,24 @@ export default class Game extends Phaser.Scene {
       removeCallback: null,
       createMultipleCallback: null
     });
-    
+
+    this.fuego1Sprite = new Fuego1(this, x + z, y - z);
+    z += 20;
+    this.groupEnemies.add(this.fuego1Sprite);
+    this.fuego2Sprite = new Fuego2(this, x + z, y - z);
+    z += 20;
+    this.groupEnemies.add(this.fuego2Sprite);
+    this.fuego3Sprite = new Fuego3(this, x + z, y - z);
+    z += 20;
+    this.groupEnemies.add(this.fuego3Sprite);
+   /* 
     for(let i = 0; i < 4; i++) {
       this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
       this.groupEnemies.add(this.enemigoSprite);
       this.numEnemy += 1;
       z += 30; 
     }
-
-
+    */
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);
@@ -138,15 +152,6 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.groupEnemies, this.mar);
     this.physics.add.collider(this.groupEnemies, this.rio);
     
-    // Colisiones entre enemigos
- //   this.physics.add.collider(this.groupEnemies, this.groupEnemies);
-
-//    this.physics.add.collider(this.pikachuSprite, this.groupGemas);
-
-  // Colisiones entre enemigos y pikachu
-  //  this.physics.add.collider(this.pikachuSprite, this.groupEnemies);
-
-
     // Camera zoom
     const camera = this.cameras.main;
     camera.setZoom(2);
@@ -167,7 +172,6 @@ export default class Game extends Phaser.Scene {
       let music = this.sound.add('musica_portada', config);
       music.play();
     }
- 
   }
 
   update(time, delta) {
