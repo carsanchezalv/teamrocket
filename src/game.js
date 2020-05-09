@@ -1,10 +1,41 @@
+import { data } from "./data.js";
+
+// Pikachu
 import Pikachu from "./pikachu.js";
+
+// Enemigo
 import Enemy from "./enemy.js";
+
+// Gemas
 import Gema from "./gema.js";
+
+// Fuego
 import Fuego1 from "./fuego/fuego1.js";
 import Fuego2 from "./fuego/fuego2.js";
 import Fuego3 from "./fuego/fuego3.js";
-import { data } from "./data.js";
+
+// Agua
+import Agua1 from "./agua/agua1.js";
+import Agua2 from "./agua/agua2.js";
+import Agua3 from "./agua/agua3.js";
+import Agua4 from "./agua/agua4.js";
+import Agua5 from "./agua/agua5.js";
+import Agua6 from "./agua/agua6.js";
+import Agua7 from "./agua/agua7.js";
+import Agua8 from "./agua/agua8.js";
+import Agua9 from "./agua/agua9.js";
+import Agua10 from "./agua/agua10.js";
+import Agua11 from "./agua/agua11.js";
+import Agua12 from "./agua/agua12.js";
+import Agua13 from "./agua/agua13.js";
+import Agua14 from "./agua/agua14.js";
+import Agua15 from "./agua/agua15.js";
+
+// Electricidad
+
+// Planta
+
+
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'game' });
