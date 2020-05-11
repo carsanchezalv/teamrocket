@@ -118,7 +118,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             if(this.vida <= 0)
             {
                 this.destroy();
-                data.puntos += 10;
+                data.puntos += 50;
             }
         }
         else
@@ -182,7 +182,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
             if(!this.ataque && !this.esHerido)
             {
-                if(distancia >= 5*24) // Se mueve libremente
+                if(distancia > 5*24) // Se mueve libremente
                 {
                //     let frecuencia = Phaser.Math.Between(-1, 1)
                     let velX = Phaser.Math.Between(-1, 1) * this.velocidad;

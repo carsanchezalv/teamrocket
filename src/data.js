@@ -1,5 +1,5 @@
 export let data = {
     musica: true,
     nombre: "",
-    puntos: 0
+    puntos: 50
 }
