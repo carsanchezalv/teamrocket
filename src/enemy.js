@@ -16,7 +16,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-
+        this.scene.physics.add.collider(this, this.scene.groupEnemies);
         this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
     }
