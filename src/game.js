@@ -18,18 +18,18 @@ import Fuego3 from "./fuego/fuego3.js";
 import Agua1 from "./agua/agua1.js";
 import Agua2 from "./agua/agua2.js";
 import Agua3 from "./agua/agua3.js";
-import Agua4 from "./agua/agua4.js";
-import Agua5 from "./agua/agua5.js";
-import Agua6 from "./agua/agua6.js";
-import Agua7 from "./agua/agua7.js";
-import Agua8 from "./agua/agua8.js";
-import Agua9 from "./agua/agua9.js";
-import Agua10 from "./agua/agua10.js";
-import Agua11 from "./agua/agua11.js";
-import Agua12 from "./agua/agua12.js";
-import Agua13 from "./agua/agua13.js";
-import Agua14 from "./agua/agua14.js";
-import Agua15 from "./agua/agua15.js";
+// import Agua4 from "./agua/agua4.js";
+// import Agua5 from "./agua/agua5.js";
+// import Agua6 from "./agua/agua6.js";
+// import Agua7 from "./agua/agua7.js";
+// import Agua8 from "./agua/agua8.js";
+// import Agua9 from "./agua/agua9.js";
+// import Agua10 from "./agua/agua10.js";
+// import Agua11 from "./agua/agua11.js";
+// import Agua12 from "./agua/agua12.js";
+// import Agua13 from "./agua/agua13.js";
+// import Agua14 from "./agua/agua14.js";
+// import Agua15 from "./agua/agua15.js";
 
 // Electricidad
 
@@ -68,14 +68,22 @@ export default class Game extends Phaser.Scene {
       "assets/music/portada.mp3"
     ]);
 
-     //gema
+    // Gema
     this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
 
+    // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
+    
+    // Fuego
     this.load.spritesheet('fuego1', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('fuego2', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('fuego3', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('fuego4', 'assets/icons/personajes/Fuego/4.png',{ frameWidth: 48, frameHeight: 48 });
+  
+    // Agua
+    this.load.spritesheet('agua1', 'assets/icons/personajes/Agua/1.png',{ frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('agua2', 'assets/icons/personajes/Agua/2.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua3', 'assets/icons/personajes/Agua/3.png',{ frameWidth: 48, frameHeight: 48 });
   }
 
   create() {
@@ -133,10 +141,18 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
     
-    for(let i = 0; i < 4; i++) {
-      this.gemaSprite = new Gema(this, x - z, y - z);
-      this.groupGemas.add(this.gemaSprite);
-      z += 30; 
+    this.numGemas = 250;
+  
+    while(this.numGemas > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 6096);
+      this.yRand = Phaser.Math.Between(0, 3827);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.gemaSprite = new Gema(this, this.xRand * 24, this.yRand * 24);
+        this.groupGemas.add(this.gemaSprite);
+        --this.numGemas;
+      }   
     }
     z = 50;
     
@@ -153,6 +169,8 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
+/*
+    // Fuego
     this.fuego1Sprite = new Fuego1(this, x + z, y - z);
     z += 20;
     this.groupEnemies.add(this.fuego1Sprite);
@@ -162,6 +180,22 @@ export default class Game extends Phaser.Scene {
     this.fuego3Sprite = new Fuego3(this, x + z, y - z);
     z += 20;
     this.groupEnemies.add(this.fuego3Sprite);
+
+
+
+    // Agua
+    this.agua1Sprite = new Agua1(this, x + z, y - z);
+    z += 20;
+    this.groupEnemies.add(this.agua1Sprite);
+ 
+    this.agua2Sprite = new Agua2(this, x + z, y - z);
+    z += 20;
+    this.groupEnemies.add(this.agua2Sprite);
+*/     
+    this.agua3Sprite = new Agua3(this, x + z, y - z);
+    z += 20;
+    this.groupEnemies.add(this.agua3Sprite);
+
    /* 
     for(let i = 0; i < 4; i++) {
       this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
