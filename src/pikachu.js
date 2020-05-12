@@ -418,7 +418,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.esHerido = false;
    //   this.atacar = false;
     }
-    else
+    else if(this.vida === 0)
     {
       this.destroy();
     }

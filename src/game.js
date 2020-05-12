@@ -19,19 +19,20 @@ import Agua1 from "./agua/agua1.js";
 import Agua2 from "./agua/agua2.js";
 import Agua3 from "./agua/agua3.js";
 // import Agua4 from "./agua/agua4.js";
-// import Agua5 from "./agua/agua5.js";
-// import Agua6 from "./agua/agua6.js";
-// import Agua7 from "./agua/agua7.js";
-// import Agua8 from "./agua/agua8.js";
-// import Agua9 from "./agua/agua9.js";
-// import Agua10 from "./agua/agua10.js";
-// import Agua11 from "./agua/agua11.js";
-// import Agua12 from "./agua/agua12.js";
+import Agua5 from "./agua/agua5.js";
+import Agua6 from "./agua/agua6.js";
+import Agua7 from "./agua/agua7.js";
+import Agua8 from "./agua/agua8.js";
+import Agua9 from "./agua/agua9.js";
+import Agua10 from "./agua/agua10.js";
+import Agua11 from "./agua/agua11.js";
+import Agua12 from "./agua/agua12.js";
 // import Agua13 from "./agua/agua13.js";
 // import Agua14 from "./agua/agua14.js";
 // import Agua15 from "./agua/agua15.js";
 
 // Electricidad
+
 
 // Planta
 
@@ -84,6 +85,14 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('agua1', 'assets/icons/personajes/Agua/1.png',{ frameWidth: 32, frameHeight: 48 });
     this.load.spritesheet('agua2', 'assets/icons/personajes/Agua/2.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua3', 'assets/icons/personajes/Agua/3.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua5', 'assets/icons/personajes/Agua/5.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua6', 'assets/icons/personajes/Agua/6.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua7', 'assets/icons/personajes/Agua/7.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('agua8', 'assets/icons/personajes/Agua/8.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua9', 'assets/icons/personajes/Agua/9.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua10', 'assets/icons/personajes/Agua/10.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua11', 'assets/icons/personajes/Agua/11.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua12', 'assets/icons/personajes/Agua/12.png',{ frameWidth: 96, frameHeight: 128 });
   }
 
   create() {
@@ -244,6 +253,104 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua5(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua6(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua7(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua8(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua9(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua10(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua11(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua12(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    this.aguaSprite = new Agua12(this, x + 20, y + 20);
+    this.groupEnemies.add(this.aguaSprite);
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
