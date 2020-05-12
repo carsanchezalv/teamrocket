@@ -7,7 +7,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
 
         this.animation = "brillo";
         // Atributos
-        this.valor = 1;
+        this.valor = 5;
         this.velocidad = 40;
         this.visible = true;
         this.numGema = 0;
@@ -19,20 +19,9 @@ export default class Gema extends Phaser.GameObjects.Sprite {
             frameRate: 7,
             repeat: 0
         });
-
-        // Animacion ataque
-
-        // Animacion evolucion 
-
-
-        // Animaciones daño
     
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-
-       // this.body.setSize(14, 10);
-       // this.body.offset.x = 16;
-        //this.body.offset.y = 27;
 
        this.play(this.animation, true);
        this.scene.physics.world.enableBody(this);
@@ -40,9 +29,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
     }
 
     collectGema(){
-        //Gema.kill(); 
         this.destroy();
-        //Gema.disableBody(player, gema);
         this.numGema++;
         data.puntos += this.valor;
     }

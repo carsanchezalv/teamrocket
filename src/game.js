@@ -1,6 +1,15 @@
+import { data } from "./data.js";
+
+// Pikachu
 import Pikachu from "./pikachu.js";
+
+// Enemigo
 import Enemy from "./enemy.js";
+
+// Gemas
 import Gema from "./gema.js";
+
+// Fuego
 import Fuego1 from "./fuego/fuego1.js";
 import Fuego2 from "./fuego/fuego2.js";
 import Fuego3 from "./fuego/fuego3.js";
@@ -13,6 +22,30 @@ import Fuego9 from "./fuego/fuego9.js";
 import Fuego10 from "./fuego/fuego10.js";
 import Fuego12 from "./fuego/fuego12.js";
 import { data } from "./data.js";
+
+// Agua
+import Agua1 from "./agua/agua1.js";
+import Agua2 from "./agua/agua2.js";
+import Agua3 from "./agua/agua3.js";
+// import Agua4 from "./agua/agua4.js";
+import Agua5 from "./agua/agua5.js";
+import Agua6 from "./agua/agua6.js";
+import Agua7 from "./agua/agua7.js";
+import Agua8 from "./agua/agua8.js";
+import Agua9 from "./agua/agua9.js";
+import Agua10 from "./agua/agua10.js";
+import Agua11 from "./agua/agua11.js";
+import Agua12 from "./agua/agua12.js";
+// import Agua13 from "./agua/agua13.js";
+// import Agua14 from "./agua/agua14.js";
+// import Agua15 from "./agua/agua15.js";
+
+// Electricidad
+
+
+// Planta
+
+
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'game' });
@@ -45,10 +78,13 @@ export default class Game extends Phaser.Scene {
       "assets/music/portada.mp3"
     ]);
 
-     //gema
+    // Gema
     this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
 
+    // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
+    
+    // Fuego
     this.load.spritesheet('fuego1', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('fuego2', 'assets/icons/personajes/Fuego/2.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('fuego3', 'assets/icons/personajes/Fuego/3.png',{ frameWidth: 48, frameHeight: 48 });
@@ -60,6 +96,19 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('fuego9', 'assets/icons/personajes/Fuego/9.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('fuego10', 'assets/icons/personajes/Fuego/10.png',{ frameWidth: 64, frameHeight: 64 });
     this.load.spritesheet('fuego12', 'assets/icons/personajes/Fuego/12.png',{ frameWidth: 48, frameHeight: 80 });
+  
+    // Agua
+    this.load.spritesheet('agua1', 'assets/icons/personajes/Agua/1.png',{ frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('agua2', 'assets/icons/personajes/Agua/2.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua3', 'assets/icons/personajes/Agua/3.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua5', 'assets/icons/personajes/Agua/5.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua6', 'assets/icons/personajes/Agua/6.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua7', 'assets/icons/personajes/Agua/7.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('agua8', 'assets/icons/personajes/Agua/8.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua9', 'assets/icons/personajes/Agua/9.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua10', 'assets/icons/personajes/Agua/10.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua11', 'assets/icons/personajes/Agua/11.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua12', 'assets/icons/personajes/Agua/12.png',{ frameWidth: 96, frameHeight: 128 });
   }
 
   create() {
@@ -118,10 +167,18 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
     
-    for(let i = 0; i < 4; i++) {
-      this.gemaSprite = new Gema(this, x - z, y - z);
-      this.groupGemas.add(this.gemaSprite);
-      z += 30; 
+    this.numGemas = 250;
+    this.tamano_celda = 24;
+    while(this.numGemas > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
+      this.yRand = Phaser.Math.Between(0, 3827/this.tamano_celda);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.gemaSprite = new Gema(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupGemas.add(this.gemaSprite);
+        --this.numGemas;
+      }   
     }
     z = 50;
     
@@ -277,58 +334,145 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    //this.fuego1Sprite = new Fuego1(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego1Sprite);
-
-    //this.fuego2Sprite = new Fuego2(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego2Sprite);
     
-    //this.fuego3Sprite = new Fuego3(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego3Sprite);
-
-    //this.fuego4Sprite = new Fuego4(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego4Sprite);
-
-    //this.fuego5Sprite = new Fuego5(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego5Sprite);
-
-    //this.fuego6Sprite = new Fuego6(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego6Sprite);
-   
-    //this.fuego7Sprite = new Fuego7(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego7Sprite);
-
-    //this.fuego8Sprite = new Fuego8(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego8Sprite);
-
-    //this.fuego9Sprite = new Fuego9(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego9Sprite);
-   
-    //this.fuego10Sprite = new Fuego10(this, x + z, y - z);
-    //z += 20;
-    //this.groupEnemies.add(this.fuego10Sprite);
-
     //this.fuego12Sprite = new Fuego12(this, x + z, y - z);
     //7z += 20;
     //this.groupEnemies.add(this.fuego12Sprite);
 
-    /* 
-    for(let i = 0; i < 4; i++) {
-      this.enemigoSprite = new Enemy(this, x + z, y + z, "enemigo"+this.numEnemy);
-      this.groupEnemies.add(this.enemigoSprite);
-      this.numEnemy += 1;
-      z += 30; 
+  // Agua
+   enemigosMismoTipo = 3;
+   while(enemigosMismoTipo > 0)
+   {
+     this.xRand = Phaser.Math.Between(0, 119);
+     this.yRand = Phaser.Math.Between(95, 147);
+     if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+     {
+       this.aguaSprite = new Agua1(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+       this.groupEnemies.add(this.aguaSprite);
+       enemigosMismoTipo--;
+     }
+   }
+   enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua2(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      }
     }
-    */
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua3(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua5(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua6(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua7(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua8(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua9(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua10(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua11(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua12(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);

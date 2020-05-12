@@ -16,7 +16,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-
+        this.scene.physics.add.collider(this, this.scene.groupEnemies);
         this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
     }
@@ -118,7 +118,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             if(this.vida <= 0)
             {
                 this.destroy();
-                data.puntos += 10;
+                data.puntos += 50;
             }
         }
         else
@@ -172,15 +172,26 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         super.preUpdate(t, dt);
         // Ataques y movimientos
         let player = this.scene.pikachuSprite;
-        
+        this.body.setVelocityX(0);
+        this.body.setVelocityY(0);
+
+        let distancia = Phaser.Math.Distance.Chebyshev(this.scene.pikachuSprite.x, this.scene.pikachuSprite.y, this.x, this.y);
         if(player.vida > 0 && this.vida > 0)
-        {
-            
+        {  
             this.scene.physics.add.collider(player, this, () => this.ataques());
 
             if(!this.ataque && !this.esHerido)
             {
-                this.scene.physics.moveTo(this, player.x, player.y, this.velocidad);
+                if(distancia > 6*24) // Se mueve libremente
+                {
+               //     let frecuencia = Phaser.Math.Between(-1, 1)
+                    let velX = Phaser.Math.Between(-1, 1) * this.velocidad;
+                    let velY = Phaser.Math.Between(-1, 1) * this.velocidad;
+                    this.body.setVelocityX(velX);
+                    this.body.setVelocityY(velY);
+                }
+                else // Se mueve hacia el jugador
+                    this.scene.physics.moveTo(this, player.x, player.y, this.velocidad);
 
                 // Animaciones           
                 if((this.body.velocity.x >= this.velocidad/2) && (this.body.velocity.y >= this.velocidad/2))
@@ -236,7 +247,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.ataque = false;
             this.esHerido = false;
         }
-        else
+        
+        else if(player.vida === 0)
         {
             // escena GAME OVER
         }
