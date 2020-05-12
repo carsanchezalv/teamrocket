@@ -349,8 +349,6 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    this.aguaSprite = new Agua12(this, x + 20, y + 20);
-    this.groupEnemies.add(this.aguaSprite);
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
