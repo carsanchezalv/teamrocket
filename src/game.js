@@ -21,7 +21,6 @@ import Fuego8 from "./fuego/fuego8.js";
 import Fuego9 from "./fuego/fuego9.js";
 import Fuego10 from "./fuego/fuego10.js";
 import Fuego12 from "./fuego/fuego12.js";
-import { data } from "./data.js";
 
 // Agua
 import Agua1 from "./agua/agua1.js";
