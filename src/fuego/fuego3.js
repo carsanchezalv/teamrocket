@@ -46,21 +46,21 @@ export default class Fuego3 extends Enemy {
         // Animacion ataque
         this.scene.anims.create({
             key: 'attack_down_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 32, end: 34 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 28, end: 29 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_right_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 40, end: 42 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 34, end: 35 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_up_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 48, end: 50 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 40, end: 41 }),
             frameRate: 4,
             repeat: 0
         });
@@ -74,7 +74,7 @@ export default class Fuego3 extends Enemy {
 
         this.scene.anims.create({
             key: 'attack_downright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 36, end: 38 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 31, end: 32 }),
             frameRate: 4,
             repeat: 0
         });
@@ -123,8 +123,8 @@ export default class Fuego3 extends Enemy {
             repeat: 0
         });
 
-        this.body.setSize(14, 15);
+        this.body.setSize(13, 13);
         this.body.offset.x = 17;
-        this.body.offset.y = 18;
+        this.body.offset.y = 19;
     }
 }

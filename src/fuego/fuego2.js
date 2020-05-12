@@ -46,35 +46,35 @@ export default class Fuego2 extends Enemy {
         // Animacion ataque
         this.scene.anims.create({
             key: 'attack_down_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 32, end: 34 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 27, end: 28 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_right_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 40, end: 42 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 31, end: 32 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_up_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 48, end: 50 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 35, end: 36 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_upright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 44, end: 46 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 33, end: 34 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_downright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 36, end: 38 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 29, end: 30 }),
             frameRate: 4,
             repeat: 0
         });
