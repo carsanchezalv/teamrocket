@@ -26,7 +26,7 @@ import Fuego12 from "./fuego/fuego12.js";
 import Agua1 from "./agua/agua1.js";
 import Agua2 from "./agua/agua2.js";
 import Agua3 from "./agua/agua3.js";
-// import Agua4 from "./agua/agua4.js";
+import Agua4 from "./agua/agua4.js";
 import Agua5 from "./agua/agua5.js";
 import Agua6 from "./agua/agua6.js";
 import Agua7 from "./agua/agua7.js";
@@ -35,12 +35,23 @@ import Agua9 from "./agua/agua9.js";
 import Agua10 from "./agua/agua10.js";
 import Agua11 from "./agua/agua11.js";
 import Agua12 from "./agua/agua12.js";
-// import Agua13 from "./agua/agua13.js";
-// import Agua14 from "./agua/agua14.js";
-// import Agua15 from "./agua/agua15.js";
+import Agua13 from "./agua/agua13.js";
+import Agua14 from "./agua/agua14.js";
+import Agua15 from "./agua/agua15.js";
+import Agua16 from "./agua/agua16.js";
 
 // Electricidad
-
+import Electricidad1 from "./electricidad/electricidad1.js";
+import Electricidad2 from "./electricidad/electricidad2.js";
+import Electricidad3 from "./electricidad/electricidad3.js";
+import Electricidad4 from "./electricidad/electricidad4.js";
+import Electricidad5 from "./electricidad/electricidad5.js";
+import Electricidad6 from "./electricidad/electricidad6.js";
+import Electricidad7 from "./electricidad/electricidad7.js";
+import Electricidad8 from "./electricidad/electricidad8.js";
+import Electricidad9 from "./electricidad/electricidad9.js";
+import Electricidad10 from "./electricidad/electricidad10.js";
+import Electricidad11 from "./electricidad/electricidad11.js";
 
 // Planta
 
@@ -100,6 +111,7 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('agua1', 'assets/icons/personajes/Agua/1.png',{ frameWidth: 32, frameHeight: 48 });
     this.load.spritesheet('agua2', 'assets/icons/personajes/Agua/2.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua3', 'assets/icons/personajes/Agua/3.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua4', 'assets/icons/personajes/Agua/4.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua5', 'assets/icons/personajes/Agua/5.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua6', 'assets/icons/personajes/Agua/6.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua7', 'assets/icons/personajes/Agua/7.png',{ frameWidth: 48, frameHeight: 64 });
@@ -108,6 +120,23 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('agua10', 'assets/icons/personajes/Agua/10.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua11', 'assets/icons/personajes/Agua/11.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('agua12', 'assets/icons/personajes/Agua/12.png',{ frameWidth: 96, frameHeight: 128 });
+    this.load.spritesheet('agua13', 'assets/icons/personajes/Agua/13.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('agua14', 'assets/icons/personajes/Agua/14.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('agua15', 'assets/icons/personajes/Agua/15.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('agua16', 'assets/icons/personajes/Agua/16.png',{ frameWidth: 48, frameHeight: 48 });
+
+    // Electricidad
+    this.load.spritesheet('electricidad1', 'assets/icons/personajes/Electricidad/1.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('electricidad2', 'assets/icons/personajes/Electricidad/2.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('electricidad3', 'assets/icons/personajes/Electricidad/3.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('electricidad4', 'assets/icons/personajes/Electricidad/4.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('electricidad5', 'assets/icons/personajes/Electricidad/5.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('electricidad6', 'assets/icons/personajes/Electricidad/6.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('electricidad7', 'assets/icons/personajes/Electricidad/7.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('electricidad8', 'assets/icons/personajes/Electricidad/8.png',{ frameWidth: 48, frameHeight: 80 });
+    this.load.spritesheet('electricidad9', 'assets/icons/personajes/Electricidad/9.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('electricidad10', 'assets/icons/personajes/Electricidad/10.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('electricidad11', 'assets/icons/personajes/Electricidad/11.png',{ frameWidth: 48, frameHeight: 64 });
   }
 
   create() {
@@ -182,7 +211,6 @@ export default class Game extends Phaser.Scene {
     z = 50;
     
     // Enemigos
-    
     this.groupEnemies = this.physics.add.group({
       classType: Enemy,
       defaultKey: null,
@@ -195,7 +223,7 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
-    //FUEGO
+    //Fuego
     let enemigosMismoTipo = 3;
     while(enemigosMismoTipo > 0)
     {
@@ -208,7 +236,6 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-
     enemigosMismoTipo = 3;
     while(enemigosMismoTipo > 0)
     {
@@ -333,10 +360,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    
-    //this.fuego12Sprite = new Fuego12(this, x + z, y - z);
-    //7z += 20;
-    //this.groupEnemies.add(this.fuego12Sprite);
+
 
   // Agua
    enemigosMismoTipo = 3;
@@ -371,6 +395,18 @@ export default class Game extends Phaser.Scene {
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
         this.aguaSprite = new Agua3(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      } 
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua4(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.aguaSprite);
         enemigosMismoTipo--;
       } 
@@ -469,8 +505,210 @@ export default class Game extends Phaser.Scene {
         this.aguaSprite = new Agua12(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.aguaSprite);
         enemigosMismoTipo--;
-      } 
+      }
     }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua13(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua14(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua15(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.aguaSprite = new Agua16(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.aguaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+
+    // Electricidad
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad1(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad2(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad3(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad4(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad5(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad6(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad7(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad8(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad9(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad10(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.electricidadSprite = new Electricidad11(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.electricidadSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    
+
+/*
+    // Planta
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta1(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    
+    this.plantaSprite = new Planta1(this, x + 20, y - 20);
+    this.groupEnemies.add(this.plantaSprite);
+*/
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);

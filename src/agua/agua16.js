@@ -1,10 +1,10 @@
 import Enemy from "../enemy.js";
 
-export default class Electricidad1 extends Enemy {
+export default class Agua16 extends Enemy {
 
     constructor(scene, x, y) {
-        super(scene, x, y, "electricidad1");
-        this.nombre = "electricidad1";
+        super(scene, x, y, "agua16");
+        this.nombre = "agua16";
         this.animation = "move_down_enemy"+this.nombre;
 
         // Animacion movimientos
@@ -46,35 +46,35 @@ export default class Electricidad1 extends Enemy {
         // Animacion ataque
         this.scene.anims.create({
             key: 'attack_down_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 32, end: 33 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 31, end: 31 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_right_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 35, end: 36 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 33, end: 33 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_up_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 41, end: 42 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 35, end: 35 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_upright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 38, end: 39 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 34, end: 34 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_downright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 29, end: 30 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 32, end: 32 }),
             frameRate: 4,
             repeat: 0
         });
@@ -82,35 +82,35 @@ export default class Electricidad1 extends Enemy {
         // Animaciones daño
         this.scene.anims.create({
             key: 'damage_down_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 17, end: 17 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'damage_downright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 18, end: 18 }),
-            frameRate: 2,
-            repeat: 0
-        });
-
-        this.scene.anims.create({
-            key: 'damage_right_enemy'+this.nombre,
             frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 19, end: 19 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
-            key: 'damage_upright_enemy'+this.nombre,
+            key: 'damage_downright_enemy'+this.nombre,
             frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 20, end: 20 }),
+            frameRate: 2,
+            repeat: 0
+        });
+
+        this.scene.anims.create({
+            key: 'damage_right_enemy'+this.nombre,
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 21, end: 21 }),
+            frameRate: 4,
+            repeat: 0
+        });
+
+        this.scene.anims.create({
+            key: 'damage_upright_enemy'+this.nombre,
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 22, end: 22 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'damage_up_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 21, end: 21 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 23, end: 23 }),
             frameRate: 4,
             repeat: 0
         });
