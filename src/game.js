@@ -757,10 +757,6 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
-
-    this.portalSprite = new Portal(this, x+20, y-20, "planta");
-    this.groupPortales.add(this.portalSprite);
-
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
