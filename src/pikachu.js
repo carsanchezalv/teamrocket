@@ -10,11 +10,15 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.animation = "move_down";
 
     // Atributos
-    this.vida = 200;
-    this.fuerza = 2;
+    this.vidaTotal = 200;
+    this.vida = this.vidaTotal;
+    this.fuerza = 5;
     this.atacar = false;
     this.esHerido = false;
     this.velocidad = 50;
+    this.inmune = false;
+    
+    this.efecto = "";
 
     // Animacion movimientos
     this.scene.anims.create({
@@ -366,7 +370,68 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
 
   preUpdate(t, dt) {
     super.preUpdate(t, dt);
+    
+    if(data.tiempoEfecto > 0)
+    {
+      data.tiempoEfecto--;
+      if(data.tiempoEfecto === 0)
+      {
+        this.efecto = "";
+        this.velocidad = 50;
+        this.fuerza = 5;
+        this.inmune = false;
+      }
+      else {
+        switch(this.efecto)
+        {
+          case "veneno": // Piramide morada. Te resta vida durante un tiempo
+            if(this.vida > 1)
+              this.vida--;
+          break;
 
+          case "ralentizar": // Pegamento. Te disminuye la velocidad poco a poco.
+            if(this.velocidad > 0)
+              this.velocidad--;
+          break;
+
+
+
+          case "frenar": // Flecha roja. Te divide la velocidad entre 2 de golpe
+          break;
+
+          case "parar": // Cruz. Velocidad a 0
+          break;
+
+          case "marear": // Remolino. Invierte tus movimientos
+          break;
+          
+          case "teletransportar": // Interrogacion. Te manda a donde sea
+          break;
+
+          case "curar": // Joya morada. Te recupera la vida
+          break;
+
+          case "minero": // Flecha morada abajo izquierda. Las gemas duplican su valor
+          break;
+
+          case "puntosperdidos": // Alcantarilla. Puntos a 0
+          break;
+
+          case "masfuerza": // Piramide roja cuadrada. Te duplica la fuerza
+          break;
+
+          case "menosfuerza": // Piramide roja pequeña. Te divide entre 2 la fuerza
+          break;
+
+          case "puntosrandom": // Ventilador. Te da o quita puntos aleatoriamente
+          break;
+
+          case "inmune": // Nido. Eres inmune
+          break;
+        }
+      }
+    }  
+    
     if(this.vida > 0)
     {
       const cursor = this.cursor;

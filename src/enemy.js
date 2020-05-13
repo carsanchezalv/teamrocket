@@ -113,6 +113,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                     this.animation = 'damage_right_enemy'+this.nombre;
                     break;
             }
+
             this.vida -= player.fuerza;
             
             if(this.vida <= 0)
@@ -159,11 +160,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                     this.animation = 'attack_right_enemy'+this.nombre;
                     break;
             }
-            player.vida -= this.fuerza;
-            player.esHerido = true;
-            if(player.vida < 0)
+
+            if(!player.inmune)
             {
-                player.vida = 0;
+                player.vida -= this.fuerza;
+                player.esHerido = true;
+                if(player.vida < 0)
+                {
+                    player.vida = 0;
+                }
             }
         }
     }

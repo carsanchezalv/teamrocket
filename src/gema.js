@@ -11,6 +11,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
         this.velocidad = 40;
         this.visible = true;
         this.numGema = 0;
+        
 
         // Animacion movimientos
         this.scene.anims.create({
@@ -29,13 +30,18 @@ export default class Gema extends Phaser.GameObjects.Sprite {
     }
 
     collectGema(){
+        this.valor = this.valor * data.bonusGemas;
+        data.puntos += this.valor;
         this.destroy();
         this.numGema++;
-        data.puntos += this.valor;
     }
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
+        if(data.tiempoEfecto === 0)
+        {
+            data.bonusGemas = 1;
+        }
         this.play(this.animation, true);
     }
 }

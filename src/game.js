@@ -931,7 +931,7 @@ export default class Game extends Phaser.Scene {
     {
       this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
       this.yRand = Phaser.Math.Between(0, 3827/this.tamano_celda);
-      this.tipoTrampilla = "trampa"+Phaser.Math.Between(1, 24);
+      this.tipoTrampilla = "trampa"+Phaser.Math.Between(7, 24);
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
         this.trampillaSprite = new Trampillas(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, this.tipoTrampilla);
@@ -939,7 +939,7 @@ export default class Game extends Phaser.Scene {
         --this.numTrampillas;
       }   
     }
-    
+
     this.groupPortales = this.physics.add.group({
       classType: Portal,
       defaultKey: null,
@@ -1039,7 +1039,7 @@ export default class Game extends Phaser.Scene {
 
   update(time, delta) {
     
-    this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} `, {
+    this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} \nVida: ${this.pikachuSprite.vida} \nFuerza: ${this.pikachuSprite.fuerza} \nVelocidad: ${this.pikachuSprite.velocidad} \nTiempo efecto: ${data.tiempoEfecto}`, {
       font: "20px Press Start 2P",
       fill: "#E60026",
       padding: { x: 5, y: 3 },

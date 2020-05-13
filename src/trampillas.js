@@ -7,44 +7,8 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
 
         this.animation = nombre;
         this.visible = false;
-
+        this.activo = true;
         // Animacion movimientos
-        this.scene.anims.create({
-            key: 'trampa1',
-            frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 0, end: 0 }),
-            frameRate: 1,
-            repeat: 0
-        });
-        this.scene.anims.create({
-            key: 'trampa2',
-            frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 1, end: 1 }),
-            frameRate: 1,
-            repeat: 0
-        });
-        this.scene.anims.create({
-            key: 'trampa3',
-            frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 2, end: 2 }),
-            frameRate: 1,
-            repeat: 0
-        });
-        this.scene.anims.create({
-            key: 'trampa4',
-            frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 3, end: 3 }),
-            frameRate: 1,
-            repeat: 0
-        });
-        this.scene.anims.create({
-            key: 'trampa5',
-            frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 4, end: 4 }),
-            frameRate: 1,
-            repeat: 0
-        });
-        this.scene.anims.create({
-            key: 'trampa6',
-            frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 5, end: 5 }),
-            frameRate: 1,
-            repeat: 0
-        });
         this.scene.anims.create({
             key: 'trampa7',
             frames: this.scene.anims.generateFrameNumbers('trampilla', { start: 6, end: 6 }),
@@ -164,82 +128,105 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
     }
 
     pisarTrampa() {
-        switch(this.animation)
+        if(this.activo)
         {
-            case "trampa1":
-            break;
+            switch(this.animation)
+            {
+                case "trampa7":
+                    data.puntos *= 2;
+                break;
 
-            case "trampa2":
-            break;
+                case "trampa8":
+                    this.scene.pikachuSprite.vida = this.scene.pikachuSprite.vidaTotal;
+                break;
 
-            case "trampa3":
-            break;
+                case "trampa9":
+                    data.bonusGemas = 2;
+                    data.tiempoEfecto = 200;
+                break;
 
-            case "trampa4":
-            break;
+                case "trampa10":
+                    this.scene.pikachuSprite.fuerza *= 2;
+                    data.tiempoEfecto = 200;
+                break;
 
-            case "trampa5":
-            break;
+                case "trampa11":
+                    // No hace nada
+                break;
 
-            case "trampa6":
-            break;
+                case "trampa12":
+                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.efecto = "ralentizar";
+                break;
 
-            case "trampa7":
-            break;
+                case "trampa13":
+                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.velocidad = 0;
+                break;
 
-            case "trampa8":
-            break;
+                case "trampa14":
+                    // No hace nada
+                break;
 
-            case "trampa9":
-            break;
+                case "trampa15":
+                    // No hace nada
+                break;
 
-            case "trampa10":
-            break;
+                case "trampa16":
+                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.efecto = "veneno";
+                break;
 
-            case "trampa11":
-            break;
+                case "trampa17":
+                    this.scene.pikachuSprite.fuerza = this.scene.pikachuSprite.fuerza / 2;
+                    data.tiempoEfecto = 200;
+                break;
 
-            case "trampa12":
-            break;
+                case "trampa18":
+                    data.puntos = Phaser.Math.Between(0, 5000);
+                break;
 
-            case "trampa13":
-            break;
+                case "trampa19":
+                    data.puntos = 0;
+                break;
 
-            case "trampa14":
-            break;
+                case "trampa20":
+                    this.scene.pikachuSprite.inmune = true;
+                    data.tiempoEfecto = 200;
+                break;
 
-            case "trampa15":
-            break;
+                case "trampa21":
+                    let sigue = true;
+                    while(sigue)
+                    {
+                        this.xRand = Phaser.Math.Between(0, 6096/24);
+                        this.yRand = Phaser.Math.Between(0, 3827/24);
+                        if(this.scene.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+                        {
+                            sigue = false;
+                            this.scene.pikachuSprite.x = this.xRand * 24;
+                            this.scene.pikachuSprite.y = this.yRand * 24;
+                        }
+                    }
+                break;
 
-            case "trampa16":
-            break;
+                case "trampa22":
+                    this.scene.pikachuSprite.velocidad *= -1;
+                    data.tiempoEfecto = 200;
+                break;
 
-            case "trampa17":
-            break;
+                case "trampa23":
+                    // No hace nada
+                break;
 
-            case "trampa18":
-            break;
-
-            case "trampa19":
-            break;
-
-            case "trampa20":
-            break;
-
-            case "trampa21":
-            break;
-
-            case "trampa22":
-            break;
-
-            case "trampa23":
-            break;
-
-            case "trampa24":
-            break;
+                case "trampa24":
+                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.velocidad = this.scene.pikachuSprite.velocidad / 2;
+                break;
+            }
+            this.setVisible(true);
+            this.activo = false;
         }
-        this.anims.play(this.animation);
-        this.setVisible(true);
     }
 
     preUpdate(t, dt) {
