@@ -14,6 +14,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.fuerza = 2;
     this.atacar = false;
     this.esHerido = false;
+    this.velocidad = 50;
 
     // Animacion movimientos
     this.scene.anims.create({
@@ -232,39 +233,39 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     {
       data.puntos--;
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(50*3);
-        this.body.setVelocityY(-50*3);
+        this.body.setVelocityX(this.velocidad*3);
+        this.body.setVelocityY(-this.velocidad*3);
         this.orientation = "upright";
         this.flipX = false;
         this.animation = "move_upright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-50*3);
-        this.body.setVelocityY(-50*3);
+        this.body.setVelocityX(-this.velocidad*3);
+        this.body.setVelocityY(-this.velocidad*3);
         this.orientation = "upleft";
         this.flipX = true;
         this.animation = "move_upright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(50*3);
-        this.body.setVelocityY(50*3);
+        this.body.setVelocityX(this.velocidad*3);
+        this.body.setVelocityY(this.velocidad*3);
         this.orientation = "downright";
         this.flipX = false;
         this.animation = "move_downright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-50*3);
-        this.body.setVelocityY(50*3);
+        this.body.setVelocityX(-this.velocidad*3);
+        this.body.setVelocityY(this.velocidad*3);
         this.orientation = "downleft";
         this.flipX = true;
         this.animation = "move_downright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.right.isDown) {
-        this.body.setVelocityX(50*3);
+        this.body.setVelocityX(this.velocidad*3);
         this.body.setVelocityY(0);
         this.orientation = "right";
         this.flipX = false;
@@ -272,7 +273,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.left.isDown) {
-        this.body.setVelocityX(-50*3);
+        this.body.setVelocityX(-this.velocidad*3);
         this.body.setVelocityY(0);
         this.orientation = "left";
         this.flipX = true;
@@ -281,14 +282,14 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
       else if (this.cursor.up.isDown) {
         this.body.setVelocityX(0);
-        this.body.setVelocityY(-50*3);
+        this.body.setVelocityY(-this.velocidad*3);
         this.orientation = "up";
         this.animation = "move_up_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown) {
         this.body.setVelocityX(0);
-        this.body.setVelocityY(50*3);
+        this.body.setVelocityY(this.velocidad*3);
         this.orientation = "down";
         this.animation = "move_down_fast";
         this.anims.play(this.animation, true);
@@ -299,39 +300,39 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     else
     {
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(50);
-        this.body.setVelocityY(-50);
+        this.body.setVelocityX(this.velocidad);
+        this.body.setVelocityY(-this.velocidad);
         this.orientation = "upright";
         this.flipX = false;
         this.animation = "move_upright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-50);
-        this.body.setVelocityY(-50);
+        this.body.setVelocityX(-this.velocidad);
+        this.body.setVelocityY(-this.velocidad);
         this.orientation = "upleft";
         this.flipX = true;
         this.animation = "move_upright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(50);
-        this.body.setVelocityY(50);
+        this.body.setVelocityX(this.velocidad);
+        this.body.setVelocityY(this.velocidad);
         this.orientation = "downright";
         this.flipX = false;
         this.animation = "move_downright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-50);
-        this.body.setVelocityY(50);
+        this.body.setVelocityX(-this.velocidad);
+        this.body.setVelocityY(this.velocidad);
         this.orientation = "downleft";
         this.flipX = true;
         this.animation = "move_downright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.right.isDown) {
-        this.body.setVelocityX(50);
+        this.body.setVelocityX(this.velocidad);
         this.body.setVelocityY(0);
         this.orientation = "right";
         this.flipX = false;
@@ -339,7 +340,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.left.isDown) {
-        this.body.setVelocityX(-50);
+        this.body.setVelocityX(-this.velocidad);
         this.body.setVelocityY(0);
         this.orientation = "left";
         this.flipX = true;
@@ -348,14 +349,14 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
       else if (this.cursor.up.isDown) {
         this.body.setVelocityX(0);
-        this.body.setVelocityY(-50);
+        this.body.setVelocityY(-this.velocidad);
         this.orientation = "up";
         this.animation = "move_up";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown) {
         this.body.setVelocityX(0);
-        this.body.setVelocityY(50);
+        this.body.setVelocityY(this.velocidad);
         this.orientation = "down";
         this.animation = "move_down";
         this.anims.play(this.animation, true);
