@@ -913,10 +913,6 @@ export default class Game extends Phaser.Scene {
       }
     }
     
-    this.plantaSprite = new Planta1(this, x + 20, y - 20);
-    this.groupEnemies.add(this.plantaSprite);
-
-
     this.groupTrampillas = this.physics.add.group({
       classType: Trampillas,
       defaultKey: null,
