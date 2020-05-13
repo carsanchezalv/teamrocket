@@ -54,7 +54,21 @@ import Electricidad10 from "./electricidad/electricidad10.js";
 import Electricidad11 from "./electricidad/electricidad11.js";
 
 // Planta
-
+import Planta1 from "./planta/planta1.js";
+import Planta2 from "./planta/planta2.js";
+import Planta3 from "./planta/planta3.js";
+import Planta4 from "./planta/planta4.js";
+import Planta5 from "./planta/planta5.js";
+import Planta6 from "./planta/planta6.js";
+import Planta7 from "./planta/planta7.js";
+import Planta8 from "./planta/planta8.js";
+import Planta9 from "./planta/planta9.js";
+import Planta10 from "./planta/planta10.js";
+import Planta11 from "./planta/planta11.js";
+import Planta12 from "./planta/planta12.js";
+import Planta13 from "./planta/planta13.js";
+import Planta14 from "./planta/planta14.js";
+import Planta15 from "./planta/planta15.js";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -137,6 +151,23 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('electricidad9', 'assets/icons/personajes/Electricidad/9.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('electricidad10', 'assets/icons/personajes/Electricidad/10.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('electricidad11', 'assets/icons/personajes/Electricidad/11.png',{ frameWidth: 48, frameHeight: 64 });
+
+    //Planta
+    this.load.spritesheet('planta1', 'assets/icons/personajes/Planta/1.png',{ frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('planta2', 'assets/icons/personajes/Planta/2.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta3', 'assets/icons/personajes/Planta/3.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta4', 'assets/icons/personajes/Planta/4.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('planta5', 'assets/icons/personajes/Planta/5.png',{ frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('planta6', 'assets/icons/personajes/Planta/6.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('planta7', 'assets/icons/personajes/Planta/7.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta8', 'assets/icons/personajes/Planta/8.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('planta9', 'assets/icons/personajes/Planta/9.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta10', 'assets/icons/personajes/Planta/10.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('planta11', 'assets/icons/personajes/Planta/11.png',{ frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('planta12', 'assets/icons/personajes/Planta/12.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta13', 'assets/icons/personajes/Planta/13.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta14', 'assets/icons/personajes/Planta/14.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('planta15', 'assets/icons/personajes/Planta/15.png',{ frameWidth: 48, frameHeight: 64 });
   }
 
   create() {
@@ -691,7 +722,7 @@ export default class Game extends Phaser.Scene {
     }
     
 
-/*
+
     // Planta
     enemigosMismoTipo = 3;
     while(enemigosMismoTipo > 0)
@@ -705,11 +736,175 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta2(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta3(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta4(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta5(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta6(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta7(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta8(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta9(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta10(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta11(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta12(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta13(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta14(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
+    enemigosMismoTipo = 3;
+    while(enemigosMismoTipo > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.plantaSprite = new Planta15(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
+        this.groupEnemies.add(this.plantaSprite);
+        enemigosMismoTipo--;
+      }
+    }
     
-    this.plantaSprite = new Planta1(this, x + 20, y - 20);
-    this.groupEnemies.add(this.plantaSprite);
-*/
-
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);
