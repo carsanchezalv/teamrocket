@@ -9,6 +9,12 @@ import Enemy from "./enemy.js";
 // Gemas
 import Gema from "./gema.js";
 
+// Trampillas
+import Trampillas from './trampillas.js';
+
+// Portales
+import Portal from './portal.js';
+
 // Fuego
 import Fuego1 from "./fuego/fuego1.js";
 import Fuego2 from "./fuego/fuego2.js";
@@ -168,6 +174,11 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('planta13', 'assets/icons/personajes/Planta/13.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('planta14', 'assets/icons/personajes/Planta/14.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('planta15', 'assets/icons/personajes/Planta/15.png',{ frameWidth: 48, frameHeight: 64 });
+    // Trampillas
+    this.load.spritesheet('trampilla', 'assets/tiles/dungeon-common.png',{ frameWidth: 24, frameHeight: 24 });
+
+    // Portal
+    this.load.spritesheet('portal', 'assets/tiles/portal.png',{ frameWidth: 256, frameHeight: 256 });
   }
 
   create() {
@@ -210,7 +221,6 @@ export default class Game extends Phaser.Scene {
     this.numEnemy = 0;
     this.tamano_celda = 24;
 
-
     this.pikachuSprite = new Pikachu(this, x, y);
     
     //Gemas
@@ -227,7 +237,7 @@ export default class Game extends Phaser.Scene {
     });
     
     this.numGemas = 250;
-    this.tamano_celda = 24;
+   
     while(this.numGemas > 0)
     {
       this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
@@ -720,8 +730,6 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    
-
 
     // Planta
     enemigosMismoTipo = 3;
@@ -905,6 +913,98 @@ export default class Game extends Phaser.Scene {
       }
     }
     
+    this.plantaSprite = new Planta1(this, x + 20, y - 20);
+    this.groupEnemies.add(this.plantaSprite);
+
+
+    this.groupTrampillas = this.physics.add.group({
+      classType: Trampillas,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+
+    this.numTrampillas = 50;
+    while(this.numTrampillas > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
+      this.yRand = Phaser.Math.Between(0, 3827/this.tamano_celda);
+      this.tipoTrampilla = "trampa"+Phaser.Math.Between(1, 24);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.trampillaSprite = new Trampillas(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, this.tipoTrampilla);
+        this.groupTrampillas.add(this.trampillaSprite);
+        --this.numTrampillas;
+      }   
+    }
+    
+    this.groupPortales = this.physics.add.group({
+      classType: Portal,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+
+    this.numPortal = 1;
+    while(this.numPortal > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 112);
+      this.yRand = Phaser.Math.Between(0, 69);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "planta");
+        this.groupPortales.add(this.portalSprite);
+        --this.numPortal;
+      }   
+    }
+    
+    this.numPortal = 1;
+    while(this.numPortal > 0)
+    {
+      this.xRand = Phaser.Math.Between(183, 280);
+      this.yRand = Phaser.Math.Between(0, 77);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "fuego");
+        this.groupPortales.add(this.portalSprite);
+        --this.numPortal;
+      }   
+    }
+    this.numPortal = 1;
+    while(this.numPortal > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 119);
+      this.yRand = Phaser.Math.Between(95, 147);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "agua");
+        this.groupPortales.add(this.portalSprite);
+        --this.numPortal;
+      }   
+    }
+    this.numPortal = 1;
+    while(this.numPortal > 0)
+    {
+      this.xRand = Phaser.Math.Between(188, 268);
+      this.yRand = Phaser.Math.Between(102, 152);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "electricidad");
+        this.groupPortales.add(this.portalSprite);
+        --this.numPortal;
+      }   
+    }
+
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);
