@@ -9,6 +9,9 @@ import Enemy from "./enemy.js";
 // Gemas
 import Gema from "./gema.js";
 
+// Trampillas
+import Trampillas from './trampillas.js';
+
 // Fuego
 import Fuego1 from "./fuego/fuego1.js";
 import Fuego2 from "./fuego/fuego2.js";
@@ -137,6 +140,9 @@ export default class Game extends Phaser.Scene {
     this.load.spritesheet('electricidad9', 'assets/icons/personajes/Electricidad/9.png',{ frameWidth: 48, frameHeight: 48 });
     this.load.spritesheet('electricidad10', 'assets/icons/personajes/Electricidad/10.png',{ frameWidth: 48, frameHeight: 64 });
     this.load.spritesheet('electricidad11', 'assets/icons/personajes/Electricidad/11.png',{ frameWidth: 48, frameHeight: 64 });
+
+    // Trampillas
+    this.load.spritesheet('trampilla', 'assets/tiles/dungeon-common.png',{ frameWidth: 24, frameHeight: 24 });
   }
 
   create() {
@@ -179,7 +185,6 @@ export default class Game extends Phaser.Scene {
     this.numEnemy = 0;
     this.tamano_celda = 24;
 
-
     this.pikachuSprite = new Pikachu(this, x, y);
     
     //Gemas
@@ -196,7 +201,7 @@ export default class Game extends Phaser.Scene {
     });
     
     this.numGemas = 250;
-    this.tamano_celda = 24;
+   
     while(this.numGemas > 0)
     {
       this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
@@ -689,8 +694,6 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    
-
 /*
     // Planta
     enemigosMismoTipo = 3;
@@ -709,6 +712,32 @@ export default class Game extends Phaser.Scene {
     this.plantaSprite = new Planta1(this, x + 20, y - 20);
     this.groupEnemies.add(this.plantaSprite);
 */
+
+    this.groupTrampillas = this.physics.add.group({
+      classType: Trampillas,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+
+    this.numTrampillas = 50;
+    while(this.numTrampillas > 0)
+    {
+      this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
+      this.yRand = Phaser.Math.Between(0, 3827/this.tamano_celda);
+      this.tipoTrampilla = "trampa"+Phaser.Math.Between(1, 24);
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      {
+        this.trampillaSprite = new Trampillas(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, this.tipoTrampilla);
+        this.groupTrampillas.add(this.trampillaSprite);
+        --this.numTrampillas;
+      }   
+    }
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
