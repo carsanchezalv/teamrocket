@@ -913,6 +913,7 @@ export default class Game extends Phaser.Scene {
       }
     }
     
+
     this.groupTrampillas = this.physics.add.group({
       classType: Trampillas,
       defaultKey: null,

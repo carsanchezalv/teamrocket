@@ -123,8 +123,8 @@ export default class Planta1 extends Enemy {
             repeat: 0
         });
 
-        this.body.setSize(14, 10);
-        this.body.offset.x = 16;
-        this.body.offset.y = 27;
+        this.body.setSize(14, 12);
+        this.body.offset.x = 9;
+        this.body.offset.y = 18;
     }
 }
