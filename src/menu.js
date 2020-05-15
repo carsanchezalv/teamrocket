@@ -64,22 +64,6 @@ export default class Menu extends Phaser.Scene {
                 musica.text = "Desactivar musica"
             }
         })
-        /*
-        this.cursor = this.input.keyboard.createCursorKeys();
-        if(this.cursor.space.isDown)
-        {
-            if(data.musica)
-           {
-                data.musica = false;
-                musica.text = "SPACE: Desactivar musica"
-           }
-           else
-           {
-                data.musica = true;
-                musica.text = "SPACE: Activar musica"
-           }
-        }
-        */
 
     // Botón pantalla completa
        let pantalla = this.add.text( this.scale.width / 2 + 200, this.scale.height / 2 + 50, 'Activar pantalla completa', {
