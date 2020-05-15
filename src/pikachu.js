@@ -9,6 +9,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.orientation = "down";
     this.animation = "move_down";
 
+  
     // Atributos
     this.vidaTotal = 200;
     this.vida = this.vidaTotal;
@@ -17,7 +18,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.esHerido = false;
     this.velocidad = 50;
     this.inmune = false;
-    
+    this.puedeActuar = true;
     this.efecto = "";
 
     // Animacion movimientos
@@ -186,12 +187,14 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       left: 'left',
       right: 'right',
       space: 'space',
-      control:'ctrl'
+      control:'c'
     });
   }
 
   actuar() {
-    if (this.cursor.space.isDown) {
+    if (this.cursor.space.isDown && this.puedeActuar) {
+     
+      this.puedeActuar = false;
       this.atacar = true;
       if (this.orientation === "down") {
         this.animation = "attack_down";
@@ -232,8 +235,16 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.flipX = true;
         this.anims.play(this.animation, true);
       }
+
+      this.scene.time.addEvent({
+        delay: 1000,
+        callback: () => {
+            this.puedeActuar = true;
+        },
+        loop: false
+      });
     }
-    else if(this.cursor.control.isDown && data.puntos > 0)
+    else if(this.cursor.control.isDown && data.puntos > 0 && this.puedeActuar)
     {
       data.puntos--;
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
@@ -301,7 +312,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       else
         data.puntos++; // Se le devuelven los puntos
     }
-    else
+    else if(this.puedeActuar)
     {
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
         this.body.setVelocityX(this.velocidad);
@@ -393,56 +404,22 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
             if(this.velocidad > 0)
               this.velocidad--;
           break;
-
-
-
-          case "frenar": // Flecha roja. Te divide la velocidad entre 2 de golpe
-          break;
-
-          case "parar": // Cruz. Velocidad a 0
-          break;
-
-          case "marear": // Remolino. Invierte tus movimientos
-          break;
-          
-          case "teletransportar": // Interrogacion. Te manda a donde sea
-          break;
-
-          case "curar": // Joya morada. Te recupera la vida
-          break;
-
-          case "minero": // Flecha morada abajo izquierda. Las gemas duplican su valor
-          break;
-
-          case "puntosperdidos": // Alcantarilla. Puntos a 0
-          break;
-
-          case "masfuerza": // Piramide roja cuadrada. Te duplica la fuerza
-          break;
-
-          case "menosfuerza": // Piramide roja pequeña. Te divide entre 2 la fuerza
-          break;
-
-          case "puntosrandom": // Ventilador. Te da o quita puntos aleatoriamente
-          break;
-
-          case "inmune": // Nido. Eres inmune
-          break;
         }
       }
     }  
     
-    if(this.vida > 0)
+    if(this.vida > 0)// && this.puedeActuar)
     {
       const cursor = this.cursor;
-
+      
       this.body.setVelocityX(0);
       this.body.setVelocityY(0);
       
       this.actuar();
       
-      if(this.esHerido && !this.atacar)
+      if(this.esHerido && !this.atacar && this.puedeActuar)
       {
+        this.puedeActuar = false;
         switch(this.orientation)
         {
           case "up": 
@@ -477,16 +454,22 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
               this.flipX = true;
               this.animation = 'damage_right';
               break;
+            
         }
+        this.timer = this.scene.time.addEvent({
+            delay: 500,
+            callback: () => {
+                this.puedeActuar = true;
+            },
+            loop: false
+        });
         this.anims.play(this.animation, true);
       }
-     
-      this.esHerido = false;
+      
+     this.esHerido = false;
    //   this.atacar = false;
     }
     else if(this.vida === 0)
-    {
       this.destroy();
-    }
   }
 }
