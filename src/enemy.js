@@ -65,6 +65,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             }
             player.vida -= this.fuerza;
             player.esHerido = true;
+
+            this.scene.barraEstado.animacionHerido = true;
             if(player.vida < 0)
             {
                 player.vida = 0;
@@ -75,7 +77,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     ataques() {
 
         let player = this.scene.pikachuSprite;
-        
+       
         if(player.atacar && this.puedeActuar)
         {
             this.puedeActuar = false;

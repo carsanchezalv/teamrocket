@@ -76,6 +76,9 @@ import Planta13 from "./planta/planta13.js";
 import Planta14 from "./planta/planta14.js";
 import Planta15 from "./planta/planta15.js";
 
+// Barra estado
+import Estado from "./estado.js";
+
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'game' });
@@ -179,6 +182,20 @@ export default class Game extends Phaser.Scene {
 
     // Portal
     this.load.spritesheet('portal', 'assets/tiles/portal.png',{ frameWidth: 256, frameHeight: 256 });
+  
+    // Barra vida
+    this.load.image('vida10', 'assets/estado/VIDA_10.png');
+    this.load.image('vida9', 'assets/estado/VIDA_9.png');
+    this.load.image('vida8', 'assets/estado/VIDA_8.png');
+    this.load.image('vida7', 'assets/estado/VIDA_7.png');
+    this.load.image('vida6', 'assets/estado/VIDA_6.png');
+    this.load.image('vida5', 'assets/estado/VIDA_5.png');
+    this.load.image('vida4', 'assets/estado/VIDA_4.png');
+    this.load.image('vida3', 'assets/estado/VIDA_3.png');
+    this.load.image('vida2', 'assets/estado/VIDA_2.png');
+    this.load.image('vida1', 'assets/estado/VIDA_1.png');
+    this.load.image('vida0', 'assets/estado/VIDA_0.png');
+    this.load.image('vidahit', 'assets/estado/VIDA_HIT.png');
   }
 
   create() {
@@ -1002,6 +1019,15 @@ export default class Game extends Phaser.Scene {
       }   
     }
 
+    this.barraEstado = new Estado(this, this.pikachuSprite.x, this.pikachuSprite.y - 30);
+    
+
+
+    this.plantaSprite = new Planta5(this, this.pikachuSprite.x + 40, this.pikachuSprite.y + 40);
+    this.groupEnemies.add(this.plantaSprite);
+
+
+
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);
@@ -1039,11 +1065,13 @@ export default class Game extends Phaser.Scene {
 
   update(time, delta) {
     
+    /*
     this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} \nVida: ${this.pikachuSprite.vida} \nFuerza: ${this.pikachuSprite.fuerza} \nVelocidad: ${this.pikachuSprite.velocidad} \nTiempo efecto: ${data.tiempoEfecto}`, {
       font: "20px Press Start 2P",
       fill: "#E60026",
       padding: { x: 5, y: 3 },
       backgroundColor: "#fff88f"
     }).setScrollFactor(0);
+  */
   }
 }

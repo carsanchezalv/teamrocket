@@ -11,7 +11,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
 
   
     // Atributos
-    this.vidaTotal = 200;
+    this.vidaTotal = 100;
     this.vida = this.vidaTotal;
     this.fuerza = 5;
     this.atacar = false;
@@ -456,6 +456,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
               break;
             
         }
+        this.scene.barraEstado.animacionHerido = true;
         this.timer = this.scene.time.addEvent({
             delay: 500,
             callback: () => {
@@ -470,6 +471,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
    //   this.atacar = false;
     }
     else if(this.vida === 0)
+    {
+      this.esHerido = false;
       this.destroy();
+    }  
   }
 }
