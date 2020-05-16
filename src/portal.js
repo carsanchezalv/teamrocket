@@ -4,7 +4,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, isla) {
         super(scene, x, y, 'portal');
-
+        this.escena = scene;
         this.isla = isla;
         this.animation = "estatico";
         this.visible = true;
@@ -28,7 +28,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
 
        this.anims.play(this.animation, true);
        this.scene.physics.world.enableBody(this);
-       this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.entrarEnPortal());
+    //   this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.entrarEnPortal());
 
        this.body.setSize(130, 130);
        this.body.offset.x = 62;
@@ -39,8 +39,12 @@ export default class Portal extends Phaser.GameObjects.Sprite {
     {
         this.animation = "teletransporte";
         this.anims.play(this.animation, true);
-    
+        
         // Escena jefes dependiendo de la isla
+        if(this.isla === "planta")
+        {
+            this.escena.start('jefePlanta');
+        }
         // this.destroy();
     }
 

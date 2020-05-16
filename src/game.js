@@ -283,7 +283,7 @@ export default class Game extends Phaser.Scene {
     });
 
     //Fuego
-    let enemigosMismoTipo = 2;
+    let enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -295,7 +295,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -307,7 +307,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -320,7 +320,7 @@ export default class Game extends Phaser.Scene {
       }
     }
     
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -332,7 +332,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -345,7 +345,7 @@ export default class Game extends Phaser.Scene {
       }
     }
 
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -357,7 +357,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -370,7 +370,7 @@ export default class Game extends Phaser.Scene {
       }
     }
 
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -382,7 +382,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -395,7 +395,7 @@ export default class Game extends Phaser.Scene {
       }
     }
 
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -407,7 +407,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(183, 280);
@@ -422,7 +422,7 @@ export default class Game extends Phaser.Scene {
 
 
   // Agua
-   enemigosMismoTipo = 2;
+   enemigosMismoTipo = 1;
    while(enemigosMismoTipo > 0)
    {
      this.xRand = Phaser.Math.Between(0, 119);
@@ -434,7 +434,7 @@ export default class Game extends Phaser.Scene {
        enemigosMismoTipo--;
      }
    }
-   enemigosMismoTipo = 2;
+   enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -446,7 +446,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -458,7 +458,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -470,7 +470,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -482,7 +482,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -494,7 +494,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -506,7 +506,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -518,7 +518,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -530,7 +530,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -542,7 +542,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -554,7 +554,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       } 
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -566,7 +566,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -578,7 +578,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -590,7 +590,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -602,7 +602,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 119);
@@ -616,7 +616,7 @@ export default class Game extends Phaser.Scene {
     }
 
     // Electricidad
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -628,7 +628,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -640,7 +640,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -652,7 +652,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -664,7 +664,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -676,7 +676,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -688,7 +688,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -700,7 +700,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -712,7 +712,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -724,7 +724,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -736,7 +736,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(188, 268);
@@ -750,7 +750,7 @@ export default class Game extends Phaser.Scene {
     }
 
     // Planta
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -762,7 +762,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -774,7 +774,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -786,7 +786,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -798,7 +798,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -810,7 +810,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -822,7 +822,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -834,7 +834,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -846,7 +846,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -858,7 +858,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -870,7 +870,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -882,7 +882,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -894,7 +894,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -906,7 +906,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -918,7 +918,7 @@ export default class Game extends Phaser.Scene {
         enemigosMismoTipo--;
       }
     }
-    enemigosMismoTipo = 2;
+    enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
     {
       this.xRand = Phaser.Math.Between(0, 112);
@@ -931,7 +931,6 @@ export default class Game extends Phaser.Scene {
       }
     }
     
-
     this.groupTrampillas = this.physics.add.group({
       classType: Trampillas,
       defaultKey: null,
@@ -957,7 +956,7 @@ export default class Game extends Phaser.Scene {
         --this.numTrampillas;
       }   
     }
-
+/*
     this.groupPortales = this.physics.add.group({
       classType: Portal,
       defaultKey: null,
@@ -969,7 +968,12 @@ export default class Game extends Phaser.Scene {
       removeCallback: null,
       createMultipleCallback: null
     });
-
+*/
+/*
+    this.portal0Sprite = new Portal(this, x + 20, y + 20, "planta");
+    this.groupPortales.add(this.portal0Sprite);
+    this.physics.add.overlap(this.portal0Sprite, this.pikachuSprite, () => this.scene.start("jefePlanta"));
+*/
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -977,8 +981,9 @@ export default class Game extends Phaser.Scene {
       this.yRand = Phaser.Math.Between(0, 69);
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
-        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "planta");
-        this.groupPortales.add(this.portalSprite);
+        this.portal1Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "planta");
+        this.physics.add.overlap(this.portal1Sprite, this.pikachuSprite, () => this.scene.start("jefePlanta"));
+    //    this.groupPortales.add(this.portal1Sprite);
         --this.numPortal;
       }   
     }
@@ -990,8 +995,9 @@ export default class Game extends Phaser.Scene {
       this.yRand = Phaser.Math.Between(0, 77);
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
-        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "fuego");
-        this.groupPortales.add(this.portalSprite);
+        this.portal2Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "fuego");
+        
+    //    this.groupPortales.add(this.portal2Sprite);
         --this.numPortal;
       }   
     }
@@ -1002,8 +1008,8 @@ export default class Game extends Phaser.Scene {
       this.yRand = Phaser.Math.Between(95, 147);
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
-        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "agua");
-        this.groupPortales.add(this.portalSprite);
+        this.portal3Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "agua");
+  //      this.groupPortales.add(this.portal3Sprite);
         --this.numPortal;
       }   
     }
@@ -1014,8 +1020,8 @@ export default class Game extends Phaser.Scene {
       this.yRand = Phaser.Math.Between(102, 152);
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
-        this.portalSprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "electricidad");
-        this.groupPortales.add(this.portalSprite);
+        this.portal4Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "electricidad");
+   //     this.groupPortales.add(this.portal4Sprite);
         --this.numPortal;
       }   
     }

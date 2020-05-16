@@ -80,6 +80,5 @@ export default class Estado extends Phaser.GameObjects.Sprite {
                 this.setTexture('vida0')
             }
         }
-        
     }
 }

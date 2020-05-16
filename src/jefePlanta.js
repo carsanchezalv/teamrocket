@@ -2,7 +2,7 @@ import { data } from "./data.js";
 
 // Pikachu
 import Pikachu from "./pikachu.js";
-
+import Estado from "./estado.js";
 // Enemigo
 
 
@@ -12,58 +12,70 @@ export default class JefePlanta extends Phaser.Scene {
   }
 
   preload() {  
- //   this.load.tilemapTiledJSON('tilemap', 'assets/tiles/mapa/mapa_team_rocket.json');
+    this.load.tilemapTiledJSON('mapPlanta', 'assets/tiles/mapa/mapa_jefe_planta.json');
 
     // Tilesets
-    this.load.image('dungeon0', 'assets/tiles/dungeon-0.png');
+    this.load.image('isladeplanta', 'assets/tiles/dungeonPlanta.png');
     
 
-    this.load.audio("musica", [
+ //   this.load.audio("musica", [
  //     "assets/music/portada.ogg",
  //     "assets/music/portada.mp3"
-    ]);
+ //   ]);
 
 
     // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
-    
-    
+
+    // Barra vida
+    this.load.image('vida10', 'assets/estado/VIDA_10.png');
+    this.load.image('vida9', 'assets/estado/VIDA_9.png');
+    this.load.image('vida8', 'assets/estado/VIDA_8.png');
+    this.load.image('vida7', 'assets/estado/VIDA_7.png');
+    this.load.image('vida6', 'assets/estado/VIDA_6.png');
+    this.load.image('vida5', 'assets/estado/VIDA_5.png');
+    this.load.image('vida4', 'assets/estado/VIDA_4.png');
+    this.load.image('vida3', 'assets/estado/VIDA_3.png');
+    this.load.image('vida2', 'assets/estado/VIDA_2.png');
+    this.load.image('vida1', 'assets/estado/VIDA_1.png');
+    this.load.image('vida0', 'assets/estado/VIDA_0.png');
+    this.load.image('vidahit', 'assets/estado/VIDA_HIT.png');
   }
 
   create() {
 
     this.map = this.make.tilemap({ 
-      key: 'tilemap', 
-      tileWidth: 6912, 
-      tileHeight: 3840 
+      key: 'mapPlanta', 
+      tileWidth: 5325, 
+      tileHeight: 3150 
     });
 
-    this.map.addTilesetImage('dungeon-0', 'dungeon0');
+    this.map.addTilesetImage('pr1', 'isladeplanta');
 
     // Capas, los nombres han de coincidir con los de las capas reales
-    this.borde = this.map.createStaticLayer('borde', ['dungeon-0', 'dungeon-8', 'dungeon-9', 'dungeon-14','dungeon-54']);
+    this.borde = this.map.createStaticLayer('borde', ['pr1']);
+    this.suelo = this.map.createStaticLayer('suelo', ['pr1']);
     
     
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde.setCollisionBetween(0, 9999);
 
+    this.xPikachu = 457;
+    this.yPikachu = 320;
 
-    this.xPikachu = 3778;
-    this.yPikachu = 2067;
-
-    this.pikachuSprite = new Pikachu(this, x, y);
-
+    this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
+    this.barraEstado = new Estado(this, this.pikachuSprite.x, this.pikachuSprite.y - 30);
     
     // Enemigo
   //  this.xJefe =
  //   this.yJefe = 
-    this.jefe = new JefePlanta(this, this.xJefe, this.yJefe);
+ //   this.jefe = new JefePlanta(this, this.xJefe, this.yJefe);
        
 
     // Colisiones
     this.physics.add.collider(this.pikachuSprite, this.borde);
     
-    this.physics.add.collider(this.jefe, this.borde);
+ //   this.physics.add.collider(this.jefe, this.borde);
     
     
     // Camera zoom
@@ -88,6 +100,7 @@ export default class JefePlanta extends Phaser.Scene {
       music.play();
     }
   */
+//    this.scene.start('game');
   }
 
   update(time, delta) {
