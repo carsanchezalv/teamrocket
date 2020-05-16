@@ -20,6 +20,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.inmune = false;
     this.puedeActuar = true;
     this.efecto = "";
+    this.velX = 0;
+    this.velY = 0;
 
     // Animacion movimientos
     this.scene.anims.create({
@@ -248,63 +250,81 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     {
       data.puntos--;
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(this.velocidad*3);
-        this.body.setVelocityY(-this.velocidad*3);
+        this.velX = this.velocidad*3;
+        this.velY = -this.velocidad*3;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "upright";
         this.flipX = false;
         this.animation = "move_upright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-this.velocidad*3);
-        this.body.setVelocityY(-this.velocidad*3);
+        this.velX = -this.velocidad*3;
+        this.velY = -this.velocidad*3;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "upleft";
         this.flipX = true;
         this.animation = "move_upright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(this.velocidad*3);
-        this.body.setVelocityY(this.velocidad*3);
+        this.velX = this.velocidad*3;
+        this.velY = this.velocidad*3;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "downright";
         this.flipX = false;
         this.animation = "move_downright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-this.velocidad*3);
-        this.body.setVelocityY(this.velocidad*3);
+        
+        this.velX = -this.velocidad*3;
+        this.velY = this.velocidad*3;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "downleft";
         this.flipX = true;
         this.animation = "move_downright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.right.isDown) {
-        this.body.setVelocityX(this.velocidad*3);
-        this.body.setVelocityY(0);
+        
+        this.velX = this.velocidad*3;
+        this.velY = 0;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "right";
         this.flipX = false;
         this.animation = "move_right_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.left.isDown) {
-        this.body.setVelocityX(-this.velocidad*3);
-        this.body.setVelocityY(0);
+        this.velX = -this.velocidad*3;
+        this.velY = 0;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "left";
         this.flipX = true;
         this.animation = "move_right_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown) {
-        this.body.setVelocityX(0);
-        this.body.setVelocityY(-this.velocidad*3);
+        this.velX = 0;
+        this.velY = -this.velocidad*3;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "up";
         this.animation = "move_up_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown) {
-        this.body.setVelocityX(0);
-        this.body.setVelocityY(this.velocidad*3);
+        this.velX = 0;
+        this.velY = this.velocidad*3;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "down";
         this.animation = "move_down_fast";
         this.anims.play(this.animation, true);
@@ -315,63 +335,79 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     else if(this.puedeActuar)
     {
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(this.velocidad);
-        this.body.setVelocityY(-this.velocidad);
+        this.velX = this.velocidad;
+        this.velY = -this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "upright";
         this.flipX = false;
         this.animation = "move_upright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-this.velocidad);
-        this.body.setVelocityY(-this.velocidad);
+        this.velX = -this.velocidad;
+        this.velY = -this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "upleft";
         this.flipX = true;
         this.animation = "move_upright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.right.isDown) {
-        this.body.setVelocityX(this.velocidad);
-        this.body.setVelocityY(this.velocidad);
+        this.velX = this.velocidad;
+        this.velY = this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "downright";
         this.flipX = false;
         this.animation = "move_downright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.left.isDown) {
-        this.body.setVelocityX(-this.velocidad);
-        this.body.setVelocityY(this.velocidad);
+        this.velX = -this.velocidad;
+        this.velY = this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "downleft";
         this.flipX = true;
         this.animation = "move_downright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.right.isDown) {
-        this.body.setVelocityX(this.velocidad);
-        this.body.setVelocityY(0);
+        this.velX = this.velocidad;
+        this.velY = 0;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "right";
         this.flipX = false;
         this.animation = "move_right";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.left.isDown) {
-        this.body.setVelocityX(-this.velocidad);
-        this.body.setVelocityY(0);
+        this.velX = -this.velocidad;
+        this.velY = 0;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "left";
         this.flipX = true;
         this.animation = "move_right";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown) {
-        this.body.setVelocityX(0);
-        this.body.setVelocityY(-this.velocidad);
+        this.velX = 0;
+        this.velY = -this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "up";
         this.animation = "move_up";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown) {
-        this.body.setVelocityX(0);
-        this.body.setVelocityY(this.velocidad);
+        this.velX = 0;
+        this.velY = this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
         this.orientation = "down";
         this.animation = "move_down";
         this.anims.play(this.animation, true);
@@ -397,7 +433,10 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         {
           case "veneno": // Piramide morada. Te resta vida durante un tiempo
             if(this.vida > 1)
+            {
               this.vida--;
+              this.esHerido = true;
+            }  
           break;
 
           case "ralentizar": // Pegamento. Te disminuye la velocidad poco a poco.
@@ -412,8 +451,10 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     {
       const cursor = this.cursor;
       
-      this.body.setVelocityX(0);
-      this.body.setVelocityY(0);
+      this.velX = 0;
+      this.velY = 0;
+      this.body.setVelocityX(this.velX);
+      this.body.setVelocityY(this.velY);
       
       this.actuar();
       

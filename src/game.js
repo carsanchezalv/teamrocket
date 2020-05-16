@@ -1021,13 +1021,7 @@ export default class Game extends Phaser.Scene {
 
     this.barraEstado = new Estado(this, this.pikachuSprite.x, this.pikachuSprite.y - 30);
     
-
-
-    this.plantaSprite = new Planta5(this, this.pikachuSprite.x + 40, this.pikachuSprite.y + 40);
-    this.groupEnemies.add(this.plantaSprite);
-
-
-
+    
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);

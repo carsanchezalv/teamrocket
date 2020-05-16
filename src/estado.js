@@ -13,8 +13,11 @@ export default class Estado extends Phaser.GameObjects.Sprite {
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-        this.x = this.scene.pikachuSprite.x;
-        this.y = this.scene.pikachuSprite.y - 30;
+
+        this.body.setVelocityX(this.scene.pikachuSprite.velX);
+        this.body.setVelocityY(this.scene.pikachuSprite.velY);
+   //     this.x = this.scene.pikachuSprite.x;
+    //    this.y = this.scene.pikachuSprite.y - 30;
 
         if(this.animacionHerido)
         {
