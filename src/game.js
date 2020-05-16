@@ -226,7 +226,8 @@ export default class Game extends Phaser.Scene {
     this.rio = this.map.createStaticLayer('rio', ['dungeon-1', 'dungeon-4','dungeon-11','dungeon-13', 'dungeon-33']);
     this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33','dungeon-54','dungeon-91']);
 
-    
+    this.movimientoBarra = true;
+
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde.setCollisionBetween(0, 9999);
     this.mar.setCollisionBetween(0, 9999);
@@ -1021,15 +1022,15 @@ export default class Game extends Phaser.Scene {
 
     this.barraEstado = new Estado(this, this.pikachuSprite.x, this.pikachuSprite.y - 30);
     
-    
+
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);
     this.physics.add.collider(this.groupGemas, this.rio);
 
-    this.physics.add.collider(this.pikachuSprite, this.borde);
-    this.physics.add.collider(this.pikachuSprite, this.mar);
-    this.physics.add.collider(this.pikachuSprite, this.rio);
+    this.physics.add.collider(this.pikachuSprite, this.borde, () => {this.movimientoBarra = false;});
+    this.physics.add.collider(this.pikachuSprite, this.mar, () => {this.movimientoBarra = false;});
+    this.physics.add.collider(this.pikachuSprite, this.rio, () => {this.movimientoBarra = false;});
     
     this.physics.add.collider(this.groupEnemies, this.borde);
     this.physics.add.collider(this.groupEnemies, this.mar);
@@ -1058,7 +1059,7 @@ export default class Game extends Phaser.Scene {
   }
 
   update(time, delta) {
-    
+
     /*
     this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} \nVida: ${this.pikachuSprite.vida} \nFuerza: ${this.pikachuSprite.fuerza} \nVelocidad: ${this.pikachuSprite.velocidad} \nTiempo efecto: ${data.tiempoEfecto}`, {
       font: "20px Press Start 2P",
