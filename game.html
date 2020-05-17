@@ -23,8 +23,8 @@
         var config = { 
             type: Phaser.CANVAS,
             canvas: document.getElementById('game'),
-            width: "70%",
-            height: "60%",
+            width: 1024,
+            height: 512,
             pixelArt: true,
             transparent: true,
             input: {
@@ -36,7 +36,7 @@
             },
             
             scene: [Video, Nombre, Menu, Puntuaciones, Game, JefePlanta],
-            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } }
+            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
         };
         new Phaser.Game(config);
     </script>

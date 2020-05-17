@@ -9,6 +9,7 @@ export default class Estado extends Phaser.GameObjects.Sprite {
         this.setScale(0.2);
         this.scene.physics.world.enableBody(this);
         this.animacionHerido = false;
+
     }
 
     preUpdate(t, dt) {
@@ -31,7 +32,7 @@ export default class Estado extends Phaser.GameObjects.Sprite {
             this.y = this.scene.pikachuSprite.y - 30;
             this.scene.movimientoBarra = true;
         }
-  
+
         if(this.animacionHerido)
         {
             this.setTexture('vidahit');

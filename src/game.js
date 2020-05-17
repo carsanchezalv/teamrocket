@@ -1027,7 +1027,7 @@ export default class Game extends Phaser.Scene {
     }
 
     this.barraEstado = new Estado(this, this.pikachuSprite.x, this.pikachuSprite.y - 30);
-    
+
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
@@ -1043,11 +1043,11 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.groupEnemies, this.rio);
     
     // Camera zoom
-    const camera = this.cameras.main;
-    camera.setZoom(2);
-    camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-    camera.startFollow(this.pikachuSprite);
-
+    this.camera = this.cameras.main;
+    this.camera.setZoom(2);
+    this.camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+    this.camera.startFollow(this.pikachuSprite);
+    
   // Música
     if(data.musica) {
       let config = {
@@ -1066,13 +1066,15 @@ export default class Game extends Phaser.Scene {
 
   update(time, delta) {
 
-    /*
-    this.add.text(220, 117, `Player: ${data.nombre} \nScore: ${data.puntos} \nVida: ${this.pikachuSprite.vida} \nFuerza: ${this.pikachuSprite.fuerza} \nVelocidad: ${this.pikachuSprite.velocidad} \nTiempo efecto: ${data.tiempoEfecto}`, {
-      font: "20px Press Start 2P",
+    
+    
+    this.add.text(300, 150, `\nPlayer: ${data.nombre} \nScore: ${data.puntos}`, {
+      font: "../fonts/pkmnem.ttf",
       fill: "#E60026",
+      fontSize: '500px',
       padding: { x: 5, y: 3 },
       backgroundColor: "#fff88f"
     }).setScrollFactor(0);
-  */
+  
   }
 }

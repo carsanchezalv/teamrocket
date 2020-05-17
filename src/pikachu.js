@@ -9,7 +9,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.orientation = "down";
     this.animation = "move_down";
 
-  
+    this.setDepth(50);
+    
     // Atributos
     this.vidaTotal = 100;
     this.vida = this.vidaTotal;
