@@ -498,7 +498,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
               break;
             
         }
-        this.scene.barraEstado.animacionHerido = true;
+        this.scene.animacionHerido = true;
         this.timer = this.scene.time.addEvent({
             delay: 500,
             callback: () => {

@@ -78,6 +78,7 @@ import Planta15 from "./planta/planta15.js";
 
 // Barra estado
 import Estado from "./estado.js";
+import Puntuacion from "./puntuacion.js";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -196,6 +197,9 @@ export default class Game extends Phaser.Scene {
     this.load.image('vida1', 'assets/estado/VIDA_1.png');
     this.load.image('vida0', 'assets/estado/VIDA_0.png');
     this.load.image('vidahit', 'assets/estado/VIDA_HIT.png');
+
+    // Barra puntos
+    this.load.image('puntosPrueba', 'assets/estado/Base/Life Bar Animated 1.png');
   }
 
   create() {
@@ -227,7 +231,7 @@ export default class Game extends Phaser.Scene {
     this.suelo = this.map.createStaticLayer('suelo', ['dungeon-0', 'dungeon-1','dungeon-4','dungeon-8','dungeon-9','dungeon-11','dungeon-12','dungeon-13','dungeon-14', 'dungeon-33','dungeon-54','dungeon-91']);
 
     this.movimientoBarra = true;
-
+    this.animacionHerido = false;
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde.setCollisionBetween(0, 9999);
     this.mar.setCollisionBetween(0, 9999);
@@ -982,11 +986,11 @@ export default class Game extends Phaser.Scene {
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
         this.portal1Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "planta");
-        this.physics.add.overlap(this.portal1Sprite, this.pikachuSprite, () => this.scene.start("jefePlanta"));
         this.groupPortales.add(this.portal1Sprite);
         --this.numPortal;
       }   
     }
+    this.physics.add.overlap(this.pikachuSprite, this.portal1Sprite, () => this.scene.start("jefePlanta"));
     
     this.numPortal = 1;
     while(this.numPortal > 0)
@@ -1026,8 +1030,9 @@ export default class Game extends Phaser.Scene {
       }   
     }
 
-    this.barraEstado = new Estado(this, this.pikachuSprite.x, this.pikachuSprite.y - 30);
+    this.vidaPikachu = new Estado(this);
 
+    this.puntuacion = new Puntuacion(this);
 
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
@@ -1062,12 +1067,15 @@ export default class Game extends Phaser.Scene {
       let music = this.sound.add('musica_portada', config);
       music.play();
     }
+    
+    
   }
 
   update(time, delta) {
 
-    
-    
+    this.puntuacion.updatePuntos(data.puntos);
+    this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
+   
     this.add.text(300, 150, `\nPlayer: ${data.nombre} \nScore: ${data.puntos}`, {
       font: "../fonts/pkmnem.ttf",
       fill: "#E60026",
@@ -1075,6 +1083,5 @@ export default class Game extends Phaser.Scene {
       padding: { x: 5, y: 3 },
       backgroundColor: "#fff88f"
     }).setScrollFactor(0);
-  
   }
 }
