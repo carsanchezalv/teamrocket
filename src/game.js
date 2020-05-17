@@ -956,7 +956,7 @@ export default class Game extends Phaser.Scene {
         --this.numTrampillas;
       }   
     }
-/*
+
     this.groupPortales = this.physics.add.group({
       classType: Portal,
       defaultKey: null,
@@ -968,7 +968,7 @@ export default class Game extends Phaser.Scene {
       removeCallback: null,
       createMultipleCallback: null
     });
-*/
+
 /*
     this.portal0Sprite = new Portal(this, x + 20, y + 20, "planta");
     this.groupPortales.add(this.portal0Sprite);
@@ -983,7 +983,7 @@ export default class Game extends Phaser.Scene {
       {
         this.portal1Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "planta");
         this.physics.add.overlap(this.portal1Sprite, this.pikachuSprite, () => this.scene.start("jefePlanta"));
-    //    this.groupPortales.add(this.portal1Sprite);
+        this.groupPortales.add(this.portal1Sprite);
         --this.numPortal;
       }   
     }
@@ -997,7 +997,7 @@ export default class Game extends Phaser.Scene {
       {
         this.portal2Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "fuego");
         
-    //    this.groupPortales.add(this.portal2Sprite);
+        this.groupPortales.add(this.portal2Sprite);
         --this.numPortal;
       }   
     }
@@ -1009,7 +1009,7 @@ export default class Game extends Phaser.Scene {
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
         this.portal3Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "agua");
-  //      this.groupPortales.add(this.portal3Sprite);
+        this.groupPortales.add(this.portal3Sprite);
         --this.numPortal;
       }   
     }
@@ -1021,7 +1021,7 @@ export default class Game extends Phaser.Scene {
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
         this.portal4Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "electricidad");
-   //     this.groupPortales.add(this.portal4Sprite);
+        this.groupPortales.add(this.portal4Sprite);
         --this.numPortal;
       }   
     }
