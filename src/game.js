@@ -80,6 +80,10 @@ import Planta15 from "./planta/planta15.js";
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
 
+// Jefes
+import BossPlanta from "./jefePlanta.js";
+
+
 export default class Game extends Phaser.Scene {
   constructor() {
     super({ key: 'game' });
@@ -199,7 +203,54 @@ export default class Game extends Phaser.Scene {
     this.load.image('vidahit', 'assets/estado/VIDA_HIT.png');
 
     // Barra puntos
-    this.load.image('puntosPrueba', 'assets/estado/Base/Life Bar Animated 1.png');
+    this.load.image('puntos00', 'assets/estado/Base/XP Bar Animated Yellow 9.png');
+    this.load.image('puntos01', 'assets/estado/Base/XP Bar Animated Yellow 8.png');
+    this.load.image('puntos02', 'assets/estado/Base/XP Bar Animated Yellow 7.png');
+    this.load.image('puntos03', 'assets/estado/Base/XP Bar Animated Yellow 6.png');
+    this.load.image('puntos04', 'assets/estado/Base/XP Bar Animated Yellow 5.png');
+    this.load.image('puntos05', 'assets/estado/Base/XP Bar Animated Yellow 4.png');
+    this.load.image('puntos06', 'assets/estado/Base/XP Bar Animated Yellow 3.png');
+    this.load.image('puntos07', 'assets/estado/Base/XP Bar Animated Yellow 2.png');
+    this.load.image('puntos08', 'assets/estado/Base/XP Bar Animated Yellow 1.png');
+    this.load.image('puntos10', 'assets/estado/Base/XP Bar Animated Green 9.png');
+    this.load.image('puntos11', 'assets/estado/Base/XP Bar Animated Green 8.png');
+    this.load.image('puntos12', 'assets/estado/Base/XP Bar Animated Green 7.png');
+    this.load.image('puntos13', 'assets/estado/Base/XP Bar Animated Green 6.png');
+    this.load.image('puntos14', 'assets/estado/Base/XP Bar Animated Green 5.png');
+    this.load.image('puntos15', 'assets/estado/Base/XP Bar Animated Green 4.png');
+    this.load.image('puntos16', 'assets/estado/Base/XP Bar Animated Green 3.png');
+    this.load.image('puntos17', 'assets/estado/Base/XP Bar Animated Green 2.png');
+    this.load.image('puntos18', 'assets/estado/Base/XP Bar Animated Green 1.png');
+    this.load.image('puntos20', 'assets/estado/Base/Power Bar Animated 9.png');
+    this.load.image('puntos21', 'assets/estado/Base/Power Bar Animated 8.png');
+    this.load.image('puntos22', 'assets/estado/Base/Power Bar Animated 7.png');
+    this.load.image('puntos23', 'assets/estado/Base/Power Bar Animated 6.png');
+    this.load.image('puntos24', 'assets/estado/Base/Power Bar Animated 5.png');
+    this.load.image('puntos25', 'assets/estado/Base/Power Bar Animated 4.png');
+    this.load.image('puntos26', 'assets/estado/Base/Power Bar Animated 3.png');
+    this.load.image('puntos27', 'assets/estado/Base/Power Bar Animated 2.png');
+    this.load.image('puntos28', 'assets/estado/Base/Power Bar Animated 1.png');
+    this.load.image('puntos30', 'assets/estado/Base/Life Bar Animated 9.png');
+    this.load.image('puntos31', 'assets/estado/Base/Life Bar Animated 8.png');
+    this.load.image('puntos32', 'assets/estado/Base/Life Bar Animated 7.png');
+    this.load.image('puntos33', 'assets/estado/Base/Life Bar Animated 6.png');
+    this.load.image('puntos34', 'assets/estado/Base/Life Bar Animated 5.png');
+    this.load.image('puntos35', 'assets/estado/Base/Life Bar Animated 4.png');
+    this.load.image('puntos36', 'assets/estado/Base/Life Bar Animated 3.png');
+    this.load.image('puntos37', 'assets/estado/Base/Life Bar Animated 2.png');
+    this.load.image('puntos38', 'assets/estado/Base/Life Bar Animated 1.png');
+
+    // Niveles
+    this.load.image('level0', 'assets/estado/niveles/0.png');
+    this.load.image('level1', 'assets/estado/niveles/1.png');
+    this.load.image('level2', 'assets/estado/niveles/2.png');
+    this.load.image('level3', 'assets/estado/niveles/3.png');
+    this.load.image('level4', 'assets/estado/niveles/4.png');
+    this.load.image('level5', 'assets/estado/niveles/5.png');
+    this.load.image('level6', 'assets/estado/niveles/6.png');
+    this.load.image('level7', 'assets/estado/niveles/7.png');
+    this.load.image('level8', 'assets/estado/niveles/8.png');
+    this.load.image('level9', 'assets/estado/niveles/9.png');
   }
 
   create() {
@@ -978,6 +1029,11 @@ export default class Game extends Phaser.Scene {
     this.groupPortales.add(this.portal0Sprite);
     this.physics.add.overlap(this.portal0Sprite, this.pikachuSprite, () => this.scene.start("jefePlanta"));
 */
+/*
+    this.portal0Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "planta");
+    this.groupPortales.add(this.portal0Sprite);
+    this.physics.add.overlap(this.pikachuSprite, this.portal0Sprite, () => { this.bossPlanta = new BossPlanta(this); this.run("jefePlanta")});
+*/
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -990,7 +1046,7 @@ export default class Game extends Phaser.Scene {
         --this.numPortal;
       }   
     }
-    this.physics.add.overlap(this.pikachuSprite, this.portal1Sprite, () => this.scene.start("jefePlanta"));
+ //   this.physics.add.overlap(this.pikachuSprite, this.portal1Sprite, () => this.scene.start("jefePlanta"));
     
     this.numPortal = 1;
     while(this.numPortal > 0)
@@ -1039,9 +1095,9 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.groupGemas, this.mar);
     this.physics.add.collider(this.groupGemas, this.rio);
 
-    this.physics.add.collider(this.pikachuSprite, this.borde, () => {this.movimientoBarra = false;});
-    this.physics.add.collider(this.pikachuSprite, this.mar, () => {this.movimientoBarra = false;});
-    this.physics.add.collider(this.pikachuSprite, this.rio, () => {this.movimientoBarra = false;});
+    this.physics.add.collider(this.pikachuSprite, this.borde);
+    this.physics.add.collider(this.pikachuSprite, this.mar);
+    this.physics.add.collider(this.pikachuSprite, this.rio);
     
     this.physics.add.collider(this.groupEnemies, this.borde);
     this.physics.add.collider(this.groupEnemies, this.mar);
@@ -1076,12 +1132,16 @@ export default class Game extends Phaser.Scene {
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
    
-    this.add.text(300, 150, `\nPlayer: ${data.nombre} \nScore: ${data.puntos}`, {
+  //  this.bossPlanta.updateBossPlanta()
+
+  /*
+    this.add.text(300, 170, `Player: ${data.nombre} \nScore: ${data.puntos}`, {
       font: "../fonts/pkmnem.ttf",
       fill: "#E60026",
       fontSize: '500px',
       padding: { x: 5, y: 3 },
       backgroundColor: "#fff88f"
     }).setScrollFactor(0);
+    */
   }
 }

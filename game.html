@@ -18,8 +18,7 @@
         import Puntuaciones from './src/puntuaciones.js';
         import Menu from './src/menu.js';
         import Video from './src/video.js';
-        import JefePlanta from './src/jefePlanta.js';
-
+       
         var config = { 
             type: Phaser.CANVAS,
             canvas: document.getElementById('game'),
@@ -35,8 +34,8 @@
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             
-            scene: [Video, Nombre, Menu, Puntuaciones, Game, JefePlanta],
-            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
+            scene: [Video, Nombre, Menu, Puntuaciones, Game],
+            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } }
         };
         new Phaser.Game(config);
     </script>

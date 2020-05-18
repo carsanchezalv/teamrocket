@@ -1,7 +1,7 @@
 export let data = {
     musica: true,
     nombre: "",
-    puntos: 5000,
+    puntos: 50,
     bonusGemas: 1,
     tiempoEfecto: 0
 }
