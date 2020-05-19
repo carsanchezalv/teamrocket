@@ -105,6 +105,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('dungeon42', 'assets/tiles/dungeon-42.png');
     this.load.image('dungeon54', 'assets/tiles/dungeon-54.png');
     this.load.image('dungeon91', 'assets/tiles/dungeon-91.png');
+    this.load.image('puente', 'assets/tiles/puente-0.png');
 
     this.load.audio("musica_portada", [
       "assets/music/portada.ogg",
@@ -219,8 +220,11 @@ export default class Game extends Phaser.Scene {
     this.map.addTilesetImage('dungeon-42', 'dungeon42');
     this.map.addTilesetImage('dungeon-54', 'dungeon54');
     this.map.addTilesetImage('dungeon-91', 'dungeon91');
+    this.map.addTilesetImage('puente-0', 'puente');
 
     // Capas, los nombres han de coincidir con los de las capas reales
+    this.borde_puente = this.map.createStaticLayer('borde_puente', ['dungeon-14']);
+    this.puente_madera = this.map.createStaticLayer('puente_madera', ['puente-0']);
     this.borde = this.map.createStaticLayer('borde', ['dungeon-0', 'dungeon-8', 'dungeon-9', 'dungeon-14','dungeon-54']);
     this.mar = this.map.createStaticLayer('mar', ['dungeon-0','dungeon-8', 'dungeon-9','dungeon-12','dungeon-14', 'dungeon-54']);
     this.rio = this.map.createStaticLayer('rio', ['dungeon-1', 'dungeon-4','dungeon-11','dungeon-13', 'dungeon-33']);
@@ -229,6 +233,7 @@ export default class Game extends Phaser.Scene {
     this.movimientoBarra = true;
 
    // Para que colisionen los personajes que tengan un rango de ID concreto
+    this.borde_puente.setCollisionBetween(0, 9999);
     this.borde.setCollisionBetween(0, 9999);
     this.mar.setCollisionBetween(0, 9999);
     this.rio.setCollisionBetween(0, 9999);
@@ -1033,14 +1038,17 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.groupGemas, this.borde);
     this.physics.add.collider(this.groupGemas, this.mar);
     this.physics.add.collider(this.groupGemas, this.rio);
+    this.physics.add.collider(this.groupGemas, this.borde_puente);
 
-    this.physics.add.collider(this.pikachuSprite, this.borde, () => {this.movimientoBarra = false;});
-    this.physics.add.collider(this.pikachuSprite, this.mar, () => {this.movimientoBarra = false;});
-    this.physics.add.collider(this.pikachuSprite, this.rio, () => {this.movimientoBarra = false;});
+    this.physics.add.collider(this.pikachuSprite, this.borde);
+    this.physics.add.collider(this.pikachuSprite, this.mar);
+    this.physics.add.collider(this.pikachuSprite, this.rio);
+    this.physics.add.collider(this.pikachuSprite, this.borde_puente);
     
     this.physics.add.collider(this.groupEnemies, this.borde);
     this.physics.add.collider(this.groupEnemies, this.mar);
     this.physics.add.collider(this.groupEnemies, this.rio);
+    this.physics.add.collider(this.groupEnemies, this.borde_puente);
     
     // Camera zoom
     this.camera = this.cameras.main;
