@@ -3,6 +3,7 @@ import { data } from "./data.js";
 // Pikachu
 import Pikachu from "./pikachu.js";
 import Estado from "./estado.js";
+
 // Enemigo
 
 
@@ -15,7 +16,7 @@ export default class JefePlanta extends Phaser.Scene {
     this.load.tilemapTiledJSON('mapPlanta', 'assets/tiles/mapa/mapa_jefe_planta.json');
 
     // Tilesets
-    this.load.image('isladeplanta', 'assets/tiles/dungeonPlanta.png');
+    this.load.image('zonaPlanta', 'assets/tiles/dungeonPlanta.png');
     
 
  //   this.load.audio("musica", [
@@ -50,7 +51,7 @@ export default class JefePlanta extends Phaser.Scene {
       tileHeight: 3150 
     });
 
-    this.map.addTilesetImage('pr1', 'isladeplanta');
+    this.map.addTilesetImage('pr1', 'zonaPlanta');
 
     // Capas, los nombres han de coincidir con los de las capas reales
     this.borde = this.map.createStaticLayer('borde', ['pr1']);
