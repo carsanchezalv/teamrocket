@@ -294,17 +294,17 @@ export default class Game extends Phaser.Scene {
   //  this.mar.setCollisionBetween(0, 9999);
     this.rio.setCollisionBetween(0, 9999);
 
-    let x = 3778;
-    let y = 2067;
-    let z = 20;
+    this.x = 3778;
+    this.y = 2067;
+    
     this.numEnemy = 0;
     this.tamano_celda = 24;
 
-
     this.activarJefePlanta = false;   
     this.activarJefeAgua = false;
+    this.activarJefeFinal = false;
 
-    this.pikachuSprite = new Pikachu(this, x, y);
+    this.pikachuSprite = new Pikachu(this, this.x, this.y);
     
     //Gemas
     this.groupGemas = this.physics.add.group({
@@ -332,7 +332,6 @@ export default class Game extends Phaser.Scene {
         --this.numGemas;
       }   
     }
-    z = 50;
     
     // Enemigos
     this.groupEnemies = this.physics.add.group({
@@ -1167,25 +1166,42 @@ export default class Game extends Phaser.Scene {
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
 
+    // Aparición portal final
+    if(data.jefesIslasRestantes === 0)
+    {
+      data.jefesIslasRestantes++;
+      this.portalFinalSprite = new Portal(this, this.x, this.y, "centro");
+      this.groupPortales.add(this.portalFinalSprite);
+    }
     // Portal planta
     if(this.activarJefePlanta)
     {
-      this.scene.launch('jefePlanta');
       this.activarJefePlanta = false;
       this.pikachuSprite.body.setVelocityX(0);
       this.pikachuSprite.body.setVelocityY(0);
   //    this.groupPlanta.getChildren().puedeActuar = false;
+
+      this.scene.launch('jefePlanta');
       this.scene.pause('game');
     }
 
     // Portal Agua
     if(this.activarJefeAgua)
     {
-      this.scene.launch('jefeAgua');
       this.activarJefeAgua = false;
       this.pikachuSprite.body.setVelocityX(0);
       this.pikachuSprite.body.setVelocityY(0);
-  //    this.groupAgua.getChildren().puedeActuar = false;
+      //    this.groupAgua.getChildren().puedeActuar = false;
+
+      this.scene.launch('jefeAgua');  
+      this.scene.pause('game');
+    }
+    // Portal Final
+    if(this.activarJefeFinal)
+    {
+      this.scene.launch('jefeFinal');
+      this.activarJefeFinal = false;
+      
       this.scene.pause('game');
     }
 

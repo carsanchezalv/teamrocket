@@ -20,6 +20,7 @@
         import Video from './src/video.js';
         import BossPlanta from './src/jefePlanta.js';
         import BossAgua from './src/jefeAgua.js';
+        import BossFinal from './src/jefeFinal.js'
 
         var config = { 
             type: Phaser.CANVAS,
@@ -36,8 +37,8 @@
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             
-            scene: [Video, Nombre, Menu, Puntuaciones, Game, BossPlanta, BossAgua],
-            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } }
+            scene: [Video, Nombre, Menu, Puntuaciones, Game, BossPlanta, BossAgua, BossFinal],
+            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
         };
         new Phaser.Game(config);
     </script>
