@@ -1,5 +1,8 @@
 import { data } from "./data.js";
 
+// Jefes
+import BossPlanta from "./jefePlanta.js";
+
 export default class Portal extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, isla) {
@@ -28,7 +31,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
 
        this.anims.play(this.animation, true);
        this.scene.physics.world.enableBody(this);
-    //   this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.entrarEnPortal());
+       this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.entrarEnPortal());
 
        this.body.setSize(130, 130);
        this.body.offset.x = 62;
@@ -43,9 +46,14 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         // Escena jefes dependiendo de la isla
         if(this.isla === "planta")
         {
-            this.escena.start('jefePlanta');
+            this.scene.activarJefePlanta = true;
+            this.destroy();
         }
-        // this.destroy();
+        else if(this.isla === "finalPlanta")
+        {
+            this.scene.activarPortal = true;
+            this.destroy();
+        }
     }
 
     preUpdate(t, dt) {

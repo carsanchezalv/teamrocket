@@ -300,6 +300,10 @@ export default class Game extends Phaser.Scene {
     this.numEnemy = 0;
     this.tamano_celda = 24;
 
+
+    this.activarJefePlanta = false;
+    this.jefePlantaActivado = false;
+
     this.pikachuSprite = new Pikachu(this, x, y);
     
     //Gemas
@@ -810,6 +814,20 @@ export default class Game extends Phaser.Scene {
       }
     }
 
+    // GRUPO PLANTA
+    this.groupPlanta = this.physics.add.group({
+      classType: Enemy,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+
+
     // Planta
     enemigosMismoTipo = 1;
     while(enemigosMismoTipo > 0)
@@ -820,6 +838,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta1(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -832,6 +851,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta2(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -844,6 +864,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta3(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -856,6 +877,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta4(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -868,6 +890,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta5(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -880,6 +903,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta6(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -892,6 +916,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta7(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -904,6 +929,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta8(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -916,6 +942,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta9(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -928,6 +955,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta10(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -940,6 +968,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta11(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -952,6 +981,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta12(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -964,6 +994,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta13(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -976,6 +1007,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta14(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -988,6 +1020,7 @@ export default class Game extends Phaser.Scene {
       {
         this.plantaSprite = new Planta15(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupEnemies.add(this.plantaSprite);
+        this.groupPlanta.add(this.plantaSprite);
         enemigosMismoTipo--;
       }
     }
@@ -1030,16 +1063,11 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
-/*
-    this.portal0Sprite = new Portal(this, x + 20, y + 20, "planta");
-    this.groupPortales.add(this.portal0Sprite);
-    this.physics.add.overlap(this.portal0Sprite, this.pikachuSprite, () => this.scene.start("jefePlanta"));
-*/
-/*
-    this.portal0Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "planta");
-    this.groupPortales.add(this.portal0Sprite);
-    this.physics.add.overlap(this.pikachuSprite, this.portal0Sprite, () => { this.bossPlanta = new BossPlanta(this); this.run("jefePlanta")});
-*/
+
+ //   this.portal0Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "planta");
+ //   this.groupPortales.add(this.portal0Sprite);
+   
+    
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -1052,6 +1080,7 @@ export default class Game extends Phaser.Scene {
         --this.numPortal;
       }   
     }
+
  //   this.physics.add.overlap(this.pikachuSprite, this.portal1Sprite, () => this.scene.start("jefePlanta"));
     
     this.numPortal = 1;
@@ -1096,19 +1125,17 @@ export default class Game extends Phaser.Scene {
 
     this.puntuacion = new Puntuacion(this);
 
+    
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
-  //  this.physics.add.collider(this.groupGemas, this.mar);
     this.physics.add.collider(this.groupGemas, this.rio);
     this.physics.add.collider(this.groupGemas, this.borde_puente);
 
     this.physics.add.collider(this.pikachuSprite, this.borde);
-//    this.physics.add.collider(this.pikachuSprite, this.mar);
     this.physics.add.collider(this.pikachuSprite, this.rio);
     this.physics.add.collider(this.pikachuSprite, this.borde_puente);
     
     this.physics.add.collider(this.groupEnemies, this.borde);
-//    this.physics.add.collider(this.groupEnemies, this.mar);
     this.physics.add.collider(this.groupEnemies, this.rio);
     this.physics.add.collider(this.groupEnemies, this.borde_puente);
     
@@ -1132,17 +1159,25 @@ export default class Game extends Phaser.Scene {
       let music = this.sound.add('musica_portada', config);
       music.play();
     }
-    
-    
   }
 
   update(time, delta) {
-
+   
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
-   
-  //  this.bossPlanta.updateBossPlanta()
 
+    // Portal planta
+    if(this.activarJefePlanta)
+    {
+      this.scene.launch('jefePlanta');
+      this.activarJefePlanta = false;
+      this.pikachuSprite.body.setVelocityX(0);
+      this.pikachuSprite.body.setVelocityY(0);
+
+  //    this.groupPlanta.getChildren().puedeActuar = false;
+      this.scene.pause('game');
+    }
+    
   /*
     this.add.text(300, 170, `Player: ${data.nombre} \nScore: ${data.puntos}`, {
       font: "../fonts/pkmnem.ttf",

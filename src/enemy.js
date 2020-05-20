@@ -14,7 +14,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.numEnemy = this.scene.numEnemy;
         this.velocidad = 40;
         this.puedeActuar = true;
-
+        this.esJefe = false;
+        this.valor = this.vida;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, this.scene.groupEnemies);
@@ -133,7 +134,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             if(this.vida <= 0)
             {
                 this.destroy();
-                data.puntos += 50;
+                data.puntos += this.valor;
             }
         }
         else if (player.puedeActuar && this.puedeActuar && this.puedeAtacar)
@@ -211,7 +212,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
                 if(!this.ataque && !this.esHerido && this.puedeActuar)
                 {
-                    if(distancia > 6*24) // Se mueve libremente
+
+                    if(distancia > 6*24 && !this.esJefe) // Se mueve libremente
                     {
                 //     let frecuencia = Phaser.Math.Between(-1, 1)
                         let velX = Phaser.Math.Between(-1, 1) * this.velocidad;
@@ -220,7 +222,9 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                         this.body.setVelocityY(velY);
                     }
                     else // Se mueve hacia el jugador
+                    {
                         this.scene.physics.moveTo(this, player.x, player.y, this.velocidad);
+                    }    
 
                     // Animaciones           
                     if((this.body.velocity.x >= this.velocidad/2) && (this.body.velocity.y >= this.velocidad/2))
