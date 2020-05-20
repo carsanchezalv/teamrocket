@@ -301,8 +301,8 @@ export default class Game extends Phaser.Scene {
     this.tamano_celda = 24;
 
 
-    this.activarJefePlanta = false;
-    this.jefePlantaActivado = false;
+    this.activarJefePlanta = false;   
+    this.activarJefeAgua = false;
 
     this.pikachuSprite = new Pikachu(this, x, y);
     
@@ -1080,8 +1080,6 @@ export default class Game extends Phaser.Scene {
         --this.numPortal;
       }   
     }
-
- //   this.physics.add.overlap(this.pikachuSprite, this.portal1Sprite, () => this.scene.start("jefePlanta"));
     
     this.numPortal = 1;
     while(this.numPortal > 0)
@@ -1090,12 +1088,15 @@ export default class Game extends Phaser.Scene {
       this.yRand = Phaser.Math.Between(0, 77);
       if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
       {
-        this.portal2Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "fuego");
-        
+        this.portal2Sprite = new Portal(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, "fuego");    
         this.groupPortales.add(this.portal2Sprite);
         --this.numPortal;
       }   
     }
+/*
+    this.portal3Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "agua");
+    this.groupPortales.add(this.portal3Sprite);
+*/
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -1173,11 +1174,21 @@ export default class Game extends Phaser.Scene {
       this.activarJefePlanta = false;
       this.pikachuSprite.body.setVelocityX(0);
       this.pikachuSprite.body.setVelocityY(0);
-
   //    this.groupPlanta.getChildren().puedeActuar = false;
       this.scene.pause('game');
     }
-    
+
+    // Portal Agua
+    if(this.activarJefeAgua)
+    {
+      this.scene.launch('jefeAgua');
+      this.activarJefeAgua = false;
+      this.pikachuSprite.body.setVelocityX(0);
+      this.pikachuSprite.body.setVelocityY(0);
+  //    this.groupAgua.getChildren().puedeActuar = false;
+      this.scene.pause('game');
+    }
+
   /*
     this.add.text(300, 170, `Player: ${data.nombre} \nScore: ${data.puntos}`, {
       font: "../fonts/pkmnem.ttf",

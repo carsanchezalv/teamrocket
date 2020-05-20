@@ -47,13 +47,20 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         if(this.isla === "planta")
         {
             this.scene.activarJefePlanta = true;
-            this.destroy();
         }
         else if(this.isla === "finalPlanta")
         {
             this.scene.activarPortal = true;
-            this.destroy();
         }
+        else if(this.isla === "agua")
+        {
+            this.scene.activarJefeAgua = true;
+        }
+        else if(this.isla === "finalAgua")
+        {
+            this.scene.activarPortal = true;
+        }
+        this.destroy();
     }
 
     preUpdate(t, dt) {
