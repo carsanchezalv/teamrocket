@@ -303,6 +303,7 @@ export default class Game extends Phaser.Scene {
     this.activarJefePlanta = false;   
     this.activarJefeAgua = false;
     this.activarJefeFinal = false;
+    this.activarJefeFuego = false;
 
     this.pikachuSprite = new Pikachu(this, this.x, this.y);
     
@@ -1092,10 +1093,10 @@ export default class Game extends Phaser.Scene {
         --this.numPortal;
       }   
     }
-/*
-    this.portal3Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "agua");
+
+    this.portal3Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "fuego");
     this.groupPortales.add(this.portal3Sprite);
-*/
+
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -1194,6 +1195,18 @@ export default class Game extends Phaser.Scene {
       //    this.groupAgua.getChildren().puedeActuar = false;
 
       this.scene.launch('jefeAgua');  
+      this.scene.pause('game');
+    }
+
+    //Portal Fuego
+    if(this.activarJefeFuego)
+    {
+      this.activarJefeFuego = false;
+      this.pikachuSprite.body.setVelocityX(0);
+      this.pikachuSprite.body.setVelocityY(0);
+  //    this.groupPlanta.getChildren().puedeActuar = false;
+
+      this.scene.launch('jefeFuego');
       this.scene.pause('game');
     }
     // Portal Final

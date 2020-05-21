@@ -67,6 +67,10 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         else if(this.isla === "finalJuego")
         {
             this.scene.activarPortal = true;
+        }else if(this.isla === "fuego"){
+            this.scene.activarJefeFuego = true;
+        }else if(this.isla === "fuego"){
+            this.scene.activarPortal = true;
         }
         this.destroy();
     }
