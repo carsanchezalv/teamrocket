@@ -126,7 +126,7 @@ export default class jefeFinal extends Phaser.Scene {
     {
       if(!this.portalExiste)
       {  
-        this.portalVuelta = new Portal(this, 335, 520, "finalJuego");
+        this.portalVuelta = new Portal(this, 335, 750, "finalJuego");
         this.portalExiste = true;
       }
       else if(this.activarPortal)

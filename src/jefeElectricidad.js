@@ -6,23 +6,22 @@ import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
 
 // Enemigo
-import Articuno from './jefes/articuno.js';
+import Zapdos from './jefes/zapdos.js';
 
 // Portal
 import Portal from './portal.js';
 
 
-
-export default class JefeAgua extends Phaser.Scene {
+export default class JefeElectricidad extends Phaser.Scene {
   constructor() {
-    super({ key: 'jefeAgua' });
+    super({ key: 'jefeElectricidad' });
   }
 
   preload() {  
-    this.load.tilemapTiledJSON('mapAgua', 'assets/tiles/mapa/mapa_jefe_hielo.json');
+    this.load.tilemapTiledJSON('mapElectricidad', 'assets/tiles/mapa/mapa_jefe_electricidad.json');
 
     // Tilesets
-    this.load.image('zonaAgua', 'assets/tiles/frigidcavern.png');
+    this.load.image('zonaElectricidad', 'assets/tiles/thundermeadow.png');
     
     // Portal
     this.load.spritesheet('portal', 'assets/tiles/portal.png',{ frameWidth: 256, frameHeight: 256 });
@@ -37,7 +36,7 @@ export default class JefeAgua extends Phaser.Scene {
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
 
     // Enemigo
-    this.load.spritesheet('articuno', 'assets/icons/personajes/Boss/boss_agua.png',{ frameWidth: 96, frameHeight: 112 });
+    this.load.spritesheet('zapdos', 'assets/icons/personajes/Boss/boss_electricidad.png',{ frameWidth: 80, frameHeight: 112 });
 
     // Barra vida
     this.load.image('vida10', 'assets/estado/VIDA_10.png');
@@ -57,35 +56,35 @@ export default class JefeAgua extends Phaser.Scene {
   create() {
 
     this.map = this.make.tilemap({ 
-      key: 'mapAgua', 
-      tileWidth: 4776, 
-      tileHeight: 2688
+      key: 'mapElectricidad', 
+      tileWidth: 4848, 
+      tileHeight: 2424
     });
 
-    this.map.addTilesetImage('frigidcavern', 'zonaAgua');
+    this.map.addTilesetImage('thundermeadow', 'zonaElectricidad');
 
     this.activarPortal = false;
     this.portalExiste = false;
 
     // Capas, los nombres han de coincidir con los de las capas reales
-    this.borde = this.map.createStaticLayer('borde', ['frigidcavern']);
-    this.suelo = this.map.createStaticLayer('suelo', ['frigidcavern']);
+    this.borde = this.map.createStaticLayer('borde', ['thundermeadow']);
+    this.suelo = this.map.createStaticLayer('suelo', ['thundermeadow']);
     
     
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde.setCollisionBetween(0, 9999);
 
-    this.xPikachu = 525;
-    this.yPikachu = 600;
+    this.xPikachu = 420;
+    this.yPikachu = 310;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this)
 
     // Enemigo
-    this.xJefe = 525;
-    this.yJefe = 480;
-    this.jefe = new Articuno(this, this.xJefe, this.yJefe);
+    this.xJefe = 420;
+    this.yJefe = 150;
+    this.jefe = new Zapdos(this, this.xJefe, this.yJefe);
        
 
     // Colisiones
@@ -127,13 +126,13 @@ export default class JefeAgua extends Phaser.Scene {
     {
       if(!this.portalExiste)
       {  
-        this.portalVuelta = new Portal(this, 525, 610, "finalAgua");
+        this.portalVuelta = new Portal(this, 420, 300, "finalElectricidad");
         this.portalExiste = true;
       }
       else if(this.activarPortal)
       {
         data.jefesIslasRestantes--;
-        this.scene.stop('jefeAgua');
+        this.scene.stop('jefeElectricidad');
         this.scene.resume('game');
         this.activarPortal = false;
       }

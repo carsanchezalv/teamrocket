@@ -304,6 +304,7 @@ export default class Game extends Phaser.Scene {
     this.activarJefeAgua = false;
     this.activarJefeFinal = false;
     this.activarJefeFuego = false;
+    this.activarJefeElectricidad = false;
 
     this.pikachuSprite = new Pikachu(this, this.x, this.y);
     
@@ -1094,9 +1095,6 @@ export default class Game extends Phaser.Scene {
       }   
     }
 
-    this.portal3Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "fuego");
-    this.groupPortales.add(this.portal3Sprite);
-
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -1109,6 +1107,7 @@ export default class Game extends Phaser.Scene {
         --this.numPortal;
       }   
     }
+    
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -1174,14 +1173,14 @@ export default class Game extends Phaser.Scene {
       this.portalFinalSprite = new Portal(this, this.x, this.y, "centro");
       this.groupPortales.add(this.portalFinalSprite);
     }
+
     // Portal planta
     if(this.activarJefePlanta)
     {
       this.activarJefePlanta = false;
       this.pikachuSprite.body.setVelocityX(0);
       this.pikachuSprite.body.setVelocityY(0);
-  //    this.groupPlanta.getChildren().puedeActuar = false;
-
+ 
       this.scene.launch('jefePlanta');
       this.scene.pause('game');
     }
@@ -1192,8 +1191,7 @@ export default class Game extends Phaser.Scene {
       this.activarJefeAgua = false;
       this.pikachuSprite.body.setVelocityX(0);
       this.pikachuSprite.body.setVelocityY(0);
-      //    this.groupAgua.getChildren().puedeActuar = false;
-
+     
       this.scene.launch('jefeAgua');  
       this.scene.pause('game');
     }
@@ -1204,11 +1202,22 @@ export default class Game extends Phaser.Scene {
       this.activarJefeFuego = false;
       this.pikachuSprite.body.setVelocityX(0);
       this.pikachuSprite.body.setVelocityY(0);
-  //    this.groupPlanta.getChildren().puedeActuar = false;
 
       this.scene.launch('jefeFuego');
       this.scene.pause('game');
     }
+
+    // Portal Electricidad
+   if(this.activarJefeElectricidad)
+    {
+      this.activarJefeElectricidad = false;
+      this.pikachuSprite.body.setVelocityX(0);
+      this.pikachuSprite.body.setVelocityY(0);
+
+      this.scene.launch('jefeElectricidad');
+      this.scene.pause('game');
+    }
+
     // Portal Final
     if(this.activarJefeFinal)
     {

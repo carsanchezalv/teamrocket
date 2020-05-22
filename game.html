@@ -21,6 +21,7 @@
         import BossPlanta from './src/jefePlanta.js';
         import BossAgua from './src/jefeAgua.js';
         import BossFuego from './src/jefeFuego.js';
+        import BossElectricidad from './src/jefeElectricidad.js'
         import BossFinal from './src/jefeFinal.js'
 
         var config = { 
@@ -38,8 +39,8 @@
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             
-            scene: [Video, Nombre, Menu, Puntuaciones, Game, BossPlanta, BossAgua, BossFinal, BossFuego],
-            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
+            scene: [Video, Nombre, Menu, Puntuaciones, Game, BossPlanta, BossAgua, BossFinal, BossFuego, BossElectricidad],
+            physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } }
         };
         new Phaser.Game(config);
     </script>

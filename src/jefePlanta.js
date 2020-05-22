@@ -127,7 +127,7 @@ export default class JefePlanta extends Phaser.Scene {
     {
       if(!this.portalExiste)
       {  
-        this.portalVuelta = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "finalPlanta");
+        this.portalVuelta = new Portal(this, 485, 430, "finalPlanta");
         this.portalExiste = true;
       }
       else if(this.activarPortal)

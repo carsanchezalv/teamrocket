@@ -76,15 +76,16 @@ export default class JefeFuego extends Phaser.Scene {
     this.borde.setCollisionBetween(0, 9999);
 
     this.xPikachu = 350;
-    this.yPikachu = 500;
+    this.yPikachu = 570;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
+  
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this)
 
     // Enemigo
-    this.xJefe = 340;
-    this.yJefe = 270;
+    this.xJefe = 350;
+    this.yJefe = 280;
     this.jefe = new Moltres(this, this.xJefe, this.yJefe);
        
 
@@ -127,7 +128,7 @@ export default class JefeFuego extends Phaser.Scene {
     {
       if(!this.portalExiste)
       {  
-        this.portalVuelta = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "finalFuego");
+        this.portalVuelta = new Portal(this, 350, 500, "finalFuego");
         this.portalExiste = true;
       }
       else if(this.activarPortal)
