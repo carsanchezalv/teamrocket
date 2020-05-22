@@ -29,31 +29,31 @@ export default class Estado extends Phaser.Scene {
         }
         
         else {
-            if (vidaPikachu > 90) {
+            if (vidaPikachu > 90*5) {
                 this.vida.setTexture('vida10');
             }
-            else if (vidaPikachu > 80) {
+            else if (vidaPikachu > 80*5) {
                 this.vida.setTexture('vida9')
             }
-            else if (vidaPikachu > 70) {
+            else if (vidaPikachu > 70*5) {
                 this.vida.setTexture('vida8')
             }
-            else if (vidaPikachu > 60) {
+            else if (vidaPikachu > 60*5) {
                 this.vida.setTexture('vida7')
             }
-            else if (vidaPikachu > 50) {
+            else if (vidaPikachu > 50*5) {
                 this.vida.setTexture('vida6')
             }
-            else if (vidaPikachu > 40) {
+            else if (vidaPikachu > 40*5) {
                 this.vida.setTexture('vida5')
             }
-            else if (vidaPikachu > 30) {
+            else if (vidaPikachu > 30*5) {
                 this.vida.setTexture('vida4')
             }
-            else if (vidaPikachu > 20) {
+            else if (vidaPikachu > 20*5) {
                 this.vida.setTexture('vida3')
             }
-            else if (vidaPikachu > 10) {
+            else if (vidaPikachu > 10*5) {
                 this.vida.setTexture('vida2')
             }
             else if (vidaPikachu > 0) {
