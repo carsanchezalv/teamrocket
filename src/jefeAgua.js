@@ -134,7 +134,7 @@ export default class JefeAgua extends Phaser.Scene {
       {
         data.jefesIslasRestantes--;
         this.scene.stop('jefeAgua');
-        this.scene.resume('game');
+        this.scene.wake('game');
         this.activarPortal = false;
       }
     }

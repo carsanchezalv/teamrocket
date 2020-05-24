@@ -1178,9 +1178,9 @@ export default class Game extends Phaser.Scene {
     if(this.activarJefePlanta)
     {
       this.activarJefePlanta = false;
-      this.pikachuSprite.body.setVelocityX(0);
-      this.pikachuSprite.body.setVelocityY(0);
- 
+      this.pikachuSprite.x = 3264;
+      this.pikachuSprite.y = 1392;
+      
       this.scene.launch('jefePlanta');
       this.scene.pause('game');
     }
@@ -1189,19 +1189,21 @@ export default class Game extends Phaser.Scene {
     if(this.activarJefeAgua)
     {
       this.activarJefeAgua = false;
-      this.pikachuSprite.body.setVelocityX(0);
-      this.pikachuSprite.body.setVelocityY(0);
-     
-      this.scene.launch('jefeAgua');  
-      this.scene.pause('game');
+      this.scene.sleep('game');
+
+      this.pikachuSprite.x = 2952;
+      this.pikachuSprite.y = 2760;
+      
+      this.scene.launch('jefeAgua');
     }
 
     //Portal Fuego
     if(this.activarJefeFuego)
     {
       this.activarJefeFuego = false;
-      this.pikachuSprite.body.setVelocityX(0);
-      this.pikachuSprite.body.setVelocityY(0);
+
+      this.pikachuSprite.x = 4560;
+      this.pikachuSprite.y = 1392;
 
       this.scene.launch('jefeFuego');
       this.scene.pause('game');
@@ -1211,8 +1213,8 @@ export default class Game extends Phaser.Scene {
    if(this.activarJefeElectricidad)
     {
       this.activarJefeElectricidad = false;
-      this.pikachuSprite.body.setVelocityX(0);
-      this.pikachuSprite.body.setVelocityY(0);
+      this.pikachuSprite.x = 4416;
+      this.pikachuSprite.y = 2760;
 
       this.scene.launch('jefeElectricidad');
       this.scene.pause('game');
