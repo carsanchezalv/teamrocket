@@ -17,14 +17,13 @@ export default class Menu extends Phaser.Scene {
          // Música
          let config = {
             mute: false,
-            volume: 0.5,
+            volume: 0.6,
             rate: 1,
             detune: 0,
             seek: 0,
             loop: true,
             delay: 0
         };
-    //   let music = this.sound.add('musica_portada', config);
         let music = this.sound.add('inicio', config);
         music.play();
 
@@ -126,11 +125,5 @@ export default class Menu extends Phaser.Scene {
     
     update(time, delta)
     {
-    //    if(!this.musicOn)
-  //      {
-   //         this.music.stop();
-  //      }
-     //   else
-    //        this.music.play();
     }
 }

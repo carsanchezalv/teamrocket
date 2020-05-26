@@ -254,6 +254,20 @@ export default class Game extends Phaser.Scene {
     // Mensajes
     this.load.image('mensajeTrampa7', 'assets/Messages/Trampilla7.png');
     this.load.image('mensajeTrampa8', 'assets/Messages/Trampilla8.png');
+    this.load.image('mensajeTrampa9', 'assets/Messages/Trampilla9.png');
+    this.load.image('mensajeTrampa10', 'assets/Messages/Trampilla10.png');
+    this.load.image('mensajeTrampa12', 'assets/Messages/Trampilla12.png');
+    this.load.image('mensajeTrampa13', 'assets/Messages/Trampilla13.png');
+    this.load.image('mensajeTrampa16', 'assets/Messages/Trampilla16.png');
+    this.load.image('mensajeTrampa17', 'assets/Messages/Trampilla17.png');
+    this.load.image('mensajeTrampa18', 'assets/Messages/Trampilla18.png');
+    this.load.image('mensajeTrampa19', 'assets/Messages/Trampilla19.png');
+    this.load.image('mensajeTrampa20', 'assets/Messages/Trampilla20.png');
+    this.load.image('mensajeTrampa21', 'assets/Messages/Trampilla21.png');
+    this.load.image('mensajeTrampa22', 'assets/Messages/Trampilla22.png');
+    this.load.image('mensajeTrampa24', 'assets/Messages/Trampilla24.png');
+    this.load.image('mensajeNada', 'assets/Messages/TrampillaNada.png');
+
   }
 
   create() {
@@ -302,6 +316,7 @@ export default class Game extends Phaser.Scene {
     this.tamano_celda = 24;
 
     this.haVuelto = false;
+    this.mensajeActivo = false;
 
     this.activarJefePlanta = false;   
     this.activarJefeAgua = false;
@@ -1041,10 +1056,13 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
-/*
+
     this.trampillaSprite = new Trampillas(this, this.x + 20, this.y + 20, "trampa"+8);
     this.groupTrampillas.add(this.trampillaSprite);
-*/
+
+    this.trampillaSprite = new Trampillas(this, this.x + 20, this.y, "trampa"+7);
+    this.groupTrampillas.add(this.trampillaSprite);
+
     this.numTrampillas = 50;
     while(this.numTrampillas > 0)
     {
@@ -1154,7 +1172,7 @@ export default class Game extends Phaser.Scene {
     if(data.musica) {
       let config = {
         mute: false,
-        volume: 0.2,
+        volume: 0.1,
         rate: 1,
         detune: 0,
         seek: 0,
@@ -1171,15 +1189,28 @@ export default class Game extends Phaser.Scene {
    
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
+
     if(this.haVuelto)
     {
       this.haVuelto = false;
       this.music.play();
     }
 
-    if(this.mensaje != null)
-      this.mensaje.updateMensajeTrampa();
-
+    if(this.mensajeActivo === true)
+    {
+        this.time.addEvent({
+        delay: 5000,
+        callback: () => {
+            this.mensajeActivo = false;
+        },
+        loop: false
+      });
+    }
+    if(!this.mensajeActivo && this.mensaje != null)
+    {    
+      this.mensaje.alerta.destroy();  
+    }
+    
     // Aparición portal final
     if(data.jefesIslasRestantes === 0)
     {
