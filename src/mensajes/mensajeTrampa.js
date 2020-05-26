@@ -1,32 +1,34 @@
 export default class MensajeTrampa extends Phaser.Scene {
     constructor(scene, trampa) {
         
-        super('mensajeTrampa');
+        super('mensajeTrampa'+trampa);
         this.scene = scene;
         
         this.nombre = trampa;
 
         if(trampa === "trampa7")
         {
-            this.mensaje = this.scene.add.text(360, 350, "¡Buenas noticias! Se han duplicado tus puntos al pisar esta trampilla", {
-                font: "../fonts/pkmnem.ttf",
-              //  fill: "#E60026",
-                fontSize: '1px',
-                padding: { x: 5, y: 3 },
-                
-                backgroundColor: "black"
-            }).setScrollFactor(0);
+            this.mensaje = this.scene.add.sprite(512, 350, "mensajeTrampa7");
+            this.mensaje.setTexture("mensajeTrampa7");
+            this.mensaje.setScrollFactor(0);
             this.mensaje.setDepth(20);
-            this.mensaje.setScale(1);
+            this.mensaje.setScale(0.5);
         }
-        
+        else if(trampa === "trampa8")
+        {
+            this.mensaje = this.scene.add.sprite(512, 350, "mensajeTrampa8");
+            this.mensaje.setTexture("mensajeTrampa8");
+            this.mensaje.setScrollFactor(0);
+            this.mensaje.setDepth(20);
+            this.mensaje.setScale(0.5);
+        }
         this.activo = true;
     }
 
     updateMensajeTrampa() {
         
         this.scene.time.addEvent({
-            delay: 7000,
+            delay: 5000,
             callback: () => {
                 this.activo = false;
             },
@@ -34,8 +36,6 @@ export default class MensajeTrampa extends Phaser.Scene {
         });
 
         if(!this.activo)
-            this.mensaje.destroy();
-                              
+            this.mensaje.destroy();                              
     }
-
 }

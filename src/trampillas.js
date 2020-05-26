@@ -1,5 +1,8 @@
 import { data } from "./data.js";
 
+// Textos
+import MensajeTrampa from './mensajes/mensajeTrampa.js';
+
 export default class Trampillas extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, nombre) {
@@ -132,20 +135,22 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
         {
             switch(this.animation)
             {
-                case "trampa7":
+                case "trampa7": // Duplica tus puntos
                     data.puntos *= 2;
+                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa7");
                 break;
 
-                case "trampa8":
+                case "trampa8": // Te recupera la vida
                     this.scene.pikachuSprite.vida = this.scene.pikachuSprite.vidaTotal;
+                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa8");
                 break;
 
-                case "trampa9":
+                case "trampa9": // Aumenta el valor de las gemas del suelo
                     data.bonusGemas = 2;
                     data.tiempoEfecto = 200;
                 break;
 
-                case "trampa10":
+                case "trampa10": // Duplica tu fuerza
                     this.scene.pikachuSprite.fuerza *= 2;
                     data.tiempoEfecto = 200;
                 break;
@@ -154,12 +159,12 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                     // No hace nada
                 break;
 
-                case "trampa12":
+                case "trampa12": // Te va frenando poco a poco
                     data.tiempoEfecto = 200;
                     this.scene.pikachuSprite.efecto = "ralentizar";
                 break;
 
-                case "trampa13":
+                case "trampa13": // Te para de golpe
                     data.tiempoEfecto = 200;
                     this.scene.pikachuSprite.velocidad = 0;
                 break;
@@ -172,30 +177,30 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                     // No hace nada
                 break;
 
-                case "trampa16":
+                case "trampa16": // Envenena durante un tiempo
                     data.tiempoEfecto = 200;
                     this.scene.pikachuSprite.efecto = "veneno";
                 break;
 
-                case "trampa17":
+                case "trampa17": // Tu fuerza ahora vale la mitad
                     this.scene.pikachuSprite.fuerza = this.scene.pikachuSprite.fuerza / 2;
                     data.tiempoEfecto = 200;
                 break;
 
-                case "trampa18":
+                case "trampa18": // Tus puntos se convierten en un valor aleatorio
                     data.puntos = Phaser.Math.Between(0, 5000);
                 break;
 
-                case "trampa19":
+                case "trampa19": // Te quita todos los puntos
                     data.puntos = 0;
                 break;
 
-                case "trampa20":
+                case "trampa20": // Eres inmune durante un tiempo
                     this.scene.pikachuSprite.inmune = true;
                     data.tiempoEfecto = 200;
                 break;
 
-                case "trampa21":
+                case "trampa21": // Te teletransporta a un lugar aleatorio
                     let sigue = true;
                     while(sigue)
                     {
@@ -210,7 +215,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                     }
                 break;
 
-                case "trampa22":
+                case "trampa22": // Te marea 
                     this.scene.pikachuSprite.velocidad *= -1;
                     data.tiempoEfecto = 200;
                 break;
@@ -219,7 +224,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                     // No hace nada
                 break;
 
-                case "trampa24":
+                case "trampa24": // Te reduce la velocidad a la mitad
                     data.tiempoEfecto = 200;
                     this.scene.pikachuSprite.velocidad = this.scene.pikachuSprite.velocidad / 2;
                 break;

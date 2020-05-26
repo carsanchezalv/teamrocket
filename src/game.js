@@ -80,9 +80,6 @@ import Planta15 from "./planta/planta15.js";
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
 
-// Textos
-import MensajeTrampa from './mensajes/mensajeTrampa.js';
-
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -253,6 +250,10 @@ export default class Game extends Phaser.Scene {
     this.load.image('level7', 'assets/estado/niveles/7.png');
     this.load.image('level8', 'assets/estado/niveles/8.png');
     this.load.image('level9', 'assets/estado/niveles/9.png');
+
+    // Mensajes
+    this.load.image('mensajeTrampa7', 'assets/Messages/Trampilla7.png');
+    this.load.image('mensajeTrampa8', 'assets/Messages/Trampilla8.png');
   }
 
   create() {
@@ -1038,6 +1039,10 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
+/*
+    this.trampillaSprite = new Trampillas(this, this.x + 20, this.y + 20, "trampa"+8);
+    this.groupTrampillas.add(this.trampillaSprite);
+*/
     this.numTrampillas = 50;
     while(this.numTrampillas > 0)
     {
@@ -1159,14 +1164,16 @@ export default class Game extends Phaser.Scene {
       let music = this.sound.add('musica_portada', config);
       music.play();
     }
-    this.mensaje = new MensajeTrampa(this, "trampa7");
+    
   }
 
   update(time, delta) {
    
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
-    this.mensaje.updateMensajeTrampa();
+
+    if(this.mensaje != null)
+      this.mensaje.updateMensajeTrampa();
     // Aparición portal final
     if(data.jefesIslasRestantes === 0)
     {
