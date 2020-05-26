@@ -26,11 +26,10 @@ export default class jefeFinal extends Phaser.Scene {
     // Portal
     this.load.spritesheet('portal', 'assets/tiles/portal.png',{ frameWidth: 256, frameHeight: 256 });
 
- //   this.load.audio("musica", [
- //     "assets/music/portada.ogg",
- //     "assets/music/portada.mp3"
- //   ]);
-
+    this.load.audio("musica_mewtwo", [
+      "assets/music/Mewtwo.ogg",
+      "assets/music/Mewtwo.mp3"
+    ]);
 
     // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
@@ -97,24 +96,20 @@ export default class jefeFinal extends Phaser.Scene {
     camera.setZoom(2);
     camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     camera.startFollow(this.pikachuSprite);
-
-  // Música
-  /*
+    // Música
     if(data.musica) {
       let config = {
         mute: false,
-        volume: 0.2,
+        volume: 0.5,
         rate: 1,
         detune: 0,
         seek: 0,
         loop: true,
         delay: 0
       };
-      let music = this.sound.add('musica_portada', config);
-      music.play();
+      this.music = this.sound.add('musica_mewtwo', config);
+      this.music.play();
     }
-  */
-//    this.scene.start('game');
   }
 
   update(time, delta) {
@@ -131,6 +126,7 @@ export default class jefeFinal extends Phaser.Scene {
       }
       else if(this.activarPortal)
       {
+        this.music.stop();
         this.scene.stop('jefeFinal');
         this.scene.resume('game'); // No volvería al game, sino a una escena de final de juego
         this.activarPortal = false;

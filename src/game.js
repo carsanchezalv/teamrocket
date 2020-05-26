@@ -301,6 +301,8 @@ export default class Game extends Phaser.Scene {
     this.numEnemy = 0;
     this.tamano_celda = 24;
 
+    this.haVuelto = false;
+
     this.activarJefePlanta = false;   
     this.activarJefeAgua = false;
     this.activarJefeFinal = false;
@@ -1127,9 +1129,7 @@ export default class Game extends Phaser.Scene {
     }
 
     this.vidaPikachu = new Estado(this);
-
     this.puntuacion = new Puntuacion(this);
-
     
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
@@ -1161,8 +1161,8 @@ export default class Game extends Phaser.Scene {
         loop: true,
         delay: 0
       };
-      let music = this.sound.add('musica_portada', config);
-      music.play();
+      this.music = this.sound.add('musica_portada', config);
+      this.music.play();
     }
     
   }
@@ -1171,9 +1171,15 @@ export default class Game extends Phaser.Scene {
    
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
+    if(this.haVuelto)
+    {
+      this.haVuelto = false;
+      this.music.play();
+    }
 
     if(this.mensaje != null)
       this.mensaje.updateMensajeTrampa();
+
     // Aparición portal final
     if(data.jefesIslasRestantes === 0)
     {
@@ -1186,51 +1192,58 @@ export default class Game extends Phaser.Scene {
     if(this.activarJefePlanta)
     {
       this.activarJefePlanta = false;
+      
+      this.music.stop();
+      this.scene.launch('jefePlanta');
+      this.scene.pause('game');
       this.pikachuSprite.x = 3264;
       this.pikachuSprite.y = 1392;
       
-      this.scene.launch('jefePlanta');
-      this.scene.pause('game');
+      this.haVuelto = true;
     }
 
     // Portal Agua
     if(this.activarJefeAgua)
     {
+      this.music.stop();
       this.activarJefeAgua = false;
       this.scene.sleep('game');
-
+      this.scene.launch('jefeAgua');
       this.pikachuSprite.x = 2952;
       this.pikachuSprite.y = 2760;
-      
-      this.scene.launch('jefeAgua');
+      this.haVuelto = true;
     }
 
     //Portal Fuego
     if(this.activarJefeFuego)
     {
       this.activarJefeFuego = false;
-
-      this.pikachuSprite.x = 4560;
-      this.pikachuSprite.y = 1392;
-
+      this.music.stop();
       this.scene.launch('jefeFuego');
       this.scene.pause('game');
+      this.pikachuSprite.x = 4560;
+      this.pikachuSprite.y = 1392;
+      
+      this.haVuelto = true;
     }
 
     // Portal Electricidad
     if(this.activarJefeElectricidad)
     {
       this.activarJefeElectricidad = false;
-      this.pikachuSprite.x = 4416;
-      this.pikachuSprite.y = 2760;
-
+      this.music.stop();
       this.scene.launch('jefeElectricidad');
       this.scene.pause('game');
+      this.pikachuSprite.x = 4416;
+      this.pikachuSprite.y = 2760;      
+      
+      this.haVuelto = true;
     }
 
     // Portal Final
     if(this.activarJefeFinal)
     {
+      this.music.stop();
       this.scene.launch('jefeFinal');
       this.activarJefeFinal = false;
       
