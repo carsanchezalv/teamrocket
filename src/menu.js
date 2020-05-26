@@ -4,10 +4,30 @@ export default class Menu extends Phaser.Scene {
     constructor() {
         super({ key: 'menu' });
     }
+    preload() {
+        this.load.audio("inicio", [
+            "assets/music/inicio.ogg",
+            "assets/music/inicio.mp3"
+          ]);
+    }
     create() {
 
         const escena = this.scene;
-        
+        this.musicOn = true;
+         // Música
+         let config = {
+            mute: false,
+            volume: 0.5,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        };
+    //   let music = this.sound.add('musica_portada', config);
+        let music = this.sound.add('inicio', config);
+        music.play();
+
         // Botón de jugar
         let jugar = this.add.text( this.scale.width / 2, this.scale.height / 2 - 80, '[ JUGAR ]', {
 
@@ -28,8 +48,10 @@ export default class Menu extends Phaser.Scene {
             jugar.setScale(1);
         })
         jugar.on('pointerup', function (pointer) {
+            music.stop();
             escena.start('game');
         })
+        
 
         let musica = this.add.text( this.scale.width / 2 - 200, this.scale.height / 2 + 50, 'Desactivar musica', {
 
@@ -55,11 +77,13 @@ export default class Menu extends Phaser.Scene {
             musica.fill = "#ffff2b";
             if(data.musica)
             {
+                music.stop();
                 data.musica = false;
                 musica.text = "Activar musica"
             }
             else
             {
+                music.play();
                 data.musica = true;
                 musica.text = "Desactivar musica"
             }
@@ -102,6 +126,11 @@ export default class Menu extends Phaser.Scene {
     
     update(time, delta)
     {
-
+    //    if(!this.musicOn)
+  //      {
+   //         this.music.stop();
+  //      }
+     //   else
+    //        this.music.play();
     }
 }

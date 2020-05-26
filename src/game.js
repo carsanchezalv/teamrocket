@@ -80,8 +80,8 @@ import Planta15 from "./planta/planta15.js";
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
 
-// Jefes
-import BossPlanta from "./jefePlanta.js";
+// Textos
+import MensajeTrampa from './mensajes/mensajeTrampa.js';
 
 
 export default class Game extends Phaser.Scene {
@@ -116,6 +116,7 @@ export default class Game extends Phaser.Scene {
       "assets/music/portada.ogg",
       "assets/music/portada.mp3"
     ]);
+    
 
     // Gema
     this.load.spritesheet('gema','assets/icons/personajes/Gema/gemas.png' ,{ frameWidth: 16, frameHeight: 15 });
@@ -286,7 +287,6 @@ export default class Game extends Phaser.Scene {
     this.puente_madera = this.map.createStaticLayer('puente_madera', ['puente-1']);
     this.borde_puente = this.map.createStaticLayer('borde_puente', ['dungeon-14']);
 
-    this.movimientoBarra = true;
     this.animacionHerido = false;
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde_puente.setCollisionBetween(0, 9999);
@@ -1159,13 +1159,14 @@ export default class Game extends Phaser.Scene {
       let music = this.sound.add('musica_portada', config);
       music.play();
     }
+    this.mensaje = new MensajeTrampa(this, "trampa7");
   }
 
   update(time, delta) {
    
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
-
+    this.mensaje.updateMensajeTrampa();
     // Aparición portal final
     if(data.jefesIslasRestantes === 0)
     {
@@ -1210,7 +1211,7 @@ export default class Game extends Phaser.Scene {
     }
 
     // Portal Electricidad
-   if(this.activarJefeElectricidad)
+    if(this.activarJefeElectricidad)
     {
       this.activarJefeElectricidad = false;
       this.pikachuSprite.x = 4416;
