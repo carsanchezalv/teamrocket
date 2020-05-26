@@ -345,7 +345,7 @@ export default class Game extends Phaser.Scene {
     {
       this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
       this.yRand = Phaser.Math.Between(0, 3827/this.tamano_celda);
-      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) != null)
       {
         this.gemaSprite = new Gema(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda);
         this.groupGemas.add(this.gemaSprite);
@@ -1056,20 +1056,13 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
-
-    this.trampillaSprite = new Trampillas(this, this.x + 20, this.y + 20, "trampa"+8);
-    this.groupTrampillas.add(this.trampillaSprite);
-
-    this.trampillaSprite = new Trampillas(this, this.x + 20, this.y, "trampa"+7);
-    this.groupTrampillas.add(this.trampillaSprite);
-
     this.numTrampillas = 50;
     while(this.numTrampillas > 0)
     {
       this.xRand = Phaser.Math.Between(0, 6096/this.tamano_celda);
       this.yRand = Phaser.Math.Between(0, 3827/this.tamano_celda);
       this.tipoTrampilla = "trampa"+Phaser.Math.Between(7, 24);
-      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+      if(this.map.getTileAt(this.xRand, this.yRand, false, this.suelo) != null)
       {
         this.trampillaSprite = new Trampillas(this, this.xRand * this.tamano_celda, this.yRand * this.tamano_celda, this.tipoTrampilla);
         this.groupTrampillas.add(this.trampillaSprite);
@@ -1089,11 +1082,6 @@ export default class Game extends Phaser.Scene {
       createMultipleCallback: null
     });
 
-
- //   this.portal0Sprite = new Portal(this, this.pikachuSprite.x, this.pikachuSprite.y + 100, "planta");
- //   this.groupPortales.add(this.portal0Sprite);
-   
-    
     this.numPortal = 1;
     while(this.numPortal > 0)
     {
@@ -1196,16 +1184,6 @@ export default class Game extends Phaser.Scene {
       this.music.play();
     }
 
-    if(this.mensajeActivo === true)
-    {
-        this.time.addEvent({
-        delay: 5000,
-        callback: () => {
-            this.mensajeActivo = false;
-        },
-        loop: false
-      });
-    }
     if(!this.mensajeActivo && this.mensaje != null)
     {    
       this.mensaje.alerta.destroy();  

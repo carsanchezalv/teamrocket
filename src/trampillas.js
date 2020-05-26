@@ -8,6 +8,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, nombre) {
         super(scene, x, y, "trampilla");
 
+        this.pisada = false;
         this.animation = nombre;
         this.visible = false;
         this.activo = true;
@@ -123,126 +124,89 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
     
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-
-       this.play(this.animation, true);
-       this.scene.physics.world.enableBody(this);
+        this.numMensajes = 0;
+        this.play(this.animation, true);
+        this.scene.physics.world.enableBody(this);
        
-       this.scene.physics.add.overlap(this.scene.pikachuSprite, this, () => this.pisarTrampa());
+        this.scene.physics.add.overlap(this.scene.pikachuSprite, this, () => this.pisarTrampa());
     }
 
     pisarTrampa() {
         if(this.activo)
         {
-            if(this.scene.mensaje != null && this.scene.mensajeActivo)
-            {       
-                this.scene.mensajeActivo = true;
-                this.scene.mensaje.alerta.destroy();
-            }
             switch(this.animation)
             {
                 case "trampa7": // Duplica tus puntos
                     data.puntos *= 2;
-                    if(this.scene.mensaje != null)
-                    this.scene.mensajeActivo = true;
-               
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa7");
                 break;
 
                 case "trampa8": // Te recupera la vida               
-                    
-                    this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.vida = this.scene.pikachuSprite.vidaTotal;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa8");
                 break;
 
                 case "trampa9": // Aumenta el valor de las gemas del suelo
                     data.bonusGemas = 2;
-                    this.scene.mensajeActivo = true;
                     data.tiempoEfecto = 200;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa9");
                 break;
 
                 case "trampa10": // Duplica tu fuerza
-                this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.fuerza *= 2;
                     data.tiempoEfecto = 200;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa10");
                 break;
 
                 case "trampa11":
                     // No hace nada
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa11");
                 break;
 
                 case "trampa12": // Te va frenando poco a poco
                     data.tiempoEfecto = 200;
-                    this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.efecto = "ralentizar";
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa12");
                 break;
 
                 case "trampa13": // Te para de golpe
                     data.tiempoEfecto = 200;
-                    this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.velocidad = 0;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa13");
                 break;
 
                 case "trampa14":
                     // No hace nada
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa14");
                 break;
 
                 case "trampa15":
                     // No hace nada
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa15");
                 break;
 
                 case "trampa16": // Envenena durante un tiempo
                     data.tiempoEfecto = 200;
-                    this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.efecto = "veneno";
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa16");
                 break;
 
                 case "trampa17": // Tu fuerza ahora vale la mitad
-                this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.fuerza = this.scene.pikachuSprite.fuerza / 2;
                     data.tiempoEfecto = 200;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa17");
                 break;
 
                 case "trampa18": // Tus puntos se convierten en un valor aleatorio
                     data.puntos = Phaser.Math.Between(0, 5000);
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa18");
                 break;
 
                 case "trampa19": // Te quita todos los puntos
                     data.puntos = 0;
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa19");
                 break;
 
                 case "trampa20": // Eres inmune durante un tiempo
                     this.scene.pikachuSprite.inmune = true;
-                    this.scene.mensajeActivo = true;
                     data.tiempoEfecto = 200;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa20");
                 break;
 
                 case "trampa21": // Te teletransporta a un lugar aleatorio
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa21");
+
                     let sigue = true;
                     while(sigue)
                     {
                         this.xRand = Phaser.Math.Between(0, 6096/24);
                         this.yRand = Phaser.Math.Between(0, 3827/24);
-                        if(this.scene.map.getTileAt(this.xRand, this.yRand, false, this.suelo) !== null)
+                        if(this.scene.map.getTileAt(this.xRand, this.yRand, false, this.scene.suelo) !== null)
                         {
                             sigue = false;
                             this.scene.pikachuSprite.x = this.xRand * 24;
@@ -252,33 +216,41 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa22": // Te marea 
-                    this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.velocidad *= -1;
                     data.tiempoEfecto = 200;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa22");
                 break;
 
                 case "trampa23":
                     // No hace nada
-                    this.scene.mensajeActivo = true;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa23");
                 break;
 
                 case "trampa24": // Te reduce la velocidad a la mitad
                     data.tiempoEfecto = 200;
-                    this.scene.mensajeActivo = true;
                     this.scene.pikachuSprite.velocidad = this.scene.pikachuSprite.velocidad / 2;
-                    this.scene.mensaje = new MensajeTrampa(this.scene, "trampa24");
                 break;
             }
             this.setVisible(true);
             this.activo = false;
+            this.pisada = true;
         }
     }
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-
+    
+        if(!this.scene.mensajeActivo && this.pisada)
+        {   
+            this.pisada = false;
+            this.scene.mensajeActivo = true;
+            this.scene.mensaje = new MensajeTrampa(this.scene, this.animation);
+            this.timer = this.scene.time.addEvent({
+                delay: 5000,
+                callback: () => {
+                    this.scene.mensajeActivo = false;
+                },
+                loop: false
+            });
+        }
         this.play(this.animation, true);
     }
 }

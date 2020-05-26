@@ -150,9 +150,10 @@ export default class MensajeTrampa extends Phaser.Scene {
             this.alerta.setDepth(20);
             this.alerta.setScale(0.5);
         }
+
         this.activo = true;
     }
 
-    update() {                   
-    }
+    updateMensaje() {
+    }               
 }

@@ -3,8 +3,8 @@
     {
      "export":
         {
-         "format":"tmx",
-         "target":"mapa_team_rocket.tmx"
+         "format":"json",
+         "target":"mapa_team_rocket.json"
         }
     },
  "height":160,

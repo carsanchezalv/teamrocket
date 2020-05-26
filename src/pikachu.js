@@ -179,9 +179,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
 
-    this.body.setSize(14, 10);
-    this.body.offset.x = 16;
-    this.body.offset.y = 27;
+    this.body.setSize(14, 15);
+    this.body.offset.x = 17;
+    this.body.offset.y = 24;
 
     this.play(this.animation, true);
     this.cursor = this.scene.input.keyboard.addKeys({

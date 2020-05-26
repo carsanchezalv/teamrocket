@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="288" height="160" tilewidth="24" tileheight="24" infinite="0" nextlayerid="41" nextobjectid="11">
  <editorsettings>
-  <export target="mapa_team_rocket.tmx" format="tmx"/>
+  <export target="mapa_team_rocket.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="dungeon-0" tilewidth="24" tileheight="24" tilecount="432" columns="18">
   <image source="../dungeon-0.png" width="432" height="576"/>
