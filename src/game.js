@@ -268,6 +268,8 @@ export default class Game extends Phaser.Scene {
     this.load.image('mensajeTrampa24', 'assets/Messages/Trampilla24.png');
     this.load.image('mensajeNada', 'assets/Messages/TrampillaNada.png');
 
+    //
+    //this.load.image('barra', 'fonts/barra1.png');
   }
 
   create() {
@@ -1170,6 +1172,13 @@ export default class Game extends Phaser.Scene {
       this.music = this.sound.add('musica_portada', config);
       this.music.play();
     }
+
+    //pausa
+    //this. tecla = this.pikachuSprite.cursor;
+
+    //this.fondo = this.add.image(300, 170, 'barra');
+
+    
     
   }
 
@@ -1258,15 +1267,23 @@ export default class Game extends Phaser.Scene {
       
       this.scene.pause('game');
     }
-
-  /*
-    this.add.text(300, 170, `Player: ${data.nombre} \nScore: ${data.puntos}`, {
-      font: "../fonts/pkmnem.ttf",
-      fill: "#E60026",
-      fontSize: '500px',
-      padding: { x: 5, y: 3 },
-      backgroundColor: "#fff88f"
+     /*
+    this.add.text(300, 170, `Player: ${data.nombre}`,{
+      //font: "../fonts/AGENCYR.TTF",
+      fill: "#8A2BE2",
+      fontSize: '20px',
+      //padding: { x: 5, y: 3 },
+      stroke: "#00FF89",
+      //backgroundColor: "#FFFFFF"
+      //backgroundImage: this.fondo,
     }).setScrollFactor(0);
-    */
+    
+    
+    //pausa
+   
+    if(this.tecla.pause.isDown()){
+      this.scene.pause('game');
+      this.scene.launch('jefeFinal'); //meter escena pausa
+    } */
   }
 }

@@ -30,12 +30,12 @@ export default class Menu extends Phaser.Scene {
         // Botón de jugar
         let jugar = this.add.text( this.scale.width / 2, this.scale.height / 2 - 80, '[ JUGAR ]', {
 
-            fontSize: '60px',
+            fontSize: '70px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#00E1FF",
+            fill: "#8A2BE2",
     //        backgroundColor: 'rgba(255, 255, 0, 1)',
-            stroke: "#094ec0",
+            stroke: "#FFFFFF",
             strokeThickness: 4,
             align: 'center', 
         }).setDepth(1).setOrigin(0.5);
@@ -57,9 +57,9 @@ export default class Menu extends Phaser.Scene {
             fontSize: '30px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#094ec0",
+            fill: "#8A2BE2",
     //      backgroundColor: 'rgba(255, 255, 0, 1)',
-            stroke: "#00E1FF",
+            stroke: "#FFFFFF",
             strokeThickness: 3,
             align: 'center', 
         }).setDepth(1).setOrigin(0.5);
@@ -67,13 +67,13 @@ export default class Menu extends Phaser.Scene {
         musica.setInteractive();
         musica.on('pointerover', function (pointer) {
             musica.setScale(1.2);
-            musica.fill = "#ffff2b";
+            musica.fill = "#8A2BE2";
         })
         musica.on('pointerout', function (pointer) {
             musica.setScale(1);
         })
         musica.on('pointerup', function (pointer) {
-            musica.fill = "#ffff2b";
+            musica.fill = "#8A2BE2";
             if(data.musica)
             {
                 music.stop();
@@ -94,9 +94,9 @@ export default class Menu extends Phaser.Scene {
             fontSize: '30px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#094ec0",
+            fill: "#8A2BE2",
     //        backgroundColor: 'rgba(255, 255, 0, 1)',
-            stroke: "#00E1FF",
+            stroke: "#FFFFFF",
             strokeThickness: 3,
             align: 'center',
         }).setDepth(1).setOrigin(0.5);

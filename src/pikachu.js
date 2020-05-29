@@ -190,7 +190,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       left: 'left',
       right: 'right',
       space: 'space',
-      control:'c'
+      control:'c',
+      pause: 'p'
     });
   }
 

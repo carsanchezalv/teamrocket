@@ -19,9 +19,9 @@ export default class Video extends Phaser.Scene {
             fontSize: '25px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#094ec0",
+            fill: "#8A2BE2",
     //        backgroundColor: 'rgba(255, 255, 0, 1)',
-            stroke: "yellow",
+            stroke: "FFFFFF",
             strokeThickness: 4,
             align: 'center', 
         }).setDepth(1).setOrigin(0.5);
@@ -43,9 +43,9 @@ export default class Video extends Phaser.Scene {
             fontSize: '20px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#00E1FF",
+            fill: "#8A2BE2",
     //        backgroundColor: 'rgba(255, 255, 0, 1)',
-            stroke: "#094ec0",
+            stroke: "#FFFFFF",
             strokeThickness: 4,
             align: 'center', 
         }).setDepth(1).setOrigin(0.5);

@@ -42,20 +42,20 @@
  
     font-family: 'Press Start 2P', cursive;
     font-size: 100%;
-    color:rgb(0, 225, 255);
+    color:blueviolet;
  
     padding: 1%;
     width: 100%;
     margin-bottom: 2%;
-    background: rgba(0, 0, 0, 0.349);
+    background: #CC95F6;
     text-shadow: 0px 0px 0px ;
  
     border: 4px solid ;
     border-radius: 10px;
     display: outside;
     text-decoration: none;
-    border-color:  red  yellow blue rgb(0, 255, 0);
-    box-shadow: 0px 3px 5px rgba(255, 0, 0, 0.5);
+    border-color:  whitesmoke;
+    box-shadow: 2px 5px 7px #4A057F;
  }
  
  .frame a:hover {
@@ -76,7 +76,7 @@
    height: 60%;
    top: -56%;
    text-align: center;
-   background-image: url(../assets/fondoJuego.png);
+   background-image: url(../assets/fondonuevo.jpg);
    background-size: 100% 100%;
    background-repeat: no-repeat;
  }
