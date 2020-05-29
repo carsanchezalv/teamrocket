@@ -6,8 +6,8 @@ export default class Mewtwo extends Enemy {
         super(scene, x, y, "mewtwo");
         this.nombre = "mewtwo";
         this.animation = "move_down_enemy"+this.nombre;
-        this.vida = 150;
-        this.fuerza = 5;
+        this.vida = 300;
+        this.fuerza = 10;
         this.setScale(3);
         this.esJefe = true;
         this.velocidad = 1;

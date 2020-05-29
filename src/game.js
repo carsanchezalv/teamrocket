@@ -305,10 +305,10 @@ export default class Game extends Phaser.Scene {
     this.borde_puente = this.map.createStaticLayer('borde_puente', ['dungeon-14']);
 
     this.animacionHerido = false;
+
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde_puente.setCollisionBetween(0, 9999);
     this.borde.setCollisionBetween(0, 9999);
-  //  this.mar.setCollisionBetween(0, 9999);
     this.rio.setCollisionBetween(0, 9999);
 
     this.x = 3778;
@@ -325,6 +325,8 @@ export default class Game extends Phaser.Scene {
     this.activarJefeFinal = false;
     this.activarJefeFuego = false;
     this.activarJefeElectricidad = false;
+
+    this.nivelRequerido = 2;
 
     this.pikachuSprite = new Pikachu(this, this.x, this.y);
     

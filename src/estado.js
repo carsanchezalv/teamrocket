@@ -6,7 +6,7 @@ export default class Estado extends Phaser.Scene {
         this.vida = scene.add.sprite(512, 226, 'vida10');
         this.vida.setTexture('vida10');
         this.vida.setScale(0.2);
-        this.vida.setDepth(20);
+        this.vida.setDepth(60);
         this.vida.setScrollFactor(0);
         this.animacionHerido = false;
     }
