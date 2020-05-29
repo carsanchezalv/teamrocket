@@ -13,7 +13,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     
     // Atributos
     this.vidaTotal = 100*5;
-    this.vida = this.vidaTotal;
+    this.vida = this.vidaTotal/3;
     this.fuerza = 10;
     this.atacar = false;
     this.esHerido = false;
@@ -184,13 +184,15 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.body.offset.y = 24;
 
     this.play(this.animation, true);
+    
     this.cursor = this.scene.input.keyboard.addKeys({
       up: 'up',
       down: 'down',
       left: 'left',
       right: 'right',
       space: 'space',
-      control:'c'
+      c:'c',
+      r:'r'
     });
   }
 
@@ -247,7 +249,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         loop: false
       });
     }
-    else if(this.cursor.control.isDown && data.puntos > 0 && this.puedeActuar)
+    else if(this.cursor.c.isDown && data.puntos > 0 && this.puedeActuar)
     {
       data.puntos--;
       if (this.cursor.up.isDown && this.cursor.right.isDown) {
@@ -414,6 +416,100 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.anims.play(this.animation, true);
       }
     }
+
+    if(this.puedeActuar && (!this.cursor.c.isDown || data.puntos <= 0))
+    {
+      if (this.cursor.up.isDown && this.cursor.right.isDown) {
+        this.velX = this.velocidad;
+        this.velY = -this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
+        this.orientation = "upright";
+        this.flipX = false;
+        this.animation = "move_upright";
+        this.anims.play(this.animation, true);
+      }
+      else if (this.cursor.up.isDown && this.cursor.left.isDown) {
+        this.velX = -this.velocidad;
+        this.velY = -this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
+        this.orientation = "upleft";
+        this.flipX = true;
+        this.animation = "move_upright";
+        this.anims.play(this.animation, true);
+      }
+      else if (this.cursor.down.isDown && this.cursor.right.isDown) {
+        this.velX = this.velocidad;
+        this.velY = this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
+        this.orientation = "downright";
+        this.flipX = false;
+        this.animation = "move_downright";
+        this.anims.play(this.animation, true);
+      }
+      else if (this.cursor.down.isDown && this.cursor.left.isDown) {
+        this.velX = -this.velocidad;
+        this.velY = this.velocidad;
+        this.body.setVelocityX(this.velX);
+        this.body.setVelocityY(this.velY);
+        this.orientation = "downleft";
+        this.flipX = true;
+        this.animation = "move_downright";
+        this.anims.play(this.animation, true);
+      }
+
+      else
+      {
+        if (this.cursor.right.isDown) {
+          this.velX = this.velocidad;
+          this.velY = 0;
+          this.body.setVelocityX(this.velX);
+          this.body.setVelocityY(this.velY);
+          this.orientation = "right";
+          this.flipX = false;
+          this.animation = "move_right";
+          this.anims.play(this.animation, true);
+        }
+        if (this.cursor.left.isDown) {
+          this.velX = -this.velocidad;
+          this.velY = 0;
+          this.body.setVelocityX(this.velX);
+          this.body.setVelocityY(this.velY);
+          this.orientation = "left";
+          this.flipX = true;
+          this.animation = "move_right";
+          this.anims.play(this.animation, true);
+        }
+        if (this.cursor.up.isDown) {
+          this.velX = 0;
+          this.velY = -this.velocidad;
+          this.body.setVelocityX(this.velX);
+          this.body.setVelocityY(this.velY);
+          this.orientation = "up";
+          this.animation = "move_up";
+          this.anims.play(this.animation, true);
+        }
+        if (this.cursor.down.isDown) {
+          this.velX = 0;
+          this.velY = this.velocidad;
+          this.body.setVelocityX(this.velX);
+          this.body.setVelocityY(this.velY);
+          this.orientation = "down";
+          this.animation = "move_down";
+          this.anims.play(this.animation, true);
+        }
+      }
+    }
+    if(this.cursor.r.isDown && this.puedeActuar) // Recupera vida
+    {
+      if(this.scene.puntuacion.nivel > 0 && this.vida <= this.vidaTotal/2) // Solo puede recuperar la vida si ha perdido la mitad y si puede gastar niveles
+      {
+        this.vida = this.vidaTotal;
+        data.puntos -= 330;
+      }
+    }
   }
 
   preUpdate(t, dt) {
@@ -448,7 +544,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
     }  
     
-    if(this.vida > 0)// && this.puedeActuar)
+    if(this.vida > 0) // && this.puedeActuar)
     {
       const cursor = this.cursor;
       
@@ -510,7 +606,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
       
      this.esHerido = false;
-   //   this.atacar = false;
     }
     else if(this.vida === 0)
     {

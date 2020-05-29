@@ -8,20 +8,21 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.nombre = nombre;
         // Atributos
         this.vida = 20;
-        this.fuerza = 1;
+        this.fuerza = 2;
         this.ataque = false;
         this.esHerido = false;
         this.numEnemy = this.scene.numEnemy;
         this.velocidad = 40;
         this.puedeActuar = true;
         this.esJefe = false;
-        this.valor = this.vida;
+        this.valor = this.vida*2;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, this.scene.groupEnemies);
         this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
         this.puedeAtacar = true;
+        this.setDepth(50);
     }
 
     atacar() {

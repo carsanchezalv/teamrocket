@@ -46,45 +46,95 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         // Escena jefes dependiendo de la isla
         if(this.isla === "planta")
         {
-            this.scene.activarJefePlanta = true;
+            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            {    
+                this.scene.nivelRequerido++;
+                this.scene.activarJefePlanta = true;
+                this.destroy();
+            }
+            else
+            {
+                // Mostramos mensaje
+            }
         }
         else if(this.isla === "finalPlanta")
         {
             this.scene.activarPortal = true;
+            this.destroy();
         }
         else if(this.isla === "agua")
         {
-            this.scene.activarJefeAgua = true;
+            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            {    
+                this.scene.nivelRequerido++;
+                this.scene.activarJefeAgua = true;
+                this.destroy();  
+            }
+            else
+            {
+                // Mostramos mensaje
+            }
         }
         else if(this.isla === "finalAgua")
         {
             this.scene.activarPortal = true;
+            this.destroy();
         }
         else if(this.isla === "fuego")
         {
-            this.scene.activarJefeFuego = true;
+            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            {    
+                this.scene.nivelRequerido++;
+                this.scene.activarJefeFuego = true;
+                this.destroy();      
+            }
+            else
+            {
+                // Mostramos mensaje
+            }
         }
         else if(this.isla === "finalFuego")
         {
             this.scene.activarPortal = true;
+            this.destroy();
         }
         else if(this.isla === "electricidad")
         {
-            this.scene.activarJefeElectricidad = true;
+            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            {    
+                this.scene.nivelRequerido++;
+                this.scene.activarJefeElectricidad = true;
+                this.destroy();
+            }
+            else
+            {
+                // Mostramos mensaje
+            }
         }
         else if(this.isla === "finalElectricidad")
         {
             this.scene.activarPortal = true;
+            this.destroy();
         }
         else if(this.isla === "centro")
         {
-            this.scene.activarJefeFinal = true;
+            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            {    
+                this.scene.nivelRequerido++;
+                this.scene.activarJefeFinal = true;
+                this.destroy();
+            }
+            else
+            {
+                // Mostramos mensaje
+            }
         }
         else if(this.isla === "finalJuego")
         {
             this.scene.activarPortal = true;
+            this.destroy();
         }
-        this.destroy();
+        
     }
 
     preUpdate(t, dt) {

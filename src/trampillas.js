@@ -121,7 +121,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
             frameRate: 1,
             repeat: 0
         });
-    
+        this.setScale(1.5);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.numMensajes = 0;
