@@ -16,7 +16,7 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
 
-    this.pantalla = this.add.sprite(512, 280, 'pantallaGO');
+    this.pantalla = this.add.sprite(525, 280, 'pantallaGO');
     this.pantalla.setTexture('pantallaGO');
     this.pantalla.setScrollFactor(0);
 
