@@ -120,6 +120,7 @@ export default class Game extends Phaser.Scene {
 
     // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
+    this.load.spritesheet('protagonista_raichu', 'assets/icons/personajes/Protagonista/8/26.png',{ frameWidth: 64, frameHeight: 64 });
     
     // Fuego
     this.load.spritesheet('fuego1', 'assets/icons/personajes/Fuego/1.png',{ frameWidth: 48, frameHeight: 64 });

@@ -23,6 +23,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.efecto = "";
     this.velX = 0;
     this.velY = 0;
+    this.evoluciones = 3;
+    this.esRaichu = false;
+    this.evolucionAgotada = false;
 
     // Animacion movimientos
     this.scene.anims.create({
@@ -137,7 +140,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       key: 'evolve',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 51, end: 54 }),
       frameRate: 4,
-      repeat: 0
+      repeat: 1
     });
 
     // Animaciones daño
@@ -176,6 +179,153 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       repeat: 0
     });
 
+
+    // Animaciones Raichu evolución
+    // Animacion movimientos
+    this.scene.anims.create({
+      key: 'move_down_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 1, end: 2 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_right_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 7, end: 8 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_up_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 13, end: 14 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_upright_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 10, end: 11 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_downright_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 4, end: 5 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    // Animacion movimientos correr
+    this.scene.anims.create({
+      key: 'move_down_fast_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 1, end: 2 }),
+      frameRate: 4*3,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_right_fast_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 7, end: 8 }),
+      frameRate: 4*3,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_up_fast_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 13, end: 14 }),
+      frameRate: 4*3,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_upright_fast_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 10, end: 11 }),
+      frameRate: 4*3,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'move_downright_fast_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 4, end: 5 }),
+      frameRate: 4*3,
+      repeat: 0
+    });
+
+    // Animacion ataque
+    this.scene.anims.create({
+      key: 'attack_down_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 46, end: 48 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'attack_right_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 52, end: 54 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'attack_up_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 58, end: 60 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'attack_upright_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 55, end: 57 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'attack_downright_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 49, end: 51 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    // Animaciones daño
+    this.scene.anims.create({
+      key: 'damage_down_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 26, end: 26 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'damage_downright_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 27, end: 27 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'damage_right_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 28, end: 28 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'damage_upright_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 29, end: 29 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+    this.scene.anims.create({
+      key: 'damage_up_raichu',
+      frames: this.scene.anims.generateFrameNumbers('protagonista_raichu', { start: 30, end: 30 }),
+      frameRate: 4,
+      repeat: 0
+    });
+
+
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
 
@@ -204,41 +354,72 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.puedeActuar = false;
       this.atacar = true;
       if (this.orientation === "down") {
-        this.animation = "attack_down";
+
+        if(this.esRaichu)
+          this.animation = "attack_down_raichu";
+        else
+          this.animation = "attack_down";
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "right") {
-        this.animation = "attack_right";
-
+        
+        if(this.esRaichu)
+          this.animation = "attack_right_raichu";
+        else
+          this.animation = "attack_right";
         this.flipX = false;
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "up") {
-        this.animation = "attack_up";
+        
+        if(this.esRaichu)
+          this.animation = "attack_up_raichu";
+        else
+          this.animation = "attack_up";
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "left") {
-        this.animation = "attack_right";
+        
+        if(this.esRaichu)
+          this.animation = "attack_right_raichu";
+        else
+          this.animation = "attack_right";
         this.flipX = true;
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "upright") {
-        this.animation = "attack_upright";
+        
+        if(this.esRaichu)
+          this.animation = "attack_upright_raichu";
+        else
+          this.animation = "attack_upright";
         this.flipX = false;
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "upleft") {
-        this.animation = "attack_upright";
+        
+        if(this.esRaichu)
+          this.animation = "attack_upright_raichu";
+        else
+          this.animation = "attack_upright";
         this.flipX = true;
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "downright") {
-        this.animation = "attack_downright";
+        
+        if(this.esRaichu)
+          this.animation = "attack_downright_raichu";
+        else
+          this.animation = "attack_downright";
         this.flipX = false;
         this.anims.play(this.animation, true);
       }
       else if (this.orientation === "downleft") {
-        this.animation = "attack_downright";
+        
+        if(this.esRaichu)
+          this.animation = "attack_downright_raichu";
+        else
+          this.animation = "attack_downright";
         this.flipX = true;
         this.anims.play(this.animation, true);
       }
@@ -261,7 +442,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "upright";
         this.flipX = false;
-        this.animation = "move_upright_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_upright_fast_raichu";
+        else
+          this.animation = "move_upright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown && this.cursor.left.isDown) {
@@ -271,7 +456,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "upleft";
         this.flipX = true;
-        this.animation = "move_upright_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_upright_fast_raichu";
+        else
+          this.animation = "move_upright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.right.isDown) {
@@ -281,7 +470,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "downright";
         this.flipX = false;
-        this.animation = "move_downright_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_downright_fast_raichu";
+        else
+          this.animation = "move_downright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.left.isDown) {
@@ -292,7 +485,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "downleft";
         this.flipX = true;
-        this.animation = "move_downright_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_downright_fast_raichu";
+        else
+          this.animation = "move_downright_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.right.isDown) {
@@ -303,7 +500,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "right";
         this.flipX = false;
-        this.animation = "move_right_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_right_fast_raichu";
+        else
+          this.animation = "move_right_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.left.isDown) {
@@ -313,7 +514,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "left";
         this.flipX = true;
-        this.animation = "move_right_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_right_fast_raichu";
+        else
+          this.animation = "move_right_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown) {
@@ -322,7 +527,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(this.velX);
         this.body.setVelocityY(this.velY);
         this.orientation = "up";
-        this.animation = "move_up_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_up_fast_raichu";
+        else
+          this.animation = "move_up_fast";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown) {
@@ -331,7 +540,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(this.velX);
         this.body.setVelocityY(this.velY);
         this.orientation = "down";
-        this.animation = "move_down_fast";
+
+        if(this.esRaichu)
+          this.animation = "move_down_fast_raichu";
+        else
+          this.animation = "move_down_fast";
         this.anims.play(this.animation, true);
       }
       else
@@ -346,7 +559,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "upright";
         this.flipX = false;
-        this.animation = "move_upright";
+
+        if(this.esRaichu)
+          this.animation = "move_upright_raichu";
+        else
+          this.animation = "move_upright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown && this.cursor.left.isDown) {
@@ -356,7 +573,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "upleft";
         this.flipX = true;
-        this.animation = "move_upright";
+
+        if(this.esRaichu)
+          this.animation = "move_upright_raichu";
+        else
+          this.animation = "move_upright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.right.isDown) {
@@ -366,7 +587,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "downright";
         this.flipX = false;
-        this.animation = "move_downright";
+
+        if(this.esRaichu)
+          this.animation = "move_downright_raichu";
+        else
+          this.animation = "move_downright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown && this.cursor.left.isDown) {
@@ -376,7 +601,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "downleft";
         this.flipX = true;
-        this.animation = "move_downright";
+
+        if(this.esRaichu)
+          this.animation = "move_downright_raichu";
+        else
+          this.animation = "move_downright";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.right.isDown) {
@@ -386,7 +615,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "right";
         this.flipX = false;
-        this.animation = "move_right";
+
+        if(this.esRaichu)
+          this.animation = "move_right_raichu";
+        else
+          this.animation = "move_right";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.left.isDown) {
@@ -396,7 +629,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.velY);
         this.orientation = "left";
         this.flipX = true;
-        this.animation = "move_right";
+
+        if(this.esRaichu)
+          this.animation = "move_right_raichu";
+        else
+          this.animation = "move_right";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.up.isDown) {
@@ -405,7 +642,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(this.velX);
         this.body.setVelocityY(this.velY);
         this.orientation = "up";
-        this.animation = "move_up";
+
+        if(this.esRaichu)
+          this.animation = "move_up_raichu";
+        else
+          this.animation = "move_up";
         this.anims.play(this.animation, true);
       }
       else if (this.cursor.down.isDown) {
@@ -414,96 +655,15 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(this.velX);
         this.body.setVelocityY(this.velY);
         this.orientation = "down";
-        this.animation = "move_down";
-        this.anims.play(this.animation, true);
-      }
-    }
 
-    if(this.puedeActuar && (!this.cursor.c.isDown || data.puntos <= 0))
-    {
-      if (this.cursor.up.isDown && this.cursor.right.isDown) {
-        this.velX = this.velocidad;
-        this.velY = -this.velocidad;
-        this.body.setVelocityX(this.velX);
-        this.body.setVelocityY(this.velY);
-        this.orientation = "upright";
-        this.flipX = false;
-        this.animation = "move_upright";
-        this.anims.play(this.animation, true);
-      }
-      else if (this.cursor.up.isDown && this.cursor.left.isDown) {
-        this.velX = -this.velocidad;
-        this.velY = -this.velocidad;
-        this.body.setVelocityX(this.velX);
-        this.body.setVelocityY(this.velY);
-        this.orientation = "upleft";
-        this.flipX = true;
-        this.animation = "move_upright";
-        this.anims.play(this.animation, true);
-      }
-      else if (this.cursor.down.isDown && this.cursor.right.isDown) {
-        this.velX = this.velocidad;
-        this.velY = this.velocidad;
-        this.body.setVelocityX(this.velX);
-        this.body.setVelocityY(this.velY);
-        this.orientation = "downright";
-        this.flipX = false;
-        this.animation = "move_downright";
-        this.anims.play(this.animation, true);
-      }
-      else if (this.cursor.down.isDown && this.cursor.left.isDown) {
-        this.velX = -this.velocidad;
-        this.velY = this.velocidad;
-        this.body.setVelocityX(this.velX);
-        this.body.setVelocityY(this.velY);
-        this.orientation = "downleft";
-        this.flipX = true;
-        this.animation = "move_downright";
-        this.anims.play(this.animation, true);
-      }
-
-      else
-      {
-        if (this.cursor.right.isDown) {
-          this.velX = this.velocidad;
-          this.velY = 0;
-          this.body.setVelocityX(this.velX);
-          this.body.setVelocityY(this.velY);
-          this.orientation = "right";
-          this.flipX = false;
-          this.animation = "move_right";
-          this.anims.play(this.animation, true);
-        }
-        if (this.cursor.left.isDown) {
-          this.velX = -this.velocidad;
-          this.velY = 0;
-          this.body.setVelocityX(this.velX);
-          this.body.setVelocityY(this.velY);
-          this.orientation = "left";
-          this.flipX = true;
-          this.animation = "move_right";
-          this.anims.play(this.animation, true);
-        }
-        if (this.cursor.up.isDown) {
-          this.velX = 0;
-          this.velY = -this.velocidad;
-          this.body.setVelocityX(this.velX);
-          this.body.setVelocityY(this.velY);
-          this.orientation = "up";
-          this.animation = "move_up";
-          this.anims.play(this.animation, true);
-        }
-        if (this.cursor.down.isDown) {
-          this.velX = 0;
-          this.velY = this.velocidad;
-          this.body.setVelocityX(this.velX);
-          this.body.setVelocityY(this.velY);
-          this.orientation = "down";
+        if(this.esRaichu)
+          this.animation = "move_down_raichu";
+        else
           this.animation = "move_down";
-          this.anims.play(this.animation, true);
-        }
+        this.anims.play(this.animation, true);
       }
     }
+
     if(this.cursor.r.isDown && this.puedeActuar) // Recupera vida
     {
       if(this.scene.puntuacion.nivel > 0 && this.vida <= this.vidaTotal/2) // Solo puede recuperar la vida si ha perdido la mitad y si puede gastar niveles
@@ -512,9 +672,49 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         data.puntos -= 330;
       }
     }
-    if(this.cursor.e.isDown && this.puedeActuar && this.scene.puntuacion.nivel > 4) // Evoluciona
+    if(this.cursor.e.isDown && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu) // Evoluciona
     {
+      this.evoluciones--;
+      this.puedeActuar = false;
+      this.esRaichu = true;
+      this.animation = "evolve";
+      this.anims.play(this.animation, true);
+      this.fuerza *= 2;
+      this.velocidad *= 2;
+
+      this.scene.time.addEvent({
+        delay: 2000,
+        callback: () => {
+            this.puedeActuar = true;
+        },
+        loop: false
+      });
+
+      this.scene.time.addEvent({
+        delay: 60000,
+        callback: () => {
+            this.evolucionAgotada = true;
+        },
+        loop: false
+      });
+    }
+
+    if(this.evolucionAgotada && this.esRaichu)
+    {
+      this.animation = "evolve";
+      this.anims.play(this.animation, true);
+      this.fuerza = this.fuerza / 2;
+      this.velocidad = this.velocidad / 2;
+      this.puedeActuar = false;
       
+      this.scene.time.addEvent({
+        delay: 2000,
+        callback: () => {
+            this.puedeActuar = true;
+        },
+        loop: false
+      });
+      this.esRaichu = false;
     }
   }
 
@@ -527,8 +727,15 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       if(data.tiempoEfecto === 0)
       {
         this.efecto = "";
+        
         this.velocidad = 50;
         this.fuerza = 5;
+
+        if(this.esRaichu)
+        {
+          this.velocidad *= 2;
+          this.fuerza *= 2;
+        }
         this.inmune = false;
       }
       else {
@@ -568,35 +775,60 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         {
           case "up": 
               this.flipX = false;
-              this.animation = 'damage_up';
+
+              if(this.esRaichu)
+                this.animation = 'damage_up_raichu';
+              else
+                this.animation = 'damage_up';
               break;
           case "upright":
               this.flipX = false;
-              this.animation = 'damage_upright';
+              if(this.esRaichu)
+                this.animation = 'damage_upright_raichu';
+              else
+                this.animation = 'damage_upright';
               break;
           case "upleft":
               this.flipX = true;
-              this.animation = 'damage_upright';
+              if(this.esRaichu)
+                this.animation = 'damage_upright_raichu';
+              else
+                this.animation = 'damage_upright';
               break;
           case "down":
               this.flipX = false;
-              this.animation = 'damage_down';
+              if(this.esRaichu)
+                this.animation = 'damage_down_raichu';
+              else
+                this.animation = 'damage_down';
               break;
           case "downright":
               this.flipX = false;
-              this.animation = 'damage_downright';
+              if(this.esRaichu)
+                this.animation = 'damage_downright_raichu';
+              else
+                this.animation = 'damage_downright';
               break;
           case "downleft":
               this.flipX = true;
-              this.animation = 'damage_downright';
+              if(this.esRaichu)
+                this.animation = 'damage_downright_raichu';
+              else
+                this.animation = 'damage_downright';
               break;
           case "right":
               this.flipX = false;
-              this.animation = 'damage_right';
+              if(this.esRaichu)
+                this.animation = 'damage_right_raichu';
+              else
+                this.animation = 'damage_right';
               break;
           case "left":
               this.flipX = true;
-              this.animation = 'damage_right';
+              if(this.esRaichu)
+                this.animation = 'damage_right_raichu';
+              else
+                this.animation = 'damage_right';
               break;
             
         }
