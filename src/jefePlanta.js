@@ -12,11 +12,12 @@ import Snorlax from './jefes/snorlax.js';
 import Portal from './portal.js';
 
 
-
 export default class JefePlanta extends Phaser.Scene {
+  
   constructor() {
     super({ key: 'jefePlanta' });
   }
+
 
   preload() {  
     this.load.tilemapTiledJSON('mapPlanta', 'assets/tiles/mapa/mapa_jefe_planta.json');
@@ -53,6 +54,11 @@ export default class JefePlanta extends Phaser.Scene {
     this.load.image('vidahit', 'assets/estado/VIDA_HIT.png');
   }
 
+  init(datos) {
+    this.vida = datos.vida;
+    this.puntos = datos.puntos;
+  }
+
   create() {
 
     this.map = this.make.tilemap({ 
@@ -78,6 +84,8 @@ export default class JefePlanta extends Phaser.Scene {
     this.yPikachu = 420;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
+    this.pikachuSprite.vida = this.vida;
+  //  this.pikachuSprite.
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this)
 
@@ -123,17 +131,16 @@ export default class JefePlanta extends Phaser.Scene {
     {
       if(!this.portalExiste)
       {  
-        this.portalVuelta = new Portal(this, 485, 430, "finalPlanta");
+        this.portalVuelta = new Portal(this, 500, 430, "finalPlanta");
         this.portalExiste = true;
       }
       else if(this.activarPortal)
       {
         data.jefesIslasRestantes--;
         this.scene.stop('jefePlanta');
-        this.scene.resume('game');
+        this.scene.run('game', {vida: this.pikachuSprite.vida, puntos: data.puntos});
         this.music.stop();
         this.activarPortal = false;
-      //  this.scene.haVuelto = true;
       }
     }
   }

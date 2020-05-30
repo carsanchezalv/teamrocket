@@ -272,6 +272,11 @@ export default class Game extends Phaser.Scene {
     //this.load.image('barra', 'fonts/barra1.png');
   }
 
+  init(datos) {
+    this.vidaVuelta = datos.vida;
+ //   this.puntosVuelta = datos.puntos;
+  }
+
   create() {
 
     this.map = this.make.tilemap({ 
@@ -1180,8 +1185,6 @@ export default class Game extends Phaser.Scene {
 
     //this.fondo = this.add.image(300, 170, 'barra');
 
-    
-    
   }
 
   update(time, delta) {
@@ -1193,6 +1196,8 @@ export default class Game extends Phaser.Scene {
     {
       this.haVuelto = false;
       this.music.play();
+ //     this.pikachuSprite.vida = this.vidaVuelta;
+      //
     }
 
     if(!this.mensajeActivo && this.mensaje != null)
@@ -1214,7 +1219,7 @@ export default class Game extends Phaser.Scene {
       this.activarJefePlanta = false;
       
       this.music.stop();
-      this.scene.launch('jefePlanta');
+      this.scene.launch('jefePlanta', {vida: this.pikachuSprite.vida, puntos: data.puntos});
       this.scene.pause('game');
       this.pikachuSprite.x = 3264;
       this.pikachuSprite.y = 1392;
@@ -1228,7 +1233,7 @@ export default class Game extends Phaser.Scene {
       this.music.stop();
       this.activarJefeAgua = false;
       this.scene.sleep('game');
-      this.scene.launch('jefeAgua');
+      this.scene.launch('jefeAgua', {vida: this.pikachuSprite.vida, puntos: data.puntos});
       this.pikachuSprite.x = 2952;
       this.pikachuSprite.y = 2760;
       this.haVuelto = true;
@@ -1239,7 +1244,7 @@ export default class Game extends Phaser.Scene {
     {
       this.activarJefeFuego = false;
       this.music.stop();
-      this.scene.launch('jefeFuego');
+      this.scene.launch('jefeFuego', {vida: this.pikachuSprite.vida, puntos: data.puntos});
       this.scene.pause('game');
       this.pikachuSprite.x = 4560;
       this.pikachuSprite.y = 1392;
@@ -1252,7 +1257,7 @@ export default class Game extends Phaser.Scene {
     {
       this.activarJefeElectricidad = false;
       this.music.stop();
-      this.scene.launch('jefeElectricidad');
+      this.scene.launch('jefeElectricidad', {vida: this.pikachuSprite.vida, puntos: data.puntos});
       this.scene.pause('game');
       this.pikachuSprite.x = 4416;
       this.pikachuSprite.y = 2760;      
@@ -1264,7 +1269,7 @@ export default class Game extends Phaser.Scene {
     if(this.activarJefeFinal)
     {
       this.music.stop();
-      this.scene.launch('jefeFinal');
+      this.scene.launch('jefeFinal', {vida: this.pikachuSprite.vida, puntos: data.puntos});
       this.activarJefeFinal = false;
       
       this.scene.pause('game');

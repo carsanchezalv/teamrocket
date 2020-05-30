@@ -9,7 +9,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.orientation = "down";
     this.animation = "move_down";
 
-    this.setDepth(50);
+    this.setDepth(70);
     
     // Atributos
     this.vidaTotal = 100*5;
@@ -135,7 +135,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     // Animacion evolucion 
     this.scene.anims.create({
       key: 'evolve',
-      frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 52, end: 54 }),
+      frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 51, end: 54 }),
       frameRate: 4,
       repeat: 0
     });
@@ -191,9 +191,10 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       left: 'left',
       right: 'right',
       space: 'space',
-      pause: 'p',
+      pause:'p',
       c:'c',
-      r:'r'
+      r:'r',
+      e:'e'
     });
   }
 
@@ -510,6 +511,10 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.vida = this.vidaTotal;
         data.puntos -= 330;
       }
+    }
+    if(this.cursor.e.isDown && this.puedeActuar && this.scene.puntuacion.nivel > 4) // Evoluciona
+    {
+      
     }
   }
 

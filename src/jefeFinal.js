@@ -52,6 +52,11 @@ export default class jefeFinal extends Phaser.Scene {
     this.load.image('vidahit', 'assets/estado/VIDA_HIT.png');
   }
 
+  init(datos) {
+    this.vida = datos.vida;
+    this.puntos = datos.puntos;
+  }
+
   create() {
 
     this.map = this.make.tilemap({ 
@@ -77,6 +82,8 @@ export default class jefeFinal extends Phaser.Scene {
     this.yPikachu = 1040;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
+    this.pikachuSprite.vida = this.vida;
+    //
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this)
 
