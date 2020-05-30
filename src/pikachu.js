@@ -615,8 +615,18 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     }
     else if(this.vida === 0)
     {
-      this.esHerido = false;
-      this.destroy();
+      this.esHerido = true;
+      //this.destroy();
+      this.setActive(false);
+      //game over
+      this.scene.music.stop();
+      this.scene.scene.launch('gameOver');
+      this.scene.scene.pause('game');
+      this.scene.scene.pause('jefeAgua');
+      this.scene.scene.pause('jefeFuego');
+      this.scene.scene.pause('jefePlanta');
+      this.scene.scene.pause('jefeElectricidad');
+      this.scene.scene.pause('jefeFinal');
     }  
   }
 }

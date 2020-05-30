@@ -8,7 +8,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.nombre = nombre;
         // Atributos
         this.vida = 20;
-        this.fuerza = 2;
+        this.fuerza = 4;
         this.ataque = false;
         this.esHerido = false;
         this.numEnemy = this.scene.numEnemy;

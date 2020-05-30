@@ -1274,6 +1274,7 @@ export default class Game extends Phaser.Scene {
       
       this.scene.pause('game');
     }
+
      /*
     this.add.text(300, 170, `Player: ${data.nombre}`,{
       //font: "../fonts/AGENCYR.TTF",
