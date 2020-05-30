@@ -616,9 +616,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     else if(this.vida === 0)
     {
       this.esHerido = true;
-      //this.destroy();
       this.setActive(false);
-      //game over
+
+      // Game Over
       this.scene.music.stop();
       this.scene.scene.launch('gameOver');
       this.scene.scene.pause('game');

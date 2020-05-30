@@ -1166,25 +1166,23 @@ export default class Game extends Phaser.Scene {
     this.camera.startFollow(this.pikachuSprite);
     
   // Música
+    
+    let config = {
+      mute: false,
+      volume: 0.1,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0
+    };
+    this.music = this.sound.add('musica_portada', config);
     if(data.musica) {
-      let config = {
-        mute: false,
-        volume: 0.1,
-        rate: 1,
-        detune: 0,
-        seek: 0,
-        loop: true,
-        delay: 0
-      };
-      this.music = this.sound.add('musica_portada', config);
       this.music.play();
     }
 
-    //pausa
-    //this. tecla = this.pikachuSprite.cursor;
 
     //this.fondo = this.add.image(300, 170, 'barra');
-
   }
 
   update(time, delta) {

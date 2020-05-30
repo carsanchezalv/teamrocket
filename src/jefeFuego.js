@@ -103,17 +103,17 @@ export default class JefeFuego extends Phaser.Scene {
     camera.startFollow(this.pikachuSprite);
 
     // Música
-    if(data.musica) {
-      let config = {
-        mute: false,
-        volume: 0.5,
-        rate: 1,
-        detune: 0,
-        seek: 0,
-        loop: true,
-        delay: 0
-      };
-      this.music = this.sound.add('musica_fuego', config);
+    let config = {
+      mute: false,
+      volume: 0.5,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0
+    };
+    this.music = this.sound.add('musica_fuego', config);
+    if(data.musica) {  
       this.music.play();
     }
   }
