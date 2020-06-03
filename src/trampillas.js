@@ -1,7 +1,7 @@
 import { data } from "./data.js";
 
 // Textos
-import MensajeTrampa from './mensajes/mensajeTrampa.js';
+import Mensaje from './mensajes/mensaje.js';
 
 export default class Trampillas extends Phaser.GameObjects.Sprite {
 
@@ -128,6 +128,18 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
         this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
        
+        let musicaTrampillaConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+          }
+      
+          this.musicaTrampilla = this.scene.sound.add("musicaTrampilla", musicaTrampillaConfig);
+
         this.scene.physics.add.overlap(this.scene.pikachuSprite, this, () => this.pisarTrampa());
     }
 
@@ -232,6 +244,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
             this.setVisible(true);
             this.activo = false;
             this.pisada = true;
+            this.musicaTrampilla.play();
         }
     }
 
@@ -242,10 +255,11 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
         {   
             this.pisada = false;
             this.scene.mensajeActivo = true;
-            this.scene.mensaje = new MensajeTrampa(this.scene, this.animation);
+            this.scene.mensaje = new Mensaje(this.scene, this.animation);
             this.timer = this.scene.time.addEvent({
                 delay: 5000,
                 callback: () => {
+                    this.scene.mensaje.alerta.destroy();
                     this.scene.mensajeActivo = false;
                 },
                 loop: false

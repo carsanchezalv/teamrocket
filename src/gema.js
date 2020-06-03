@@ -26,10 +26,25 @@ export default class Gema extends Phaser.GameObjects.Sprite {
 
        this.play(this.animation, true);
        this.scene.physics.world.enableBody(this);
+
+       let musicaGemaConfig = {
+        mute: false,
+        volume: 1,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: false,
+        delay: 0
+      }
+  
+      this.musicaGema = this.scene.sound.add("musicaGema", musicaGemaConfig);
+
        this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.collectGema());
     }
 
-    collectGema(){
+    collectGema() {
+        this.musicaGema.play();
+        this.scene.groupGemas;
         this.valor = this.valor * data.bonusGemas;
         data.puntos += this.valor;
         this.destroy();

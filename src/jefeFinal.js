@@ -30,6 +30,29 @@ export default class jefeFinal extends Phaser.Scene {
       "assets/music/Mewtwo.ogg",
       "assets/music/Mewtwo.mp3"
     ]);
+    this.load.audio("musicaEvolucion", [
+      "assets/music/Evolucion.ogg",
+      "assets/music/Evolucion.mp3"
+    ]);
+    this.load.audio("musicaAtaque", [
+      "assets/music/Ataque.ogg",
+      "assets/music/Ataque.mp3"
+    ]);
+
+    this.load.audio("musicaPortal", [
+      "assets/music/Portal.ogg",
+      "assets/music/Portal.mp3"
+    ]);
+    this.load.audio("musicaDamage", [
+      "assets/music/Damage.ogg",
+      "assets/music/Damage.mp3"
+    ]);
+    this.load.audio("musicaRecuperarse", [
+      "assets/music/Recuperarse.ogg",
+      "assets/music/Recuperarse.mp3"
+    ]);
+
+
 
     // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
@@ -65,6 +88,17 @@ export default class jefeFinal extends Phaser.Scene {
       tileHeight: 2688
     });
 
+    let musicaMuroConfig = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
+    this.musicaMuro = this.sound.add('musicaMuro', musicaMuroConfig);
+
     this.map.addTilesetImage('finalisland', 'zonaFinal');
 
     this.activarPortal = false;
@@ -94,7 +128,7 @@ export default class jefeFinal extends Phaser.Scene {
        
 
     // Colisiones
-    this.physics.add.collider(this.pikachuSprite, this.borde);
+    this.physics.add.collider(this.pikachuSprite, this.borde, () => { if(!this.musicaMuro.isPlaying)this.musicaMuro.play()});
     this.physics.add.collider(this.jefe, this.borde);
     
     

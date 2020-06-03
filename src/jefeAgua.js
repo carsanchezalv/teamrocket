@@ -12,7 +12,6 @@ import Articuno from './jefes/articuno.js';
 import Portal from './portal.js';
 
 
-
 export default class JefeAgua extends Phaser.Scene {
   constructor() {
     super({ key: 'jefeAgua' });
@@ -30,6 +29,27 @@ export default class JefeAgua extends Phaser.Scene {
     this.load.audio("musica_agua", [
       "assets/music/Hielo.ogg",
       "assets/music/Hielo.mp3"
+    ]);
+    this.load.audio("musicaEvolucion", [
+      "assets/music/Evolucion.ogg",
+      "assets/music/Evolucion.mp3"
+    ]);
+    this.load.audio("musicaAtaque", [
+      "assets/music/Ataque.ogg",
+      "assets/music/Ataque.mp3"
+    ]);
+
+    this.load.audio("musicaPortal", [
+      "assets/music/Portal.ogg",
+      "assets/music/Portal.mp3"
+    ]);
+    this.load.audio("musicaDamage", [
+      "assets/music/Damage.ogg",
+      "assets/music/Damage.mp3"
+    ]);
+    this.load.audio("musicaRecuperarse", [
+      "assets/music/Recuperarse.ogg",
+      "assets/music/Recuperarse.mp3"
     ]);
 
 
@@ -55,8 +75,8 @@ export default class JefeAgua extends Phaser.Scene {
   }
 
   init(datos) {
-    this.vida = datos.vida;
-    this.puntos = datos.puntos;
+    this.datosInit = datos;
+    this.protagonista = this.datosInit.pikachuData;
   }
 
   create() {
@@ -67,6 +87,17 @@ export default class JefeAgua extends Phaser.Scene {
       tileHeight: 2688
     });
 
+    let musicaMuroConfig = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0
+    };
+    this.musicaMuro = this.sound.add('musicaMuro', musicaMuroConfig);
+
     this.map.addTilesetImage('frigidcavern', 'zonaAgua');
 
     this.activarPortal = false;
@@ -75,8 +106,7 @@ export default class JefeAgua extends Phaser.Scene {
     // Capas, los nombres han de coincidir con los de las capas reales
     this.borde = this.map.createStaticLayer('borde', ['frigidcavern']);
     this.suelo = this.map.createStaticLayer('suelo', ['frigidcavern']);
-    
-    
+
    // Para que colisionen los personajes que tengan un rango de ID concreto
     this.borde.setCollisionBetween(0, 9999);
 
@@ -84,8 +114,22 @@ export default class JefeAgua extends Phaser.Scene {
     this.yPikachu = 600;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
-    this.pikachuSprite.vida = this.vida;
-  //  this.pikachuSprite.
+    this.pikachuSprite.vida = this.protagonista.vida;
+    this.pikachuSprite.evoluciones = this.protagonista.evoluciones;
+
+    this.cursor = this.input.keyboard.addKeys({
+      up: 'up',
+      down: 'down',
+      left: 'left',
+      right: 'right',
+      space: 'space',
+      pause:'p',
+      c:'c',
+      r:'r',
+      e:'e'
+    });
+
+
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this)
 
@@ -93,12 +137,10 @@ export default class JefeAgua extends Phaser.Scene {
     this.xJefe = 525;
     this.yJefe = 480;
     this.jefe = new Articuno(this, this.xJefe, this.yJefe);
-       
-
+      
     // Colisiones
-    this.physics.add.collider(this.pikachuSprite, this.borde);
+    this.physics.add.collider(this.pikachuSprite, this.borde, () => { if(!this.musicaMuro.isPlaying) this.musicaMuro.play()});
     this.physics.add.collider(this.jefe, this.borde);
-    
     
     // Camera zoom
     const camera = this.cameras.main;
@@ -107,7 +149,6 @@ export default class JefeAgua extends Phaser.Scene {
     camera.startFollow(this.pikachuSprite);
 
     // Música
-    
     let config = {
       mute: false,
       volume: 0.5,
@@ -138,9 +179,13 @@ export default class JefeAgua extends Phaser.Scene {
       else if(this.activarPortal)
       {
         data.jefesIslasRestantes--;
+        this.pikachuSprite.x = 2952;
+        this.pikachuSprite.y = 2760;
+        this.scene.start('game', {pikachuData: this.pikachuSprite, groupGemas: this.datosInit.groupGemas,
+                                      groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
+                                      groupPortales: this.datosInit.groupPortales});
         this.scene.stop('jefeAgua');
-        this.music.stop();
-        this.scene.wake('game');
+        this.music.stop();    
         this.activarPortal = false;
       }
     }

@@ -13,7 +13,6 @@ export default class Video extends Phaser.Scene {
 
         video.play(false);
        
-
         let skip = this.add.text( this.scale.width / 2, this.scale.height - 20, 'Pulsa para continuar', {
 
             fontSize: '25px',

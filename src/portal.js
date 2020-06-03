@@ -1,7 +1,4 @@
-import { data } from "./data.js";
-
-// Jefes
-import BossPlanta from "./jefePlanta.js";
+import Mensaje from './mensajes/mensaje.js';
 
 export default class Portal extends Phaser.GameObjects.Sprite {
 
@@ -29,6 +26,17 @@ export default class Portal extends Phaser.GameObjects.Sprite {
        this.scene.add.existing(this);
        this.scene.physics.add.existing(this);
 
+       let musicaPortalConfig = {
+        mute: false,
+        volume: 1,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: false,
+        delay: 0
+      }
+      this.musicaPortal = this.scene.sound.add("musicaPortal", musicaPortalConfig);
+
        this.anims.play(this.animation, true);
        this.scene.physics.world.enableBody(this);
        this.scene.physics.add.overlap(this, this.scene.pikachuSprite, () => this.entrarEnPortal());
@@ -42,7 +50,8 @@ export default class Portal extends Phaser.GameObjects.Sprite {
     {
         this.animation = "teletransporte";
         this.anims.play(this.animation, true);
-        
+        this.musicaPortal.play();
+
         // Escena jefes dependiendo de la isla
         if(this.isla === "planta")
         {
@@ -54,7 +63,19 @@ export default class Portal extends Phaser.GameObjects.Sprite {
             }
             else
             {
-                // Mostramos mensaje
+                if(!this.scene.mensajeActivo)
+                {
+                    this.scene.mensajeActivo = true; 
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.timer = this.scene.time.addEvent({
+                        delay: 5000,
+                        callback: () => {
+                            this.scene.mensaje.alerta.destroy();
+                            this.scene.mensajeActivo = false;
+                        },
+                        loop: false
+                    });
+                }
             }
         }
         else if(this.isla === "finalPlanta")
@@ -72,7 +93,19 @@ export default class Portal extends Phaser.GameObjects.Sprite {
             }
             else
             {
-                // Mostramos mensaje
+                if(!this.scene.mensajeActivo)
+                {
+                    this.scene.mensajeActivo = true; 
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.timer = this.scene.time.addEvent({
+                        delay: 5000,
+                        callback: () => {
+                            this.scene.mensaje.alerta.destroy();
+                            this.scene.mensajeActivo = false;
+                        },
+                        loop: false
+                    });
+                }
             }
         }
         else if(this.isla === "finalAgua")
@@ -83,14 +116,26 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         else if(this.isla === "fuego")
         {
             if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
-            {    
+            {   
                 this.scene.nivelRequerido++;
                 this.scene.activarJefeFuego = true;
                 this.destroy();      
             }
             else
             {
-                // Mostramos mensaje
+                if(!this.scene.mensajeActivo)
+                {
+                    this.scene.mensajeActivo = true; 
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.timer = this.scene.time.addEvent({
+                        delay: 5000,
+                        callback: () => {
+                            this.scene.mensaje.alerta.destroy();
+                            this.scene.mensajeActivo = false;
+                        },
+                        loop: false
+                    });
+                }
             }
         }
         else if(this.isla === "finalFuego")
@@ -108,7 +153,19 @@ export default class Portal extends Phaser.GameObjects.Sprite {
             }
             else
             {
-                // Mostramos mensaje
+                if(!this.scene.mensajeActivo)
+                {
+                    this.scene.mensajeActivo = true; 
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.timer = this.scene.time.addEvent({
+                        delay: 5000,
+                        callback: () => {
+                            this.scene.mensaje.alerta.destroy();
+                            this.scene.mensajeActivo = false;
+                        },
+                        loop: false
+                    });
+                }
             }
         }
         else if(this.isla === "finalElectricidad")
@@ -126,7 +183,19 @@ export default class Portal extends Phaser.GameObjects.Sprite {
             }
             else
             {
-                // Mostramos mensaje
+                if(!this.scene.mensajeActivo)
+                {
+                    this.scene.mensajeActivo = true; 
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.timer = this.scene.time.addEvent({
+                        delay: 5000,
+                        callback: () => {
+                            this.scene.mensaje.alerta.destroy();
+                            this.scene.mensajeActivo = false;
+                        },
+                        loop: false
+                    });
+                }
             }
         }
         else if(this.isla === "finalJuego")
