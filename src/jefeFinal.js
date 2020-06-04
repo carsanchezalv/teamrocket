@@ -55,7 +55,6 @@ export default class jefeFinal extends Phaser.Scene {
     ]);
 
 
-
     // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
 
