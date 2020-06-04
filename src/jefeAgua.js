@@ -5,6 +5,7 @@ import Pikachu from "./pikachu.js";
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
 import Objetivo from "./objetivos.js";
+import Evoluciones from "./evoluciones.js";
 
 // Enemigo*
 import Articuno from './jefes/articuno.js';
@@ -142,6 +143,7 @@ export default class JefeAgua extends Phaser.Scene {
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this);
     this.objetivo = new Objetivo(this);
+    this.marcador = new Evoluciones(this);
 
     // Enemigo
     this.xJefe = 525;
@@ -179,6 +181,7 @@ export default class JefeAgua extends Phaser.Scene {
     this.puntuacion.updatePuntos(this.pikachuSprite.puntuacion);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
+    this.marcadorEvoluciones.updateEvoluciones(this.pikachuSprite.evoluciones);
 
     if(this.jefe.vida <= 0)
     {

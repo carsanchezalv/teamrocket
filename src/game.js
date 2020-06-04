@@ -80,7 +80,7 @@ import Planta15 from "./planta/planta15.js";
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
 import Objetivo from "./objetivos.js";
-
+import Evoluciones from "./evoluciones.js";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -1373,6 +1373,7 @@ export default class Game extends Phaser.Scene {
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this);
     this.objetivo = new Objetivo(this);
+    this.marcadorEvoluciones = new Evoluciones(this);
     
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
@@ -1425,7 +1426,8 @@ export default class Game extends Phaser.Scene {
     this.puntuacion.updatePuntos(this.pikachuSprite.puntuacion);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
-    
+    this.marcadorEvoluciones.updateEvoluciones(this.pikachuSprite.evoluciones);
+
     // Aparición portal final
     if(this.pikachuSprite.jefesIslasRestantes === 0)
     {
@@ -1609,6 +1611,38 @@ export default class Game extends Phaser.Scene {
     if(this.activarJefeFinal)
     {
       this.music.stop();
+      this.activarJefeFinal = false;
+
+      let pikachuData = this.pikachuSprite;
+
+      let grupoGemas = this.groupGemas.getChildren();
+      let arrayGemas = [];
+      for(let i = 0; i < grupoGemas.length; ++i)
+      {
+        arrayGemas.push(grupoGemas[i]);
+      }
+
+      let grupoEnemigos = this.groupEnemies.getChildren();
+      let arrayEnemigos = [];
+      for(let i = 0; i < grupoEnemigos.length; ++i)
+      {
+        arrayEnemigos.push(grupoEnemigos[i]);
+      }
+
+      let grupoTrampillas = this.groupTrampillas.getChildren();
+      let arrayTrampillas = [];
+      for(let i = 0; i < grupoTrampillas.length; ++i)
+      {
+        arrayTrampillas.push(grupoTrampillas[i]);
+      }
+
+      let grupoPortales = this.groupPortales.getChildren();
+      let arrayPortales = [];
+      for(let i = 0; i < grupoPortales.length; ++i)
+      {
+        arrayPortales.push(grupoPortales[i]);
+      }
+      
       this.scene.start('jefeFinal', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
         groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
       this.activarJefeFinal = false;
