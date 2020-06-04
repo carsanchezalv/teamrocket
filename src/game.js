@@ -76,9 +76,10 @@ import Planta13 from "./planta/planta13.js";
 import Planta14 from "./planta/planta14.js";
 import Planta15 from "./planta/planta15.js";
 
-// Barra estado
+// Grafismos
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
+import Objetivo from "./objetivos.js";
 
 
 export default class Game extends Phaser.Scene {
@@ -272,6 +273,10 @@ export default class Game extends Phaser.Scene {
     this.load.image('puntos36', 'assets/estado/Base/Life Bar Animated 3.png');
     this.load.image('puntos37', 'assets/estado/Base/Life Bar Animated 2.png');
     this.load.image('puntos38', 'assets/estado/Base/Life Bar Animated 1.png');
+
+    // Objetivos
+    this.load.image('snorlaxDesactivado', 'assets/Messages/snorlaxDesactivado.png');
+    this.load.image('snorlaxActivado', 'assets/Messages/snorlaxActivado.png');
 
     // Niveles
     this.load.image('level0', 'assets/estado/niveles/0.png');
@@ -1107,32 +1112,140 @@ export default class Game extends Phaser.Scene {
       {
         this.enemigoAux = this.datosInit.groupEnemies[i];
 
+        // Fuego
         if(this.enemigoAux.nombre === 'fuego1')
-        {
           this.enemigoNuevo = new Fuego1(this, this.enemigoAux.x, this.enemigoAux.y);
-          this.enemigoNuevo.vida = this.enemigoAux.vida;
+        else if(this.enemigoAux.nombre === 'fuego2') 
+          this.enemigoNuevo = new Fuego2(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego3') 
+          this.enemigoNuevo = new Fuego3(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego4') 
+          this.enemigoNuevo = new Fuego4(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego5') 
+          this.enemigoNuevo = new Fuego5(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego6') 
+          this.enemigoNuevo = new Fuego6(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego7') 
+          this.enemigoNuevo = new Fuego7(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego8') 
+          this.enemigoNuevo = new Fuego8(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego9') 
+          this.enemigoNuevo = new Fuego9(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego10') 
+          this.enemigoNuevo = new Fuego10(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'fuego11') 
+          this.enemigoNuevo = new Fuego11(this, this.enemigoAux.x, this.enemigoAux.y);
 
+        // Agua
+        else if(this.enemigoAux.nombre === 'agua1') 
+          this.enemigoNuevo = new Agua1(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua2') 
+          this.enemigoNuevo = new Agua2(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua3') 
+          this.enemigoNuevo = new Agua3(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua4') 
+          this.enemigoNuevo = new Agua4(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua5') 
+          this.enemigoNuevo = new Agua5(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua6') 
+          this.enemigoNuevo = new Agua6(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua7') 
+          this.enemigoNuevo = new Agua7(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua8') 
+          this.enemigoNuevo = new Agua8(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua9') 
+          this.enemigoNuevo = new Agua9(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua10') 
+          this.enemigoNuevo = new Agua10(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua11') 
+          this.enemigoNuevo = new Agua11(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua12') 
+          this.enemigoNuevo = new Agua12(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua13') 
+          this.enemigoNuevo = new Agua13(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua14') 
+          this.enemigoNuevo = new Agua14(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua15') 
+          this.enemigoNuevo = new Agua15(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'agua16') 
+          this.enemigoNuevo = new Agua16(this, this.enemigoAux.x, this.enemigoAux.y);
+
+        // Planta
+        else if(this.enemigoAux.nombre === 'planta1') 
+          this.enemigoNuevo = new Planta1(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta2') 
+          this.enemigoNuevo = new Planta2(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta3') 
+          this.enemigoNuevo = new Planta3(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre ===  'planta4') 
+          this.enemigoNuevo = new Planta4(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta5') 
+          this.enemigoNuevo = new Planta5(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta6') 
+          this.enemigoNuevo = new Planta6(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta7') 
+          this.enemigoNuevo = new Planta7(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta8') 
+          this.enemigoNuevo = new Planta8(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta9') 
+          this.enemigoNuevo = new Planta9(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta10') 
+          this.enemigoNuevo = new Planta10(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta11') 
+          this.enemigoNuevo = new Planta11(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta12') 
+          this.enemigoNuevo = new Planta12(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta13') 
+          this.enemigoNuevo = new Planta13(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta14') 
+          this.enemigoNuevo = new Planta14(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'planta15') 
+          this.enemigoNuevo = new Planta15(this, this.enemigoAux.x, this.enemigoAux.y);
+
+        // Electricidad
+        else if(this.enemigoAux.nombre === 'electricidad1') 
+          this.enemigoNuevo = new Electricidad1(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad2') 
+          this.enemigoNuevo = new Electricidad2(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad3') 
+          this.enemigoNuevo = new Electricidad3(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre ===  'electricidad4') 
+          this.enemigoNuevo = new Electricidad4(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad5') 
+          this.enemigoNuevo = new Electricidad5(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad6') 
+          this.enemigoNuevo = new Electricidad6(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad7') 
+          this.enemigoNuevo = new Electricidad7(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad8') 
+          this.enemigoNuevo = new Electricidad8(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad9') 
+          this.enemigoNuevo = new Electricidad9(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad10') 
+          this.enemigoNuevo = new Electricidad10(this, this.enemigoAux.x, this.enemigoAux.y);
+        else if(this.enemigoAux.nombre === 'electricidad11') 
+          this.enemigoNuevo = new Electricidad11(this, this.enemigoAux.x, this.enemigoAux.y);
+
+        this.enemigoNuevo.vida = this.enemigoAux.vida;
         this.groupEnemies.add(this.enemigoNuevo);
-        }
-        
-        
       }
+
     }
-    
+
+    // Trampillas
+    this.groupTrampillas = this.physics.add.group({
+      classType: Trampillas,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
     if(this.datosInit == null)
     {
-      this.groupTrampillas = this.physics.add.group({
-        classType: Trampillas,
-        defaultKey: null,
-        defaultFrame: null,
-        active: true,
-        maxSize: -1,
-        runChildUpdate: false,
-        createCallback: null,
-        removeCallback: null,
-        createMultipleCallback: null
-      });
-
       this.numTrampillas = 50;
       while(this.numTrampillas > 0)
       {
@@ -1149,26 +1262,33 @@ export default class Game extends Phaser.Scene {
     }
     else
     {
-  //    this.groupTrampillas = this.datosInit.groupTrampillas;
-  //    this.add.existing(this.groupTrampillas);
-  //    this.physics.add.existing(this.groupTrampillas);
+      let numTrampillas = this.datosInit.groupTrampillas.length;
+    
+      for(let i = 0; i < numTrampillas; ++i)
+      {
+        this.trampillaAux = this.datosInit.groupTrampillas[i];
+        this.trampillaNueva = new Trampillas(this, this.trampillaAux.x, this.trampillaAux.y, this.trampillaAux.animation);
+
+        this.trampillaNueva.activo = this.trampillaAux.activo;
+        this.trampillaNueva.pisada = this.trampillaAux.pisada;
+        this.groupTrampillas.add(this.trampillaNueva);
+      }
     }
 
     // Portales
+    this.groupPortales = this.physics.add.group({
+      classType: Portal,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
     if(this.datosInit == null)
     {
-      this.groupPortales = this.physics.add.group({
-        classType: Portal,
-        defaultKey: null,
-        defaultFrame: null,
-        active: true,
-        maxSize: -1,
-        runChildUpdate: false,
-        createCallback: null,
-        removeCallback: null,
-        createMultipleCallback: null
-      });
-
       this.numPortal = 1;
       while(this.numPortal > 0)
       {
@@ -1226,13 +1346,20 @@ export default class Game extends Phaser.Scene {
     }
     else
     {
- //     this.groupPortales = this.datosInit.groupPortales;
- //     this.add.existing(this.groupPortales);
- //     this.physics.add.existing(this.groupPortales);
+      let numPortales = this.datosInit.groupPortales.length;
+    
+      for(let i = 0; i < numPortales; ++i)
+      {
+        this.portalAux = this.datosInit.groupPortales[i];
+        this.portalNuevo = new Portal(this, this.portalAux.x, this.portalAux.y, this.portalAux.isla);
+
+        this.groupPortales.add(this.portalNuevo);
+      }
     }
 
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this);
+    this.objetivo = new Objetivo(this);
     
     // Colisiones
     this.physics.add.collider(this.groupGemas, this.borde);
@@ -1284,7 +1411,8 @@ export default class Game extends Phaser.Scene {
    
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
-
+    this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
+    
     // Aparición portal final
     if(data.jefesIslasRestantes === 0)
     {
@@ -1299,12 +1427,40 @@ export default class Game extends Phaser.Scene {
       this.activarJefePlanta = false;
       
       this.music.stop();
-      this.scene.launch('jefePlanta', {pikachuData: this.pikachuSprite});
-      this.scene.pause('game');
-      /*
-      this.pikachuSprite.x = 3264;
-      this.pikachuSprite.y = 1392;
-      */
+
+      let pikachuData = this.pikachuSprite;
+
+      let grupoGemas = this.groupGemas.getChildren();
+      let arrayGemas = [];
+      for(let i = 0; i < grupoGemas.length; ++i)
+      {
+        arrayGemas.push(grupoGemas[i]);
+      }
+
+      let grupoEnemigos = this.groupEnemies.getChildren();
+      let arrayEnemigos = [];
+      for(let i = 0; i < grupoEnemigos.length; ++i)
+      {
+        arrayEnemigos.push(grupoEnemigos[i]);
+      }
+
+      let grupoTrampillas = this.groupTrampillas.getChildren();
+      let arrayTrampillas = [];
+      for(let i = 0; i < grupoTrampillas.length; ++i)
+      {
+        arrayTrampillas.push(grupoTrampillas[i]);
+      }
+
+      let grupoPortales = this.groupPortales.getChildren();
+      let arrayPortales = [];
+      for(let i = 0; i < grupoPortales.length; ++i)
+      {
+        arrayPortales.push(grupoPortales[i]);
+      }
+      
+      this.scene.start('jefePlanta', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
+                                    groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
+      this.scene.stop('game');
       this.pikachuSprite.reiniciarTeclas();
     }
 
@@ -1331,10 +1487,21 @@ export default class Game extends Phaser.Scene {
       }
 
       let grupoTrampillas = this.groupTrampillas.getChildren();
-      let grupoPortales = this.groupPortales.getChildren();
+      let arrayTrampillas = [];
+      for(let i = 0; i < grupoTrampillas.length; ++i)
+      {
+        arrayTrampillas.push(grupoTrampillas[i]);
+      }
 
+      let grupoPortales = this.groupPortales.getChildren();
+      let arrayPortales = [];
+      for(let i = 0; i < grupoPortales.length; ++i)
+      {
+        arrayPortales.push(grupoPortales[i]);
+      }
+      
       this.scene.start('jefeAgua', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
-                                    groupTrampillas: grupoTrampillas, groupPortales: grupoPortales});
+                                    groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
       this.scene.stop('game');
       this.pikachuSprite.reiniciarTeclas();
     }

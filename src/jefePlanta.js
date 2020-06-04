@@ -76,8 +76,8 @@ export default class JefePlanta extends Phaser.Scene {
   }
 
   init(datos) {
-    this.vida = datos.vida;
-    this.puntos = datos.puntos;
+    this.datosInit = datos;
+    this.protagonista = this.datosInit.pikachuData;
   }
 
   create() {
@@ -116,8 +116,21 @@ export default class JefePlanta extends Phaser.Scene {
     this.yPikachu = 420;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
-    this.pikachuSprite.vida = this.vida;
-  //  this.pikachuSprite.
+    this.pikachuSprite.vida = this.protagonista.vida;
+    this.pikachuSprite.evoluciones = this.protagonista.evoluciones;
+
+    this.cursor = this.input.keyboard.addKeys({
+      up: 'up',
+      down: 'down',
+      left: 'left',
+      right: 'right',
+      space: 'space',
+      pause:'p',
+      c:'c',
+      r:'r',
+      e:'e'
+    });
+
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this)
 
@@ -158,7 +171,8 @@ export default class JefePlanta extends Phaser.Scene {
     
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
-
+    this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
+    
     if(this.jefe.vida <= 0)
     {
       if(!this.portalExiste)
@@ -169,8 +183,13 @@ export default class JefePlanta extends Phaser.Scene {
       else if(this.activarPortal)
       {
         data.jefesIslasRestantes--;
+        this.pikachuSprite.x = 3264;
+        this.pikachuSprite.y = 1368;
+
         this.scene.stop('jefePlanta');
-        this.scene.run('game', {vida: this.pikachuSprite.vida, puntos: data.puntos});
+        this.scene.start('game', {pikachuData: this.pikachuSprite, groupGemas: this.datosInit.groupGemas,
+          groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
+          groupPortales: this.datosInit.groupPortales});
         this.music.stop();
         this.activarPortal = false;
       }

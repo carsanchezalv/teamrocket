@@ -29,6 +29,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.esRaichu = false;
     this.evolucionAgotada = false;
     this.haVuelto = false;
+    this.snorlax = false;
+    this.articuno = false;
+    this.zapdos = false;
+    this.moltres = false;
+    this.metwo = false;
 
     let musicaEvolucionConfig = {
       mute: false,
@@ -747,6 +752,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
             this.musicaEvolucion.stop();
             this.animation = "move_down_raichu";
             this.anims.play(this.animation, true);
+            this.body.setSize(20, 20);
+            this.body.offset.x = 22;
+            this.body.offset.y = 19;
             if(data.musica)
               this.scene.music.resume();
         },
@@ -777,6 +785,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
             this.puedeActuar = true;
             this.animation = "move_down";
             this.anims.play(this.animation, true);
+            this.body.setSize(14, 15);
+            this.body.offset.x = 17;
+            this.body.offset.y = 24;
         },
         loop: false
       });

@@ -127,7 +127,11 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
         this.numMensajes = 0;
         this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
-       
+
+        this.body.setSize(25, 25);
+        this.body.offset.x = 0;
+        this.body.offset.y = 0;
+        
         let musicaTrampillaConfig = {
             mute: false,
             volume: 1,
@@ -242,6 +246,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
             }
             this.setVisible(true);
+            this.visible = true;
             this.activo = false;
             this.pisada = true;
             this.musicaTrampilla.play();
