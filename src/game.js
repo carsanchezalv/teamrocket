@@ -426,31 +426,31 @@ export default class Game extends Phaser.Scene {
     }
     else
     {
-      this.numGemas = this.datosInit.groupGemas.size;
+      let numGemas = this.datosInit.groupGemas.length;
     
-      while(this.numGemas > 0)
+      for(let i = 0; i < numGemas; ++i)
       {
-        this.gemaAux = this.datosInit.groupGemas.getFirst(false, false, null, null, "gema");
-        this.datosInit.groupGemas.kill(this.gemaAux);
-        this.groupGemas.add(this.gemaAux);
+        this.gemaAux = this.datosInit.groupGemas[i];
+        this.gemaNueva = new Gema(this, this.gemaAux.x, this.gemaAux.y);
+        this.groupGemas.add(this.gemaNueva);
       }
     }
 
     // Enemigos
+    this.groupEnemies = this.physics.add.group({
+      classType: Enemy,
+      defaultKey: null,
+      defaultFrame: null,
+      active: true,
+      maxSize: -1,
+      runChildUpdate: false,
+      createCallback: null,
+      removeCallback: null,
+      createMultipleCallback: null
+    });
+
     if(this.datosInit == null)
     {
-      this.groupEnemies = this.physics.add.group({
-        classType: Enemy,
-        defaultKey: null,
-        defaultFrame: null,
-        active: true,
-        maxSize: -1,
-        runChildUpdate: false,
-        createCallback: null,
-        removeCallback: null,
-        createMultipleCallback: null
-      });
-
       // Fuego
       let enemigosMismoTipo = 1;
       while(enemigosMismoTipo > 0)
@@ -1101,9 +1101,22 @@ export default class Game extends Phaser.Scene {
     }
     else
     {
- //     this.groupEnemies = this.datosInit.groupEnemies;
- //     this.add.existing(this.groupEnemies);
- //     this.physics.add.existing(this.groupEnemies);
+      let numEnemigos = this.datosInit.groupEnemies.length;
+    
+      for(let i = 0; i < numEnemigos; ++i)
+      {
+        this.enemigoAux = this.datosInit.groupEnemies[i];
+
+        if(this.enemigoAux.nombre === 'fuego1')
+        {
+          this.enemigoNuevo = new Fuego1(this, this.enemigoAux.x, this.enemigoAux.y);
+          this.enemigoNuevo.vida = this.enemigoAux.vida;
+
+        this.groupEnemies.add(this.enemigoNuevo);
+        }
+        
+        
+      }
     }
     
     if(this.datosInit == null)
@@ -1300,17 +1313,27 @@ export default class Game extends Phaser.Scene {
     {
       this.music.stop();
       this.activarJefeAgua = false;
-/*
-      this.xPikachu = 2952;
-      this.yPikachu = 2760;
-*/
+
       let pikachuData = this.pikachuSprite;
+
       let grupoGemas = this.groupGemas.getChildren();
+      let arrayGemas = [];
+      for(let i = 0; i < grupoGemas.length; ++i)
+      {
+        arrayGemas.push(grupoGemas[i]);
+      }
+
       let grupoEnemigos = this.groupEnemies.getChildren();
+      let arrayEnemigos = [];
+      for(let i = 0; i < grupoEnemigos.length; ++i)
+      {
+        arrayEnemigos.push(grupoEnemigos[i]);
+      }
+
       let grupoTrampillas = this.groupTrampillas.getChildren();
       let grupoPortales = this.groupPortales.getChildren();
 
-      this.scene.start('jefeAgua', {pikachuData: pikachuData, groupGemas: grupoGemas, groupEnemies: grupoEnemigos,
+      this.scene.start('jefeAgua', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
                                     groupTrampillas: grupoTrampillas, groupPortales: grupoPortales});
       this.scene.stop('game');
       this.pikachuSprite.reiniciarTeclas();

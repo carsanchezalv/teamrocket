@@ -745,7 +745,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         callback: () => {
             this.puedeActuar = true;
             this.musicaEvolucion.stop();
-
+            this.animation = "move_down_raichu";
+            this.anims.play(this.animation, true);
             if(data.musica)
               this.scene.music.resume();
         },
@@ -774,6 +775,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         delay: 2000,
         callback: () => {
             this.puedeActuar = true;
+            this.animation = "move_down";
+            this.anims.play(this.animation, true);
         },
         loop: false
       });
