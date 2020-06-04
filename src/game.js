@@ -306,6 +306,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('mensajeTrampa22', 'assets/Messages/Trampilla22.png');
     this.load.image('mensajeTrampa24', 'assets/Messages/Trampilla24.png');
     this.load.image('mensajeNada', 'assets/Messages/TrampillaNada.png');
+    this.load.image('evolucionar1','assets/Messages/evolucionar1.png');
     this.load.image('evolucionar2','assets/Messages/evolucionar2.png');
     this.load.image('nivel2','assets/Messages/nivel2.png');
     this.load.image('nivel3','assets/Messages/nivel3.png');
@@ -384,8 +385,13 @@ export default class Game extends Phaser.Scene {
       this.pikachuSprite = new Pikachu(this, this.datosInit.pikachuData.x, this.datosInit.pikachuData.y);
       this.pikachuSprite.vida = this.datosInit.pikachuData.vida;
       this.pikachuSprite.evoluciones = this.datosInit.pikachuData.evoluciones;
+      this.pikachuSprite.snorlax = this.datosInit.pikachuData.snorlax;
+      this.pikachuSprite.articuno = this.datosInit.pikachuData.articuno;
+      this.pikachuSprite.zapdos = this.datosInit.pikachuData.zapdos;
+      this.pikachuSprite.moltres = this.datosInit.pikachuData.moltres;
+      this.pikachuSprite.mewtwo = this.datosInit.pikachuData.mewtwo;
 
-    //  this.nivelRequerido = this.datosInit.nivelRequerido;
+      this.nivelRequerido = this.datosInit.nivelRequerido;
     }
     
     this.cursor = this.input.keyboard.addKeys({
@@ -1511,12 +1517,41 @@ export default class Game extends Phaser.Scene {
     {
       this.activarJefeFuego = false;
       this.music.stop();
-      this.scene.launch('jefeFuego', {pikachuData: this.pikachuSprite});
-      this.scene.pause('game');
-      /*
-      this.pikachuSprite.x = 4560;
-      this.pikachuSprite.y = 1392;
-      */
+
+      let pikachuData = this.pikachuSprite;
+
+      let grupoGemas = this.groupGemas.getChildren();
+      let arrayGemas = [];
+      for(let i = 0; i < grupoGemas.length; ++i)
+      {
+        arrayGemas.push(grupoGemas[i]);
+      }
+
+      let grupoEnemigos = this.groupEnemies.getChildren();
+      let arrayEnemigos = [];
+      for(let i = 0; i < grupoEnemigos.length; ++i)
+      {
+        arrayEnemigos.push(grupoEnemigos[i]);
+      }
+
+      let grupoTrampillas = this.groupTrampillas.getChildren();
+      let arrayTrampillas = [];
+      for(let i = 0; i < grupoTrampillas.length; ++i)
+      {
+        arrayTrampillas.push(grupoTrampillas[i]);
+      }
+
+      let grupoPortales = this.groupPortales.getChildren();
+      let arrayPortales = [];
+      for(let i = 0; i < grupoPortales.length; ++i)
+      {
+        arrayPortales.push(grupoPortales[i]);
+      }
+      
+      this.scene.start('jefeFuego', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
+                                    groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
+      this.scene.stop('game');
+
       this.pikachuSprite.reiniciarTeclas();
     }
 
@@ -1525,12 +1560,41 @@ export default class Game extends Phaser.Scene {
     {
       this.activarJefeElectricidad = false;
       this.music.stop();
-      this.scene.launch('jefeElectricidad', {pikachuData: this.pikachuSprite});
-      this.scene.pause('game');
-      /*
-      this.pikachuSprite.x = 4416;
-      this.pikachuSprite.y = 2760;
-      */
+
+      let pikachuData = this.pikachuSprite;
+
+      let grupoGemas = this.groupGemas.getChildren();
+      let arrayGemas = [];
+      for(let i = 0; i < grupoGemas.length; ++i)
+      {
+        arrayGemas.push(grupoGemas[i]);
+      }
+
+      let grupoEnemigos = this.groupEnemies.getChildren();
+      let arrayEnemigos = [];
+      for(let i = 0; i < grupoEnemigos.length; ++i)
+      {
+        arrayEnemigos.push(grupoEnemigos[i]);
+      }
+
+      let grupoTrampillas = this.groupTrampillas.getChildren();
+      let arrayTrampillas = [];
+      for(let i = 0; i < grupoTrampillas.length; ++i)
+      {
+        arrayTrampillas.push(grupoTrampillas[i]);
+      }
+
+      let grupoPortales = this.groupPortales.getChildren();
+      let arrayPortales = [];
+      for(let i = 0; i < grupoPortales.length; ++i)
+      {
+        arrayPortales.push(grupoPortales[i]);
+      }
+      
+      this.scene.start('jefeElectricidad', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
+                                    groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
+      this.scene.stop('game');
+
       this.pikachuSprite.reiniciarTeclas();
     }
 
@@ -1538,7 +1602,8 @@ export default class Game extends Phaser.Scene {
     if(this.activarJefeFinal)
     {
       this.music.stop();
-      this.scene.launch('jefeFinal', {pikachuData: this.pikachuSprite});
+      this.scene.start('jefeFinal', {pikachuData: pikachuData, groupGemas: arrayGemas, groupEnemies: arrayEnemigos,
+        groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
       this.activarJefeFinal = false;
       
       this.scene.pause('game');

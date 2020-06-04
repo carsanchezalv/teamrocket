@@ -150,6 +150,14 @@ export default class Mensajes extends Phaser.Scene {
             this.alerta.setDepth(60);
             this.alerta.setScale(0.5);
         }
+        else if(nombre === "evolucion1")
+        {
+            this.alerta = this.scene.add.sprite(512, 350, "evolucionar1");
+            this.alerta.setTexture("evolucionar1");
+            this.alerta.setScrollFactor(0);
+            this.alerta.setDepth(60);
+            this.alerta.setScale(0.5);
+        }
         else if(nombre === "evolucion2")
         {
             this.alerta = this.scene.add.sprite(512, 350, "evolucionar2");

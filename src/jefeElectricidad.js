@@ -4,6 +4,7 @@ import { data } from "./data.js";
 import Pikachu from "./pikachu.js";
 import Estado from "./estado.js";
 import Puntuacion from "./puntuacion.js";
+import Objetivo from "./objetivos.js";
 
 // Enemigo
 import Zapdos from './jefes/zapdos.js';
@@ -52,8 +53,6 @@ export default class JefeElectricidad extends Phaser.Scene {
       "assets/music/Recuperarse.mp3"
     ]);
 
-
-
     // Pikachu
     this.load.spritesheet('protagonista', 'assets/icons/personajes/Protagonista/8/25.png',{ frameWidth: 48, frameHeight: 64 });
 
@@ -76,8 +75,8 @@ export default class JefeElectricidad extends Phaser.Scene {
   }
 
   init(datos) {
-    this.vida = datos.vida;
-    this.puntos = datos.puntos;
+    this.datosInit = datos;
+    this.protagonista = this.datosInit.pikachuData;
   }
 
   create() {
@@ -116,10 +115,29 @@ export default class JefeElectricidad extends Phaser.Scene {
     this.yPikachu = 310;
 
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
-    this.pikachuSprite.vida = this.vida;
-    //
+    this.pikachuSprite.vida = this.protagonista.vida;
+    this.pikachuSprite.evoluciones = this.protagonista.evoluciones;
+    this.pikachuSprite.snorlax = this.protagonista.snorlax;
+    this.pikachuSprite.articuno = this.protagonista.articuno;
+    this.pikachuSprite.zapdos = this.protagonista.zapdos;
+    this.pikachuSprite.moltres = this.protagonista.moltres;
+    this.pikachuSprite.mewtwo = this.protagonista.mewtwo;
+
+    this.cursor = this.input.keyboard.addKeys({
+      up: 'up',
+      down: 'down',
+      left: 'left',
+      right: 'right',
+      space: 'space',
+      pause:'p',
+      c:'c',
+      r:'r',
+      e:'e'
+    });
+
     this.vidaPikachu = new Estado(this);
-    this.puntuacion = new Puntuacion(this)
+    this.puntuacion = new Puntuacion(this);
+    this.objetivo = new Objetivo(this);
 
     // Enemigo
     this.xJefe = 420;
@@ -130,7 +148,6 @@ export default class JefeElectricidad extends Phaser.Scene {
     // Colisiones
     this.physics.add.collider(this.pikachuSprite, this.borde, () => { if(!this.musicaMuro.isPlaying)this.musicaMuro.play()});
     this.physics.add.collider(this.jefe, this.borde);
-    
     
     // Camera zoom
     const camera = this.cameras.main;
@@ -158,9 +175,11 @@ export default class JefeElectricidad extends Phaser.Scene {
     
     this.puntuacion.updatePuntos(data.puntos);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
+    this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
 
     if(this.jefe.vida <= 0)
     {
+      this.pikachuSprite.zapdos = true;
       if(!this.portalExiste)
       {  
         this.portalVuelta = new Portal(this, 420, 300, "finalElectricidad");
@@ -170,8 +189,12 @@ export default class JefeElectricidad extends Phaser.Scene {
       {
         this.music.stop();
         data.jefesIslasRestantes--;
+        this.pikachuSprite.x = 4416;
+        this.pikachuSprite.y = 2760;
         this.scene.stop('jefeElectricidad');
-        this.scene.resume('game');
+        this.scene.start('game', {pikachuData: this.pikachuSprite, groupGemas: this.datosInit.groupGemas,
+          groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
+          groupPortales: this.datosInit.groupPortales});
         this.activarPortal = false;
       }
     }

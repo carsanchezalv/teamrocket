@@ -4,9 +4,9 @@ export default class Objetivo extends Phaser.Scene {
         super('Objetivo');
         this.scene = scene;
 
-        this.snorlax = scene.add.sprite(300, 200, 'snorlaxDesactivado');
+        this.snorlax = scene.add.sprite(290, 190, 'snorlaxDesactivado');
         this.snorlax.setTexture('snorlaxDesactivado');
-        this.snorlax.setScale(0.2);
+        this.snorlax.setScale(0.1);
         this.snorlax.setDepth(60);
         this.snorlax.setScrollFactor(0);
 /*
@@ -21,11 +21,11 @@ export default class Objetivo extends Phaser.Scene {
     updateObjetivo(snorlax, articuno, zapdos, moltres, mewtwo) {
         if(snorlax)
         {
-
+            this.snorlax.setTexture('snorlaxActivado');
         }
         else
         {
-
+            this.snorlax.setTexture('snorlaxDesactivado');
         }
         if(articuno)
         {

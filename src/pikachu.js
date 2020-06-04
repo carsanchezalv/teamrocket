@@ -205,7 +205,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'evolve',
       frames: this.scene.anims.generateFrameNumbers('protagonista', { start: 51, end: 54 }),
-      frameRate: 2,
+      frameRate: 4,
       repeat: -1
     });
 
@@ -721,19 +721,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.e) && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu) // Evoluciona
     {
       this.musicaEvolucion.play();
-      if(!this.scene.mensajeActivo)
-      { 
-        this.scene.mensajeActivo = true; 
-        this.scene.mensaje = new Mensaje(this.scene, "evolucion2");
-        this.timer = this.scene.time.addEvent({
-            delay: 5000,
-            callback: () => {
-              this.scene.mensaje.alerta.destroy();
-              this.scene.mensajeActivo = false;
-            },
-            loop: false
-        });
-      }
+      
       if(data.musica)
         this.scene.music.pause();
 
@@ -757,6 +745,19 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
             this.body.offset.y = 19;
             if(data.musica)
               this.scene.music.resume();
+            if(!this.scene.mensajeActivo)
+            { 
+              this.scene.mensajeActivo = true; 
+              this.scene.mensaje = new Mensaje(this.scene, "evolucion1");
+              this.timer = this.scene.time.addEvent({
+                  delay: 5000,
+                  callback: () => {
+                    this.scene.mensaje.alerta.destroy();
+                    this.scene.mensajeActivo = false;
+                  },
+                  loop: false
+              });
+            }
         },
         loop: false
       });
@@ -778,6 +779,20 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.fuerza = this.fuerza / 2;
       this.velocidad = this.velocidad / 2;
       this.puedeActuar = false;
+
+      if(!this.scene.mensajeActivo)
+      { 
+        this.scene.mensajeActivo = true; 
+        this.scene.mensaje = new Mensaje(this.scene, "evolucion2");
+        this.timer = this.scene.time.addEvent({
+            delay: 5000,
+            callback: () => {
+              this.scene.mensaje.alerta.destroy();
+              this.scene.mensajeActivo = false;
+            },
+            loop: false
+        });
+      }
 
       this.scene.time.addEvent({
         delay: 2000,
