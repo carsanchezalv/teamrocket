@@ -25,7 +25,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.efecto = "";
     this.velX = 0;
     this.velY = 0;
-    this.evoluciones = 3;
+    this.evoluciones = 5;
     this.puntuacion = 4000;
     this.tiempoEfecto = 0;
     this.bonusGemas = 1;
@@ -714,7 +714,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
     }
 
-    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && this.puedeActuar) // Recupera vida
+    if(this.scene.cursor.r.isDown && this.puedeActuar) // Recupera vida
     {
       if(this.scene.puntuacion.nivel > 0 && this.vida <= this.vidaTotal/2) // Solo puede recuperar la vida si ha perdido la mitad y si puede gastar niveles
       {
@@ -723,7 +723,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.puntuacion -= 330;
       }
     }
-    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.e) && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu) // Evoluciona
+    if(this.scene.cursor.e.isDown && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu && this.scene.scene.key === "game") // Evoluciona
     {
       this.musicaEvolucion.play();
       
@@ -768,7 +768,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       });
 
       this.scene.time.addEvent({
-        delay: 30000,
+        delay: 20000,
         callback: () => {
             this.evolucionAgotada = true;
         },

@@ -287,10 +287,8 @@ export default class Game extends Phaser.Scene {
     this.load.image('mewtwoActivado', 'assets/Messages/mewtwoActivado.png');
 
     // Evoluciones marcador
-    this.load.image('marcador0', 'assets/Messages/marcador0.png');
-    this.load.image('marcador1', 'assets/Messages/marcador1.png');
-    this.load.image('marcador2', 'assets/Messages/marcador2.png');
-    this.load.image('marcador3', 'assets/Messages/marcador3.png');
+    this.load.image('evolucionActivado', 'assets/Messages/evolucionActivado.png');
+    this.load.image('evolucionDesactivado', 'assets/Messages/evolucionDesactivado.png');
 
     // Niveles
     this.load.image('level0', 'assets/estado/niveles/0.png');
@@ -1333,9 +1331,6 @@ export default class Game extends Phaser.Scene {
           --this.numPortal;
         }   
       }
-
-      this.portal3Sprite = new Portal(this, this.x+150, this.y, "agua");
-      this.groupPortales.add(this.portal3Sprite);
 
       this.numPortal = 1;
       while(this.numPortal > 0)
