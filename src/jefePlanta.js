@@ -13,6 +13,7 @@ import Snorlax from './jefes/snorlax.js';
 // Portal
 import Portal from './portal.js';
 
+import Mensaje from './mensajes/mensaje.js';
 
 export default class JefePlanta extends Phaser.Scene {
   
@@ -83,6 +84,9 @@ export default class JefePlanta extends Phaser.Scene {
   }
 
   create() {
+
+    this.recienLlegado = true;
+    this.mensajeActivo = false;
 
     this.map = this.make.tilemap({ 
       key: 'mapPlanta', 
@@ -185,6 +189,35 @@ export default class JefePlanta extends Phaser.Scene {
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
     this.marcador.updateEvoluciones(this.pikachuSprite.evoluciones);
+
+    if(this.protagonista.esRaichu && this.recienLlegado && !this.mensajeActivo)
+    {
+      this.mensajeActivo = true;
+      this.mensaje = new Mensaje(this, "evolucion3");
+      this.pikachuSprite.puedeActuar = false;
+      this.animation = "evolve";
+      this.pikachuSprite.anims.play(this.animation, true);
+      
+      this.time.addEvent({
+        delay: 2000,
+        callback: () => {
+            this.pikachuSprite.puedeActuar = true;
+            this.animation = "move_up";
+            this.pikachuSprite.anims.play(this.animation, true);
+        },
+        loop: false
+      });
+
+      this.timer = this.time.addEvent({
+          delay: 5000,
+          callback: () => {
+            this.mensaje.alerta.destroy();
+            this.recienLlegado = false;
+            this.mensajeActivo = false;
+          },
+          loop: false
+      });      
+    }
 
     if(this.jefe.vida <= 0)
     {

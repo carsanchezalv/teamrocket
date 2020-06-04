@@ -320,6 +320,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('mensajeNada', 'assets/Messages/TrampillaNada.png');
     this.load.image('evolucionar1','assets/Messages/evolucionar1.png');
     this.load.image('evolucionar2','assets/Messages/evolucionar2.png');
+    this.load.image('evolucionar3','assets/Messages/evolucionar3.png');
     this.load.image('nivel2','assets/Messages/nivel2.png');
     this.load.image('nivel3','assets/Messages/nivel3.png');
     this.load.image('nivel4','assets/Messages/nivel4.png');

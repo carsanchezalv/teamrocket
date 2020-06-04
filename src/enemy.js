@@ -1,4 +1,3 @@
-import { data } from "./data.js";
 export default class Enemy extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, nombre) {
@@ -135,7 +134,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             if(this.vida <= 0)
             {
                 this.destroy();
-                data.puntos += this.valor;
+                this.scene.pikachuSprite.puntuacion += this.valor;
             }
         }
         else if (player.puedeActuar && this.puedeActuar && this.puedeAtacar)
