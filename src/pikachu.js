@@ -787,7 +787,11 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     if(this.haVuelto)
     {
       this.haVuelto = false;
-      if(data.musica)
+
+      if(this.musicaEvolucion.isPaused)
+        this.musicaEvolucion.resume();
+      
+      else if(data.musica)
         this.scene.music.play();
     }
 
@@ -914,14 +918,18 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.anims.play(this.animation, true);
       }
 
-      if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.pause)) {
-        this.scene.music.stop();
+      if(this.scene.cursor.pause.isDown) {
+        this.scene.music.pause();
+        if(this.musicaEvolucion.isPlaying)
+          this.musicaEvolucion.pause();
+
         this.scene.scene.launch('gamePause', {clave: this.scene.scene.key}); // Le paso la key de la escena actual para luego poder continuarla
         this.scene.scene.pause();
-        
+
+        this.reiniciarTeclas();
+
         this.haVuelto = true;
       }
-      
 
      this.esHerido = false;
     }
@@ -933,12 +941,29 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       // Game Over
       this.scene.music.stop();
       this.scene.scene.launch('gameOver');
-      this.scene.scene.pause('game');
-      this.scene.scene.pause('jefeAgua');
-      this.scene.scene.pause('jefeFuego');
-      this.scene.scene.pause('jefePlanta');
-      this.scene.scene.pause('jefeElectricidad');
-      this.scene.scene.pause('jefeFinal');
+      this.scene.scene.pause(this.scene.scene.key);
     }  
+  }
+  
+  reiniciarTeclas()
+  {
+    this.scene.cursor.pause.isDown = false;
+    this.scene.cursor.pause.isUp = true;
+    this.scene.cursor.c.isDown = false;
+    this.scene.cursor.c.isUp = true;
+    this.scene.cursor.r.isDown = false;
+    this.scene.cursor.r.isUp = true;
+    this.scene.cursor.e.isDown = false;
+    this.scene.cursor.e.isUp = true;
+    this.scene.cursor.space.isDown = false;
+    this.scene.cursor.space.isUp = true;
+    this.scene.cursor.down.isDown = false;
+    this.scene.cursor.down.isUp = true;
+    this.scene.cursor.up.isDown = false;
+    this.scene.cursor.up.isUp = true;
+    this.scene.cursor.left.isDown = false;
+    this.scene.cursor.left.isUp = true;
+    this.scene.cursor.right.isDown = false;
+    this.scene.cursor.right.isUp = true;
   }
 }

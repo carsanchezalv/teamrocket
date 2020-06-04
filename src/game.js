@@ -1243,7 +1243,7 @@ export default class Game extends Phaser.Scene {
   // Música  
     let config = {
       mute: false,
-      volume: 0.1,
+      volume: 0.05,
       rate: 1,
       detune: 0,
       seek: 0,
@@ -1288,8 +1288,11 @@ export default class Game extends Phaser.Scene {
       this.music.stop();
       this.scene.launch('jefePlanta', {pikachuData: this.pikachuSprite});
       this.scene.pause('game');
+      /*
       this.pikachuSprite.x = 3264;
       this.pikachuSprite.y = 1392;
+      */
+      this.pikachuSprite.reiniciarTeclas();
     }
 
     // Portal Agua
@@ -1297,9 +1300,10 @@ export default class Game extends Phaser.Scene {
     {
       this.music.stop();
       this.activarJefeAgua = false;
-
+/*
       this.xPikachu = 2952;
       this.yPikachu = 2760;
+*/
       let pikachuData = this.pikachuSprite;
       let grupoGemas = this.groupGemas.getChildren();
       let grupoEnemigos = this.groupEnemies.getChildren();
@@ -1309,6 +1313,7 @@ export default class Game extends Phaser.Scene {
       this.scene.start('jefeAgua', {pikachuData: pikachuData, groupGemas: grupoGemas, groupEnemies: grupoEnemigos,
                                     groupTrampillas: grupoTrampillas, groupPortales: grupoPortales});
       this.scene.stop('game');
+      this.pikachuSprite.reiniciarTeclas();
     }
 
     //Portal Fuego
@@ -1318,8 +1323,11 @@ export default class Game extends Phaser.Scene {
       this.music.stop();
       this.scene.launch('jefeFuego', {pikachuData: this.pikachuSprite});
       this.scene.pause('game');
+      /*
       this.pikachuSprite.x = 4560;
       this.pikachuSprite.y = 1392;
+      */
+      this.pikachuSprite.reiniciarTeclas();
     }
 
     // Portal Electricidad
@@ -1329,8 +1337,11 @@ export default class Game extends Phaser.Scene {
       this.music.stop();
       this.scene.launch('jefeElectricidad', {pikachuData: this.pikachuSprite});
       this.scene.pause('game');
+      /*
       this.pikachuSprite.x = 4416;
       this.pikachuSprite.y = 2760;
+      */
+      this.pikachuSprite.reiniciarTeclas();
     }
 
     // Portal Final
@@ -1341,6 +1352,7 @@ export default class Game extends Phaser.Scene {
       this.activarJefeFinal = false;
       
       this.scene.pause('game');
+      this.pikachuSprite.reiniciarTeclas();
     }
 
   /*
