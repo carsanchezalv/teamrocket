@@ -277,6 +277,14 @@ export default class Game extends Phaser.Scene {
     // Objetivos
     this.load.image('snorlaxDesactivado', 'assets/Messages/snorlaxDesactivado.png');
     this.load.image('snorlaxActivado', 'assets/Messages/snorlaxActivado.png');
+    this.load.image('articunoDesactivado', 'assets/Messages/articunoDesactivado.png');
+    this.load.image('articunoActivado', 'assets/Messages/articunoActivado.png');
+    this.load.image('zapdosDesactivado', 'assets/Messages/zapdosDesactivado.png');
+    this.load.image('zapdosActivado', 'assets/Messages/zapdosActivado.png');
+    this.load.image('moltresDesactivado', 'assets/Messages/moltresDesactivado.png');
+    this.load.image('moltresActivado', 'assets/Messages/moltresActivado.png');
+    this.load.image('mewtwoDesactivado', 'assets/Messages/mewtwoDesactivado.png');
+    this.load.image('mewtwoActivado', 'assets/Messages/mewtwoActivado.png');
 
     // Niveles
     this.load.image('level0', 'assets/estado/niveles/0.png');

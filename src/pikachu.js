@@ -798,7 +798,6 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
             loop: false
         });
       }
-
       this.scene.time.addEvent({
         delay: 2000,
         callback: () => {
