@@ -117,11 +117,14 @@ export default class JefeElectricidad extends Phaser.Scene {
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
     this.pikachuSprite.vida = this.protagonista.vida;
     this.pikachuSprite.evoluciones = this.protagonista.evoluciones;
+    this.pikachuSprite.puntuacion = this.protagonista.puntuacion;
+    this.pikachuSprite.jefesIslasRestantes = this.protagonista.jefesIslasRestantes;
     this.pikachuSprite.snorlax = this.protagonista.snorlax;
     this.pikachuSprite.articuno = this.protagonista.articuno;
     this.pikachuSprite.zapdos = this.protagonista.zapdos;
     this.pikachuSprite.moltres = this.protagonista.moltres;
     this.pikachuSprite.mewtwo = this.protagonista.mewtwo;
+    this.pikachuSprite.nivelRequerido = this.protagonista.nivelRequerido;
 
     this.cursor = this.input.keyboard.addKeys({
       up: 'up',
@@ -173,7 +176,7 @@ export default class JefeElectricidad extends Phaser.Scene {
 
   update(time, delta) {
     
-    this.puntuacion.updatePuntos(data.puntos);
+    this.puntuacion.updatePuntos(this.pikachuSprite.puntuacion);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
 
@@ -188,7 +191,7 @@ export default class JefeElectricidad extends Phaser.Scene {
       else if(this.activarPortal)
       {
         this.music.stop();
-        data.jefesIslasRestantes--;
+        this.pikachuSprite.jefesIslasRestantes--;
         this.pikachuSprite.x = 4416;
         this.pikachuSprite.y = 2760;
         this.scene.stop('jefeElectricidad');

@@ -375,8 +375,6 @@ export default class Game extends Phaser.Scene {
     this.activarJefeFuego = false;
     this.activarJefeElectricidad = false;
 
-    this.nivelRequerido = 2;
-
     // Pikachu
     if(this.datosInit == null)
       this.pikachuSprite = new Pikachu(this, this.x, this.y);
@@ -385,13 +383,14 @@ export default class Game extends Phaser.Scene {
       this.pikachuSprite = new Pikachu(this, this.datosInit.pikachuData.x, this.datosInit.pikachuData.y);
       this.pikachuSprite.vida = this.datosInit.pikachuData.vida;
       this.pikachuSprite.evoluciones = this.datosInit.pikachuData.evoluciones;
+      this.pikachuSprite.puntuacion = this.datosInit.pikachuData.puntuacion;
+      this.pikachuSprite.jefesIslasRestantes = this.datosInit.pikachuData.jefesIslasRestantes;
       this.pikachuSprite.snorlax = this.datosInit.pikachuData.snorlax;
       this.pikachuSprite.articuno = this.datosInit.pikachuData.articuno;
       this.pikachuSprite.zapdos = this.datosInit.pikachuData.zapdos;
       this.pikachuSprite.moltres = this.datosInit.pikachuData.moltres;
       this.pikachuSprite.mewtwo = this.datosInit.pikachuData.mewtwo;
-
-      this.nivelRequerido = this.datosInit.nivelRequerido;
+      this.pikachuSprite.nivelRequerido = this.datosInit.pikachuData.nivelRequerido;
     }
     
     this.cursor = this.input.keyboard.addKeys({
@@ -1415,14 +1414,14 @@ export default class Game extends Phaser.Scene {
 
   update(time, delta) {
    
-    this.puntuacion.updatePuntos(data.puntos);
+    this.puntuacion.updatePuntos(this.pikachuSprite.puntuacion);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
     
     // Aparición portal final
-    if(data.jefesIslasRestantes === 0)
+    if(this.pikachuSprite.jefesIslasRestantes === 0)
     {
-      data.jefesIslasRestantes++;
+      this.pikachuSprite.jefesIslasRestantes++;
       this.portalFinalSprite = new Portal(this, this.x, this.y, "centro");
       this.groupPortales.add(this.portalFinalSprite);
     }

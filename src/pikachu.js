@@ -26,6 +26,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.velX = 0;
     this.velY = 0;
     this.evoluciones = 3;
+    this.puntuacion = 4000;
+    this.tiempoEfecto = 0;
+    this.bonusGemas = 1;
     this.esRaichu = false;
     this.evolucionAgotada = false;
     this.haVuelto = false;
@@ -34,6 +37,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.zapdos = false;
     this.moltres = false;
     this.metwo = false;
+    this.jefesIslasRestantes = 4;
+    this.nivelRequerido = 2;
 
     let musicaEvolucionConfig = {
       mute: false,
@@ -477,9 +482,9 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         loop: false
       });
     }
-    else if(this.scene.cursor.c.isDown && data.puntos > 0 && this.puedeActuar)
+    else if(this.scene.cursor.c.isDown && this.puntuacion > 0 && this.puedeActuar)
     {
-      data.puntos--;
+      this.puntuacion--;
       if (this.scene.cursor.up.isDown && this.scene.cursor.right.isDown) {
         this.velX = this.velocidad*3;
         this.velY = -this.velocidad*3;
@@ -593,7 +598,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.anims.play(this.animation, true);
       }
       else
-        data.puntos++; // Se le devuelven los puntos
+        this.puntuacion++; // Se le devuelven los puntos
     }
     else if(this.puedeActuar)
     {
@@ -715,7 +720,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       {
         this.musicaRecuperarse.play();
         this.vida = this.vidaTotal;
-        data.puntos -= 330;
+        this.puntuacion -= 330;
       }
     }
     if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.e) && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu) // Evoluciona
@@ -824,10 +829,10 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.scene.music.play();
     }
 
-    if(data.tiempoEfecto > 0)
+    if(this.tiempoEfecto > 0)
     {
-      data.tiempoEfecto--;
-      if(data.tiempoEfecto === 0)
+      this.tiempoEfecto--;
+      if(this.tiempoEfecto === 0)
       {
         this.efecto = "";
         

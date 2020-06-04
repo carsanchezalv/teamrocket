@@ -119,11 +119,14 @@ export default class JefePlanta extends Phaser.Scene {
     this.pikachuSprite = new Pikachu(this, this.xPikachu, this.yPikachu);
     this.pikachuSprite.vida = this.protagonista.vida;
     this.pikachuSprite.evoluciones = this.protagonista.evoluciones;
+    this.pikachuSprite.puntuacion = this.protagonista.puntuacion;
+    this.pikachuSprite.jefesIslasRestantes = this.protagonista.jefesIslasRestantes;
     this.pikachuSprite.snorlax = this.protagonista.snorlax;
     this.pikachuSprite.articuno = this.protagonista.articuno;
     this.pikachuSprite.zapdos = this.protagonista.zapdos;
     this.pikachuSprite.moltres = this.protagonista.moltres;
     this.pikachuSprite.mewtwo = this.protagonista.mewtwo;
+    this.pikachuSprite.nivelRequerido = this.protagonista.nivelRequerido;
 
     this.cursor = this.input.keyboard.addKeys({
       up: 'up',
@@ -176,7 +179,7 @@ export default class JefePlanta extends Phaser.Scene {
 
   update(time, delta) {
     
-    this.puntuacion.updatePuntos(data.puntos);
+    this.puntuacion.updatePuntos(this.pikachuSprite.puntuacion);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
 
@@ -190,9 +193,9 @@ export default class JefePlanta extends Phaser.Scene {
       }
       else if(this.activarPortal)
       {
-        data.jefesIslasRestantes--;
+        this.pikachuSprite.jefesIslasRestantes--;
         this.pikachuSprite.x = 3264;
-        this.pikachuSprite.y = 1368;
+        this.pikachuSprite.y = 1392;
 
         this.scene.stop('jefePlanta');
         this.scene.start('game', {pikachuData: this.pikachuSprite, groupGemas: this.datosInit.groupGemas,

@@ -1,5 +1,3 @@
-import { data } from "./data.js";
-
 // Textos
 import Mensaje from './mensajes/mensaje.js';
 
@@ -153,7 +151,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
             switch(this.animation)
             {
                 case "trampa7": // Duplica tus puntos
-                    data.puntos *= 2;
+                    this.scene.pikachuSprite.puntuacion *= 2;
                 break;
 
                 case "trampa8": // Te recupera la vida               
@@ -161,13 +159,13 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa9": // Aumenta el valor de las gemas del suelo
-                    data.bonusGemas = 2;
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.bonusGemas = 2;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                 break;
 
                 case "trampa10": // Duplica tu fuerza
                     this.scene.pikachuSprite.fuerza *= 2;
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                 break;
 
                 case "trampa11":
@@ -175,12 +173,12 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa12": // Te va frenando poco a poco
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                     this.scene.pikachuSprite.efecto = "ralentizar";
                 break;
 
                 case "trampa13": // Te para de golpe
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                     this.scene.pikachuSprite.velocidad = 0;
                 break;
 
@@ -193,26 +191,26 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa16": // Envenena durante un tiempo
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                     this.scene.pikachuSprite.efecto = "veneno";
                 break;
 
                 case "trampa17": // Tu fuerza ahora vale la mitad
                     this.scene.pikachuSprite.fuerza = this.scene.pikachuSprite.fuerza / 2;
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                 break;
 
                 case "trampa18": // Tus puntos se convierten en un valor aleatorio
-                    data.puntos = Phaser.Math.Between(0, 5000);
+                    this.scene.pikachuSprite.puntuacion = Phaser.Math.Between(0, 5000);
                 break;
 
                 case "trampa19": // Te quita todos los puntos
-                    data.puntos = 0;
+                    this.scene.pikachuSprite.puntuacion = 0;
                 break;
 
                 case "trampa20": // Eres inmune durante un tiempo
                     this.scene.pikachuSprite.inmune = true;
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                 break;
 
                 case "trampa21": // Te teletransporta a un lugar aleatorio
@@ -233,7 +231,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
 
                 case "trampa22": // Te marea 
                     this.scene.pikachuSprite.velocidad *= -1;
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                 break;
 
                 case "trampa23":
@@ -241,7 +239,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa24": // Te reduce la velocidad a la mitad
-                    data.tiempoEfecto = 200;
+                    this.scene.pikachuSprite.tiempoEfecto = 500;
                     this.scene.pikachuSprite.velocidad = this.scene.pikachuSprite.velocidad / 2;
                 break;
             }

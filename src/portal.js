@@ -55,9 +55,9 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         // Escena jefes dependiendo de la isla
         if(this.isla === "planta")
         {
-            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            if(this.scene.puntuacion.nivel >= this.scene.pikachuSprite.nivelRequerido)
             {    
-                this.scene.nivelRequerido++;
+                this.scene.pikachuSprite.nivelRequerido++;
                 this.scene.activarJefePlanta = true;
                 this.destroy();
             }
@@ -65,8 +65,9 @@ export default class Portal extends Phaser.GameObjects.Sprite {
             {
                 if(!this.scene.mensajeActivo)
                 {
-                    this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.scene.mensajeActivo = true;
+                    
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
                     this.timer = this.scene.time.addEvent({
                         delay: 5000,
                         callback: () => {
@@ -85,9 +86,9 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         }
         else if(this.isla === "agua")
         {
-            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            if(this.scene.puntuacion.nivel >= this.scene.pikachuSprite.nivelRequerido)
             {    
-                this.scene.nivelRequerido++;
+                this.scene.pikachuSprite.nivelRequerido++;
                 this.scene.activarJefeAgua = true;
                 this.destroy();  
             }
@@ -96,7 +97,8 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 if(!this.scene.mensajeActivo)
                 {
                     this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
                     this.timer = this.scene.time.addEvent({
                         delay: 5000,
                         callback: () => {
@@ -115,9 +117,9 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         }
         else if(this.isla === "fuego")
         {
-            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            if(this.scene.puntuacion.nivel >= this.scene.pikachuSprite.nivelRequerido)
             {   
-                this.scene.nivelRequerido++;
+                this.scene.pikachuSprite.nivelRequerido++;
                 this.scene.activarJefeFuego = true;
                 this.destroy();      
             }
@@ -126,7 +128,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 if(!this.scene.mensajeActivo)
                 {
                     this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
                     this.timer = this.scene.time.addEvent({
                         delay: 5000,
                         callback: () => {
@@ -145,9 +147,9 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         }
         else if(this.isla === "electricidad")
         {
-            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            if(this.scene.puntuacion.nivel >= this.scene.pikachuSprite.nivelRequerido)
             {    
-                this.scene.nivelRequerido++;
+                this.scene.pikachuSprite.nivelRequerido++;
                 this.scene.activarJefeElectricidad = true;
                 this.destroy();
             }
@@ -156,7 +158,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 if(!this.scene.mensajeActivo)
                 {
                     this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
                     this.timer = this.scene.time.addEvent({
                         delay: 5000,
                         callback: () => {
@@ -175,9 +177,9 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         }
         else if(this.isla === "centro")
         {
-            if(this.scene.puntuacion.nivel >= this.scene.nivelRequerido)
+            if(this.scene.puntuacion.nivel >= this.scene.pikachuSprite.nivelRequerido)
             {    
-                this.scene.nivelRequerido++;
+                this.scene.pikachuSprite.nivelRequerido++;
                 this.scene.activarJefeFinal = true;
                 this.destroy();
             }
@@ -186,11 +188,14 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 if(!this.scene.mensajeActivo)
                 {
                     this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.nivelRequerido);
+                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
                     this.timer = this.scene.time.addEvent({
                         delay: 5000,
                         callback: () => {
-                            this.scene.mensaje.alerta.destroy();
+                            if(this.scene.mensaje.alerta != null)
+                            {
+                                this.scene.mensaje.alerta.destroy();
+                            }
                             this.scene.mensajeActivo = false;
                         },
                         loop: false
