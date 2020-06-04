@@ -183,7 +183,7 @@ export default class jefeFinal extends Phaser.Scene {
     this.puntuacion.updatePuntos(this.pikachuSprite.puntuacion);
     this.vidaPikachu.updateVida(this.pikachuSprite.vida, this.animacionHerido);
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
-    this.marcadorEvoluciones.updateEvoluciones(this.pikachuSprite.evoluciones);
+    this.marcador.updateEvoluciones(this.pikachuSprite.evoluciones);
 
     if(this.jefe.vida <= 0)
     {
