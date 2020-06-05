@@ -433,7 +433,7 @@ export default class Game extends Phaser.Scene {
 
     if(this.datosInit == null)
     {
-      this.numGemas = 150;
+      this.numGemas = 500;
     
       while(this.numGemas > 0)
       {
