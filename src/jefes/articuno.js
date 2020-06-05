@@ -9,7 +9,7 @@ export default class Articuno extends Enemy {
         this.animation = "move_down_enemy"+this.nombre;
         this.vida = 300;
         this.fuerza = 12 * data.nivel;
-        this.valor = (this.vida*2 + this.fuerza*2) / data.nivel;
+        this.valor = (this.vida + this.fuerza) / data.nivel;
         this.setScale(3);
         this.esJefe = true;
         this.velocidad = 1;

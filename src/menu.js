@@ -9,6 +9,10 @@ export default class Menu extends Phaser.Scene {
             "assets/music/inicio.ogg",
             "assets/music/inicio.mp3"
           ]);
+          this.load.audio("musica_seleccion", [
+            "assets/music/Select.ogg",
+            "assets/music/Select.mp3"
+          ]); 
     }
     create() {
 
@@ -17,7 +21,7 @@ export default class Menu extends Phaser.Scene {
          // Música
          let config = {
             mute: false,
-            volume: 0.6,
+            volume: 0.5,
             rate: 1,
             detune: 0,
             seek: 0,
@@ -26,6 +30,17 @@ export default class Menu extends Phaser.Scene {
         };
         let music = this.sound.add('inicio', config);
         music.play();
+
+        let configSeleccion = {
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+        };
+        let seleccion = this.sound.add('musica_seleccion', configSeleccion);
 
         // Botón de jugar
         let jugar = this.add.text( this.scale.width / 2, this.scale.height / 2 - 70, '[ JUGAR ]', {
@@ -48,6 +63,7 @@ export default class Menu extends Phaser.Scene {
         })
         jugar.on('pointerup', function (pointer) {
             music.stop();
+            seleccion.play();
             escena.start('game');
         })
         
@@ -74,6 +90,7 @@ export default class Menu extends Phaser.Scene {
         })
         musica.on('pointerup', function (pointer) {
             musica.fill = "#8A2BE2";
+            seleccion.play();
             if(data.musica)
             {
                 music.stop();
@@ -109,6 +126,7 @@ export default class Menu extends Phaser.Scene {
         })
         pantalla.on('pointerup', function (pointer)
         {
+            seleccion.play();
             if(this.scene.scale.isFullscreen)
             {
                 this.scene.scale.stopFullscreen();
@@ -141,6 +159,7 @@ export default class Menu extends Phaser.Scene {
         })
         facil.on('pointerup', function (pointer)
         {
+            seleccion.play();
             if(data.nivel != 0.5)
             {
                 data.nivel = 0.5;
@@ -178,6 +197,7 @@ export default class Menu extends Phaser.Scene {
         })
         normal.on('pointerup', function (pointer)
         {
+            seleccion.play();
             if(data.nivel != 1)
             {
                 data.nivel = 1;
@@ -215,6 +235,7 @@ export default class Menu extends Phaser.Scene {
         })
         dificil.on('pointerup', function (pointer)
         {
+            seleccion.play();
             if(data.nivel != 1.5)
             {
                 data.nivel = 1.5;

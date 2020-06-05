@@ -956,7 +956,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         if(this.musicaEvolucion.isPlaying)
           this.musicaEvolucion.pause();
 
-        this.scene.scene.launch('gamePause', {clave: this.scene.scene.key}); // Le paso la key de la escena actual para luego poder continuarla
+        this.scene.scene.launch('gamePause', {clave: this.scene.scene.key, pikachuData: this}); // Le paso la key de la escena actual para luego poder continuarla
         this.scene.scene.pause();
 
         this.reiniciarTeclas();

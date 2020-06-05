@@ -79,14 +79,6 @@ export default class Fuego9 extends Enemy {
             repeat: 0
         });
 
-        // Animacion evolucion 
-        this.scene.anims.create({
-            key: 'evolve_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 52, end: 54 }),
-            frameRate: 4,
-            repeat: 0
-        });
-
         // Animaciones daño
         this.scene.anims.create({
             key: 'damage_down_enemy'+this.nombre,

@@ -12,6 +12,7 @@ export default class Video extends Phaser.Scene {
         let video = this.add.video(this.scale.width / 2, this.scale.height / 2, 'intro');
 
         video.play(false);
+        video.setVolume(0.1);
        
         let skip = this.add.text( this.scale.width / 2, this.scale.height - 20, 'Pulsa para continuar', {
 
@@ -19,7 +20,6 @@ export default class Video extends Phaser.Scene {
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
             fill: "#8A2BE2",
-    //        backgroundColor: 'rgba(255, 255, 0, 1)',
             stroke: "FFFFFF",
             strokeThickness: 4,
             align: 'center', 
@@ -43,7 +43,6 @@ export default class Video extends Phaser.Scene {
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
             fill: "#8A2BE2",
-    //        backgroundColor: 'rgba(255, 255, 0, 1)',
             stroke: "#FFFFFF",
             strokeThickness: 4,
             align: 'center', 
