@@ -231,7 +231,7 @@ export default class jefeFinal extends Phaser.Scene {
       {
         this.music.stop();
         this.scene.stop('jefeFinal');
-        this.scene.start('gameWin'); // No volvería al game, sino a una escena de final de juego
+        this.scene.start('gameWin', {pikachuData: this.pikachuSprite}); // No volvería al game, sino a una escena de final de juego
         this.activarPortal = false;
       }
     }

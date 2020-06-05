@@ -287,11 +287,9 @@ export default class Game extends Phaser.Scene {
     this.load.image('mewtwoActivado', 'assets/Messages/mewtwoActivado.png');
 
     // Evoluciones marcador
-    this.load.image('marcador0', 'assets/Messages/marcador0.png');
-    this.load.image('marcador1', 'assets/Messages/marcador1.png');
-    this.load.image('marcador2', 'assets/Messages/marcador2.png');
-    this.load.image('marcador3', 'assets/Messages/marcador3.png');
-
+    this.load.image('evolucionActivado', 'assets/Messages/evolucionActivado.png');
+    this.load.image('evolucionDesactivado', 'assets/Messages/evolucionDesactivado.png');
+    
     // Niveles
     this.load.image('level0', 'assets/estado/niveles/0.png');
     this.load.image('level1', 'assets/estado/niveles/1.png');

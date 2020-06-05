@@ -14,6 +14,10 @@ export default class GameWin extends Phaser.Scene {
    
   }
 
+  init(datos) {
+    this.protagonista = datos.pikachuData;
+}
+
   create() {
 
     this.pantalla = this.add.sprite(600, 310, 'pantallaWin');
@@ -38,7 +42,7 @@ export default class GameWin extends Phaser.Scene {
 
   update(time, delta) {
     
-    this.add.text(300, 170, `Player: ${data.nombre}, 'Tu puntacion: ${data.puntos}`,{
+    this.add.text(300, 170, `Player: ${data.nombre}, 'Tu puntuacion: ${this.protagonista.puntuacion}`,{
       //font: "../fonts/AGENCYR.TTF",
       fill: "#8A2BE2",
       fontSize: '20px',
