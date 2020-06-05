@@ -170,7 +170,7 @@ export default class JefePlanta extends Phaser.Scene {
     // Música
     let config = {
       mute: false,
-      volume: 0.5,
+      volume: 0.3,
       rate: 1,
       detune: 0,
       seek: 0,

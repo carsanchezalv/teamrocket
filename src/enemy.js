@@ -6,7 +6,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
         this.orientation = "down";
         this.nombre = nombre;
-        // Atributos
+
         this.vida = 30 * data.nivel;
         this.fuerza = 7 * data.nivel;
         this.ataque = false;
@@ -19,7 +19,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, this.scene.groupEnemies);
-        this.play(this.animation, true);
         this.scene.physics.world.enableBody(this);
         this.puedeAtacar = true;
         this.setDepth(50);
@@ -70,9 +69,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
             
             if(player.vida < 0)
-            {
                 player.vida = 0;
-            }
+            
         }
     }
     

@@ -78,14 +78,7 @@ export default class Planta4 extends Enemy {
             frameRate: 4,
             repeat: 0
         });
-
-        // Animacion evolucion 
-        this.scene.anims.create({
-            key: 'evolve_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 52, end: 54 }),
-            frameRate: 4,
-            repeat: 0
-        });
+         
 
         // Animaciones daño
         this.scene.anims.create({

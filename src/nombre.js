@@ -5,7 +5,9 @@ export default class Nombre extends Phaser.Scene {
     }
 
     preload() {
-        data.nombre = prompt("Introduce tu nombre");
+        data.nombre = prompt("¿Cómo te llamas?", "Player");
+        if(data.nombre == null)
+            data.nombre = "Anónimo";
     }
 
     create () {
