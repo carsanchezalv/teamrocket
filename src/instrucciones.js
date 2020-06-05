@@ -17,7 +17,7 @@ export default class Instrucciones extends Phaser.Scene {
         "assets/music/Select.mp3"
       ]); 
 
-      this.load.image('reglas', 'assets/reglas.png');
+      this.load.image('instrucciones', 'assets/instrucciones.png');
     }
 
     init(datos) {
@@ -26,19 +26,19 @@ export default class Instrucciones extends Phaser.Scene {
 
     create() {
   
-      this.pantalla = this.add.sprite(this.scale.width / 2 + 10, this.scale.height / 2, 'reglas');
-      this.pantalla.setTexture('reglas');
+      this.pantalla = this.add.sprite(this.scale.width / 2 + 10, this.scale.height / 2, 'instrucciones');
+      this.pantalla.setTexture('instrucciones');
       this.pantalla.setScale(0.7);
       this.pantalla.setScrollFactor(0);
       this.nombreEscena = this.escena;
       this.instrucciones = false;
 
-      let skip = this.add.text(this.scale.width / 2, 430, 'Ir al juego', {
+      let skip = this.add.text(this.scale.width / 2, 430, 'Volver al juego', {
 
-            fontSize: '30px',
+            fontSize: '35px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#CC95F6",
+            fill: "purple",
             stroke: "white",
             strokeThickness: 8,
             align: 'center', 
@@ -61,10 +61,10 @@ export default class Instrucciones extends Phaser.Scene {
       
         let instrucciones = this.add.text(this.scale.width / 2, 80, 'Instrucciones ampliadas', {
 
-            fontSize: '30px',
+            fontSize: '35px',
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
-            fill: "#CC95F6",
+            fill: "purple",
             stroke: "white",
             strokeThickness: 8,
             align: 'center', 
@@ -82,13 +82,13 @@ export default class Instrucciones extends Phaser.Scene {
             
             if(!instrucciones)
             {
-                this.pantalla.setTexture("instrucciones");
+                this.pantalla.setTexture("reglas");
                 this.instrucciones = true;
                 instrucciones.setText("Tutorial básico");
             }
             else
             {
-                this.pantalla.setTexture("reglas");
+                this.pantalla.setTexture("instrucciones");
                 this.instrucciones = false;
                 instrucciones.setText("Instrucciones ampliadas");
             }
