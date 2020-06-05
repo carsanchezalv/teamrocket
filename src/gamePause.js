@@ -22,8 +22,9 @@
         this.load.image("desactivar musica", "assets/desactivarMusica.png");
       }
     
-      init(datos){
+      init(datos) {
           this.escena = datos.clave;
+          this.protagonista = datos.pikachuData;
       }
 
       create() {
@@ -114,6 +115,26 @@
         };
         let seleccion = this.sound.add('musica_seleccion', configSeleccion);
         
+        this.nivel = "";
+        if(data.nivel === 0.5)
+          this.nivel = "Fácil";
+        
+        else if(data.nivel === 1)
+          this.nivel = "Normal";
+        
+        else if(data.nivel === 1.5)
+          this.nivel = "Difícil";
+
+        this.add.text(610, 200, `Jugador: ${data.nombre} \n \n Puntuación: ${this.protagonista.puntuacion} \n \n Nivel: ${this.nivel}`,{
+          fontSize: '33px',
+          fontStyle: 'bold',
+          fontFamily: 'ERAS demi ITC',
+          fill: "purple",
+          stroke: "white",
+          strokeThickness: 5,
+          align: 'center', 
+        }).setScrollFactor(0);
+      
       }
     
       update(time, delta) {
