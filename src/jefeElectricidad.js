@@ -13,6 +13,7 @@ import Zapdos from './jefes/zapdos.js';
 // Portal
 import Portal from './portal.js';
 
+import Mensaje from './mensajes/mensaje.js';
 
 export default class JefeElectricidad extends Phaser.Scene {
   constructor() {
@@ -81,6 +82,9 @@ export default class JefeElectricidad extends Phaser.Scene {
   }
 
   create() {
+
+    this.recienLlegado = true;
+    this.mensajeActivo = false;
 
     this.map = this.make.tilemap({ 
       key: 'mapElectricidad', 
@@ -183,6 +187,36 @@ export default class JefeElectricidad extends Phaser.Scene {
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
     this.marcador.updateEvoluciones(this.pikachuSprite.evoluciones);
 
+    if(this.protagonista.esRaichu && this.recienLlegado && !this.mensajeActivo)
+    {
+      this.mensajeActivo = true;
+      this.mensaje = new Mensaje(this, "evolucion3");
+      
+      this.animation = "evolve";
+      this.pikachuSprite.anims.play(this.animation, true);
+      this.pikachuSprite.puedeActuar = false;
+
+      this.time.addEvent({
+        delay: 2000,
+        callback: () => {
+            this.pikachuSprite.puedeActuar = true;
+            this.animation = "move_up";
+            this.pikachuSprite.anims.play(this.animation, true);
+        },
+        loop: false
+      });
+
+      this.timer = this.time.addEvent({
+          delay: 5000,
+          callback: () => {
+            this.mensaje.alerta.destroy();
+            this.recienLlegado = false;
+            this.mensajeActivo = false;
+          },
+          loop: false
+      });      
+    }
+
     if(this.jefe.vida <= 0)
     {
       this.pikachuSprite.zapdos = true;
@@ -199,8 +233,8 @@ export default class JefeElectricidad extends Phaser.Scene {
         this.pikachuSprite.y = 2760;
         this.scene.stop('jefeElectricidad');
         this.scene.start('game', {pikachuData: this.pikachuSprite, groupGemas: this.datosInit.groupGemas,
-          groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
-          groupPortales: this.datosInit.groupPortales});
+                                  groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
+                                  groupPortales: this.datosInit.groupPortales});
         this.activarPortal = false;
       }
     }

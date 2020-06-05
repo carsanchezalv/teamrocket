@@ -13,6 +13,8 @@ export default class GamePause extends Phaser.Scene {
       ]); 
 
       this.load.image('pantallaPause', 'assets/gamePause.png');
+      this.load.image("activar musica", "assets/activarMusica.png");
+      this.load.image("desactivar musica", "assets/desactivarMusica.png");
     }
   
     init(datos){
@@ -50,6 +52,36 @@ export default class GamePause extends Phaser.Scene {
             estaEscena.stop('gamePause');
             estaEscena.resume(nombre);
         })
+      
+      let silenciar = this.add.image( 280, 280, "desactivar musica").setDepth(1).setOrigin(0.5);
+
+      if(data.musica)
+        silenciar.setTexture("desactivar musica");
+      else
+        silenciar.setTexture("activar musica");
+
+      silenciar.setInteractive();
+      silenciar.on('pointerover', function (pointer) {
+          silenciar.setScale(1.2);
+      })
+      silenciar.on('pointerout', function (pointer) {
+          silenciar.setScale(1);
+      })
+
+      silenciar.on('pointerup', function (pointer) {
+        if(data.musica)
+        {
+            music.stop();
+            data.musica = false;
+            silenciar.setTexture("activar musica");
+        }
+        else
+        {
+            music.play();
+            data.musica = true;
+            silenciar.setTexture("desactivar musica");
+        }
+      })
      
         // Música
         let config = {
@@ -62,9 +94,9 @@ export default class GamePause extends Phaser.Scene {
           delay: 0
         };
         let music = this.sound.add('musica_gamepause', config);
-      if(data.musica) {
+      if(data.musica) 
         music.play();
-      } 
+      
     }
   
     update(time, delta) {

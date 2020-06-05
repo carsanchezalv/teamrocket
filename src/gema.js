@@ -1,5 +1,4 @@
 import { data } from "./data.js";
-
 export default class Gema extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y) {
@@ -7,7 +6,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
 
         this.animation = "brillo";
         // Atributos
-        this.valor = 5;
+        this.valor = 20 / data.nivel;
         this.velocidad = 40;
         this.visible = true;
         this.numGema = 0;
@@ -28,9 +27,9 @@ export default class Gema extends Phaser.GameObjects.Sprite {
        this.scene.physics.world.enableBody(this);
 
        let musicaGemaConfig = {
-        mute: false,
+        mute: false,        
         volume: 1,
-        rate: 1,
+        rate: 1,    
         detune: 0,
         seek: 0,
         loop: false,
@@ -45,17 +44,17 @@ export default class Gema extends Phaser.GameObjects.Sprite {
     collectGema() {
         this.musicaGema.play();
         this.scene.groupGemas;
-        this.valor = this.valor * data.bonusGemas;
-        data.puntos += this.valor;
+        this.valor = this.valor * this.scene.pikachuSprite.bonusGemas;
+        this.scene.pikachuSprite.puntuacion += this.valor;
         this.destroy();
         this.numGema++;
     }
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-        if(data.tiempoEfecto === 0)
+        if(this.scene.pikachuSprite.tiempoEfecto === 0)
         {
-            data.bonusGemas = 1;
+            this.scene.pikachuSprite.bonusGemas = 1;
         }
         this.play(this.animation, true);
     }

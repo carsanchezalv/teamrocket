@@ -15,7 +15,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     
     // Atributos
     this.vidaTotal = 100*5;
-    this.vida = this.vidaTotal/3;
+    this.vida = this.vidaTotal;
     this.fuerza = 10;
     this.atacar = false;
     this.esHerido = false;
@@ -25,8 +25,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.efecto = "";
     this.velX = 0;
     this.velY = 0;
-    this.evoluciones = 3;
-    this.puntuacion = 4000;
+    this.evoluciones = 5;
+    this.puntuacion = 990 / data.nivel;
     this.tiempoEfecto = 0;
     this.bonusGemas = 1;
     this.esRaichu = false;
@@ -714,16 +714,16 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
     }
 
-    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && this.puedeActuar) // Recupera vida
+    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && this.puedeActuar && this.scene.scene.key === "game" && this.vida < this.vidaTotal) // Recupera vida, solo en escena principal
     {
-      if(this.scene.puntuacion.nivel > 0 && this.vida <= this.vidaTotal/2) // Solo puede recuperar la vida si ha perdido la mitad y si puede gastar niveles
+      if(this.scene.puntuacion.nivel > 1) // Solo puede recuperar la vida si puede gastar niveles
       {
         this.musicaRecuperarse.play();
         this.vida = this.vidaTotal;
-        this.puntuacion -= 330;
+        this.puntuacion -= 330*2;
       }
     }
-    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.e) && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu) // Evoluciona
+    if(this.scene.cursor.e.isDown && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu && this.scene.scene.key === "game") // Evoluciona
     {
       this.musicaEvolucion.play();
       
@@ -739,7 +739,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       this.velocidad *= 2;
 
       this.scene.time.addEvent({
-        delay: 9000,
+        delay: 6000,
         callback: () => {
             this.puedeActuar = true;
             this.musicaEvolucion.stop();
@@ -755,7 +755,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
               this.scene.mensajeActivo = true; 
               this.scene.mensaje = new Mensaje(this.scene, "evolucion1");
               this.timer = this.scene.time.addEvent({
-                  delay: 5000,
+                  delay: 4500,
                   callback: () => {
                     this.scene.mensaje.alerta.destroy();
                     this.scene.mensajeActivo = false;
@@ -768,7 +768,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       });
 
       this.scene.time.addEvent({
-        delay: 30000,
+        delay: 35000 / data.nivel,
         callback: () => {
             this.evolucionAgotada = true;
         },

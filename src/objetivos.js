@@ -4,33 +4,33 @@ export default class Objetivo extends Phaser.Scene {
         super('Objetivo');
         this.scene = scene;
 
-        this.snorlax = scene.add.sprite(290, 190, 'snorlaxDesactivado');
+        this.snorlax = scene.add.sprite(300, 195, 'snorlaxDesactivado');
         this.snorlax.setTexture('snorlaxDesactivado');
-        this.snorlax.setScale(0.12);
+        this.snorlax.setScale(0.14);
         this.snorlax.setDepth(60);
         this.snorlax.setScrollFactor(0);
 
-        this.articuno = scene.add.sprite(290, 230, 'articunoDesactivado');
+        this.articuno = scene.add.sprite(300, 235, 'articunoDesactivado');
         this.articuno.setTexture('articunoDesactivado');
-        this.articuno.setScale(0.12);
+        this.articuno.setScale(0.14);
         this.articuno.setDepth(60);
         this.articuno.setScrollFactor(0);
         
-        this.zapdos = scene.add.sprite(290, 270, 'zapdosDesactivado');
+        this.zapdos = scene.add.sprite(300, 275, 'zapdosDesactivado');
         this.zapdos.setTexture('zapdosDesactivado');
-        this.zapdos.setScale(0.12);
+        this.zapdos.setScale(0.14);
         this.zapdos.setDepth(60);
         this.zapdos.setScrollFactor(0);
 
-        this.moltres = scene.add.sprite(290, 310, 'moltresDesactivado');
+        this.moltres = scene.add.sprite(300, 315, 'moltresDesactivado');
         this.moltres.setTexture('moltresDesactivado');
-        this.moltres.setScale(0.12);
+        this.moltres.setScale(0.14);
         this.moltres.setDepth(60);
         this.moltres.setScrollFactor(0);
 
-        this.mewtwo = scene.add.sprite(290, 350, 'mewtwoDesactivado');
+        this.mewtwo = scene.add.sprite(300, 355, 'mewtwoDesactivado');
         this.mewtwo.setTexture('mewtwoDesactivado');
-        this.mewtwo.setScale(0.12);
+        this.mewtwo.setScale(0.14);
         this.mewtwo.setDepth(60);
         this.mewtwo.setScrollFactor(0);
     }

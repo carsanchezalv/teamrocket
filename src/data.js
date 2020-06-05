@@ -1,5 +1,5 @@
 export let data = {
     musica: true,
     nombre: "",
-    jefesIslasRestantes: 4
+    nivel: 1
 }

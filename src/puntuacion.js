@@ -2,31 +2,31 @@ export default class Puntuacion extends Phaser.Scene {
     constructor(scene) {
         super({ key: 'Puntuacion' });
 
-        this.level = scene.add.sprite(290, 150, 'puntos00');
+        this.level = scene.add.sprite(310, 150, 'puntos00');
         this.level.setDepth(60);
         this.level.setTexture('level0');
         this.level.setScrollFactor(0);
         this.level.setScale(0.07);
 
-        this.score0 = scene.add.sprite(370, 150, 'puntos00');
+        this.score0 = scene.add.sprite(390, 150, 'puntos00');
         this.score0.setDepth(60);
         this.score0.setTexture('puntos00');
         this.score0.setScrollFactor(0);
         this.score0.setScale(1.5);
 
-        this.score1 = scene.add.sprite(466, 150, 'puntos10');
+        this.score1 = scene.add.sprite(486, 150, 'puntos10');
         this.score1.setDepth(60);
         this.score1.setTexture('puntos10');
         this.score1.setScrollFactor(0);
         this.score1.setScale(1.5);
 
-        this.score2 = scene.add.sprite(562, 150, 'puntos20');
+        this.score2 = scene.add.sprite(582, 150, 'puntos20');
         this.score2.setDepth(60);
         this.score2.setTexture('puntos20');
         this.score2.setScrollFactor(0);
         this.score2.setScale(1.5);
 
-        this.score3 = scene.add.sprite(658, 150, 'puntos20');
+        this.score3 = scene.add.sprite(678, 150, 'puntos20');
         this.score3.setDepth(60);
         this.score3.setTexture('puntos20');
         this.score3.setScrollFactor(0);

@@ -1653,7 +1653,7 @@ export default class Game extends Phaser.Scene {
         groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
       this.activarJefeFinal = false;
       
-      this.scene.stop('game');
+      this.scene.pause('game');
       this.pikachuSprite.reiniciarTeclas();
     }
 
