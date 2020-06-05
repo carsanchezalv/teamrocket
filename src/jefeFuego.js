@@ -141,8 +141,10 @@ export default class JefeFuego extends Phaser.Scene {
       pause:'p',
       c:'c',
       r:'r',
-      e:'e'
+      e:'e',
+      i: 'i'
     });
+
 
     this.vidaPikachu = new Estado(this);
     this.puntuacion = new Puntuacion(this);

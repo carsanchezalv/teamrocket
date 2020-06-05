@@ -714,15 +714,62 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
     }
 
-    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && this.puedeActuar && this.scene.scene.key === "game" && this.vida < this.vidaTotal) // Recupera vida, solo en escena principal
+    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && this.puedeActuar && this.vida < this.vidaTotal) // Recupera vida, solo en escena principal
     {
-      if(this.scene.puntuacion.nivel > 1) // Solo puede recuperar la vida si puede gastar niveles
+      if(this.scene.puntuacion.nivel > 1 && this.scene.scene.key === "game") // Solo puede recuperar la vida si puede gastar niveles
       {
         this.musicaRecuperarse.play();
         this.vida = this.vidaTotal;
         this.puntuacion -= 330*2;
+
+        if(!this.scene.mensajeActivo)
+        { 
+          this.scene.mensajeActivo = true; 
+          this.scene.mensaje = new Mensaje(this.scene, "recuperar2");
+          this.timer = this.scene.time.addEvent({
+              delay: 4500,
+              callback: () => {
+                this.scene.mensaje.alerta.destroy();
+                this.scene.mensajeActivo = false;
+              },
+              loop: false
+          });
+        }
+      }
+      else if(this.scene.scene.key === "game")
+      {
+        if(!this.scene.mensajeActivo)
+        { 
+          this.scene.mensajeActivo = true; 
+          this.scene.mensaje = new Mensaje(this.scene, "recuperar1");
+          this.timer = this.scene.time.addEvent({
+              delay: 4500,
+              callback: () => {
+                this.scene.mensaje.alerta.destroy();
+                this.scene.mensajeActivo = false;
+              },
+              loop: false
+          });
+        }
+      }
+      else
+      {
+        if(!this.scene.mensajeActivo)
+        { 
+          this.scene.mensajeActivo = true; 
+          this.scene.mensaje = new Mensaje(this.scene, "recuperar0");
+          this.timer = this.scene.time.addEvent({
+              delay: 4500,
+              callback: () => {
+                this.scene.mensaje.alerta.destroy();
+                this.scene.mensajeActivo = false;
+              },
+              loop: false
+          });
+        }
       }
     }
+
     if(this.scene.cursor.e.isDown && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu && this.scene.scene.key === "game") // Evoluciona
     {
       this.musicaEvolucion.play();
@@ -775,6 +822,22 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         loop: false
       });
     }
+    else if(this.scene.cursor.e.isDown && this.scene.scene.key != "game")
+    {
+      if(!this.scene.mensajeActivo)
+      { 
+        this.scene.mensajeActivo = true; 
+        this.scene.mensaje = new Mensaje(this.scene, "evolucion4");
+        this.timer = this.scene.time.addEvent({
+            delay: 4500,
+            callback: () => {
+              this.scene.mensaje.alerta.destroy();
+              this.scene.mensajeActivo = false;
+            },
+            loop: false
+        });
+      }
+    }
 
     if(this.evolucionAgotada && this.esRaichu)
     {
@@ -825,7 +888,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.musicaEvolucion.resume();
       
       else if(data.musica)
-        this.scene.music.play();
+        this.scene.music.resume();
     }
 
     if(this.tiempoEfecto > 0)
@@ -964,6 +1027,19 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.haVuelto = true;
       }
 
+      if(this.scene.cursor.i.isDown) {
+        this.scene.music.pause();
+        if(this.musicaEvolucion.isPlaying)
+          this.musicaEvolucion.pause();
+
+        this.scene.scene.launch('instrucciones', {clave: this.scene.scene.key}); // Le paso la key de la escena actual para luego poder continuarla
+        this.scene.scene.pause();
+
+        this.reiniciarTeclas();
+
+        this.haVuelto = true;
+      }
+
      this.esHerido = false;
     }
     else if(this.vida === 0)
@@ -988,6 +1064,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     this.scene.cursor.r.isUp = true;
     this.scene.cursor.e.isDown = false;
     this.scene.cursor.e.isUp = true;
+    this.scene.cursor.i.isDown = false;
+    this.scene.cursor.i.isUp = true;
     this.scene.cursor.space.isDown = false;
     this.scene.cursor.space.isUp = true;
     this.scene.cursor.down.isDown = false;

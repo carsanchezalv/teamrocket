@@ -140,7 +140,8 @@ export default class JefeAgua extends Phaser.Scene {
       pause:'p',
       c:'c',
       r:'r',
-      e:'e'
+      e:'e',
+      i: 'i'
     });
 
 
