@@ -15,6 +15,8 @@ import Trampillas from './trampillas.js';
 // Portales
 import Portal from './portal.js';
 
+import Mensaje from './mensajes/mensaje.js';
+
 // Fuego
 import Fuego1 from "./fuego/fuego1.js";
 import Fuego2 from "./fuego/fuego2.js";
@@ -320,11 +322,17 @@ export default class Game extends Phaser.Scene {
     this.load.image('mensajeNada', 'assets/Messages/TrampillaNada.png');
     this.load.image('evolucionar1','assets/Messages/evolucionar1.png');
     this.load.image('evolucionar2','assets/Messages/evolucionar2.png');
+    this.load.image('evolucionar3','assets/Messages/evolucionar3.png');
+    this.load.image('evolucionar4','assets/Messages/evolucionar4.png');
+    this.load.image('recuperar0','assets/Messages/recuperar0.png');
+    this.load.image('recuperar1','assets/Messages/recuperar1.png');
+    this.load.image('recuperar2','assets/Messages/recuperar2.png');
     this.load.image('nivel2','assets/Messages/nivel2.png');
     this.load.image('nivel3','assets/Messages/nivel3.png');
     this.load.image('nivel4','assets/Messages/nivel4.png');
     this.load.image('nivel5','assets/Messages/nivel5.png');
     this.load.image('nivel6','assets/Messages/nivel6.png');
+    this.load.image('tutorial','assets/Messages/tutorial.png');
   }
 
   init(datos) {
@@ -380,6 +388,7 @@ export default class Game extends Phaser.Scene {
 
     this.haVuelto = false;
     this.mensajeActivo = false;
+    this.tutorial = true;
 
     this.activarJefePlanta = false;   
     this.activarJefeAgua = false;
@@ -414,8 +423,10 @@ export default class Game extends Phaser.Scene {
       pause:'p',
       c:'c',
       r:'r',
-      e:'e'
+      e:'e',
+      i: 'i'
     });
+
 
     // Gemas
     this.groupGemas = this.physics.add.group({
@@ -1432,6 +1443,23 @@ export default class Game extends Phaser.Scene {
     this.objetivo.updateObjetivo(this.pikachuSprite.snorlax, this.pikachuSprite.articuno, this.pikachuSprite.zapdos, this.pikachuSprite.moltres, this.pikachuSprite.mewtwo);
     this.marcadorEvoluciones.updateEvoluciones(this.pikachuSprite.evoluciones);
 
+    if(this.tutorial)
+    {
+      this.tutorial = false;
+      if(!this.mensajeActivo)
+      { 
+        this.mensajeActivo = true; 
+        this.mensaje = new Mensaje(this, "tutorial");
+        this.timer = this.time.addEvent({
+            delay: 4500,
+            callback: () => {
+              this.mensaje.alerta.destroy();
+              this.mensajeActivo = false;
+            },
+            loop: false
+        });
+      }
+    }
     // Aparición portal final
     if(this.pikachuSprite.jefesIslasRestantes === 0)
     {
@@ -1654,17 +1682,5 @@ export default class Game extends Phaser.Scene {
       this.scene.pause('game');
       this.pikachuSprite.reiniciarTeclas();
     }
-
-  /*
-    this.add.text(300, 170, `Player: ${data.nombre}`,{
-      //font: "../fonts/AGENCYR.TTF",
-      fill: "#8A2BE2",
-      fontSize: '20px',
-      //padding: { x: 5, y: 3 },
-      stroke: "#00FF89",
-      //backgroundColor: "#FFFFFF"
-      //backgroundImage: this.fondo,
-    }).setScrollFactor(0);
-  */
   }
 }

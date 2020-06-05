@@ -174,6 +174,46 @@ export default class Mensajes extends Phaser.Scene {
             this.alerta.setDepth(60);
             this.alerta.setScale(0.5);
         }
+        else if(nombre === "evolucion4")
+        {
+            this.alerta = this.scene.add.sprite(512, 350, "evolucionar4");
+            this.alerta.setTexture("evolucionar4");
+            this.alerta.setScrollFactor(0);
+            this.alerta.setDepth(60);
+            this.alerta.setScale(0.5);
+        }
+        else if(nombre === "recuperar0")
+        {
+            this.alerta = this.scene.add.sprite(512, 350, "recuperar0");
+            this.alerta.setTexture("recuperar0");
+            this.alerta.setScrollFactor(0);
+            this.alerta.setDepth(60);
+            this.alerta.setScale(0.5);
+        }
+        else if(nombre === "recuperar1")
+        {
+            this.alerta = this.scene.add.sprite(512, 350, "recuperar1");
+            this.alerta.setTexture("recuperar1");
+            this.alerta.setScrollFactor(0);
+            this.alerta.setDepth(60);
+            this.alerta.setScale(0.5);
+        }
+        else if(nombre === "recuperar2")
+        {
+            this.alerta = this.scene.add.sprite(512, 350, "recuperar2");
+            this.alerta.setTexture("recuperar2");
+            this.alerta.setScrollFactor(0);
+            this.alerta.setDepth(60);
+            this.alerta.setScale(0.5);
+        }
+        else if(nombre === "tutorial")
+        {   
+            this.alerta = this.scene.add.sprite(512, 350, "tutorial");
+            this.alerta.setTexture("tutorial");
+            this.alerta.setScrollFactor(0);
+            this.alerta.setDepth(60);
+            this.alerta.setScale(0.5);
+        }
         else if(nombre === "portalNivel2")
         {
             this.alerta = this.scene.add.sprite(512, 350, "nivel2");
@@ -214,6 +254,7 @@ export default class Mensajes extends Phaser.Scene {
             this.alerta.setDepth(60);
             this.alerta.setScale(0.5);
         }
+        
 
         this.activo = true;
     }
