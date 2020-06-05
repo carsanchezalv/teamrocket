@@ -1,13 +1,14 @@
 import Enemy from "../enemy.js";
-
+import { data } from "../data.js";
 export default class Moltres extends Enemy {
 
     constructor(scene, x, y) {
         super(scene, x, y, "moltres");
         this.nombre = "moltres";
         this.animation = "move_down_enemy"+this.nombre;
-        this.vida = 150;
-        this.fuerza = 5;
+        this.vida = 200 * data.nivel;
+        this.fuerza = 12 * data.nivel;
+        this.valor = (this.vida*2 + this.fuerza*2) / data.nivel;
         this.setScale(3);
         this.esJefe = true;
         this.velocidad = 1;

@@ -1,3 +1,4 @@
+import { data } from "./data.js";
 export default class Enemy extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y, nombre) {
@@ -6,15 +7,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.orientation = "down";
         this.nombre = nombre;
         // Atributos
-        this.vida = 20;
-        this.fuerza = 4;
+        this.vida = 30 * data.nivel;
+        this.fuerza = 7 * data.nivel;
         this.ataque = false;
         this.esHerido = false;
         this.numEnemy = this.scene.numEnemy;
         this.velocidad = 40;
         this.puedeActuar = true;
         this.esJefe = false;
-        this.valor = this.vida*2;
+        this.valor = (this.vida*2 + this.fuerza*2) / data.nivel;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, this.scene.groupEnemies);

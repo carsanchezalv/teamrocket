@@ -1,3 +1,4 @@
+import { data } from "./data.js";
 export default class Gema extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y) {
@@ -5,7 +6,7 @@ export default class Gema extends Phaser.GameObjects.Sprite {
 
         this.animation = "brillo";
         // Atributos
-        this.valor = 5;
+        this.valor = 20 / data.nivel;
         this.velocidad = 40;
         this.visible = true;
         this.numGema = 0;

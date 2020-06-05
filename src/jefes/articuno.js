@@ -1,4 +1,5 @@
 import Enemy from "../enemy.js";
+import { data } from "../data.js";
 
 export default class Articuno extends Enemy {
 
@@ -6,8 +7,9 @@ export default class Articuno extends Enemy {
         super(scene, x, y, "articuno");
         this.nombre = "articuno";
         this.animation = "move_down_enemy"+this.nombre;
-        this.vida = 150;
-        this.fuerza = 7;
+        this.vida = 200 * data.nivel;
+        this.fuerza = 12 * data.nivel;
+        this.valor = (this.vida*2 + this.fuerza*2) / data.nivel;
         this.setScale(3);
         this.esJefe = true;
         this.velocidad = 1;

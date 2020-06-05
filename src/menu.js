@@ -28,7 +28,7 @@ export default class Menu extends Phaser.Scene {
         music.play();
 
         // Botón de jugar
-        let jugar = this.add.text( this.scale.width / 2, this.scale.height / 2 - 80, '[ JUGAR ]', {
+        let jugar = this.add.text( this.scale.width / 2, this.scale.height / 2 - 70, '[ JUGAR ]', {
 
             fontSize: '70px',
             fontStyle: 'bold',
@@ -95,7 +95,6 @@ export default class Menu extends Phaser.Scene {
             fontStyle: 'bold',
             fontFamily: 'ERAS demi ITC',
             fill: "#8A2BE2",
-    //        backgroundColor: 'rgba(255, 255, 0, 1)',
             stroke: "#FFFFFF",
             strokeThickness: 3,
             align: 'center',
@@ -121,9 +120,121 @@ export default class Menu extends Phaser.Scene {
                 pantalla.text = "Desactivar pantalla completa";
             }
         })
+
+        let facil = this.add.text( this.scale.width / 2 - 250, this.scale.height / 2 - 190, 'Facil', {
+
+            fontSize: '45px',
+            fontStyle: 'bold',
+            fontFamily: 'ERAS demi ITC',
+            fill: "#8A2BE2",
+            stroke: "#FFFFFF",
+            strokeThickness: 3,
+            align: 'center',
+        }).setDepth(1).setOrigin(0.5);
+        
+        facil.setInteractive();
+        facil.on('pointerover', function (pointer) {
+            facil.setScale(1.2);
+        })
+        facil.on('pointerout', function (pointer) {
+            facil.setScale(1);
+        })
+        facil.on('pointerup', function (pointer)
+        {
+            if(data.nivel != 0.5)
+            {
+                data.nivel = 0.5;
+                facil.setFill("violet");
+                facil.setStroke("purple");
+                facil.setFontSize('60px');
+
+                normal.setFill("#8A2BE2");
+                normal.setStroke("#FFFFFF");
+                normal.setFontSize('45px');
+
+                dificil.setFill("#8A2BE2");
+                dificil.setStroke("#FFFFFF");
+                dificil.setFontSize('45px');
+            }
+        })
+
+        let normal = this.add.text( this.scale.width / 2, this.scale.height / 2 - 190, 'Normal', {
+
+            fontSize: '60px',
+            fontStyle: 'bold',
+            fontFamily: 'ERAS demi ITC',
+            fill: "violet",
+            stroke: "purple",
+            strokeThickness: 3,
+            align: 'center',
+        }).setDepth(1).setOrigin(0.5);
+        
+        normal.setInteractive();
+        normal.on('pointerover', function (pointer) {
+            normal.setScale(1.2);
+        })
+        normal.on('pointerout', function (pointer) {
+            normal.setScale(1);
+        })
+        normal.on('pointerup', function (pointer)
+        {
+            if(data.nivel != 1)
+            {
+                data.nivel = 1;
+                normal.setFill("violet");
+                normal.setStroke("purple");
+                normal.setFontSize('60px');
+
+                facil.setFill("#8A2BE2");
+                facil.setStroke("#FFFFFF");
+                facil.setFontSize('45px');
+
+                dificil.setFill("#8A2BE2");
+                dificil.setStroke("#FFFFFF");
+                dificil.setFontSize('45px');
+            }
+        })
+
+        let dificil = this.add.text( this.scale.width / 2 + 250, this.scale.height / 2 - 190, 'Dificil', {
+
+            fontSize: '45px',
+            fontStyle: 'bold',
+            fontFamily: 'ERAS demi ITC',
+            fill: "#8A2BE2",
+            stroke: "#FFFFFF",
+            strokeThickness: 3,
+            align: 'center',
+        }).setDepth(1).setOrigin(0.5);
+        
+        dificil.setInteractive();
+        dificil.on('pointerover', function (pointer) {
+            dificil.setScale(1.2);
+        })
+        dificil.on('pointerout', function (pointer) {
+            dificil.setScale(1);
+        })
+        dificil.on('pointerup', function (pointer)
+        {
+            if(data.nivel != 1.5)
+            {
+                data.nivel = 1.5;
+                dificil.setFill("violet");
+                dificil.setStroke("purple");
+                dificil.setFontSize('60px');
+
+                facil.setFill("#8A2BE2");
+                facil.setStroke("#FFFFFF");
+                facil.setFontSize('45px');
+
+                normal.setFill("#8A2BE2");
+                normal.setStroke("#FFFFFF");
+                normal.setFontSize('45px');
+            }
+        })
     }    
     
     update(time, delta)
     {
+
     }
 }
