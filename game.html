@@ -24,6 +24,7 @@
         import BossFinal from './src/jefeFinal.js';
         import GameOver from './src/gameOver.js';
         import GamePause from './src/gamePause.js';
+        import GameWin from './src/gameWin.js';
 
         var config = { 
             type: Phaser.CANVAS,
@@ -40,7 +41,7 @@
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             
-            scene: [Video, Nombre, Menu, Game, BossPlanta, BossAgua, BossFinal, BossFuego, BossElectricidad, GameOver, GamePause],
+            scene: [Video, Nombre, Menu, Game, BossPlanta, BossAgua, BossFinal, BossFuego, BossElectricidad, GameOver, GamePause, GameWin],
             physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: true } }
         };
         new Phaser.Game(config);

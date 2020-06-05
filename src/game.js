@@ -1334,7 +1334,7 @@ export default class Game extends Phaser.Scene {
         }   
       }
 
-      this.portal3Sprite = new Portal(this, this.x+150, this.y, "agua");
+      this.portal3Sprite = new Portal(this, this.x+150, this.y, "centro");
       this.groupPortales.add(this.portal3Sprite);
 
       this.numPortal = 1;
@@ -1653,7 +1653,7 @@ export default class Game extends Phaser.Scene {
         groupTrampillas: arrayTrampillas, groupPortales: arrayPortales});
       this.activarJefeFinal = false;
       
-      this.scene.pause('game');
+      this.scene.stop('game');
       this.pikachuSprite.reiniciarTeclas();
     }
 
