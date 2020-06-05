@@ -26,9 +26,9 @@ export default class Gema extends Phaser.GameObjects.Sprite {
        this.scene.physics.world.enableBody(this);
 
        let musicaGemaConfig = {
-        mute: false,
+        mute: false,        
         volume: 1,
-        rate: 1,
+        rate: 1,    
         detune: 0,
         seek: 0,
         loop: false,

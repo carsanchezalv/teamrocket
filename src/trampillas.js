@@ -201,7 +201,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa18": // Tus puntos se convierten en un valor aleatorio
-                    this.scene.pikachuSprite.puntuacion = Phaser.Math.Between(0, 5000);
+                    this.scene.pikachuSprite.puntuacion = Phaser.Math.Between(660, 3000);
                 break;
 
                 case "trampa19": // Te quita todos los puntos

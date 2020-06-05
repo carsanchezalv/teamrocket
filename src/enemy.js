@@ -133,8 +133,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             
             if(this.vida <= 0)
             {
-                this.destroy();
                 this.scene.pikachuSprite.puntuacion += this.valor;
+                this.destroy();
             }
         }
         else if (player.puedeActuar && this.puedeActuar && this.puedeAtacar)

@@ -233,8 +233,8 @@ export default class JefeElectricidad extends Phaser.Scene {
         this.pikachuSprite.y = 2760;
         this.scene.stop('jefeElectricidad');
         this.scene.start('game', {pikachuData: this.pikachuSprite, groupGemas: this.datosInit.groupGemas,
-          groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
-          groupPortales: this.datosInit.groupPortales});
+                                  groupEnemies: this.datosInit.groupEnemies, groupTrampillas: this.datosInit.groupTrampillas,
+                                  groupPortales: this.datosInit.groupPortales});
         this.activarPortal = false;
       }
     }

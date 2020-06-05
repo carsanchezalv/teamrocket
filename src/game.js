@@ -1433,7 +1433,7 @@ export default class Game extends Phaser.Scene {
     // Aparición portal final
     if(this.pikachuSprite.jefesIslasRestantes === 0)
     {
-      this.pikachuSprite.jefesIslasRestantes++;
+      this.pikachuSprite.jefesIslasRestantes--;
       this.portalFinalSprite = new Portal(this, this.x, this.y, "centro");
       this.groupPortales.add(this.portalFinalSprite);
     }
