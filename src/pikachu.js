@@ -1049,8 +1049,79 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
 
       // Game Over
       this.scene.music.stop();
-      this.scene.scene.launch('gameOver');
-      this.scene.scene.pause(this.scene.scene.key);
+      this.musicaDamage.play();
+      this.puedeActuar = false;
+      
+      switch(this.orientation)
+      {
+        case "up": 
+            this.flipX = false;
+
+            if(this.esRaichu)
+              this.animation = 'damage_up_raichu';
+            else
+              this.animation = 'damage_up';
+            break;
+        case "upright":
+            this.flipX = false;
+            if(this.esRaichu)
+              this.animation = 'damage_upright_raichu';
+            else
+              this.animation = 'damage_upright';
+            break;
+        case "upleft":
+            this.flipX = true;
+            if(this.esRaichu)
+              this.animation = 'damage_upright_raichu';
+            else
+              this.animation = 'damage_upright';
+            break;
+        case "down":
+            this.flipX = false;
+            if(this.esRaichu)
+              this.animation = 'damage_down_raichu';
+            else
+              this.animation = 'damage_down';
+            break;
+        case "downright":
+            this.flipX = false;
+            if(this.esRaichu)
+              this.animation = 'damage_downright_raichu';
+            else
+              this.animation = 'damage_downright';
+            break;
+        case "downleft":
+            this.flipX = true;
+            if(this.esRaichu)
+              this.animation = 'damage_downright_raichu';
+            else
+              this.animation = 'damage_downright';
+            break;
+        case "right":
+            this.flipX = false;
+            if(this.esRaichu)
+              this.animation = 'damage_right_raichu';
+            else
+              this.animation = 'damage_right';
+            break;
+        case "left":
+            this.flipX = true;
+            if(this.esRaichu)
+              this.animation = 'damage_right_raichu';
+            else
+              this.animation = 'damage_right';
+            break;
+      }
+      
+      this.anims.play(this.animation);
+      this.scene.time.addEvent({
+          delay: 2500,
+          callback: () => {
+            this.scene.scene.launch('gameOver');
+            this.scene.scene.pause(this.scene.scene.key);
+          },
+          loop: false
+      });
     }  
   }
   
