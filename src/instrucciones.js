@@ -29,14 +29,14 @@ export default class Instrucciones extends Phaser.Scene {
   
         let pantalla = this.add.sprite(this.scale.width / 2 + 10, this.scale.height / 2, 'instrucciones');
         pantalla.setTexture('instrucciones');
-        pantalla.setScale(0.7);
+        pantalla.setScale(0.65);
         pantalla.setScrollFactor(0);
         this.nombreEscena = this.escena;
         let reglas = false;
 
-        let skip = this.add.text(this.scale.width / 2, 470, 'Volver al juego', {
+        let skip = this.add.text(this.scale.width / 2, 435, 'Volver al juego', {
 
-                fontSize: '25px',
+                fontSize: '30px',
                 fontStyle: 'bold',
                 fontFamily: 'ERAS demi ITC',
                 fill: "purple",
@@ -60,9 +60,9 @@ export default class Instrucciones extends Phaser.Scene {
                 estaEscena.resume(nombre);
             })
         
-            let instrucciones = this.add.text(this.scale.width / 2, 50, 'Reglas ampliadas', {
+            let instrucciones = this.add.text(this.scale.width / 2, 70, 'Reglas ampliadas', {
 
-                fontSize: '25px',
+                fontSize: '30px',
                 fontStyle: 'bold',
                 fontFamily: 'ERAS demi ITC',
                 fill: "purple",
