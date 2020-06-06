@@ -1299,6 +1299,10 @@ export default class Game extends Phaser.Scene {
 
         this.trampillaNueva.activo = this.trampillaAux.activo;
         this.trampillaNueva.pisada = this.trampillaAux.pisada;
+
+        if(!this.trampillaNueva.activo)
+          this.trampillaNueva.setVisible(true);
+
         this.groupTrampillas.add(this.trampillaNueva);
       }
     }
@@ -1342,10 +1346,7 @@ export default class Game extends Phaser.Scene {
           --this.numPortal;
         }   
       }
-
-      this.portal3Sprite = new Portal(this, this.x+150, this.y, "centro");
-      this.groupPortales.add(this.portal3Sprite);
-
+      
       this.numPortal = 1;
       while(this.numPortal > 0)
       {
