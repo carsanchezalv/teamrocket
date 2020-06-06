@@ -193,7 +193,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa16": // Envenena durante un tiempo
-                    this.scene.pikachuSprite.tiempoEfecto = 200 * data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 250 * data.nivel;
                     this.scene.pikachuSprite.efecto = "veneno";
                 break;
 
