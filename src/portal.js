@@ -8,6 +8,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
         this.isla = isla;
         this.animation = "estatico";
         this.visible = true;
+        this.portalNivel = false;
 
         // Animacion movimientos
         this.scene.anims.create({
@@ -62,22 +63,8 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 this.destroy();
             }
             else
-            {
-                if(!this.scene.mensajeActivo)
-                {
-                    this.scene.mensajeActivo = true;
-                    
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
-                    this.timer = this.scene.time.addEvent({
-                        delay: 5000,
-                        callback: () => {
-                            this.scene.mensaje.alerta.destroy();
-                            this.scene.mensajeActivo = false;
-                        },
-                        loop: false
-                    });
-                }
-            }
+                this.portalNivel = true;
+                
         }
         else if(this.isla === "finalPlanta")
         {
@@ -93,22 +80,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 this.destroy();  
             }
             else
-            {
-                if(!this.scene.mensajeActivo)
-                {
-                    this.scene.mensajeActivo = true; 
-                    
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
-                    this.timer = this.scene.time.addEvent({
-                        delay: 5000,
-                        callback: () => {
-                            this.scene.mensaje.alerta.destroy();
-                            this.scene.mensajeActivo = false;
-                        },
-                        loop: false
-                    });
-                }
-            }
+                this.portalNivel = true;
         }
         else if(this.isla === "finalAgua")
         {
@@ -124,21 +96,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 this.destroy();      
             }
             else
-            {
-                if(!this.scene.mensajeActivo)
-                {
-                    this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
-                    this.timer = this.scene.time.addEvent({
-                        delay: 5000,
-                        callback: () => {
-                            this.scene.mensaje.alerta.destroy();
-                            this.scene.mensajeActivo = false;
-                        },
-                        loop: false
-                    });
-                }
-            }
+                this.portalNivel = true;
         }
         else if(this.isla === "finalFuego")
         {
@@ -154,21 +112,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 this.destroy();
             }
             else
-            {
-                if(!this.scene.mensajeActivo)
-                {
-                    this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
-                    this.timer = this.scene.time.addEvent({
-                        delay: 5000,
-                        callback: () => {
-                            this.scene.mensaje.alerta.destroy();
-                            this.scene.mensajeActivo = false;
-                        },
-                        loop: false
-                    });
-                }
-            }
+            this.portalNivel = true;
         }
         else if(this.isla === "finalElectricidad")
         {
@@ -184,24 +128,7 @@ export default class Portal extends Phaser.GameObjects.Sprite {
                 this.destroy();
             }
             else
-            {
-                if(!this.scene.mensajeActivo)
-                {
-                    this.scene.mensajeActivo = true; 
-                    this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
-                    this.timer = this.scene.time.addEvent({
-                        delay: 5000,
-                        callback: () => {
-                            if(this.scene.mensaje.alerta != null)
-                            {
-                                this.scene.mensaje.alerta.destroy();
-                            }
-                            this.scene.mensajeActivo = false;
-                        },
-                        loop: false
-                    });
-                }
-            }
+                this.portalNivel = true;
         }
         else if(this.isla === "finalJuego")
         {
@@ -213,6 +140,21 @@ export default class Portal extends Phaser.GameObjects.Sprite {
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
+        if(!this.scene.mensajeActivo && this.portalNivel)
+        {
+            this.portalNivel = false;
+            this.scene.mensajeActivo = true;
+            
+            this.scene.mensaje = new Mensaje(this.scene, "portalNivel"+this.scene.pikachuSprite.nivelRequerido);
+            this.timer = this.scene.time.addEvent({
+                delay: 5000,
+                callback: () => {
+                    this.scene.mensaje.alerta.destroy();
+                    this.scene.mensajeActivo = false;
+                },
+                loop: false
+            });
+        }
         this.anims.play(this.animation, true);
     }
 }

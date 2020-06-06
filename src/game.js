@@ -1446,9 +1446,9 @@ export default class Game extends Phaser.Scene {
 
     if(this.tutorial)
     {
-      this.tutorial = false;
       if(!this.mensajeActivo)
       { 
+        this.tutorial = false;
         this.mensajeActivo = true; 
         this.mensaje = new Mensaje(this, "tutorial");
         this.timer = this.time.addEvent({
