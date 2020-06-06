@@ -15,7 +15,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
     // Atributos
     this.vidaTotal = 100*5;
     this.vida = this.vidaTotal;
-    this.fuerza = 10;
+    this.fuerza = 12;
     this.atacar = false;
     this.esHerido = false;
     this.velocidad = 50;
