@@ -486,6 +486,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         delay: 1000,
         callback: () => {
             this.puedeActuar = true;
+            this.atacar = false;
         },
         loop: false
       });
@@ -952,7 +953,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
     }  
     
-    if(this.vida > 0) // && this.puedeActuar)
+    if(this.vida > 0)
     {
       const cursor = this.scene.cursor;
       
@@ -963,7 +964,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       
       this.actuar();
       
-      if(this.esHerido && !this.atacar && this.puedeActuar)
+      if(this.esHerido)
       {
         this.musicaDamage.play();
         this.puedeActuar = false;
@@ -1030,7 +1031,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         }
         this.scene.animacionHerido = true;
         this.timer = this.scene.time.addEvent({
-            delay: 500,
+            delay: 1000,
             callback: () => {
                 this.puedeActuar = true;
             },
@@ -1038,6 +1039,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         });
         this.anims.play(this.animation, true);
       }
+      
 
       if(this.scene.cursor.pause.isDown) {
         this.scene.music.pause();
