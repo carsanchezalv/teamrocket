@@ -257,8 +257,5 @@ export default class Mensajes extends Phaser.Scene {
         
 
         this.activo = true;
-    }
-
-    updateMensaje() {
-    }               
+    }         
 }

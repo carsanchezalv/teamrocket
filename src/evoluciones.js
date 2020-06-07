@@ -1,7 +1,7 @@
-export default class Objetivo extends Phaser.Scene {
+export default class Evoluciones extends Phaser.Scene {
     constructor(scene) {
         
-        super('Objetivo');
+        super('Evoluciones');
         this.scene = scene;
 
         this.marcador1 = scene.add.sprite(715, 185, 'evolucionActivado');
