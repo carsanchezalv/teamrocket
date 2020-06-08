@@ -1272,6 +1272,7 @@ export default class Game extends Phaser.Scene {
       removeCallback: null,
       createMultipleCallback: null
     });
+
     if(this.datosInit == null)
     {
       this.numTrampillas = 50;
@@ -1288,6 +1289,7 @@ export default class Game extends Phaser.Scene {
         }   
       }
     }
+    
     else
     {
       let numTrampillas = this.datosInit.groupTrampillas.length;

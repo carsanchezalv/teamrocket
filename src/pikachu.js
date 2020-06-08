@@ -970,7 +970,8 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       if(this.esHerido)
       {
         this.esHerido = false;
-        this.musicaDamage.play();
+        if(!this.musicaDamage.isPlaying)
+          this.musicaDamage.play();
         this.puedeActuar = false;
         switch(this.orientation)
         {
