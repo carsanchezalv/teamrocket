@@ -125,7 +125,7 @@
         else if(data.nivel === 1.5)
           this.nivel = "Difícil";
 
-        this.add.text(610, 200, `Jugador: ${data.nombre} \n \n Puntuación: ${this.protagonista.puntuacion} \n \n Nivel: ${this.nivel}`,{
+        this.add.text(610, 200, `Jugador: ${data.nombre} \n \n Puntuación: ${this.protagonista.puntuacion.toFixed()} \n \n Nivel: ${this.nivel}`,{
           fontSize: '33px',
           fontStyle: 'bold',
           fontFamily: 'ERAS demi ITC',

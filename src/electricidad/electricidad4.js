@@ -46,35 +46,35 @@ export default class Electricidad4 extends Enemy {
         // Animacion ataque
         this.scene.anims.create({
             key: 'attack_down_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 27, end: 27 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 32, end: 33 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_right_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 43, end: 43 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 36, end: 37 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_up_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 38, end: 38 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 40, end: 41 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_upright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 45, end: 45 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 38, end: 39 }),
             frameRate: 4,
             repeat: 0
         });
 
         this.scene.anims.create({
             key: 'attack_downright_enemy'+this.nombre,
-            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 29, end: 30 }),
+            frames: this.scene.anims.generateFrameNumbers(this.nombre, { start: 34, end: 35 }),
             frameRate: 4,
             repeat: 0
         });

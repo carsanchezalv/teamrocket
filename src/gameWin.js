@@ -49,7 +49,7 @@ export default class GameWin extends Phaser.Scene {
       this.music.play();
     }
 
-    this.add.text(500, 100, `Jugador: ${data.nombre} \n Tu puntuación: ${this.protagonista.puntuacion} \n Nivel: ${this.nivel}`,{
+    this.add.text(500, 100, `Jugador: ${data.nombre} \n Tu puntuación: ${this.protagonista.puntuacion.toFixed()} \n Nivel: ${this.nivel}`,{
       fontSize: '45px',
       fontStyle: 'bold',
       fontFamily: 'ERAS demi ITC',
