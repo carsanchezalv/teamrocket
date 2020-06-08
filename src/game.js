@@ -1272,7 +1272,9 @@ export default class Game extends Phaser.Scene {
       removeCallback: null,
       createMultipleCallback: null
     });
-
+    this.trampillaSprite = new Trampillas(this, this.x, this.y, "trampa16");
+          this.groupTrampillas.add(this.trampillaSprite);
+          
     if(this.datosInit == null)
     {
       this.numTrampillas = 50;

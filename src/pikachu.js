@@ -725,7 +725,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
       }
     }
 
-    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && this.puedeActuar && this.vida < this.vidaTotal) // Recupera vida, solo en escena principal
+    if(Phaser.Input.Keyboard.JustDown(this.scene.cursor.r) && !this.esHerido && this.puedeActuar && this.vida < this.vidaTotal) // Recupera vida, solo en escena principal
     {
       if(this.scene.puntuacion.nivel > 1 && this.scene.scene.key === "game") // Solo puede recuperar la vida si puede gastar niveles
       {
@@ -742,7 +742,7 @@ export default class Pikachu extends Phaser.GameObjects.Sprite {
         this.recuperar0 = true;
     }
 
-    if(this.scene.cursor.e.isDown && this.puedeActuar && this.evoluciones > 0 && !this.esRaichu && this.scene.scene.key === "game") // Evoluciona
+    if(this.scene.cursor.e.isDown && this.puedeActuar && !this.esHerido && this.evoluciones > 0 && !this.esRaichu && this.scene.scene.key === "game") // Evoluciona
     {
       this.musicaEvolucion.play();
       
