@@ -7,7 +7,13 @@ export default class Moltres extends Enemy {
         this.nombre = "moltres";
         this.animation = "move_down_enemy"+this.nombre;
         this.vida = 300;
-        this.fuerza = 12 * data.nivel;
+        if(data.nivel === 1.5)
+            this.factorFuerza = 1.4;
+        else if (data.nivel === 0.5)
+            this.factorFuerza = 0.6;
+        else
+            this.factorFuerza = 1;
+        this.fuerza = 12 * this.factorFuerza;
         this.valor = (this.vida + this.fuerza) / data.nivel;
         this.setScale(3);
         this.esJefe = true;

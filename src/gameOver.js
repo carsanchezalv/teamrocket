@@ -37,7 +37,5 @@ export default class GameOver extends Phaser.Scene {
   }
 
   update(time, delta) {
-    
-    
   }
 }

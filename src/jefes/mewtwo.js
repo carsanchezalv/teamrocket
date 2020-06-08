@@ -8,7 +8,13 @@ export default class Mewtwo extends Enemy {
         this.nombre = "mewtwo";
         this.animation = "move_down_enemy"+this.nombre;
         this.vida = 400;
-        this.fuerza = 15 * data.nivel;
+        if(data.nivel === 1.5)
+            this.factorFuerza = 1.4;
+        else if (data.nivel === 0.5)
+            this.factorFuerza = 0.6;
+        else
+            this.factorFuerza = 1;
+        this.fuerza = 15 * this.factorFuerza;
         this.valor = (this.vida + this.fuerza) / data.nivel;
         this.setScale(3);
         this.esJefe = true;
