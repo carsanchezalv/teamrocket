@@ -162,12 +162,12 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
 
                 case "trampa9": // Aumenta el valor de las gemas del suelo
                     this.scene.pikachuSprite.bonusGemas = 2;
-                    this.scene.pikachuSprite.tiempoEfecto = 350 / data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 500 / data.nivel;
                 break;
 
                 case "trampa10": // Duplica tu fuerza
                     this.scene.pikachuSprite.fuerza *= 2;
-                    this.scene.pikachuSprite.tiempoEfecto = 350 / data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 500 / data.nivel;
                 break;
 
                 case "trampa11":
@@ -175,12 +175,12 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa12": // Te va frenando poco a poco
-                    this.scene.pikachuSprite.tiempoEfecto = 300 * data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 400 * data.nivel;
                     this.scene.pikachuSprite.efecto = "ralentizar";
                 break;
 
                 case "trampa13": // Te para de golpe
-                    this.scene.pikachuSprite.tiempoEfecto = 300 * data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 350 * data.nivel;
                     this.scene.pikachuSprite.velocidad = 0;
                 break;
 
@@ -199,7 +199,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
 
                 case "trampa17": // Tu fuerza ahora vale la mitad
                     this.scene.pikachuSprite.fuerza = this.scene.pikachuSprite.fuerza / 2;
-                    this.scene.pikachuSprite.tiempoEfecto = 350 / data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 400 / data.nivel;
                 break;
 
                 case "trampa18": // Tus puntos se convierten en un valor aleatorio
@@ -212,7 +212,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
 
                 case "trampa20": // Eres inmune durante un tiempo
                     this.scene.pikachuSprite.inmune = true;
-                    this.scene.pikachuSprite.tiempoEfecto = 350/data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 450/data.nivel;
                 break;
 
                 case "trampa21": // Te teletransporta a un lugar aleatorio
@@ -233,7 +233,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
 
                 case "trampa22": // Te marea 
                     this.scene.pikachuSprite.velocidad *= -1;
-                    this.scene.pikachuSprite.tiempoEfecto = 350 * data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 400 * data.nivel;
                 break;
 
                 case "trampa23":
@@ -241,7 +241,7 @@ export default class Trampillas extends Phaser.GameObjects.Sprite {
                 break;
 
                 case "trampa24": // Te reduce la velocidad a la mitad
-                    this.scene.pikachuSprite.tiempoEfecto = 350 * data.nivel;
+                    this.scene.pikachuSprite.tiempoEfecto = 400 * data.nivel;
                     this.scene.pikachuSprite.velocidad = this.scene.pikachuSprite.velocidad / 2;
                 break;
             }
