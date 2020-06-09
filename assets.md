@@ -1,4 +1,4 @@
-Nuestro proyecto se divide por ahora en las siguientes carpetas
+Nuestro proyecto se divide en las siguientes carpetas.
 
 # Assets:
 En esta carpeta están los assets necesarios para el juego. Dentro de ella tenemos también subcarpetas de icons (con los personajes y gemas), otra carpeta de música, otra de video en la que se guarda el video de la introduccion e historia del juego, otra de tiles para guardar el mapa y sus tilesets, otra con los mensajes de alerta que se muestran durante el juego y una última llamada "estado" en la que guardamos los assets correspondientes a los puntos, niveles y vida.
