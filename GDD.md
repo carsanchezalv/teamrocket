@@ -53,33 +53,41 @@ Recoge cuantas puedas, te sumarán puntos, los cuales se traducen en niveles. Es
 ## Trampillas:
 El mapa está plagado de trampillas ocultas que solo verás cuando las pises y las actives. Algunas te beneficiarán, otras te perjudicarán y habrá otras que simplemente te asustarán y no tendrán efecto. 
 
-(flecha verde): Se duplicarán tus puntos.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/7.png) Se duplicarán tus puntos.
 
-(perla negra): Te recupera la vida.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/8.png) Te recupera la vida.
 
-(el pico del minero): Las gemas durante un tiempo duplicarán su valor.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/9.png) Las gemas durante un tiempo duplicarán su valor.
 
-(pirámide del infierno): Tu fuerza se duplicará durante un tiempo.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/10.png) Tu fuerza se duplicará durante un tiempo.
 
-(super pegamento): Te frenará por un tiempo.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/11.png) No tiene efectos.
 
-(equis roja): Te inmoviliza durante un tiempo.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/12.png) Te frenará por un tiempo hasta llegar a pararte.
 
-(lava negra): Te resta vida poco a poco durante un tiempo. 
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/13.png) Te inmoviliza durante un tiempo.
 
-(lava roja): Te hace menos fuerte por un tiempo.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/14.png) No tiene efectos.
 
-(ventilador): El ventilador absorbe tus puntos y te devuelve una cantidad aleatoria.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/15.png) No tiene efectos.
 
-(alcantarilla): Tus puntos se caerán por esta alcantarilla y los perderás.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/16.png) Te resta vida poco a poco durante un tiempo. 
 
-(nido): Nada mejor que un buen nido para ser inmune a cualquier ataque.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/17.png) Te hace menos fuerte por un tiempo.
 
-(viaje sorpresa): Con el viaje sorpresa aparecerás en un lugar aleatorio del mapa. 
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/18.png) El ventilador absorbe tus puntos y te devuelve una cantidad aleatoria.
 
-(hipnosis): Los controles de movimiento se invierten durante un tiempo.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/19.png) Tus puntos se caerán por esta alcantarilla y los perderás.
 
-(flecha roja): Tu velocidad se reduce a la mitad.
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/20.png) Nada mejor que un buen nido para ser inmune a cualquier ataque.
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/21.png) Con el viaje sorpresa aparecerás en un lugar aleatorio del mapa.
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/22.png) Los controles de movimiento se invierten durante un tiempo.
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/23.png) No tiene efectos.
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/Hito3/24.png) Tu velocidad se reduce a la mitad.
 
 ## Portales:
 Inicialmente sólo podrás acceder a 4 portales, situados cada uno de ellos en su isla periférica correspondiente del mapa principal. Cuando derrotes a los 4 jefes de dichos portales, aparecerá el quinto portal en la isla central, el cual te llevará a Mewtwo.
