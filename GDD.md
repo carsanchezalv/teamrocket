@@ -37,18 +37,27 @@ Mapa principal amplio con difrentes tipos de terreno diferenciados por los tiles
 
 Hay música de fondo en 8-bit y del juego original, así como efectos de sonido.
 
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/1.png)
+
 ## Mapa:
 El mapa principal está formado por 4 islas más la central, cada una de un elemento (planta, fuego, agua, electricidad). Los Pokemon han sufrido una maldición y han cambiado de color, en cada isla encontraras los Pokemon de cada tipo con algún añadido. En la isla central podrás encontrar el portal de Mewtwo cuando hayas derrotado a los 4 jefes de cada una de las islas periféricas.
 
 Existe una escena y un mapa secundario para cada jefe. A los que podrás acceder a través de los portales.
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/mapa_team_rocket.png)
+
 
 ## Enemigos: 
 Los habitantes del mundo Pokemon están poseídos, en cada isla encontraras diferentes Pokemon contra los que enfrentarte, ten cuidado porque no son muy amigables. Cada vez que derrotes a un enemigo sumarás puntos.
 
 Para acabar el juego debes derrotar a los 5 jefes, primero gana a los 4 jefes de cada isla para poder acceder al quinto, situado en el centro del mapa principal. Los jefes son más poderosos que los enemigos comunes. Cuando mates a Mewtwo, el último jefe, la maldición se deshará y devolverás la paz al mundo Pokemon, así como sus colores originales.
 
+![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/EscenaJefe.JPG)
+
 ## Gemas:
 Recoge cuantas puedas, te sumarán puntos, los cuales se traducen en niveles. Están situadas por todo el mapa principal.
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/assets/icons/personajes/Gema/gemas.png)
 
 ## Trampillas:
 El mapa está plagado de trampillas ocultas que solo verás cuando las pises y las actives. Algunas te beneficiarán, otras te perjudicarán y habrá otras que simplemente te asustarán y no tendrán efecto. 
@@ -94,15 +103,13 @@ Inicialmente sólo podrás acceder a 4 portales, situados cada uno de ellos en s
 
 No siempre podrás introducirte en los portales que encuentres, ya que te pedirán un nivel mínimo de puntos para poder pasar. Dicho nivel comienza en 2 con el primer portal que encuentres y se aumenta su valor en 1 cada vez que derrotes a un jefe, por lo que el portal de Mewtwo te pedirá tener nivel 6.
 
+![](https://github.com/carsanchezalv/teamrocket/blob/master/assets/tiles/portal.png)
+
 ## Otras acciones
 Pikachu también podrá recuperar su vida cuando quiera (salvo en las escenas de los jefes, al igual que al evolucionar), pero gastará dos niveles de puntos, por lo que se tendrá que medir inteligentemente su uso para no perder excesivos niveles que impidan pasar a través de un portal.
 
 Se puede pausar el juego y silenciar su música cuando se quiera, así como repasar las instrucciones y reglas del mismo en plena partida.
 
-
-![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/1.png)
-
-![](https://github.com/carsanchezalv/teamrocket/blob/master/slides/images/assets.png)
 
 ## Controles
 Usa las flechas para moverte.
