@@ -105,13 +105,19 @@ No siempre podrás introducirte en los portales que encuentres, ya que te pedir�
 
 ![](https://github.com/carsanchezalv/teamrocket/blob/master/assets/tiles/portal.png)
 
-## Otras acciones
+## Otras acciones:
 Pikachu también podrá recuperar su vida cuando quiera (salvo en las escenas de los jefes, al igual que al evolucionar), pero gastará dos niveles de puntos, por lo que se tendrá que medir inteligentemente su uso para no perder excesivos niveles que impidan pasar a través de un portal.
 
 Se puede pausar el juego y silenciar su música cuando se quiera, así como repasar las instrucciones y reglas del mismo en plena partida.
 
+## Mensajes:
+El juego cuenta con numerosos mensajes de alerta para avisar al jugador de distintos acontecimientos durante la partida.
 
-## Controles
+![](https://github.com/carsanchezalv/teamrocket/blob/master/assets/Messages/Trampilla21.png)
+
+![](https://github.com/carsanchezalv/teamrocket/blob/master/assets/Messages/recuperar1.png)
+
+## Controles:
 Usa las flechas para moverte.
 
 Ataca con la barra espaciadora.
